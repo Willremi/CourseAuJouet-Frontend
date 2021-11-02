@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
-import { URL_HOME, URL_LOGIN } from './../../shared/constants/urls/urlConstants';
+import { URL_HOME, URL_LOGIN, URL_REGISTER } from './../../shared/constants/urls/urlConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLogged, signOut } from './../../shared/redux-store/authenticationSlice';
 
@@ -51,7 +51,7 @@ const ConnectionBtn = () => {
                     Sign in
                 </div>
             </Link>
-            <Link to="/register">
+            <Link to={URL_REGISTER}>
                 <button className="ml-8 btn btn-green">
                     Sign up
                 </button>
