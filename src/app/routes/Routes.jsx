@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { URL_HOME, URL_LOGIN, URL_ADMIN_HOME } from '../shared/constants/urls/urlConstants';
+import { URL_HOME, URL_LOGIN, URL_ADMIN_HOME, URL_REGISTER } from '../shared/constants/urls/urlConstants';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
+import RegisterView from '../views/RegisterView';
 import { customHistory } from '../shared/services/historyServices';
 import AdminHomeView from '../views/AdminHomeView';
 import { ROLE_ADMIN } from '../shared/constants/rolesConstant';
@@ -20,6 +21,7 @@ const Routes = () => {
             <PrivateRoute exact path={URL_HOME} component={HomeView} />
             <PrivateRoute path={URL_ADMIN_HOME} component={AdminHomeView} roles={[ROLE_ADMIN]} />
             <Route path={URL_LOGIN} component={LoginView} />
+            <Route path={URL_REGISTER} component={RegisterView} />
         </Switch>
     );
 };
