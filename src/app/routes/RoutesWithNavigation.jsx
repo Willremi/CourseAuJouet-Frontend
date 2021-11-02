@@ -6,6 +6,7 @@ import Routes from './Routes';
 import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
 import Navbar from './../components/layouts/Navbar';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
+import MyAccountButton from './../components/header/MyAccountButton';
 
 const contextClass = {
     success: "bg-green-600",
@@ -28,10 +29,11 @@ const RoutesWithNavigation = () => {
 
     return (
         <BrowserRouter>
-            <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 cursor-default">
+            <div>
                 { isLogged && <IdleTimerCustom />}
                 <Navbar/>
                 <main>
+                    
                     <Routes/>
                 </main>
                 <ToastContainer 

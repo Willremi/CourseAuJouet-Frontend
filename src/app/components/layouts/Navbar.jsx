@@ -3,12 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 import { URL_HOME, URL_LOGIN } from './../../shared/constants/urls/urlConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLogged, signOut } from './../../shared/redux-store/authenticationSlice';
+import MyAccountButton from '../header/MyAccountButton';
 
 const Navbar = () => {
     const history = useHistory()
     return (
         <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            
+            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                     <div>
                         <img
@@ -27,7 +29,8 @@ const Navbar = () => {
 
                 </div>
 
-            </div>
+            </div> */}
+            <MyAccountButton />
         </nav>
     )
 }
