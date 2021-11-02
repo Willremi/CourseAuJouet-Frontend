@@ -1,41 +1,29 @@
 import React from 'react';
+// import './Navbar.css';
 
 const Navbar = () => {
     return (
         <nav>
-            <p>Logo</p>
+            <div className='nav-container'>
+                <div className='logo'>
+                    <h3>La course aux jouet</h3>
+                </div>
+                    <h4>Recherche</h4>
 
-            <select>
-                <option value="">Découvrir</option>
-                <option value="">Nouveautés</option>
-                <option value="">Top ventes</option>
-                <option value="">Tendances</option>
-            </select>
-            <select>
-                <option value="">Catégories</option>
-                <option value="">Roues</option>
-                <option value="">Peluches</option>
-                <option value="">Figurines</option>
-                <option value="">Jeux</option>
-                <option value="">Jeux et Puzzles</option>
-                <option value="">Construction</option>
-                <option value="">Véhicules</option>
-                <option value="">Educatif</option>
-                <option value="">Baby</option>
-            </select>
-            <select>
-                <option value="">Par Age</option>
-                <option value="">0-24 mois</option>
-                <option value="">2 ans</option>
-                <option value="">3-4 ans</option>
-                <option value="">5-7 ans</option>
-                <option value="">8-10 ans</option>
-                <option value="">11 ans ou +</option>
-            </select>
-
-            <p>Recherche</p>
-            <p>Mon compte</p>
-            <p>Panier</p>
+                    <div>partie gauche</div>
+                    <ul className='flex mb-4'>
+                        <li className=''>Découvrir</li>
+                        <li className=''>Catégories</li>
+                        <li className=''>Par âges</li>
+                    </ul>
+                <br/>
+                <div className='right'>partie droite</div>
+                    <ul>
+                        <li>Mon compte</li>
+                        <li>Panier</li>
+                    </ul>
+                
+            </div>
         </nav>
     );
 };
