@@ -96,3 +96,7 @@
 .space {
     @apply space-x-2
 }
+
+.yupError {
+    @apply text-red-500
+}

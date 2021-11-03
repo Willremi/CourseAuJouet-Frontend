@@ -17,10 +17,11 @@ export const schemaFormRegister = Yup.object({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Doit contenir au minimum 8 caratères dont une MAJUSCULE, une minuscule, un chiffre et un caractère spécial"
     ),
-  confirmPassword: Yup.string().oneOf(
+    confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
     "les mots de passe ne sont pas identique "
-  ),
+  )  
+  .required("La confirmation du mot de passe est obligatoire"),
   phoneNumber: Yup.string().required("Le numéro de téléphone est obligatoire"),
   birthDate: Yup.string().required("La date de naissance est obligatoire"),
 });
