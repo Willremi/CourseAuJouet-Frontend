@@ -1,10 +1,12 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
+import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
+
 
 const RegisterForm = () => (
-  <Formik initialValues={defaulValuesRegister}>
+  <Formik initialValues={defaulValuesRegister} validationSchema={schemaFormRegister} >
     <Form>
       <div className="space">
       <label>
@@ -64,7 +66,7 @@ const RegisterForm = () => (
       />
       <br />
       <br />
-      <button className="btn btn-primary">S'inscrire</button>
+      <button type="submit" className="btn btn-primary" >S'inscrire</button>
     </Form>
   </Formik>
 );
