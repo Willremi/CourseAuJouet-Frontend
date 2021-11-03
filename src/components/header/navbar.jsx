@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import './navbar.css';
 
 const Navbar = () => {
     function classNames(...classes) {
@@ -276,10 +277,10 @@ const Navbar = () => {
             {isOpen && (<div className='md:hidden divide-y text-center'>
                 <div className='divide-y'>
                     <div className='pb-9'><a href="">Accueil</a></div>
-                    <div className='pb-9'>Boutique</div>
-                    <div className='pb-9'>Aide</div>
-                    <div className='pb-9'>Profil</div>
-                    <div className='pb-9'>Mon panier</div>
+                    <div className='pb-9'><a href="">Boutique</a></div>
+                    <div className='pb-9'><a href="">Aide</a></div>
+                    <div className='pb-9'><a href="">Profil</a></div>
+                    <div className='pb-9'><a href="">Mon panier</a></div>
                     <div></div>
                 </div>
                 <br />
