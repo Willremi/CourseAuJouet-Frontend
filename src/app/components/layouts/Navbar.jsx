@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
             
-            {/* <div className="max-w-7xl mx-auto px-4 sm:px-6">
+             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                     <div>
                         <img
@@ -29,7 +29,7 @@ const Navbar = () => {
 
                 </div>
 
-            </div> */}
+            </div>
             <MyAccountButton />
         </nav>
     )

@@ -6,7 +6,6 @@ import Routes from './Routes';
 import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
 import Navbar from './../components/layouts/Navbar';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
-import MyAccountButton from './../components/header/MyAccountButton';
 
 const contextClass = {
     success: "bg-green-600",

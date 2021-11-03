@@ -1,12 +1,40 @@
 module.exports = {
-  mode: 'jit',
+  
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      'sm': {'min': '320px', 'max': '504px'},
+      'md': {'min': '505px', 'max': '1024px'},
+      'lg': {'min': '1025px', 'max': '1280px'},
+      'xl': {'min': '1281px', 'max': '1535px'},
+      '2xl': {'min': '1536px'},
+    },
+
+
     extend: {
+
+      backgroundOpacity: ['active'],
+      animation: {
+        fadeIn : "ModalFadeIn 150ms ease-in-out",
+        fadeOut: "ModalFadeOut 150ms ease-in-out",
+  
+      },
+      keyframes: theme => ({
+        ModalFadeIn:{
+          '0%' : {opacity : theme('opacity.0')},
+          '100%': {opacity : theme('opacity.50')}
+        },
+        ModalFadeOut: {
+          '0%' : {opacity : theme('opacity.50')},
+          '100%': {opacity : theme('opacity.0')},
+        },
+
+      }),
+
       colors:{
         primary:{
-          '100': '#b3d9ff',
+          '10': '#b3d9ff',
           '200': '#80bfff',
           '300': '#4da6ff',
           '400': '#1a8cff',
