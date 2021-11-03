@@ -3,26 +3,20 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav>
-            <div className='nav-container'>
-                <div className='logo'>
-                    <h3>La course aux jouet</h3>
-                </div>
-                    <h4>Recherche</h4>
-
-                    <div>partie gauche</div>
-                    <ul className='flex mb-4'>
-                        <li className=''>Découvrir</li>
-                        <li className=''>Catégories</li>
-                        <li className=''>Par âges</li>
-                    </ul>
-                <br/>
-                <div className='right'>partie droite</div>
-                    <ul>
-                        <li>Mon compte</li>
-                        <li>Panier</li>
-                    </ul>
-                
+        <nav className='items-center justify-between flex bg-yellow-300 px-12 py-4 my-4 mx-auto'>
+            <div className='text-white text-2xl font-semibold inline-flex items-center'>
+                <span>La course aux jouets</span>
+                <ul className='flex text-white'>
+                    <li className='px-4'>Découvrir</li>
+                    <li className='px-4'>Catégories</li>
+                    <li className='px-4'>Par Age</li>
+                    
+                </ul>
+            </div>
+            <span className=' text-white'>Recherche</span>
+            <div className=' flex text-white'>
+                <a href="" className=' px-4'>Mon compte</a>
+                <a href="" className=' px-4'>Panier</a>
             </div>
         </nav>
     );
