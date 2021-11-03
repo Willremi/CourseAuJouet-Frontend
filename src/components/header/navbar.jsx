@@ -12,9 +12,9 @@ const Navbar = () => {
         <>
             <nav className='justify-between flex bg-yellow-300 max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
                 <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
-                    {!isOpen ? (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>)}
+                    {!isOpen ? (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
-                
+
                 <div className='hidden md:block text-white font-semibold'>
                     <span>La course aux jouets</span>
                     <ul className='flex text-white pt-6'>
@@ -268,23 +268,29 @@ const Navbar = () => {
 
                 <span className=' text-white'>Recherche</span>
 
-                {!isOpen && <div className=' flex text-white'>
-                    <a href="" className=' px-4'>Mon compte</a>
-                    <a href="" className=' px-4'>Panier</a>
-                </div>}
+                {!isOpen ? (<div className=' flex text-white'>
+                    <a href="" className=' px-2'>Mon compte</a>
+                    <a href="" className=' px-2'>Panier</a>
+                </div>) : (<div></div>)}
             </nav>
-                {isOpen && (<div className='md:hidden bg-blue-700'>
-                    <div>Accueil</div>
-                    <div>Boutique</div>
-                    <div>Aide</div>
-                    <div>Profil</div>
-                    <div>Mon panier</div>
-                    <button>Connexion</button>
-                    <button>Inscription</button>
-                    
-                    
+            {isOpen && (<div className='md:hidden divide-y text-center'>
+                <div className='divide-y'>
+                    <div className='pb-9'><a href="">Accueil</a></div>
+                    <div className='pb-9'>Boutique</div>
+                    <div className='pb-9'>Aide</div>
+                    <div className='pb-9'>Profil</div>
+                    <div className='pb-9'>Mon panier</div>
+                    <div></div>
                 </div>
-                )}
+                <br />
+                <div className='pb-9 grid w-2 mx-48'>
+                    <button className='p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg border-2 border-blue-500'>Connexion</button>
+                    <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300'>Inscription</button>
+                </div>
+
+
+            </div>
+            )}
 
         </>
     );
