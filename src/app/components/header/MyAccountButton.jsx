@@ -57,20 +57,22 @@ function MyAccountButton() {
         <>
           <div
             className={`transition-all duration-500 absolute w-screen ${ showModal ? 'h-72' : 'h-0'}
-            ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:pr-36' : 'lg:h-0'}
+            ${ showModal ? 'md:h-screen md:bg-gray-800 md:bg-opacity-50' : 'md:h-0'}
+            ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50' : 'lg:h-0'}
              ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36' : 'xl:h-0'}
              ${ showModal ? '2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36' : '2xl:h-0'}
             `}
           >
-            <div className={`w-full absolute bg-white h-full
-            lg:w-2/6 lg:h-screen lg:right-0 lg:mr-36 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"}
-            xl:w-2/6 xl:h-screen xl:right-0 xl:mr-36 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"}
-            2xl:w-2/6 2xl:h-screen 2xl:right-0 2xl:mr-36 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"}`}>
+            <div className={`w-full relative bg-white h-full
+            md:w-5/6 md:h-2/6 md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? null : "md:h-0"}
+            lg:w-2/6 lg:h-screen lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"}
+            xl:w-2/6 xl:h-screen xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"}
+            2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"}`}>
               
               {/* Bouton pour fermer le modal */}
-              { showModal ? <button
+               <button
                 onClick={() => setShowModal(false)}
-                className="absolute top-5 right-5 transition-all opacity-50 hover:opacity-100"
+                className={`${showModal ? 'absolute top-5 right-5 transition-all opacity-50 hover:opacity-100' : 'hidden'}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +86,7 @@ function MyAccountButton() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </button> : null}
+              </button>
               {/* FIN bouton fermer le modal */}
 
               {/*
