@@ -4,9 +4,8 @@ import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
 
 const submit = (values) => {
-  return ( console.log(values));
-}
- 
+  return console.log(values);
+};
 
 const RegisterForm = () => (
   <Formik
@@ -17,11 +16,16 @@ const RegisterForm = () => (
     <Form>
       <div className="space">
         <label>
-          <Field name="gender" id="gender" value="Man" type="radio" />
+          <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
           Mr
         </label>
         <label>
-          <Field name="gender" id="gender" value="Woman" type="radio" />
+          <Field
+            type="radio"
+            name="Civility"
+            id="CivilityWoman"
+            value="Woman"
+          />
           Mme
         </label>
       </div>
@@ -37,13 +41,13 @@ const RegisterForm = () => (
       <ErrorMessage name="lastName" className="yupError" component="span" />
       <br />
       <Field
-        name="name"
-        id="name"
+        name="firstname"
+        id="firstname"
         type="text"
         placeholder="Prénom"
         className="input"
       />
-      <ErrorMessage name="name" className="yupError" component="span" />
+      <ErrorMessage name="firstname" className="yupError" component="span" />
       <br />
       <Field
         name="email"
@@ -77,32 +81,29 @@ const RegisterForm = () => (
       />
       <br />
       <Field
-        name="phoneNumber"
-        id="phoneNumber"
+        name="phone"
+        id="phone"
         type="text"
         placeholder="Numéro de téléphone"
         className="input"
       />
-      <ErrorMessage
-        name="phoneNumber"
-        className="yupError"
-        component="span"
-      />
+      <ErrorMessage name="phone" className="yupError" component="span" />
       <br />
       <Field
-        name="birthDate"
-        id="birthDate"
+        name="birthday_date"
+        id="birthday_date"
         type="text"
         placeholder="Date de naissance"
         className="input"
       />
-      <ErrorMessage name="birthDate" className="yupError" component="span" />
+      <ErrorMessage
+        name="birthday_date"
+        className="yupError"
+        component="span"
+      />
       <br />
       <br />
-      <button
-        type="submit"
-        className="btn btn-primary"
-      >
+      <button type="submit" className="btn btn-primary">
         S'inscrire
       </button>
     </Form>

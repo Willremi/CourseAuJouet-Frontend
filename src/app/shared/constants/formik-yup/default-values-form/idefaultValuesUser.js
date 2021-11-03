@@ -6,10 +6,10 @@ export const defaulValuesLogin = {
 
 export   const defaulValuesRegister = {
     lastName: "",
-    name: "",
+    firstName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    birthDate: "",
-    phoneNumber: "",
+    birthday_date: "",
+    phone: "",
   };
