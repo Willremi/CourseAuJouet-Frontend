@@ -10,7 +10,7 @@ register and the link for the forgotten password.
 function MyAccountButton() {
   const [showModal, setShowModal] = useState(false);
   console.log(showModal);
-
+  console.log(window.innerWidth);
   return (
     <>
       <button
@@ -38,7 +38,7 @@ function MyAccountButton() {
               showModal ? "animate-fadeIn" : "animate-fadeOut"
             }`}
           >
-            <div className="bg-white h-3/6 w-full">
+            <div className="bg-white h-3/6 w-full relative 2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-36">
               <button
                 onClick={() => setShowModal(false)}
                 className="absolute top-5 right-5 transition-all opacity-50 hover:opacity-100"
