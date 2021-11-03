@@ -18,17 +18,27 @@ module.exports = {
       animation: {
         fadeIn : "ModalFadeIn 150ms ease-in-out",
         fadeOut: "ModalFadeOut 150ms ease-in-out",
-  
+        OpenMobileDropDown: "OpenMobileModal 300ms ease-in-out",
+        CloseMobileDropDown: "CloseMobileModal 300ms ease-in-out"
       },
       keyframes: theme => ({
         ModalFadeIn:{
           '0%' : {opacity : theme('opacity.0')},
-          '100%': {opacity : theme('opacity.50')}
+          '100%': {opacity : theme('opacity.100')}
         },
         ModalFadeOut: {
-          '0%' : {opacity : theme('opacity.50')},
+          '0%' : {opacity : theme('opacity.100')},
           '100%': {opacity : theme('opacity.0')},
         },
+        
+        OpenMobileModal: {
+          '0%' : {height : theme('height.0')},
+          '100%': {height : theme('height.50')}
+        },
+        CloseMobileModal: {
+          '0%' : {height : theme('height.50')},
+          '100%': {height : theme('height.0')}
+        }
 
       }),
 
@@ -55,6 +65,8 @@ module.exports = {
           '800': '#a7510c',
           '900': '#8f460a',
         }
+
+
       }
     }
   },

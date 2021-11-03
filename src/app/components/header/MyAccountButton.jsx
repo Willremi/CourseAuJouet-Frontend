@@ -9,17 +9,33 @@ register and the link for the forgotten password.
 
 function MyAccountButton() {
   const [showModal, setShowModal] = useState(false);
-  console.log(showModal);
-  console.log(window.innerWidth);
+
   return (
     <>
       <button
-        className="cursor-pointer flex flex-row transition-all opacity-50 hover:opacity-100"
+        className="cursor-pointer flex flex-row items-center text-yellow-500 transition-all opacity-50 hover:opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
-        <svg
+        {window.innerWidth <= 504 ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        ) : (
+          <>
+          <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-10 w-10"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -29,17 +45,30 @@ function MyAccountButton() {
             clipRule="evenodd"
           />
         </svg>
-        {window.innerWidth <= 504 ? null : <span>Mon compte</span> }
+          <span>Mon compte</span>
+          </>
+        )}
       </button>
-      {showModal ? (
+
+      {/* condition pour qui verifie la constante showmodal avec sa valeur boléenne,
+      true => le modal s'affiche
+      false => le modal se ferme */}
+      
         <>
           <div
-            className={`absolute w-screen h-screen bg-gray-800 bg-opacity-50 ${
-              showModal ? "animate-fadeIn" : "animate-fadeOut"
-            }`}
+            className={`transition-all duration-500 absolute w-screen ${ showModal ? 'h-72' : 'h-0'}
+            ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:pr-36' : 'lg:h-0'}
+             ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36' : 'xl:h-0'}
+             ${ showModal ? '2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36' : '2xl:h-0'}
+            `}
           >
-            <div className="bg-white h-3/6 w-full relative 2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-36">
-              <button
+            <div className={`w-full absolute bg-white h-full
+            lg:w-2/6 lg:h-screen lg:right-0 lg:mr-36 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"}
+            xl:w-2/6 xl:h-screen xl:right-0 xl:mr-36 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"}
+            2xl:w-2/6 2xl:h-screen 2xl:right-0 2xl:mr-36 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"}`}>
+              
+              {/* Bouton pour fermer le modal */}
+              { showModal ? <button
                 onClick={() => setShowModal(false)}
                 className="absolute top-5 right-5 transition-all opacity-50 hover:opacity-100"
               >
@@ -55,17 +84,17 @@ function MyAccountButton() {
                     clipRule="evenodd"
                   />
                 </svg>
-              </button>
+              </button> : null}
+              {/* FIN bouton fermer le modal */}
+
+              {/*
+            
+             Mettre les futurs composants ici ! 
+            
+            */}
             </div>
           </div>
         </>
-      ) : (
-        <>
-          <div className={`h-0 w-screen`}>
-            <div className="h-0 w-screen"></div>
-          </div>
-        </>
-      )}
     </>
   );
 }
