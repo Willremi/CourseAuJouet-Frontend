@@ -41,13 +41,13 @@ const RegisterForm = () => (
       <ErrorMessage name="lastName" className="yupError" component="span" />
       <br />
       <Field
-        name="firstname"
-        id="firstname"
+        name="firstName"
+        id="firstName"
         type="text"
         placeholder="Prénom"
         className="input"
       />
-      <ErrorMessage name="firstname" className="yupError" component="span" />
+      <ErrorMessage name="firstName" className="yupError" component="span" />
       <br />
       <Field
         name="email"
