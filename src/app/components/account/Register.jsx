@@ -1,22 +1,66 @@
-const Register = () => {
-    return (
-        <div className='bg-white p-4 rounded-md shadow max-w-md w-full space-y-8 py-12 px-4 sm:px-6 lg:px-8'>
-            <div>
-                <div className='flex justify-center'>
-                    <img
-                        className="h-12 w-auto sm:h-10 cursor-pointer"
-                        src="https://insy2s.com/insy2s/images/Logo-insy2s-INLINE-2021.svg"
-                        alt=""
-                        width={200}
-                        height={60}
-                    />
-                </div>
-                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-800">
-                ceci est la page Register
-                </h2>
-            </div>
-        </div>
-    )
-}
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 
-export default Register
+const RegisterForm = () => (
+  <Formik>
+    <Form >
+      <label >
+        <Field name="gender" id="gender" value="Man" type="radio" />
+        Mr
+      </label>
+      <label>
+        <Field name="gender" id="gender" value="Woman" type="radio" />
+        Mme
+      </label><br/>
+
+      <Field name="lastName" id="lastName" type="text" placeholder="Nom" /><br/>
+      <Field name="name" id="name" type="text" placeholder="Prénom" /><br/>
+      <Field
+        name="email"
+        id="email"
+        type="email"
+        placeholder="Adresse E-mail"
+      /><br/>
+      <Field
+        name="password"
+        id="password"
+        type="password"
+        placeholder="Mot de Passe"
+      /><br/>
+      <Field
+        name="confirmPassword"
+        id="confirmPassword"
+        type="password"
+        placeholder="Confirmation mot de passe"
+      /><br/>
+      <Field
+        name="phoneNumber"
+        id="phoneNumber"
+        type="text"
+        placeholder="Numéro de téléphone"
+      /><br/>
+      <Field
+        name="birthDate"
+        id="birthDate"
+        type="text"
+        placeholder="Date de naissance"
+      /><br/>
+    </Form>
+  </Formik>
+);
+
+const Register = () => {
+  return (
+    <>
+      <RegisterForm />
+      <p>
+        En vous inscrivant vous acceptez notre politique de RGPD. Les données
+        recueillies sont déstinées aux services de la courseaujouet.fr et ses
+        partenaires pour le traitement de vos commandes.
+      </p>
+    </>
+  );
+};
+
+export default Register;
