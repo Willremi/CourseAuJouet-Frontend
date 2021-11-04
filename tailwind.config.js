@@ -4,46 +4,34 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      'sm': {'min': '320px', 'max': '503px'},
-      'md': {'min': '504px', 'max': '1024px'},
-      'lg': {'min': '1025px', 'max': '1280px'},
-      'xl': {'min': '1281px', 'max': '1535px'},
-      '2xl': {'min': '1536px'},
+      'sm': {
+        'min': '320px',
+        'max': '503px'
+      },
+      'md': {
+        'min': '504px',
+        'max': '1024px'
+      },
+      'lg': {
+        'min': '1025px',
+        'max': '1280px'
+      },
+      'xl': {
+        'min': '1281px',
+        'max': '1535px'
+      },
+      '2xl': {
+        'min': '1536px'
+      },
     },
 
 
     extend: {
 
       backgroundOpacity: ['active'],
-      animation: {
-        fadeIn : "ModalFadeIn 150ms ease-in-out",
-        fadeOut: "ModalFadeOut 150ms ease-in-out",
-        OpenMobileDropDown: "OpenMobileModal 300ms ease-in-out",
-        CloseMobileDropDown: "CloseMobileModal 300ms ease-in-out"
-      },
-      keyframes: theme => ({
-        ModalFadeIn:{
-          '0%' : {opacity : theme('opacity.0')},
-          '100%': {opacity : theme('opacity.100')}
-        },
-        ModalFadeOut: {
-          '0%' : {opacity : theme('opacity.100')},
-          '100%': {opacity : theme('opacity.0')},
-        },
-        
-        OpenMobileModal: {
-          '0%' : {height : theme('height.0')},
-          '100%': {height : theme('height.50')}
-        },
-        CloseMobileModal: {
-          '0%' : {height : theme('height.50')},
-          '100%': {height : theme('height.0')}
-        }
 
-      }),
-
-      colors:{
-        primary:{
+      colors: {
+        primary: {
           '10': '#b3d9ff',
           '200': '#80bfff',
           '300': '#4da6ff',
@@ -54,7 +42,7 @@ module.exports = {
           '800': '#004d99',
           '900': '#004080',
         },
-        secondary:{
+        secondary: {
           '100': '#fad5b7',
           '200': '#f7ba88',
           '300': '#f39e58',
