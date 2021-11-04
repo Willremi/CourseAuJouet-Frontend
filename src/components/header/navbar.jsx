@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import './navbar.css';
+// import './navbar.css';
 
 const Navbar = () => {
     function classNames(...classes) {
@@ -11,14 +11,14 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='justify-between flex bg-yellow-300 max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+            <nav className='justify-between flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
                 <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
                     {!isOpen ? (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
 
-                <div className='hidden md:block text-white font-semibold'>
+                <div className='hidden md:block text-nav-blueClar font-semibold'>
                     <span>La course aux jouets</span>
-                    <ul className='flex text-white pt-6'>
+                    <ul className='flex text-nav-blueClar pt-6'>
                         {/* Découvrir */}
                         <li className='px-4'>
                             <Menu as="div" className="relative inline-block text-left">
@@ -32,14 +32,14 @@ const Navbar = () => {
                                     leaveFrom="transform opacity-100 scale-100"
                                     leaveTo="transform opacity-0 scale-95">
                                     <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-yellow-300'>
+                                        <div className='py-1 bg-nav-yellowClar rounded'>
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Nouveautés</a>
                                                 )}
@@ -49,8 +49,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Top Ventes</a>
                                                 )}
@@ -60,8 +60,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Tendances</a>
                                                 )}
@@ -84,14 +84,14 @@ const Navbar = () => {
                                     leaveFrom="transform opacity-100 scale-100"
                                     leaveTo="transform opacity-0 scale-95">
                                     <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-yellow-300'>
+                                        <div className='py-1 bg-nav-yellowClar rounded'>
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Roues</a>
                                                 )}
@@ -101,8 +101,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Peluches</a>
                                                 )}
@@ -112,8 +112,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Figurines</a>
                                                 )}
@@ -123,8 +123,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Jeux</a>
                                                 )}
@@ -134,8 +134,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Jeux et Puzzles</a>
                                                 )}
@@ -145,8 +145,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Construction</a>
                                                 )}
@@ -156,8 +156,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Véhicules</a>
                                                 )}
@@ -167,8 +167,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Educatifs</a>
                                                 )}
@@ -178,8 +178,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >Baby</a>
                                                 )}
@@ -202,14 +202,14 @@ const Navbar = () => {
                                     leaveFrom="transform opacity-100 scale-100"
                                     leaveTo="transform opacity-0 scale-95">
                                     <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-yellow-300'>
+                                        <div className='py-1 bg-nav-yellowClar rounded'>
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >0 - 24 mois</a>
                                                 )}
@@ -219,8 +219,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >3 à 4 ans</a>
                                                 )}
@@ -230,8 +230,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >5 à 7 ans</a>
                                                 )}
@@ -241,8 +241,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >8 à 10 ans</a>
                                                 )}
@@ -252,8 +252,8 @@ const Navbar = () => {
                                                     <a
                                                         href="#"
                                                         className={classNames(
-                                                            active ? 'text-white' : 'text-white',
-                                                            'block px-4 py-2 text-sm hover:bg-white hover:text-yellow-300'
+                                                            active ? 'text-nav-blueClar' : 'text-nav-blueClar',
+                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
                                                         )}
                                                     >11 ans ou +</a>
                                                 )}
@@ -267,9 +267,12 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <span className=' text-white'>Recherche</span>
+                {/* <span className=' text-white'>Recherche</span> */}
+                <div className='hidden md:flex relative mx-auto md:w-1/4 max-w-sm'>
+                    <input class="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg " type="search" name="search" placeholder="Recherche" />
+                </div>
 
-                {!isOpen ? (<div className=' flex text-white'>
+                {!isOpen ? (<div className=' flex text-nav-yellow font-semibold md:text-nav-blueClar'>
                     <a href="" className=' px-2'>Mon compte</a>
                     <a href="" className=' px-2'>Panier</a>
                 </div>) : (<div></div>)}
@@ -284,7 +287,7 @@ const Navbar = () => {
                     <div></div>
                 </div>
                 <br />
-                <div className='pb-9 grid w-2 mx-48'>
+                <div className='pb-9 grid w-2 mx-40'>
                     <button className='p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg border-2 border-blue-500'>Connexion</button>
                     <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300'>Inscription</button>
                 </div>

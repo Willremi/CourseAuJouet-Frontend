@@ -26,7 +26,13 @@ module.exports = {
           '700': '#bf5d0d',
           '800': '#a7510c',
           '900': '#8f460a',
-        }
+        }, 
+        nav: {
+          'yellow': '#FFEECC', 
+          'yellowClar': '#FFF8EA',
+          'blueClar': '#33658A', 
+          'greyClar': '#DEDEDE', 
+        },
       }
     }
   },
