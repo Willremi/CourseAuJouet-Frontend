@@ -287,7 +287,7 @@ const Navbar = () => {
                     <div></div>
                 </div>
                 <br />
-                <div className='pb-9 grid w-2 mx-36'>
+                <div className='pb-9 grid w-2 mx-32'>
                     <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button>
                     <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
                 </div>
