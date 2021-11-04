@@ -272,7 +272,7 @@ const Navbar = () => {
                     <input class="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg " type="search" name="search" placeholder="Recherche" />
                 </div>
 
-                {!isOpen ? (<div className=' flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                {!isOpen ? (<div className='flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
                     <a href="" className=' px-2'>Mon compte</a>
                     <a href="" className=' px-2'>Panier</a>
                 </div>) : (<div></div>)}
@@ -287,11 +287,10 @@ const Navbar = () => {
                     <div></div>
                 </div>
                 <br />
-                <div className='pb-9 grid w-2 mx-32'>
+                <div className='pb-9 grid w-2 mx-36'>
                     <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button>
                     <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
                 </div>
-
 
             </div>
             )}
