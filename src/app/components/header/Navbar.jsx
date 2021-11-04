@@ -326,18 +326,11 @@ const Navbar = () => {
                             </svg>
                         </a>
                     </div>
-                    <div></div>
                 </div>
-                <br />
-                <div className='pb-9 grid w-2 mx-36'>
+                <hr />
+                <div className='py-9 grid w-2 mx-36'>
                     <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button>
                     <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
-                </div>
-
-                <div className="bg-nav-blue">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
                 </div>
 
             </div>
