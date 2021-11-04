@@ -10,26 +10,27 @@ pour le moment ce n'est qu'un input elle n'est pas encore rattachée au back-end
 const SearchBar = () => {
   // Fonction qui recupère et affiche dans la console la valeur tapée dans la barre de recherche
   const SearchBarFunction = (values) => {
-    console.log(values.search);
+      console.log(values);
   };
 
   return (
     <Formik
       initialValues={{ search: "" }}
-      onSubmit={(values) => SearchBarFunction(values)}
+      onSubmit={(values) => SearchBarFunction(values.search)}
       validationSchema={schemaFormSearch}
     >
-      
-      <Form className={`${window.innerWidth <= 504 ? 'w-full' : 'w-2/5' } pb-3 px-4`}>
+
+      <Form className={`${window.innerWidth <= 1024 ? 'w-full' : 'w-2/5' } px-4`}>
         
-          <SearchIcon className="h-6 w-6 absolute mt-2.5 ml-2.5 z-10 text-yellow-500" />
+          <SearchIcon className="h-6 w-6 absolute mt-2.5 ml-2.5 z-30 text-yellow-500" />
           <Field
-            className="pl-10 w-full"
+            className="pl-10 w-full rounded-full"
             type="search"
             name="search"
             placeholder="Rechercher..."
             component={CustomInput}
             noError
+            searchBar
           />
         
       </Form>

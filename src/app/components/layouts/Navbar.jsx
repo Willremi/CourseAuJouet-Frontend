@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
       <div className="max-w-full mx-auto ">
-        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center py-5 md:justify-start md:space-x-10">
           <div>
             <img
               className="h-8 w-auto sm:h-10 cursor-pointer"
@@ -34,14 +34,14 @@ const Navbar = () => {
 
           {/* window.innerWidth => taille de la largeur de l'écran */}
 
-          {window.innerWidth >= 1024 ? <SearchBar /> : null}
+          {window.innerWidth >= 1025 ? <SearchBar /> : null}
           <div className="flex items-center justify-end flex-1 lg:w-0">
             {/* <ConnectionBtn /> */}
            
             <MyAccountButton/>
           </div>
         </div>
-        {window.innerWidth <= 504 ? <SearchBar /> : null}
+        {window.innerWidth <= 1024 ? <SearchBar /> : null}
       </div>
     </nav>
   );
