@@ -32,7 +32,6 @@ const RoutesWithNavigation = () => {
                 { isLogged && <IdleTimerCustom />}
                 <Navbar/>
                 <main>
-                    
                     <Routes/>
                 </main>
                 <ToastContainer 

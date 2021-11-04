@@ -1,11 +1,40 @@
-import React from 'react'
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import { CustomInput } from "./../../shared/components/form-and-error-components/InputCustom";
+import { schemaFormSearch } from "./../../shared/constants/formik-yup/yup/yupSearch";
+import { SearchIcon } from "@heroicons/react/solid";
+
+/* Barre de recherche 
+pour le moment ce n'est qu'un input elle n'est pas encore rattachée au back-end*/
 
 const SearchBar = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  // Fonction qui recupère et affiche dans la console la valeur tapée dans la barre de recherche
+  const SearchBarFunction = (values) => {
+    console.log(values.search);
+  };
 
-export default SearchBar
+  return (
+    <Formik
+      initialValues={{ search: "" }}
+      onSubmit={(values) => SearchBarFunction(values)}
+      validationSchema={schemaFormSearch}
+    >
+      
+      <Form className={`${window.innerWidth <= 504 ? 'w-full' : 'w-2/5' } pb-3 px-4`}>
+        
+          <SearchIcon className="h-6 w-6 absolute mt-2.5 ml-2.5 z-10 text-yellow-500" />
+          <Field
+            className="pl-10 w-full"
+            type="search"
+            name="search"
+            placeholder="Rechercher..."
+            component={CustomInput}
+            noError
+          />
+        
+      </Form>
+    </Formik>
+  );
+};
+
+export default SearchBar;

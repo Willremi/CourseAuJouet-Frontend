@@ -3,6 +3,7 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+
     screens: {
       'sm': {
         'min': '320px',
@@ -53,6 +54,8 @@ module.exports = {
           '800': '#a7510c',
           '900': '#8f460a',
         }
+
+        
 
 
       }
