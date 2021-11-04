@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Navbar from '../components/header/Navbar';
+import Navbar from './components/header/Navbar';
 import RoutesWithNavigation from './routes/RoutesWithNavigation';
 import { store } from './shared/redux-store/store';
 

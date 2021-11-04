@@ -30,9 +30,13 @@ module.exports = {
         nav: {
           'yellow': '#FFEECC', 
           'yellowClar': '#FFF8EA',
-          'blueClar': '#33658A', 
+          'blue': '#33658A', 
+          'blueClar': '#4FA5E3',
           'greyClar': '#DEDEDE', 
         },
+      }, 
+      fontFamily: {
+        police: ['Montserrat Alternates'],
       }
     }
   },
