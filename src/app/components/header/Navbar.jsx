@@ -272,9 +272,19 @@ const Navbar = () => {
                     <input class="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg " type="search" name="search" placeholder="Recherche" />
                 </div>
 
-                {!isOpen ? (<div className='flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                    <a href="" className=' px-2'>Mon compte</a>
-                    <a href="" className=' px-2'>Panier</a>
+                {!isOpen ? (<div className=' text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                    <a href="" className=' inline-block md:flex'>
+                        <span className="hidden md:inline">Mon compte</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-8 md:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                    <a href="" className=' inline-block md:flex'>
+                        <span className="hidden md:inline">Panier</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </a>
                 </div>) : (<div></div>)}
             </nav>
             {isOpen && (<div className='md:hidden divide-y text-center'>
@@ -290,6 +300,12 @@ const Navbar = () => {
                 <div className='pb-9 grid w-2 mx-36'>
                     <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button>
                     <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
+                </div>
+
+                <div className="bg-nav-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-nav-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
 
             </div>
