@@ -18,7 +18,7 @@ const CartButton = () => {
       })
       .catch(error => console.log(error)))
    
-  }, []);
+  }, [isLogged]);
 
   return (
     <div>
