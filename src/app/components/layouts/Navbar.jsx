@@ -12,6 +12,7 @@ import {
 } from "./../../shared/redux-store/authenticationSlice";
 import MyAccountButton from "../header/MyAccountButton";
 import SearchBar from "../header/SearchBar";
+import CartButton from "../header/CartButton";
 
 const Navbar = () => {
   const history = useHistory();
@@ -34,14 +35,15 @@ const Navbar = () => {
 
           {/* window.innerWidth => taille de la largeur de l'écran */}
 
-          {window.innerWidth >= 1025 ? <SearchBar /> : null}
+          {window.innerWidth >= 504 ? <SearchBar /> : null}
           <div className="flex items-center justify-end flex-1 lg:w-0">
-            {/* <ConnectionBtn /> */}
+          {/* <ConnectionBtn />  */}
            
             <MyAccountButton/>
+            <CartButton />
           </div>
         </div>
-        {window.innerWidth <= 1024 ? <SearchBar /> : null}
+        {window.innerWidth <= 503 ? <SearchBar /> : null}
       </div>
     </nav>
   );

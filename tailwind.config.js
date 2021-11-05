@@ -1,11 +1,9 @@
 module.exports = {
-  mode: "jit",
+
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    top: {
-      '34' : '30rem'
-    },
+  
     screens: {
       'sm': {
         'min': '320px',
@@ -33,8 +31,6 @@ module.exports = {
 
       backgroundOpacity: ['active'],
 
-     
-
       colors: {
         primary: {
           '10': '#b3d9ff',
@@ -58,9 +54,6 @@ module.exports = {
           '800': '#a7510c',
           '900': '#8f460a',
         }
-
-        
-
 
       }
     }
