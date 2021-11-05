@@ -89,13 +89,13 @@ const RegisterForm = () => (
         component="span"
       />
 
-      <div className="sm:flex sm:space-x-2">
+      <div className="flex sm:space-x-2 md:space-x-4 lg:space-x-4 xl:space-x-4 2xl:space-x-4">
         <Field
           name="phone"
           id="phone"
           type="text"
           placeholder="Numéro de téléphone"
-          className="input2 sm:w-1/2"
+          className="input2 sm:w-1/2 md:w-1/2"
         />
 
         <Field
@@ -103,10 +103,10 @@ const RegisterForm = () => (
           id="birthday_date"
           type="text"
           placeholder="Date de naissance"
-          className="input2 sm:w-1/2"
+          className="input2 sm:w-1/2 md:w-1/2"
         />
       </div>
-      <div className="sm:flex sm:space-x-2">
+      <div className="flex sm:space-x-2 md:space-x-6 lg:space-x-32 xl:space-x-32  2xl:space-x-32">
         <ErrorMessage
           name="phone"
           className="text-red-500 sm:place-items-end"
@@ -119,7 +119,7 @@ const RegisterForm = () => (
         />
       </div>
 
-      <button type="submit" className="btn btn-yellow sm:self-center">
+      <button type="submit" className="btn btn-yellow self-center">
         S'inscrire
       </button>
       <p className="text-xs">* Champ obligatoire.</p>
@@ -134,7 +134,8 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
-    <div className="sm:flex sm:mt-40 sm:ml-12 sm:w-9/12">
+    <div className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
+    xl:flex xl:ml-72 2xl:flex 2xl:ml-72">
       <RegisterForm />
     </div>
   );
