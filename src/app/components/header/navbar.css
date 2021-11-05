@@ -1,7 +1,0 @@
-@media (max-width: 768px) {
-    nav {
-        --tw-bg-opacity: 1;
-        background-color: rgba(29, 78, 216, var(--tw-bg-opacity)) !important;
-        /* background: blue !important; */
-    }
-}
