@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <>
             <nav className='justify-between flex bg-nav-blue md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
-                <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
+                <button className="block md:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
                     {!isOpen ? (<svg className="fill-current text-nav-yellow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
 
@@ -267,21 +267,21 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                {/* <span className='text-white'>Recherche</span> */}
-                <div className='hidden md:flex relative mx-auto md:w-1/4 max-w-sm'>
+                <span className='hidden md:flex relative mx-auto md:w-1/4 text-nav-yellow md:text-nav-blue'>Recherche</span>
+                {/* <div className='hidden md:flex relative mx-auto md:w-1/4 max-w-sm'>
                     <input class="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg " type="search" name="search" placeholder="Recherche" />
-                </div>
+                </div> */}
 
                 {!isOpen && (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                    <a href="" className='inline-block md:flex'>
-                        <span className="hidden md:inline">Mon compte</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-8 md:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <a href="" className='inline-block lg:flex'>
+                        <span className="hidden lg:inline">Mon compte</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </a>
-                    <a href="" className='inline-block md:flex'>
-                        <span className="hidden md:inline">Panier</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:w-8 md:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <a href="" className='inline-block lg:flex'>
+                        <span className="hidden lg:inline">Panier</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </a>
