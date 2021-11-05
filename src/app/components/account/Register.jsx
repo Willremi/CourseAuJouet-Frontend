@@ -14,7 +14,9 @@ const RegisterForm = () => (
     onSubmit={submit}
   >
     <Form className="flex-col flex sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 border border-gray-300 rounded-sm p-12 shadow-xl bg-white space-y-2 md:w-10/12">
-      <div className="space-x-2 mb-4">
+      <div className="space-x-2 flex">
+        
+        <p>Civilité* :</p>
         <label>
           <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
           Mr
@@ -34,7 +36,7 @@ const RegisterForm = () => (
         name="lastName"
         id="lastName"
         type="text"
-        placeholder="Nom"
+        placeholder="Nom*"
         className="input2 "
       />
       <ErrorMessage name="lastName" className="text-red-500" component="span" />
@@ -43,7 +45,7 @@ const RegisterForm = () => (
         name="firstName"
         id="firstName"
         type="text"
-        placeholder="Prénom"
+        placeholder="Prénom*"
         className="input2"
       />
       <ErrorMessage
@@ -56,7 +58,7 @@ const RegisterForm = () => (
         name="email"
         id="email"
         type="email"
-        placeholder="Adresse E-mail"
+        placeholder="Adresse E-mail*"
         className="input2"
       />
       <ErrorMessage name="email" className="text-red-500" component="span" />
@@ -65,7 +67,7 @@ const RegisterForm = () => (
         name="password"
         id="password"
         type="password"
-        placeholder="Mot de Passe"
+        placeholder="Mot de Passe*"
         className="input2"
       />
       <ErrorMessage name="password" className="text-red-500" component="span" />
@@ -74,7 +76,7 @@ const RegisterForm = () => (
         name="confirmPassword"
         id="confirmPassword"
         type="password"
-        placeholder="Confirmation mot de passe"
+        placeholder="Confirmation mot de passe*"
         className="input2"
       />
       <ErrorMessage
@@ -87,7 +89,7 @@ const RegisterForm = () => (
         name="phone"
         id="phone"
         type="text"
-        placeholder="Numéro de téléphone"
+        placeholder="Numéro de téléphone*"
         className="input2"
       />
       <ErrorMessage name="phone" className="text-red-500" component="span" />
@@ -96,7 +98,7 @@ const RegisterForm = () => (
         name="birthday_date"
         id="birthday_date"
         type="text"
-        placeholder="Date de naissance"
+        placeholder="Date de naissance*"
         className="input2"
       />
       <ErrorMessage
@@ -109,6 +111,7 @@ const RegisterForm = () => (
       <button type="submit" className="btn btn-yellow sm:self-center">
         S'inscrire
       </button>
+      <p className="text-xs">* Champ obligatoire.</p>
       <p className="text-xs mt-4">
         En vous inscrivant vous acceptez notre politique de RGPD. Les données
         recueillies sont déstinées aux services de la courseaujouet.fr et ses
@@ -120,7 +123,7 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
-    <div className=" sm:w-9/12 md:mt-24">
+    <div className=" sm:w-9/12 sm: mt-48 md:mt-24 lg:flex lg:justify-center">
       <RegisterForm />
     </div>
   );

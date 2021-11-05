@@ -6,8 +6,8 @@ export const schemaFormLogin = Yup.object().shape({
 });
 
 export const schemaFormRegister = Yup.object().shape({
-  firstName: Yup.string().required("Le nom est obligatoire"),
-  lastName: Yup.string().required("Le Prénom est obligatoire"),
+  firstName: Yup.string().required("Le Prénom est obligatoire"),
+  lastName: Yup.string().required("Le nom est obligatoire"),
   email: Yup.string()
     .required("L'adresse E-mail est obligatoire")
     .email("veuillez entrez un email valide "),
