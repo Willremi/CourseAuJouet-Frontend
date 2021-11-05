@@ -13,9 +13,8 @@ const RegisterForm = () => (
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
-    <Form className="flex-col flex sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 border border-gray-300 rounded-sm p-12 shadow-xl bg-white space-y-2 md:w-10/12">
-      <div className="space-x-2 flex">
-        
+    <Form className="flex-col flex space-y-4">
+      <div className="flex space-x-2">
         <p>Civilité* :</p>
         <label>
           <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
@@ -38,76 +37,88 @@ const RegisterForm = () => (
         type="text"
         placeholder="Nom*"
         className="input2 "
+        required
       />
       <ErrorMessage name="lastName" className="text-red-500" component="span" />
-      <br />
+
       <Field
         name="firstName"
         id="firstName"
         type="text"
         placeholder="Prénom*"
         className="input2"
+        required
       />
       <ErrorMessage
         name="firstName"
         className="text-red-500"
         component="span"
       />
-      <br />
+
       <Field
         name="email"
         id="email"
         type="email"
         placeholder="Adresse E-mail*"
         className="input2"
+        required
       />
       <ErrorMessage name="email" className="text-red-500" component="span" />
-      <br />
+
       <Field
         name="password"
         id="password"
         type="password"
         placeholder="Mot de Passe*"
         className="input2"
+        required
       />
       <ErrorMessage name="password" className="text-red-500" component="span" />
-      <br />
+
       <Field
         name="confirmPassword"
         id="confirmPassword"
         type="password"
         placeholder="Confirmation mot de passe*"
         className="input2"
+        required
       />
       <ErrorMessage
         name="confirmPassword"
         className="text-red-500"
         component="span"
       />
-      <br />
-      <Field
-        name="phone"
-        id="phone"
-        type="text"
-        placeholder="Numéro de téléphone*"
-        className="input2"
-      />
-      <ErrorMessage name="phone" className="text-red-500" component="span" />
-      <br />
-      <Field
-        name="birthday_date"
-        id="birthday_date"
-        type="text"
-        placeholder="Date de naissance*"
-        className="input2"
-      />
-      <ErrorMessage
-        name="birthday_date"
-        className="text-red-500"
-        component="span"
-      />
-      <br />
-      <br />
+
+      <div className="sm:flex sm:space-x-2">
+        <Field
+          name="phone"
+          id="phone"
+          type="text"
+          placeholder="Numéro de téléphone"
+          className="input2 sm:w-1/2"
+        />
+
+        <Field
+          name="birthday_date"
+          id="birthday_date"
+          type="text"
+          placeholder="Date de naissance"
+          className="input2 sm:w-1/2"
+        />
+      </div>
+      <div className="sm:flex sm:space-x-2">
+        <ErrorMessage
+          name="phone"
+          className="text-red-500 sm:place-items-end"
+          component="span"
+        />
+        <ErrorMessage
+          name="birthday_date"
+          className="text-red-500"
+          component="span"
+        />
+      </div>
+
       <button type="submit" className="btn btn-yellow sm:self-center">
         S'inscrire
       </button>
@@ -123,7 +134,7 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
-    <div className=" sm:w-9/12 sm: mt-48 md:mt-24 lg:flex lg:justify-center">
+    <div className="sm:flex sm:mt-40 sm:ml-12 sm:w-9/12">
       <RegisterForm />
     </div>
   );
