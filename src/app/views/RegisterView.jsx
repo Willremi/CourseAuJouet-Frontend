@@ -1,4 +1,5 @@
 import React from 'react';
+import { register } from '../api/backend/account';
 import Register from './../components/account/Register';
 
 /**
@@ -6,8 +7,11 @@ import Register from './../components/account/Register';
 */
  const RegisterView = () => {
 
+        const handleRegister = (values) => {
+                register(values)
+        }
     return (
-            <Register />
+            <Register submit={ handleRegister } />
     );
 };
 

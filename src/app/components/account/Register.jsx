@@ -2,9 +2,12 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
+import axios from "axios";
+import { register } from "../../api/backend/account";
 
 const submit = (values) => {
-  return console.log(values);
+  return register()
+  
 };
 
 const RegisterForm = () => (
