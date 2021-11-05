@@ -13,7 +13,7 @@ const RegisterForm = () => (
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
-    <Form className="flex-col flex sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 border border-gray-300 rounded-sm p-12 shadow-xl bg-white space-y-2">
+    <Form className="flex-col flex sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 border border-gray-300 rounded-sm p-12 shadow-xl bg-white space-y-2 md:w-10/12">
       <div className="space-x-2 mb-4">
         <label>
           <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
@@ -35,9 +35,9 @@ const RegisterForm = () => (
         id="lastName"
         type="text"
         placeholder="Nom"
-        className="input2"
+        className="input2 "
       />
-      <ErrorMessage name="lastName" className="yupError" component="span" />
+      <ErrorMessage name="lastName" className="text-red-500" component="span" />
       <br />
       <Field
         name="firstName"
@@ -46,7 +46,11 @@ const RegisterForm = () => (
         placeholder="Prénom"
         className="input2"
       />
-      <ErrorMessage name="firstName" className="yupError" component="span" />
+      <ErrorMessage
+        name="firstName"
+        className="text-red-500"
+        component="span"
+      />
       <br />
       <Field
         name="email"
@@ -55,7 +59,7 @@ const RegisterForm = () => (
         placeholder="Adresse E-mail"
         className="input2"
       />
-      <ErrorMessage name="email" className="yupError" component="span" />
+      <ErrorMessage name="email" className="text-red-500" component="span" />
       <br />
       <Field
         name="password"
@@ -64,7 +68,7 @@ const RegisterForm = () => (
         placeholder="Mot de Passe"
         className="input2"
       />
-      <ErrorMessage name="password" className="yupError" component="span" />
+      <ErrorMessage name="password" className="text-red-500" component="span" />
       <br />
       <Field
         name="confirmPassword"
@@ -75,7 +79,7 @@ const RegisterForm = () => (
       />
       <ErrorMessage
         name="confirmPassword"
-        className="yupError"
+        className="text-red-500"
         component="span"
       />
       <br />
@@ -86,7 +90,7 @@ const RegisterForm = () => (
         placeholder="Numéro de téléphone"
         className="input2"
       />
-      <ErrorMessage name="phone" className="yupError" component="span" />
+      <ErrorMessage name="phone" className="text-red-500" component="span" />
       <br />
       <Field
         name="birthday_date"
@@ -97,12 +101,12 @@ const RegisterForm = () => (
       />
       <ErrorMessage
         name="birthday_date"
-        className="yupError"
+        className="text-red-500"
         component="span"
       />
       <br />
       <br />
-      <button type="submit" className="btn btn-red sm:self-center">
+      <button type="submit" className="btn btn-yellow sm:self-center">
         S'inscrire
       </button>
       <p className="text-xs mt-4">
@@ -116,7 +120,7 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
-    <div className="md:register sm:w-9/12 ">
+    <div className=" sm:w-9/12 md:mt-24">
       <RegisterForm />
     </div>
   );
