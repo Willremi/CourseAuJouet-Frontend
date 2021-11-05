@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GetallProductInCart } from "../../api/backend/cart";
+import { selectIsLogged } from "../../shared/redux-store/authenticationSlice";
 
 const CartButton = () => {
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState(null);// state qui enregistre le nombre d'éléments dans le panier
+  const isLogged = useSelector(selectIsLogged);
 
   useEffect(() => {
-    GetallProductInCart("618526882c67ebec6518b29a")
+    //Si l'utilisateur est connecté on va rechercher dans la BDD si son panier contient des articles
+    if (isLogged)
+    return ( GetallProductInCart("618526882c67ebec6518b29a")
       .then((res) => {
-        console.log(Object.keys(res.data.cart).length);
-        setCount(Object.keys(res.data.cart).length);
+        console.log(res.data);
+          setCount(Object.keys(res.data.cart).length);
       })
-      .catch();
+      .catch(error => console.log(error)))
+   
   }, []);
 
   return (
@@ -37,9 +43,9 @@ const CartButton = () => {
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           />
         </svg>
-        <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
+        { isLogged ? <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
           {count}
-        </span>
+        </span> : null}
         {window.innerWidth >= 1024 ? (
           <span className="ml-2">Panier</span>
         ) : null}

@@ -37,7 +37,7 @@ const Navbar = () => {
 
           {window.innerWidth >= 504 ? <SearchBar /> : null}
           <div className="flex items-center justify-end flex-1 lg:w-0">
-          {/* <ConnectionBtn />  */}
+          <ConnectionBtn />
            
             <MyAccountButton/>
             <CartButton />
