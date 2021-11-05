@@ -10,7 +10,7 @@ export const schemaFormRegister = Yup.object().shape({
   lastName: Yup.string().required("Le Prénom est obligatoire"),
   email: Yup.string()
     .required("L'adresse E-mail est obligatoire")
-    .email("veuillez entrez email valide "),
+    .email("veuillez entrez un email valide "),
   password: Yup.string()
     .required("Le mot de passe est obligatoire")
     .matches(

@@ -13,8 +13,8 @@ const RegisterForm = () => (
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
-    <Form>
-      <div className="space">
+    <Form className="sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 ">
+      <div className="space-x-2 mb-4">
         <label>
           <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
           Mr
@@ -29,7 +29,6 @@ const RegisterForm = () => (
           Mme
         </label>
       </div>
-      <br />
 
       <Field
         name="lastName"
@@ -112,10 +111,10 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
-    <div className="register">
+    <div className="md:register sm:w-9/12 ">
       <RegisterForm />
       <br />
-      <p>
+      <p className="sm:ml-24 lg:ml-0 text-xs">
         En vous inscrivant vous acceptez notre politique de RGPD. Les données
         recueillies sont déstinées aux services de la courseaujouet.fr et ses
         partenaires pour le traitement de vos commandes.
