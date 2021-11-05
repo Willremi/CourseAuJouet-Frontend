@@ -21,7 +21,7 @@ const Routes = () => {
             <PrivateRoute exact path={URL_HOME} component={HomeView} />
             <PrivateRoute path={URL_ADMIN_HOME} component={AdminHomeView} roles={[ROLE_ADMIN]} />
             <Route path={URL_REGISTER} component={RegisterView} />
-            <Route path={URL_LOGIN} component={RegisterView} />
+            <Route path={URL_LOGIN} component={LoginView} />
    
         </Switch>
     );
