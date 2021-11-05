@@ -13,7 +13,7 @@ const RegisterForm = () => (
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
-    <Form className="sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 ">
+    <Form className="flex-col flex sm:ml-24 sm:-mt-96 lg:-mt-0 lg:ml-0 border border-gray-300 rounded-sm p-12 shadow-xl bg-white space-y-2">
       <div className="space-x-2 mb-4">
         <label>
           <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
@@ -35,7 +35,7 @@ const RegisterForm = () => (
         id="lastName"
         type="text"
         placeholder="Nom"
-        className="input"
+        className="input2"
       />
       <ErrorMessage name="lastName" className="yupError" component="span" />
       <br />
@@ -44,7 +44,7 @@ const RegisterForm = () => (
         id="firstName"
         type="text"
         placeholder="Prénom"
-        className="input"
+        className="input2"
       />
       <ErrorMessage name="firstName" className="yupError" component="span" />
       <br />
@@ -53,7 +53,7 @@ const RegisterForm = () => (
         id="email"
         type="email"
         placeholder="Adresse E-mail"
-        className="input"
+        className="input2"
       />
       <ErrorMessage name="email" className="yupError" component="span" />
       <br />
@@ -62,7 +62,7 @@ const RegisterForm = () => (
         id="password"
         type="password"
         placeholder="Mot de Passe"
-        className="input"
+        className="input2"
       />
       <ErrorMessage name="password" className="yupError" component="span" />
       <br />
@@ -71,7 +71,7 @@ const RegisterForm = () => (
         id="confirmPassword"
         type="password"
         placeholder="Confirmation mot de passe"
-        className="input"
+        className="input2"
       />
       <ErrorMessage
         name="confirmPassword"
@@ -84,7 +84,7 @@ const RegisterForm = () => (
         id="phone"
         type="text"
         placeholder="Numéro de téléphone"
-        className="input"
+        className="input2"
       />
       <ErrorMessage name="phone" className="yupError" component="span" />
       <br />
@@ -93,7 +93,7 @@ const RegisterForm = () => (
         id="birthday_date"
         type="text"
         placeholder="Date de naissance"
-        className="input"
+        className="input2"
       />
       <ErrorMessage
         name="birthday_date"
@@ -102,9 +102,14 @@ const RegisterForm = () => (
       />
       <br />
       <br />
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-red sm:self-center">
         S'inscrire
       </button>
+      <p className="text-xs mt-4">
+        En vous inscrivant vous acceptez notre politique de RGPD. Les données
+        recueillies sont déstinées aux services de la courseaujouet.fr et ses
+        partenaires pour le traitement de vos commandes.
+      </p>
     </Form>
   </Formik>
 );
@@ -113,12 +118,6 @@ const Register = () => {
   return (
     <div className="md:register sm:w-9/12 ">
       <RegisterForm />
-      <br />
-      <p className="sm:ml-24 lg:ml-0 text-xs">
-        En vous inscrivant vous acceptez notre politique de RGPD. Les données
-        recueillies sont déstinées aux services de la courseaujouet.fr et ses
-        partenaires pour le traitement de vos commandes.
-      </p>
     </div>
   );
 };
