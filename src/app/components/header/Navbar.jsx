@@ -287,51 +287,58 @@ const Navbar = () => {
                     </a>
                 </div>)}
             </nav>
-            {isOpen && (<div className='md:hidden text-center'>
+            {isOpen && (
+            <div className='md:hidden'>
                 <div className='divide-y'>
-                    <div className='py-2 h-14'>
+                    <div className='py-2 h-14 text-center'>
                         <a className='text-2xl text-nav-blue font-police font-semibold' href="">
                             <span>Accueil</span>
                         </a>
                     </div>
                     <div className='py-2 h-14'>
-                        <a className='text-2xl text-nav-blue font-police font-semibold' href="">
-                            <span className="">Boutique</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="inline relative h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a className='text-2xl text-nav-blue font-police font-semibold flex justify-between' href="">
+                            <div></div>
+                            <span className="ml-11">Boutique</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>
                     <div className='py-2 h-14'>
-                        <a className='text-2xl text-nav-blue font-police font-semibold' href="">
-                            <span>Aide</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="inline relative h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a className='text-2xl text-nav-blue font-police font-semibold flex justify-between' href="">
+                            <div></div>
+                            <span className='ml-11'>Aide</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>
                     <div className='py-2 h-14'>
-                        <a className='text-2xl text-nav-blue font-police font-semibold' href="">
-                            <span>Profil</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="inline relative h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a className='text-2xl text-nav-blue font-police font-semibold flex justify-between' href="">
+                            <div></div>
+                            <span className='ml-11'>Profil</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>
                     <div className='py-2 h-14'>
-                        <a className='text-2xl text-nav-blue font-police font-semibold' href="">
-                            <span>Mon panier</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="inline relative h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a className='text-2xl text-nav-blue font-police font-semibold flex justify-between' href="">
+                            <div></div>
+                            <span className='ml-11'>Mon panier</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>
                 </div>
                 <hr />
-                <div className='py-9 grid w-2 mx-36'>
-                    <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button>
-                    <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
-                </div>
+                <br/>
+                    <div className='text-center'>
+                        <button className='p-2 pl-5 pr-5 bg-nav-blueClar text-gray-100 text-lg rounded-lg border-2 border-nav-blueClar font-semibold'>Connexion</button><br/>
+                        <button className='mt-2 p-2 pl-5 pr-5 bg-transparent border-2 border-nav-blueClar text-nav-blueClar text-lg rounded-lg hover:bg-nav-blueClar hover:text-gray-100 focus:border-4 focus:border-nav-blueClar font-semibold'>Inscription</button>
+
+                    </div>
 
             </div>
             )}
