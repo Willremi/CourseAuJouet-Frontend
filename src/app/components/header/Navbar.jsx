@@ -4,9 +4,30 @@ import { Menu, Transition } from '@headlessui/react';
 
 const Navbar = () => {
     const navigation = [
-        { name: 'Découvrir', href: '#', current: false },
-        { name: 'Catégories', href: '#' },
-        { name: 'Par Age', href: '#' },
+        {
+            name: 'Découvrir', href: '#', current: false, submenu: [
+                { subname: "Nouveautés", href: '#', subcurrent: false },
+                { subname: "Top Ventes", href: '#', subcurrent: false },
+                { subname: "Tendances", href: '#', subcurrent: false },
+            ]
+        },
+        { name: 'Catégories', href: '#', submenu: [
+            { subname: "Roues", href: '#', subcurrent: false }, 
+            { subname: "Peluches", href: '#', subcurrent: false }, 
+            { subname: "Figurines", href: '#', subcurrent: false }, 
+            { subname: "Jeux & Puzzles", href: '#', subcurrent: false }, 
+            { subname: "Construction", href: '#', subcurrent: false }, 
+            { subname: "Véhicules", href: '#', subcurrent: false }, 
+            { subname: "Educatifs", href: '#', subcurrent: false }, 
+            { subname: "Baby", href: '#', subcurrent: false }, 
+        ] },
+        { name: 'Par Age', href: '#', submenu: [
+            { subname: "0 à 24 mois", href: '#', subcurrent: false },
+            { subname: "3 à 4 ans", href: '#', subcurrent: false },
+            { subname: "5 à 7 ans", href: '#', subcurrent: false },
+            { subname: "8 à 10 ans", href: '#', subcurrent: false },
+            { subname: "11 ans ou +", href: '#', subcurrent: false },
+        ] },
     ];
 
 
@@ -318,21 +339,41 @@ const Navbar = () => {
                 {/* tablet */}
                 <div className="hidden md:block sm:ml-6">
                     <div className="flex">
-                        <ul className='bg-nav-yellowClar w-6/12 divide-y'>
+                        <ul className='bg-nav-yellowClar divide-y'>
                             {navigation.map((item) => (
-                                <li key={item.name}>
-                                    <a
-                                        href={item.href}
-                                        className={classNames(
-                                            item.current ? 'text-nav-blue' : 'text-nav-blue',
-                                            'block px-4 py-2 text-4xl hover:bg-nav-yellow',
-                                            'px-3 py-2 rounded-md text-4xl font-medium'
-                                        )}
-                                        aria-current={item.current ? 'page' : undefined}
-                                    >{item.name}</a>
+
+                                <li key={item.name} className='hover:bg-nav-yellow'>
+                                    <Menu as="div">
+                                        <div>
+                                            <Menu.Button className='block pl-4 pr-60 py-2 text-4xl rounded-md font-medium text-nav-blue'>{item.name}</Menu.Button>
+                                        </div>
+
+                                        <Transition as="div" enter="transition ease-out duration-100"
+                                            enterFrom="transform opacity-0 scale-95"
+                                            enterTo="transform opacity-100 scale-100"
+                                            leave="transition ease-in duration-75"
+                                            leaveFrom="transform opacity-100 scale-100"
+                                            leaveTo="transform opacity-0 scale-95">
+                                            <Menu.Items className="origin-top-right absolute mt-2 w-56">
+                                                <div className='py-1 bg-nav-yellowClar rounded'>
+                                                    {item.submenu.map((sub) =>
+                                                        <Menu.Item key={sub.subname}>
+                                                            {({ active }) => (
+                                                                <a href="#" className={classNames(active ? 'text-nav-blue' : 'text-nav-blue',
+                                                                    'block px-4 py-2 text-sm hover:bg-nav-yellow')}
+                                                                >{sub.subname}</a>
+                                                            )}
+                                                        </Menu.Item>
+
+
+                                                    )}
+                                                </div>
+                                            </Menu.Items>
+                                        </Transition>
+                                    </Menu>
                                 </li>
                             ))}
-                            
+
                         </ul>
                     </div>
                 </div>
