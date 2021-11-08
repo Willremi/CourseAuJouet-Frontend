@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
+import ProduitCard from "../../shared/components/pdt-components/ProduitCard";
 
 const submit = (values) => {
   return console.log(values);
@@ -134,9 +135,11 @@ const RegisterForm = () => (
 
 const Register = () => {
   return (
+ 
     <div className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
     xl:flex xl:ml-72 2xl:flex 2xl:ml-72">
       <RegisterForm />
+      <ProduitCard/>
     </div>
   );
 };
