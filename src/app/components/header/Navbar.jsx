@@ -1,35 +1,35 @@
 import React, { Fragment, useState } from 'react';
-import { Menu, Transition } from '@headlessui/react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
 // import './navbar.css';
 
 const Navbar = () => {
     const navigation = [
         {
             name: 'Découvrir', href: '#', current: false, submenu: [
-                { name: "Nouveautés", href: '#', subcurrent: false },
-                { name: "Top Ventes", href: '#', subcurrent: false },
-                { name: "Tendances", href: '#', subcurrent: false },
+                { name: "Nouveautés", href: '#', current: false },
+                { name: "Top Ventes", href: '#', current: false },
+                { name: "Tendances", href: '#', current: false },
             ]
         },
         {
             name: 'Catégories', href: '#', submenu: [
-                { name: "Roues", href: '#', subcurrent: false },
-                { name: "Peluches", href: '#', subcurrent: false },
-                { name: "Figurines", href: '#', subcurrent: false },
-                { name: "Jeux & Puzzles", href: '#', subcurrent: false },
-                { name: "Construction", href: '#', subcurrent: false },
-                { name: "Véhicules", href: '#', subcurrent: false },
-                { name: "Educatifs", href: '#', subcurrent: false },
-                { name: "Baby", href: '#', subcurrent: false },
+                { name: "Roues", href: '#', current: false },
+                { name: "Peluches", href: '#', current: false },
+                { name: "Figurines", href: '#', current: false },
+                { name: "Jeux & Puzzles", href: '#', current: false },
+                { name: "Construction", href: '#', current: false },
+                { name: "Véhicules", href: '#', current: false },
+                { name: "Educatifs", href: '#', current: false },
+                { name: "Baby", href: '#', current: false },
             ]
         },
         {
             name: 'Par Age', href: '#', submenu: [
-                { name: "0 à 24 mois", href: '#', subcurrent: false },
-                { name: "3 à 4 ans", href: '#', subcurrent: false },
-                { name: "5 à 7 ans", href: '#', subcurrent: false },
-                { name: "8 à 10 ans", href: '#', subcurrent: false },
-                { name: "11 ans ou +", href: '#', subcurrent: false },
+                { name: "0 à 24 mois", href: '#', current: false },
+                { name: "3 à 4 ans", href: '#', current: false },
+                { name: "5 à 7 ans", href: '#', current: false },
+                { name: "8 à 10 ans", href: '#', current: false },
+                { name: "11 ans ou +", href: '#', current: false },
             ]
         },
     ];
@@ -55,7 +55,7 @@ const Navbar = () => {
                             <li key={item.name} className='px-4'>
                                 <Menu as="div" className="relative inline-block text-left">
                                     <div>
-                                        <Menu.Button className="font-semibold">{item.name}</Menu.Button>
+                                        <Menu.Button className="text-lg font-semibold">{item.name}</Menu.Button>
                                     </div>
                                     <Transition as={Fragment} enter="transition ease-out duration-100"
                                         enterFrom="transform opacity-0 scale-95"
@@ -72,7 +72,7 @@ const Navbar = () => {
                                                                 href="#"
                                                                 className={classNames(
                                                                     active ? 'text-nav-blue' : 'text-nav-blue',
-                                                                    'block px-4 py-2 text-sm hover:bg-nav-yellow'
+                                                                    'block px-4 py-2 text-lg hover:bg-nav-yellow'
                                                                 )}
                                                             >{sub.name}</a>
                                                         )}
@@ -135,9 +135,10 @@ const Navbar = () => {
                             {navigation.map((item) => (
 
                                 <li key={item.name} className='hover:bg-nav-yellow'>
-                                    <Menu as="div">
+                                    <Disclosure as="div">
                                         <div>
-                                            <Menu.Button className='block pl-4 pr-60 py-2 text-4xl rounded-md font-medium text-nav-blue'>{item.name}</Menu.Button>
+                                            <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
+                                            </Disclosure.Button>
                                         </div>
 
                                         <Transition as="div" enter="transition ease-out duration-100"
@@ -146,23 +147,25 @@ const Navbar = () => {
                                             leave="transition ease-in duration-75"
                                             leaveFrom="transform opacity-100 scale-100"
                                             leaveTo="transform opacity-0 scale-95">
-                                            <Menu.Items className="origin-top-right absolute mt-2">
-                                                <div className='py-1 bg-nav-yellowClar rounded'>
-                                                    {item.submenu.map((sub) =>
-                                                        <Menu.Item key={sub.name}>
-                                                            {({ active }) => (
-                                                                <a href="#" className={classNames(active ? 'text-nav-blue' : 'text-nav-blue',
-                                                                    'block pl-4 pr-60 py-2 text-2xl hover:bg-nav-yellow')}
-                                                                >{sub.name}</a>
-                                                            )}
-                                                        </Menu.Item>
+                                            {/* <Menu.Items className="origin-top-right absolute mt-2"> */}
+                                            <div className='py-1 bg-nav-yellowClar rounded'>
+                                                {item.submenu.map((sub) =>
+                                                    <Disclosure.Panel key={sub.name}>
+                                                        {/* // <Menu.Item key={sub.name}> */}
+                                                        {({ active }) => (
+                                                            <a href="#" className={classNames(active ? 'text-nav-blue' : 'text-nav-blue',
+                                                                'block pl-4 pr-60 py-2 text-2xl hover:bg-nav-yellow')}
+                                                            >{sub.name}</a>
+                                                        )}
+                                                        {/* // </Menu.Item> */}
 
+                                                    </Disclosure.Panel>
 
-                                                    )}
-                                                </div>
-                                            </Menu.Items>
+                                                )}
+                                            </div>
+                                            {/* </Menu.Items> */}
                                         </Transition>
-                                    </Menu>
+                                    </Disclosure>
                                 </li>
                             ))}
 
