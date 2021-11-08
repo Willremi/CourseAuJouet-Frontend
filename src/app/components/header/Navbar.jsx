@@ -6,28 +6,32 @@ const Navbar = () => {
     const navigation = [
         {
             name: 'Découvrir', href: '#', current: false, submenu: [
-                { subname: "Nouveautés", href: '#', subcurrent: false },
-                { subname: "Top Ventes", href: '#', subcurrent: false },
-                { subname: "Tendances", href: '#', subcurrent: false },
+                { name: "Nouveautés", href: '#', subcurrent: false },
+                { name: "Top Ventes", href: '#', subcurrent: false },
+                { name: "Tendances", href: '#', subcurrent: false },
             ]
         },
-        { name: 'Catégories', href: '#', submenu: [
-            { subname: "Roues", href: '#', subcurrent: false }, 
-            { subname: "Peluches", href: '#', subcurrent: false }, 
-            { subname: "Figurines", href: '#', subcurrent: false }, 
-            { subname: "Jeux & Puzzles", href: '#', subcurrent: false }, 
-            { subname: "Construction", href: '#', subcurrent: false }, 
-            { subname: "Véhicules", href: '#', subcurrent: false }, 
-            { subname: "Educatifs", href: '#', subcurrent: false }, 
-            { subname: "Baby", href: '#', subcurrent: false }, 
-        ] },
-        { name: 'Par Age', href: '#', submenu: [
-            { subname: "0 à 24 mois", href: '#', subcurrent: false },
-            { subname: "3 à 4 ans", href: '#', subcurrent: false },
-            { subname: "5 à 7 ans", href: '#', subcurrent: false },
-            { subname: "8 à 10 ans", href: '#', subcurrent: false },
-            { subname: "11 ans ou +", href: '#', subcurrent: false },
-        ] },
+        {
+            name: 'Catégories', href: '#', submenu: [
+                { name: "Roues", href: '#', subcurrent: false },
+                { name: "Peluches", href: '#', subcurrent: false },
+                { name: "Figurines", href: '#', subcurrent: false },
+                { name: "Jeux & Puzzles", href: '#', subcurrent: false },
+                { name: "Construction", href: '#', subcurrent: false },
+                { name: "Véhicules", href: '#', subcurrent: false },
+                { name: "Educatifs", href: '#', subcurrent: false },
+                { name: "Baby", href: '#', subcurrent: false },
+            ]
+        },
+        {
+            name: 'Par Age', href: '#', submenu: [
+                { name: "0 à 24 mois", href: '#', subcurrent: false },
+                { name: "3 à 4 ans", href: '#', subcurrent: false },
+                { name: "5 à 7 ans", href: '#', subcurrent: false },
+                { name: "8 à 10 ans", href: '#', subcurrent: false },
+                { name: "11 ans ou +", href: '#', subcurrent: false },
+            ]
+        },
     ];
 
 
@@ -47,251 +51,39 @@ const Navbar = () => {
                 <div className='md:text-nav-blue font-semibold'>
                     <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1>
                     <ul className='hidden lg:flex text-nav-blue pt-6'>
-                        {/* Découvrir */}
-                        <li className='px-4'>
-                            <Menu as="div" className="relative inline-block text-left">
-                                <div>
-                                    <Menu.Button className="font-semibold">Découvrir</Menu.Button>
-                                </div>
-                                <Transition as={Fragment} enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95">
-                                    <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-nav-yellowClar rounded'>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
+                        {navigation.map((item) => (
+                            <li key={item.name} className='px-4'>
+                                <Menu as="div" className="relative inline-block text-left">
+                                    <div>
+                                        <Menu.Button className="font-semibold">{item.name}</Menu.Button>
+                                    </div>
+                                    <Transition as={Fragment} enter="transition ease-out duration-100"
+                                        enterFrom="transform opacity-0 scale-95"
+                                        enterTo="transform opacity-100 scale-100"
+                                        leave="transition ease-in duration-75"
+                                        leaveFrom="transform opacity-100 scale-100"
+                                        leaveTo="transform opacity-0 scale-95">
+                                        <Menu.Items className="origin-top-right absolute mt-2 w-56">
+                                            <div className='py-1 bg-nav-yellowClar rounded'>
+                                                {item.submenu.map((sub) => (
+                                                    <Menu.Item key={sub.name}>
+                                                        {({ active }) => (
+                                                            <a
+                                                                href="#"
+                                                                className={classNames(
+                                                                    active ? 'text-nav-blue' : 'text-nav-blue',
+                                                                    'block px-4 py-2 text-sm hover:bg-nav-yellow'
+                                                                )}
+                                                            >{sub.name}</a>
                                                         )}
-                                                    >Nouveautés</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Top Ventes</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Tendances</a>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                    </Menu.Items>
-                                </Transition>
-                            </Menu>
-                        </li>
-                        {/* Catégories */}
-                        <li className='px-4'>
-                            <Menu as="div" className="relative inline-block text-left">
-                                <div>
-                                    <Menu.Button className="font-semibold">Catégories</Menu.Button>
-                                </div>
-                                <Transition as={Fragment} enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95">
-                                    <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-nav-yellowClar rounded'>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Roues</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Peluches</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Figurines</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Jeux</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Jeux et Puzzles</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Construction</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Véhicules</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Educatifs</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >Baby</a>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                    </Menu.Items>
-                                </Transition>
-                            </Menu>
-                        </li>
-                        {/* Par Age */}
-                        <li className='px-4'>
-                            <Menu as="div" className="relative inline-block text-left">
-                                <div>
-                                    <Menu.Button className="font-semibold">Par Age</Menu.Button>
-                                </div>
-                                <Transition as={Fragment} enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95">
-                                    <Menu.Items className="origin-top-right absolute mt-2 w-56">
-                                        <div className='py-1 bg-nav-yellowClar rounded'>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >0 - 24 mois</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >3 à 4 ans</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >5 à 7 ans</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >8 à 10 ans</a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(
-                                                            active ? 'text-nav-blue' : 'text-nav-blue',
-                                                            'block px-4 py-2 text-sm hover:bg-nav-yellow'
-                                                        )}
-                                                    >11 ans ou +</a>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                    </Menu.Items>
-                                </Transition>
-                            </Menu>
-                        </li>
-
+                                                    </Menu.Item>
+                                                ))}
+                                            </div>
+                                        </Menu.Items>
+                                    </Transition>
+                                </Menu>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
@@ -354,14 +146,14 @@ const Navbar = () => {
                                             leave="transition ease-in duration-75"
                                             leaveFrom="transform opacity-100 scale-100"
                                             leaveTo="transform opacity-0 scale-95">
-                                            <Menu.Items className="origin-top-right absolute mt-2 w-56">
+                                            <Menu.Items className="origin-top-right absolute mt-2">
                                                 <div className='py-1 bg-nav-yellowClar rounded'>
                                                     {item.submenu.map((sub) =>
-                                                        <Menu.Item key={sub.subname}>
+                                                        <Menu.Item key={sub.name}>
                                                             {({ active }) => (
                                                                 <a href="#" className={classNames(active ? 'text-nav-blue' : 'text-nav-blue',
-                                                                    'block px-4 py-2 text-sm hover:bg-nav-yellow')}
-                                                                >{sub.subname}</a>
+                                                                    'block pl-4 pr-60 py-2 text-2xl hover:bg-nav-yellow')}
+                                                                >{sub.name}</a>
                                                             )}
                                                         </Menu.Item>
 
@@ -377,7 +169,6 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
-
 
                 {/* smartphone */}
                 <div className='md:hidden'>
