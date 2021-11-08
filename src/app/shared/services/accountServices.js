@@ -50,9 +50,3 @@ export function isAuthenticated() {
         return false
     }
 }
-
-export function Registration(values) {
-    register(values)
-    .then()
-    .catch()
-}

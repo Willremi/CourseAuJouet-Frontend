@@ -3,11 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
 
-const submit = (values) => {
-  return console.log(values);
-};
-
-const RegisterForm = () => (
+const RegisterForm = ({submit}) => (
   <Formik
     initialValues={defaulValuesRegister}
     validationSchema={schemaFormRegister}
@@ -17,13 +13,13 @@ const RegisterForm = () => (
       <div className="flex space-x-2">
         <p>Civilité* :</p>
         <label>
-          <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
+          <Field type="radio" name="civility" id="CivilityMan" value="Man" />
           Mr
         </label>
         <label>
           <Field
             type="radio"
-            name="Civility"
+            name="civility"
             id="CivilityWoman"
             value="Woman"
           />
@@ -101,7 +97,7 @@ const RegisterForm = () => (
         <Field
           name="birthday_date"
           id="birthday_date"
-          type="text"
+          type="date"
           placeholder="Date de naissance"
           className="input2 sm:w-1/2 md:w-1/2"
         />
@@ -132,11 +128,11 @@ const RegisterForm = () => (
   </Formik>
 );
 
-const Register = () => {
+const Register = (props) => {
   return (
     <div className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
     xl:flex xl:ml-72 2xl:flex 2xl:ml-72">
-      <RegisterForm />
+      <RegisterForm {...props}/>
     </div>
   );
 };
