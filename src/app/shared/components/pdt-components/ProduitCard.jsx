@@ -1,17 +1,31 @@
+import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 
 
-
-
 function ProduitCard() {
-  let data = {
-    img: "monop.jpg",
-    name: "Monopoly ville de Nantes",
-    price: "30,99",
-  };
-  const [produit, setproduit] = useState(data);
-  console.log(useState(data));
+
+//   let data = {
+//     img: "monop.jpg",
+//     name: "Monopoly ville de Nantes",
+//     price: "30,99",
+//   };
+  const [produit, setProduit] = useState();
+
+  useEffect(() => {
+    
+       axios
+       .get("https:BACKEND")
+        .then((res)=> {
+            setProduit(res.data);
+        })
+
+
+  }, [])
+
+
+
+  console.log(useState());
   return (
     <>
       <div className="w-48 h-80 border border-gray rounded-md ml-8 shadow-md ">
