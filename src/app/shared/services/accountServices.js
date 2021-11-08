@@ -1,3 +1,4 @@
+import { register } from '../../api/backend/account';
 import { getToken, getPayloadToken } from './tokenServices';
 
 /**
@@ -48,4 +49,10 @@ export function isAuthenticated() {
     } catch {
         return false
     }
+}
+
+export function Registration(values) {
+    register(values)
+    .then()
+    .catch()
 }

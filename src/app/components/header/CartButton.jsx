@@ -11,7 +11,7 @@ const CartButton = () => {
   useEffect(() => {
     //Si l'utilisateur est connecté on va rechercher dans la BDD si son panier contient des articles
     if (isLogged)
-    return ( GetallProductInCart("618526882c67ebec6518b29a")
+    return ( GetallProductInCart("618526882c67ebec6518b29a")// mettre l'id de l'utilisateur quand l'inscription sera terminé
       .then((res) => {
         console.log(res.data);
           setCount(Object.keys(res.data.cart).length);
