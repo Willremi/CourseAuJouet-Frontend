@@ -1,4 +1,3 @@
-import { register } from '../../api/backend/account';
 import { getToken, getPayloadToken } from './tokenServices';
 
 /**
@@ -50,3 +49,4 @@ export function isAuthenticated() {
         return false
     }
 }
+
