@@ -4,9 +4,9 @@ import { Menu, Transition } from '@headlessui/react';
 
 const Navbar = () => {
     const navigation = [
-        { name: 'Découvrir', href: '#', current: false, subName: [1, 2, 3] },
-        { name: 'Catégories', href: '#', current: false, subName: [4, 5, 6] },
-        { name: 'Par Age', href: '#', current: false, subName: [7, 8, 9] },
+        { name: 'Découvrir', href: '#', current: false },
+        { name: 'Catégories', href: '#' },
+        { name: 'Par Age', href: '#' },
     ];
 
 
@@ -24,7 +24,7 @@ const Navbar = () => {
                 </button>
 
                 <div className='md:text-nav-blue font-semibold'>
-                    <h1 className='hidden md:block md:text-center lg:text-left md:text-2xl lg:text-3xl'>La course aux jouets</h1>
+                    <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1>
                     <ul className='hidden lg:flex text-nav-blue pt-6'>
                         {/* Découvrir */}
                         <li className='px-4'>
@@ -316,26 +316,23 @@ const Navbar = () => {
             >
 
                 {/* tablet */}
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden md:block sm:ml-6">
                     <div className="flex">
-                        <ul className='bg-nav-yellowClar'>
+                        <ul className='bg-nav-yellowClar w-6/12 divide-y'>
                             {navigation.map((item) => (
                                 <li key={item.name}>
                                     <a
-                                        key={item.name}
                                         href={item.href}
                                         className={classNames(
                                             item.current ? 'text-nav-blue' : 'text-nav-blue',
-                                            'block px-4 py-2 text-sm hover:bg-nav-yellow',
-                                            'px-3 py-2 rounded-md text-sm font-medium'
+                                            'block px-4 py-2 text-4xl hover:bg-nav-yellow',
+                                            'px-3 py-2 rounded-md text-4xl font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
-                                    >
-                                        {item.name}
-                                    </a>
-                                    {/* <p>{item.subName}</p> */}
+                                    >{item.name}</a>
                                 </li>
                             ))}
+                            
                         </ul>
                     </div>
                 </div>
