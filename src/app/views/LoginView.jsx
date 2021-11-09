@@ -13,7 +13,6 @@ import Login from './../components/account/Login';
  * @author Peter Mollet
  */
  const LoginView = ({ history }) => {
-
     const [errorLog, setErrorLog] = useState(false)
     const dispatch = useDispatch()
 
@@ -21,8 +20,8 @@ import Login from './../components/account/Login';
         authenticate(values).then(res => {
             if(res.status === 200 && res.data.id_token) {
                 dispatch(signIn(res.data.id_token))
-                if(isAuthenticated) history.push(URL_HOME)
-            }
+                if(isAuthenticated) history.push(URL_HOME)   
+            }  
         }).catch(() => setErrorLog(true))
     }
 
