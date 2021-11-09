@@ -18,10 +18,13 @@ import Login from './../components/account/Login';
     const dispatch = useDispatch()
 
     const handleLogin = (values) => {
+       
         authenticate(values).then(res => {
+            
             if(res.status === 200 && res.data.id_token) {
                 dispatch(signIn(res.data.id_token))
-                if(isAuthenticated) history.push(URL_HOME)
+                if(isAuthenticated)history.push(URL_HOME);
+                console.log(isAuthenticated());
             }
         }).catch(() => setErrorLog(true))
     }

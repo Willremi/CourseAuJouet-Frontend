@@ -25,7 +25,6 @@ const contextClass = {
 const RoutesWithNavigation = () => {
     
     const isLogged = useSelector(selectIsLogged)
-
     return (
         <BrowserRouter>
             <div>

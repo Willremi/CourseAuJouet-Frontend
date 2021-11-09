@@ -1,7 +1,9 @@
 import * as Yup from "yup";
 
 export const schemaFormLogin = Yup.object().shape({
-  username: Yup.string().required("Required input"),
+  email: Yup.string()
+    .required("L'adresse E-mail est obligatoire")
+    .email("veuillez entrez un email valide "),
   password: Yup.string().required("Required input"),
 });
 

@@ -22,7 +22,7 @@ const FormLogin = ({ submit, errorLog }) => (
     <Formik initialValues={defaulValuesLogin} onSubmit={submit} validationSchema={schemaFormLogin}>
         <Form className='mt-8 space-y-6'>
             <div className='rounded-md shadow-sm -space-y-px'>
-                <Field type="text" name="username" placeholder="Login" 
+                <Field type="email" name="email" placeholder="Login" 
                 component={ CustomInput } className='rounded-none rounded-t-md' noError/>
                 <Field type='password' name='password' placeholder='Password' 
                 component={ CustomInput } className='rounded-none rounded-b-md' noError/>

@@ -3,22 +3,26 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { GetallProductInCart } from "../../api/backend/cart";
 import { selectIsLogged } from "../../shared/redux-store/authenticationSlice";
+import { accountId } from "../../shared/services/accountServices";
 
 const CartButton = () => {
-  const [count, setCount] = useState(null);// state qui enregistre le nombre d'éléments dans le panier
+  const [count, setCount] = useState(null); // state qui enregistre le nombre d'éléments dans le panier
   const isLogged = useSelector(selectIsLogged);
 
   useEffect(() => {
     //Si l'utilisateur est connecté on va rechercher dans la BDD si son panier contient des articles
-    if (isLogged)
-    return ( GetallProductInCart("618526882c67ebec6518b29a")// mettre l'id de l'utilisateur quand le token sera dans le localstorage sera terminé
-      .then((res) => {
-        console.log(res.data);
+    if (isLogged) {
+      const id = accountId();
+      GetallProductInCart(id) // mettre l'id de l'utilisateur quand le token sera dans le localstorage sera terminé
+        .then((res) => {
+          
           setCount(Object.keys(res.data.cart).length);
-      })
-      .catch(error => console.log(error)))
-   
-  }, [isLogged]);
+          
+        })
+        .catch((error) => console.log(error));
+        
+    }
+  }, [isLogged, count]);
 
   return (
     <div>
@@ -43,9 +47,11 @@ const CartButton = () => {
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           />
         </svg>
-        { isLogged ? <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
-          {count}
-        </span> : null}
+        {isLogged ? (
+          <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
+            {count}
+          </span>
+        ) : null}
         {window.innerWidth >= 1024 ? (
           <span className="ml-2">Panier</span>
         ) : null}
