@@ -1,22 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import {
-  URL_HOME,
-  URL_LOGIN,
-  URL_REGISTER,
-} from "./../../shared/constants/urls/urlConstants";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectIsLogged,
-  signOut,
-} from "./../../shared/redux-store/authenticationSlice";
+import { useHistory } from "react-router-dom";
+import { URL_HOME } from "./../../shared/constants/urls/urlConstants";
 import MyAccountButton from "../header/MyAccountButton";
 import SearchBar from "../header/SearchBar";
 import CartButton from "../header/CartButton";
 
 const Navbar = () => {
   const history = useHistory();
-  
 
   return (
     <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
@@ -37,9 +27,7 @@ const Navbar = () => {
 
           {window.innerWidth >= 504 ? <SearchBar /> : null}
           <div className="flex items-center justify-end flex-1 lg:w-0">
-          <ConnectionBtn />
-           
-            <MyAccountButton/>
+            <MyAccountButton />
             <CartButton />
           </div>
         </div>
@@ -50,28 +38,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-const ConnectionBtn = () => {
-  const isLogged = useSelector(selectIsLogged);
-  const dispatch = useDispatch();
-  if (isLogged)
-    return (
-      <button
-        className="ml-8 btn btn-green"
-        onClick={() => dispatch(signOut())}
-      >
-        Sign out
-      </button>
-    );
-  else
-    return (
-      <>
-        <Link to={URL_LOGIN}>
-          <div className="link">Sign in</div>
-        </Link>
-        <Link to={URL_REGISTER}>
-          <button className="ml-8 btn btn-green">Sign up</button>
-        </Link>
-      </>
-    );
-};

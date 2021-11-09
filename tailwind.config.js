@@ -29,6 +29,15 @@ module.exports = {
 
     extend: {
 
+      animation: {
+        FadeIn: 'FadeIn 1s ease-in-out',
+       },
+      keyframes: {
+        FadeIn: {
+          '0%': { opacity : 0 },
+          '100%': { opacity: 1 },
+        }
+       },
       backgroundOpacity: ['active'],
 
       colors: {

@@ -9,7 +9,7 @@ import { customHistory } from '../shared/services/historyServices';
 import AdminHomeView from '../views/AdminHomeView';
 import { ROLE_ADMIN, ROLE_CUSTOMER } from '../shared/constants/rolesConstant';
 import { PrivateRoute } from '../shared/components/utils-components/PrivateRoute';
-import SubcribedUser from '../components/account/SubcribedUser';
+import RegisteredUser from '../components/account/RegisteredUser';
 
 
 /**
@@ -27,7 +27,7 @@ const Routes = () => {
             <PrivateRoute path={URL_CART} component={CartView} roles={[ROLE_CUSTOMER]} />
             <Route path={URL_LOGIN} component={LoginView} />
             <Route path={URL_REGISTER} component={RegisterView} />
-            <Route path={URL_VERIFY_USER_EMAIL} component={SubcribedUser} />
+            <Route path={URL_VERIFY_USER_EMAIL} component={RegisteredUser} />
         </Switch>
     );
 };
