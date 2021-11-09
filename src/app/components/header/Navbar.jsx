@@ -87,10 +87,15 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <span className='hidden lg:flex relative mx-auto md:w-1/4 text-nav-yellow md:text-nav-blue'>Recherche</span>
-                {/* <div className='hidden md:flex relative mx-auto md:w-1/4 max-w-sm'>
-                    <input class="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg " type="search" name="search" placeholder="Recherche" />
+                {/* <div className='hidden md:grid lg:flex md:absolute lg:relative lg:top-6 mx-auto md:w-1/4 max-w-sm'>
+                    <input className="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg" type="search" name="search" placeholder="Recherche" />
                 </div> */}
+
+                <div className='hidden lg:flex md:flex-row md:items-start lg:items-center md:overflow-hidden md:py-1 text-nav-yellow md:text-nav-blue'>
+                    {/* <span>Recherche</span> */}
+                    <input className='border-2 border-blue-300 bg-red rounded-md lg:w-96 text-black text-lg' type="search" placeholder='Recherche' />
+                </div>
+
 
                 {!isOpen ? (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
                     <a href="" className='inline-block lg:flex'>
@@ -116,8 +121,17 @@ const Navbar = () => {
                     </div>
                 )}
 
-            </nav>
 
+            </nav>
+            <div className='lg:hidden justify-between md:flex bg-nav-blue md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+
+                {!isOpen && (
+                    <div className='md:flex lg:hidden md:flex-row md:items-start md:overflow-hidden px-2 md:py-1 text-nav-yellow md:text-nav-blue'>
+                    {/* <span>Recherche</span> */}
+                    <input className='border-2 border-blue-300 bg-red rounded-md w-full md:w-screen text-black text-lg' type="search" placeholder='Recherche' />
+                </div>
+                )}
+            </div>
             <Transition
                 show={isOpen}
                 enter="transition ease-out duration-100"
@@ -136,10 +150,10 @@ const Navbar = () => {
 
                                 <li key={item.name} className='hover:bg-nav-yellow'>
                                     <Disclosure as="div">
-                                        <div>
-                                            <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
-                                            </Disclosure.Button>
-                                        </div>
+
+                                        <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
+                                        </Disclosure.Button>
+
 
                                         <Transition as="div" enter="transition ease-out duration-100"
                                             enterFrom="transform opacity-0 scale-95"
@@ -227,6 +241,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
+            
         </>
     );
 };
