@@ -40,10 +40,11 @@ const Navbar = () => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isShowing, setIsShowing] = useState(false);
 
     return (
         <>
-            <nav className='justify-between flex bg-nav-blue md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+            <nav className='justify-between flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
                 <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
                     {!isOpen ? (<svg className="fill-current text-nav-yellow md:text-nav-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow md:text-nav-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
@@ -87,13 +88,9 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                {/* <div className='hidden md:grid lg:flex md:absolute lg:relative lg:top-6 mx-auto md:w-1/4 max-w-sm'>
-                    <input className="border-2 border-blue-300 bg-red transition h-7 px-5 pr-16 rounded-md focus:outline-none text-black text-lg" type="search" name="search" placeholder="Recherche" />
-                </div> */}
-
                 <div className='hidden lg:flex md:flex-row md:items-start lg:items-center md:overflow-hidden md:py-1 text-nav-yellow md:text-nav-blue'>
                     {/* <span>Recherche</span> */}
-                    <input className='border-2 border-blue-300 bg-red rounded-md lg:w-96 text-black text-lg' type="search" placeholder='Recherche' />
+                    <input className='border-2 border-blue-300 rounded-3xl lg:w-96 text-black text-lg' type="search" placeholder='Recherche' />
                 </div>
 
 
@@ -123,13 +120,13 @@ const Navbar = () => {
 
 
             </nav>
-            <div className='lg:hidden justify-between md:flex bg-nav-blue md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+            <div className='lg:hidden justify-between md:flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
 
                 {!isOpen && (
                     <div className='md:flex lg:hidden md:flex-row md:items-start md:overflow-hidden px-2 md:py-1 text-nav-yellow md:text-nav-blue'>
-                    {/* <span>Recherche</span> */}
-                    <input className='border-2 border-blue-300 bg-red rounded-md w-full md:w-screen text-black text-lg' type="search" placeholder='Recherche' />
-                </div>
+                        {/* <span>Recherche</span> */}
+                        <input className='border-2 border-blue-300 bg-red rounded-3xl w-full md:w-screen text-black text-lg' type="search" placeholder='Recherche' />
+                    </div>
                 )}
             </div>
             <Transition
@@ -147,20 +144,22 @@ const Navbar = () => {
                     <div className="flex">
                         <ul className='bg-nav-yellowClar divide-y'>
                             {navigation.map((item) => (
-
                                 <li key={item.name} className='hover:bg-nav-yellow'>
                                     <Disclosure as="div">
-
+                                            
+                                        <div id={item.name}>
                                         <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
                                         </Disclosure.Button>
+                                        </div>
 
 
-                                        <Transition as="div" enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95">
+                                        <Transition
+                                            as="div" enter="transition ease-in-out duration-200 transform"
+                                            enterFrom="-translate-x-full"
+                                            enterTo="translate-x-0"
+                                            leave="transition ease-in-out duration-200 transform"
+                                            leaveFrom="translate-x-0"
+                                            leaveTo="-translate-x-full">
                                             {/* <Menu.Items className="origin-top-right absolute mt-2"> */}
                                             <div className='py-1 bg-nav-yellowClar rounded'>
                                                 {item.submenu.map((sub) =>
@@ -241,7 +240,8 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
-            
+      
+
         </>
     );
 };
