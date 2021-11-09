@@ -26,9 +26,7 @@ import Login from './../components/account/Login';
     }
 
     return (
-        <div className="">
-            <Login submit={handleLogin} errorLog={errorLog} />
-        </div>
+        <Login submit={handleLogin} errorLog={errorLog} />
     );
 };
 
