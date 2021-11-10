@@ -1,15 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { LockClosedIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom';
 
-import { defaulValuesLogin } from './../../shared/constants/formik-yup/default-values-form/idefaultValuesUser';
-import { schemaFormLogin } from './../../shared/constants/formik-yup/yup/yupUser';
+import { defaulValuesLogin } from '../../shared/constants/formik-yup/default-values-form/idefaultValuesUser';
+import { schemaFormLogin } from '../../shared/constants/formik-yup/yup/yupUser';
 import { CustomCheckbox, CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
 
 
 const submit = (values) => {
-    return Login()
+    return Login(values)
 }
 
 const LoginForm = () => (
@@ -18,8 +17,9 @@ const LoginForm = () => (
     validationSchema={schemaFormLogin}
     onSubmit={ submit }
   >
-    <Form className="flex flex-col flex space-y-4">
-      <div className="flex-col ">
+    <Form className="flex flex-col mt-4">
+      <div className="flex-col">
+        <label htmlFor="firstname"> Adresse email </label>
         <Field
           type="text"
           name="email"
@@ -27,6 +27,7 @@ const LoginForm = () => (
           component={CustomInput}
         />
 
+        <label htmlFor="password" className="mt-4"> Votre mot de passe </label>
         <Field
           type="password"
           name="password"
@@ -36,33 +37,38 @@ const LoginForm = () => (
       </div>
 
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between my-4">
           <Field
             name="rememberMe"
-            label="Remember me"
+            label="Se souvenir de moi"
             component={CustomCheckbox}
             value={true}
           />
           <div className="text-sm">
             <Link to="/forgot-password">
               <span className="font-medium text-primary-600 hover:text-primary-500 cursor-pointer">
-                Forgot your password?
+                Mot de passe oublié ?
               </span>
             </Link>
           </div>
         </div>
       </div>
 
-      <div>
-        <button type="submit" className="btn btn-yellow self-center">
-          <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-            {/* <LockClosedIcon
-              className="h-5 w-5 text-primary-800 group-hover:text-primary-400"
-              aria-hidden="true"
-            /> */}
-          </span>
+      <div className="flex flex-col self-center w-3/4 max-w-lg">
+        <button type="submit" className="btn btn-yellow mb-2">
           Se connecter
         </button>
+
+        <p className="self-center mt-4 mb-1"> 
+          vous êtes nouveau ici ?
+        </p>
+
+        <button className="btn btn-yellow ">
+          <Link to="/register">
+            S'inscrire'
+        </Link>
+        </button>
+
       </div>
     </Form>
   </Formik>
@@ -70,9 +76,9 @@ const LoginForm = () => (
 
 const Login = (props) => {
     return (
-        <div className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
-        xl:flex xl:ml-72 2xl:flex 2xl:ml-72">
-            <LoginForm {...props} />
+        <div>
+          <h2 className="my-5">Vous avez déjà un compte ?</h2>
+          <LoginForm {...props} />
         </div>
     );
 };

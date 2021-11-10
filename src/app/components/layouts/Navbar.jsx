@@ -6,7 +6,7 @@ import { selectIsLogged, signOut } from './../../shared/redux-store/authenticati
 import MyAccountButton from '../header/MyAccountButton';
 
 const Navbar = () => {
-    const history = useHistory()
+    
     return (
         <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
             
@@ -19,7 +19,7 @@ const Navbar = () => {
                             alt=""
                             width={200}
                             height={60}
-                            onClick={history.push(URL_HOME)}
+                            
                         />
                     </div>
 

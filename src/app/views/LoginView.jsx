@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { signIn } from '../shared/redux-store/authenticationSlice';
-import { authenticate } from './../api/backend/account';
-import { URL_HOME } from './../shared/constants/urls/urlConstants';
-import { isAuthenticated } from './../shared/services/accountServices';
-import Login from './../components/account/Login';
+import { authenticate } from '../api/backend/account';
+import { URL_HOME } from '../shared/constants/urls/urlConstants';
+import { isAuthenticated } from '../shared/services/accountServices';
+import Login from '../components/account/Login';
 
 /**
  * View/Page Login
@@ -26,7 +26,7 @@ import Login from './../components/account/Login';
     }
 
     return (
-        <Login submit={handleLogin} errorLog={errorLog} />
+            <Login submit={handleLogin} errorLog={errorLog} />
     );
 };
 

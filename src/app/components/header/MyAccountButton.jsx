@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+//imports pour le formLogin
+import LoginViewModal from "../../views/LoginView";
+
+
+
 /* Ce bouton fait apparaitre un modal ou l'on rassemblera le formulaire de login, le lien pour
 s'inscrire et le lien pour le mot de passe oublié.
 
@@ -64,7 +69,7 @@ function MyAccountButton() {
             `}
           >
             <div className={`w-full relative bg-white h-full
-            md:w-5/6 md:h-2/6 md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? null : "md:h-0"}
+            md:w-5/6 md:h-1/2 md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? null : "md:h-0"}
             lg:w-2/6 lg:h-screen lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"}
             xl:w-2/6 xl:h-screen xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"}
             2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"}`}>
@@ -88,6 +93,11 @@ function MyAccountButton() {
                 </svg>
               </button>
               {/* FIN bouton fermer le modal */}
+
+              {/*partie login*/}
+              <div className={ showModal ? "p-5" : "hidden" }>
+                 <LoginViewModal />
+              </div>
 
               {/*
             

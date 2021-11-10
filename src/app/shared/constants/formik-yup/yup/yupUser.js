@@ -1,8 +1,9 @@
 import * as Yup from "yup";
 
 export const schemaFormLogin = Yup.object().shape({
-  email: Yup.string().required("Required input"),
-  password: Yup.string().required("Required input"),
+  email: Yup.string().required("L'adresse email est requise")
+            .email("L'adresse mail n'est pas valide"),
+  password: Yup.string().required("Le mot de passe est requis"),
 });
 
 export const schemaFormRegister = Yup.object().shape({
