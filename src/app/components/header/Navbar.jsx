@@ -94,7 +94,7 @@ const Navbar = () => {
                 </div>
 
 
-                {!isOpen ? (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                {!isOpen ? (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-2xl'>
                     <a href="" className='inline-block lg:flex'>
                         <span className="hidden lg:inline">Mon compte</span>
                         <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
