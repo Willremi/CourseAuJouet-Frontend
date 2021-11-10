@@ -37,3 +37,9 @@ export const schemaFormRegister = Yup.object().shape({
     "Veuillez entrer votre date de naissance"
   ),
 });
+
+export const ForgotPasswordSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("L'adresse E-mail est obligatoire")
+    .email("veuillez entrez un email valide "),
+});

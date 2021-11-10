@@ -13,7 +13,7 @@ import { ErrorMessage } from 'formik'
  */
 export const CustomInput = ({searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
     return (
-        <div className='relative'>
+        <div className='relative w-full'>
             <input
                 id={name}
                 name={name}

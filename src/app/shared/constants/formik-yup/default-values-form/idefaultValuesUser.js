@@ -13,3 +13,7 @@ export   const defaulValuesRegister = {
     birthday_date: "",
     phone: "",
   };
+
+  export const defaulValuesForgotPassword = { 
+    email:'', 
+};
