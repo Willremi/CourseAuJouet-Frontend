@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-// import './navbar.css';
+import Logo from '../../assets/images/logo.svg';
 
 const Navbar = () => {
     const navigation = [
@@ -45,11 +45,12 @@ const Navbar = () => {
         <>
             <nav className='justify-between flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
                 <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
-                    {!isOpen ? (<svg className="fill-current text-nav-yellow md:text-nav-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow md:text-nav-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
+                    {!isOpen ? (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
 
                 <div className='md:text-nav-blue font-semibold'>
-                    <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1>
+                    {/* <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1> */}
+                    <img className='hidden md:block md:text-center md:w-40 md:h-16 lg:w-64 lg:h-24' src={Logo} alt="logo" />
                     <ul className='hidden lg:flex text-nav-blue pt-6'>
                         {navigation.map((item) => (
                             <li key={item.name} className='px-4'>
@@ -96,22 +97,22 @@ const Navbar = () => {
                 {!isOpen ? (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
                     <a href="" className='inline-block lg:flex'>
                         <span className="hidden lg:inline">Mon compte</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </a>
                     <a href="" className='inline-block lg:flex'>
                         <span className="hidden lg:inline">Panier</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </a>
                 </div>) : (
                     <div className='hidden lg:hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg></a>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg></a>
                     </div>
@@ -145,10 +146,10 @@ const Navbar = () => {
                             {navigation.map((item) => (
                                 <li key={item.name} className='hover:bg-nav-yellow'>
                                     <Disclosure as="div">
-                                            
+
                                         <div id={item.name}>
-                                        <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
-                                        </Disclosure.Button>
+                                            <Disclosure.Button className='block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue'>{item.name}
+                                            </Disclosure.Button>
                                         </div>
 
                                         <Transition
@@ -158,7 +159,7 @@ const Navbar = () => {
                                             leave="transition ease-in-out duration-200 transform"
                                             leaveFrom="translate-x-0"
                                             leaveTo="-translate-x-full">
-                                            
+
                                             <div className='py-1 bg-nav-yellowClar rounded'>
                                                 {item.submenu.map((sub) =>
                                                     <Disclosure.Panel key={sub.name}>
@@ -235,6 +236,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
+
         </>
     );
 };
