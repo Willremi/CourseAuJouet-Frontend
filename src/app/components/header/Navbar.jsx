@@ -40,7 +40,6 @@ const Navbar = () => {
     }
 
     const [isOpen, setIsOpen] = useState(false);
-    const [isShowing, setIsShowing] = useState(false);
 
     return (
         <>
@@ -140,7 +139,7 @@ const Navbar = () => {
             >
 
                 {/* tablet */}
-                <div className="hidden md:block sm:ml-6">
+                <div className="hidden md:block">
                     <div className="flex">
                         <ul className='bg-nav-yellowClar divide-y'>
                             {navigation.map((item) => (
@@ -241,7 +240,7 @@ const Navbar = () => {
                 </div>
             </Transition>
       
-
+            
         </>
     );
 };
