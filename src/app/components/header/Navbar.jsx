@@ -50,13 +50,13 @@ const Navbar = () => {
 
                 <div className='md:text-nav-blue font-semibold'>
                     {/* <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1> */}
-                    <img className='hidden md:block md:text-center md:w-40 md:h-16 lg:w-64 lg:h-24' src={Logo} alt="logo" />
+                    <img className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' src={Logo} alt="logo" />
                     <ul className='hidden lg:flex text-nav-blue pt-6'>
                         {navigation.map((item) => (
                             <li key={item.name} className='px-4'>
                                 <Menu as="div" className="relative inline-block text-left">
                                     <div>
-                                        <Menu.Button className="text-lg font-semibold">{item.name}</Menu.Button>
+                                        <Menu.Button className="text-2xl font-semibold">{item.name}</Menu.Button>
                                     </div>
                                     <Transition as={Fragment} enter="transition ease-out duration-100"
                                         enterFrom="transform opacity-0 scale-95"
@@ -73,7 +73,7 @@ const Navbar = () => {
                                                                 href="#"
                                                                 className={classNames(
                                                                     active ? 'text-nav-blue' : 'text-nav-blue',
-                                                                    'block px-4 py-2 text-lg hover:bg-nav-yellow'
+                                                                    'block px-4 py-2 text-2xl hover:bg-nav-yellow'
                                                                 )}
                                                             >{sub.name}</a>
                                                         )}
