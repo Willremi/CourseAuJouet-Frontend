@@ -151,7 +151,6 @@ const Navbar = () => {
                                         </Disclosure.Button>
                                         </div>
 
-
                                         <Transition
                                             as="div" enter="transition ease-in-out duration-200 transform"
                                             enterFrom="-translate-x-full"
@@ -159,23 +158,20 @@ const Navbar = () => {
                                             leave="transition ease-in-out duration-200 transform"
                                             leaveFrom="translate-x-0"
                                             leaveTo="-translate-x-full">
-                                            {/* <Menu.Items className="origin-top-right absolute mt-2"> */}
+                                            
                                             <div className='py-1 bg-nav-yellowClar rounded'>
                                                 {item.submenu.map((sub) =>
                                                     <Disclosure.Panel key={sub.name}>
-                                                        {/* // <Menu.Item key={sub.name}> */}
                                                         {({ active }) => (
                                                             <a href="#" className={classNames(active ? 'text-nav-blue' : 'text-nav-blue',
                                                                 'block pl-4 pr-60 py-2 text-2xl hover:bg-nav-yellow')}
                                                             >{sub.name}</a>
                                                         )}
-                                                        {/* // </Menu.Item> */}
 
                                                     </Disclosure.Panel>
 
                                                 )}
                                             </div>
-                                            {/* </Menu.Items> */}
                                         </Transition>
                                     </Disclosure>
                                 </li>
@@ -239,8 +235,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
-      
-
         </>
     );
 };
