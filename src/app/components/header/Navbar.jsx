@@ -240,7 +240,7 @@ const Navbar = () => {
                 </div>
             </Transition>
       
-            
+
         </>
     );
 };
