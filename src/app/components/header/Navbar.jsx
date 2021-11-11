@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import Logo from '../../assets/images/logo.svg';
+import Logo from '../../assets/images/logo.png';
 
 const Navbar = () => {
     const navigation = [
