@@ -63,7 +63,7 @@ function MyAccountButton() {
       
         <>
           <div
-            className={`transition-all duration-500 absolute z-40 top-20 w-screen ${ showModal ? 'h-72' : 'h-0 overflow-hidden'}
+            className={`transition-all duration-500 absolute z-40 top-20 w-screen ${ showModal ? 'h-screen' : 'h-0 overflow-hidden'}
             ${ showModal ? 'md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-0 md:top-20' : 'md:h-0 overflow-hidden'}
             ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-20' : 'lg:h-0 overflow-hidden'}
              ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-20' : 'xl:h-0 overflow-hidden'}
