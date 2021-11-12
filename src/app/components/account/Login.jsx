@@ -7,11 +7,8 @@ import { schemaFormLogin } from '../../shared/constants/formik-yup/yup/yupUser';
 import { CustomCheckbox, CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
 
 
-const submit = (values) => {
-    return Login(values)
-}
 
-const LoginForm = () => (
+const LoginForm = ({ submit }) => (
   <Formik
     initialValues={defaulValuesLogin}
     validationSchema={schemaFormLogin}
@@ -22,7 +19,7 @@ const LoginForm = () => (
         <label htmlFor="firstname"> Adresse email </label>
         <Field
           type="text"
-          name="emailLogin"
+          name="email"
           placeholder="Mail"
           component={CustomInput}
         />
@@ -30,7 +27,7 @@ const LoginForm = () => (
         <label htmlFor="password" className="mt-4"> Votre mot de passe </label>
         <Field
           type="password"
-          name="passwordLogin"
+          name="password"
           placeholder="Mot de passe"
           component={CustomInput}
         />
@@ -53,6 +50,7 @@ const LoginForm = () => (
           </div>
         </div>
       </div>
+
 
       <div className="flex flex-col self-center w-3/4 max-w-lg">
         <button type="submit" className="btn btn-yellow mb-2">
