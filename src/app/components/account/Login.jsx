@@ -22,7 +22,7 @@ const LoginForm = () => (
         <label htmlFor="firstname"> Adresse email </label>
         <Field
           type="text"
-          name="email"
+          name="emailLogin"
           placeholder="Mail"
           component={CustomInput}
         />
@@ -30,7 +30,7 @@ const LoginForm = () => (
         <label htmlFor="password" className="mt-4"> Votre mot de passe </label>
         <Field
           type="password"
-          name="password"
+          name="passwordLogin"
           placeholder="Mot de passe"
           component={CustomInput}
         />
@@ -63,9 +63,9 @@ const LoginForm = () => (
           vous êtes nouveau ici ?
         </p>
 
-        <button className="btn btn-yellow ">
+        <button className="btn btn-yellow-border ">
           <Link to="/register">
-            S'inscrire'
+            S'inscrire
         </Link>
         </button>
 
@@ -77,7 +77,7 @@ const LoginForm = () => (
 const Login = (props) => {
     return (
         <div>
-          <h2 className="my-5">Vous avez déjà un compte ?</h2>
+          <h2 className="my-5 text-2xl">Vous avez déjà un compte ?</h2>
           <LoginForm {...props} />
         </div>
     );

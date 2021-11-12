@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 //imports pour le formLogin
-import LoginViewModal from "../../views/LoginView";
+import LoginView from "../../views/LoginView";
 
 
 
@@ -96,7 +96,7 @@ function MyAccountButton() {
 
               {/*partie login*/}
               <div className={ showModal ? "p-5" : "hidden" }>
-                 <LoginViewModal />
+                 <LoginView />
               </div>
 
               {/*
