@@ -8,7 +8,7 @@ import { getToken, getPayloadToken } from './tokenServices';
  */
 export function accountRoles() {
     const payload = getPayloadToken()
-    return payload.auth.split(",")
+    return payload.role[0].role_name.split(",")
 }
 
 /**
@@ -19,7 +19,12 @@ export function accountRoles() {
  */
 export function accountLogin(){
     const payload = getPayloadToken()
-    return payload.sub
+    return payload.email
+}
+
+export function accountId(){
+    const payload = getPayloadToken()
+    return payload.userId
 }
 
 export function hasRole(role) {
@@ -37,7 +42,6 @@ export function isAuthenticated() {
     try{
         const token = getToken()
         const payload = getPayloadToken()
-        console.log(payload);
         const roles = payload.role[0].role_name.split(",")
         const expirationDate = payload.exp
         const login = payload.email
@@ -50,3 +54,4 @@ export function isAuthenticated() {
         return false
     }
 }
+

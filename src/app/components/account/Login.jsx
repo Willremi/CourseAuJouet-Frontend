@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { defaulValuesLogin } from '../../shared/constants/formik-yup/default-values-form/idefaultValuesUser';
 import { schemaFormLogin } from '../../shared/constants/formik-yup/yup/yupUser';
 import { CustomCheckbox, CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
+//import { ErrorMessSmall } from '../../shared/components/form-and-error-components/ErrorMessSmall';
 
 
-
-const LoginForm = ({ submit }) => (
+const LoginForm = ({ submit, errorLog }) => (
   <Formik
     initialValues={defaulValuesLogin}
     validationSchema={schemaFormLogin}
@@ -68,7 +68,8 @@ const LoginForm = ({ submit }) => (
         </button>
 
       </div>
-    </Form>
+      {/* { errorLog && <ErrorMessSmall middle message="Login/Password incorrect(s)" /> } */}
+    </Form> 
   </Formik>
 );
 

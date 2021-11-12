@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ConnectionBtn from './../layouts/ConnectionBtn';
 
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
@@ -13,18 +14,19 @@ register and the link for the forgotten password.
 */
 
 function MyAccountButton() {
+  
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <button
-        className="cursor-pointer flex flex-row items-center text-yellow-500 transition-all opacity-50 hover:opacity-100"
+        className="cursor-pointer flex flex-row items-center mr-4 text-yellow-500 transition-all opacity-50 hover:opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
         {window.innerWidth <= 504 ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-12 w-12"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -61,11 +63,11 @@ function MyAccountButton() {
       
         <>
           <div
-            className={`transition-all duration-500 absolute w-screen ${ showModal ? 'h-72' : 'h-0'}
-            ${ showModal ? 'md:h-screen md:bg-gray-800 md:bg-opacity-50' : 'md:h-0'}
-            ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50' : 'lg:h-0'}
-             ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36' : 'xl:h-0'}
-             ${ showModal ? '2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36' : '2xl:h-0'}
+            className={`transition-all duration-500 absolute z-40 top-20 w-screen ${ showModal ? 'h-72' : 'h-0 overflow-hidden'}
+            ${ showModal ? 'md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-0 md:top-20' : 'md:h-0 overflow-hidden'}
+            ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-20' : 'lg:h-0 overflow-hidden'}
+             ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-20' : 'xl:h-0 overflow-hidden'}
+             ${ showModal ? '2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-0 2xl:top-20' : '2xl:h-0 overflow-hidden'}
             `}
           >
             <div className={`w-full relative bg-white h-full
@@ -77,11 +79,11 @@ function MyAccountButton() {
               {/* Bouton pour fermer le modal */}
                <button
                 onClick={() => setShowModal(false)}
-                className={`${showModal ? 'absolute top-5 right-5 transition-all opacity-50 hover:opacity-100' : 'hidden'}`}
+                className='absolute top-2 right-2 transition-all opacity-50 overflow-hidden hover:opacity-100'
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-10 w-10"
+                  className="h-16 w-16"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -104,6 +106,7 @@ function MyAccountButton() {
              Mettre les futurs composants ici ! 
             
             */}
+            {/* <ConnectionBtn /> */}
             </div>
           </div>
         </>

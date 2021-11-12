@@ -11,14 +11,14 @@ import { ErrorMessage } from 'formik'
  * @example <Field type="email" name="email" placeholder="Email" component={ InsyInput } className='my-0'/>
  * @author Peter Mollet
  */
-export const CustomInput = ({ noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
+export const CustomInput = ({searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
     return (
         <div className='relative'>
             <input
                 id={name}
                 name={name}
                 type={type}
-                className={`input ${errors[name] && touched[name] && 'input-error'} ${className} `}
+                className={`input ${ searchBar ? null : errors[name] && touched[name] && 'input-error'} ${className} `}
                 {...field}
                 {...rest}
             />
