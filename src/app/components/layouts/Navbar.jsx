@@ -19,7 +19,6 @@ const Navbar = () => {
               alt=""
               width={200}
               height={60}
-              onClick={history.push(URL_HOME)}
             />
           </div>
 

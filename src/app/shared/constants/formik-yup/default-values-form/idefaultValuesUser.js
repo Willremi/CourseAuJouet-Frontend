@@ -17,3 +17,8 @@ export   const defaulValuesRegister = {
   export const defaulValuesForgotPassword = { 
     email:'', 
 };
+
+export const defaulValuesResetPassword = {
+  password: "",
+  confirmPassword: "",
+}
