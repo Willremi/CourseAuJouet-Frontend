@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logo.svg';
 
 const Navbar = () => {
     const navigation = [
@@ -43,15 +43,21 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className='justify-between flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+            <header className='justify-between flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
                 <button className="block lg:hidden cursor-pointer ml-1 relative w-12 h-12" onClick={() => setIsOpen(!isOpen)}>
                     {!isOpen ? (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
 
                 <div className='md:text-nav-blue font-semibold'>
-                    {/* <h1 className='hidden md:block md:text-center lg:text-left md:text-4xl lg:text-5xl'>La course aux jouets</h1> */}
-                    <img className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' src={Logo} alt="logo" />
-                    <ul className='hidden lg:flex text-nav-blue pt-6'>
+                    {/* <img className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' src={Logo} alt="logo" /> */}
+                    <object className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' type="image/svg+xml" data={Logo}></object>
+                </div>
+
+                <div className='hidden lg:grid  md:items-start md:py-1 text-nav-yellow px-16 w-full'>
+                    {/* <span>Recherche</span> */}
+                    <input className='border-2 border-blue-300 rounded-3xl text-black text-lg' type="search" placeholder='Recherche' />
+                    <nav className='md:text-nav-blue font-semibold'>
+                        <ul className='hidden lg:flex text-nav-blue pt-6 justify-around'>
                         {navigation.map((item) => (
                             <li key={item.name} className='px-4'>
                                 <Menu as="div" className="relative inline-block text-left">
@@ -85,31 +91,21 @@ const Navbar = () => {
                                 </Menu>
                             </li>
                         ))}
-                    </ul>
-                </div>
-
-                <div className='hidden lg:flex md:flex-row md:items-start lg:items-center md:overflow-hidden md:py-1 text-nav-yellow md:text-nav-blue'>
-                    {/* <span>Recherche</span> */}
-                    <input className='border-2 border-blue-300 rounded-3xl lg:w-96 text-black text-lg' type="search" placeholder='Recherche' />
+                        </ul>
+                    </nav>
                 </div>
 
 
-                {!isOpen ? (<div className='text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-2xl'>
-                    <a href="" className='inline-block lg:flex'>
-                        <span className="hidden lg:inline">Mon compte</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {!isOpen ? (<div className='hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </a>
-                    <a href="" className='inline-block lg:flex'>
-                        <span className="hidden lg:inline">Panier</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        </svg></a>
+                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </a>
-                </div>) : (
-                    <div className='hidden lg:hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 lg:h-8 lg:w-8 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        </svg></a>
+                    </div>) : (
+                    <div className='hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg></a>
                         <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -117,9 +113,7 @@ const Navbar = () => {
                         </svg></a>
                     </div>
                 )}
-
-
-            </nav>
+            </header>
             <div className='lg:hidden justify-between md:flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
 
                 {!isOpen && (
@@ -236,7 +230,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
-
+            
         </>
     );
 };
