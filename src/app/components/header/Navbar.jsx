@@ -54,66 +54,58 @@ const Navbar = () => {
                 </div>
 
                 <div className='hidden lg:grid  md:items-start md:py-1 text-nav-yellow pr-12 w-full'>
-                    {/* <span>Recherche</span> */}
+                    {/* Recherche */}
                     <input className='border-2 border-blue-300 rounded-3xl text-black text-lg' type="search" placeholder='Recherche' />
+
+                    {/* Navigation */}
                     <nav className='md:text-nav-blue font-semibold'>
                         <ul className='hidden lg:flex text-nav-blue pt-6 justify-around'>
-                        {navigation.map((item) => (
-                            <li key={item.name} className='px-4'>
-                                <Menu as="div">
-                                    <div>
-                                        <Menu.Button className="text-2xl font-semibold">{item.name}</Menu.Button>
-                                    </div>
-                                    <Transition as={Fragment} enter="transition ease-out duration-100"
-                                        enterFrom="transform opacity-0 scale-95"
-                                        enterTo="transform opacity-100 scale-100"
-                                        leave="transition ease-in duration-75"
-                                        leaveFrom="transform opacity-100 scale-100"
-                                        leaveTo="transform opacity-0 scale-95">
-                                        <Menu.Items className="origin-top-right absolute mt-2 w-72
+                            {navigation.map((item) => (
+                                <li key={item.name} className='px-4'>
+                                    <Menu as="div">
+                                        <div>
+                                            <Menu.Button className="text-2xl font-semibold">{item.name}</Menu.Button>
+                                        </div>
+                                        <Transition as={Fragment} enter="transition ease-out duration-100"
+                                            enterFrom="transform opacity-0 scale-95"
+                                            enterTo="transform opacity-100 scale-100"
+                                            leave="transition ease-in duration-75"
+                                            leaveFrom="transform opacity-100 scale-100"
+                                            leaveTo="transform opacity-0 scale-95">
+                                            <Menu.Items className="origin-top-right absolute mt-2 w-72
                                         ">
-                                            <div className='py-1 bg-nav-yellowClar rounded'>
-                                                {item.submenu.map((sub) => (
-                                                    <Menu.Item key={sub.name}>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'text-nav-blue' : 'text-nav-blue',
-                                                                    'block px-4 py-2 text-2xl hover:bg-nav-yellow'
-                                                                )}
-                                                            >{sub.name}</a>
-                                                        )}
-                                                    </Menu.Item>
-                                                ))}
-                                            </div>
-                                        </Menu.Items>
-                                    </Transition>
-                                </Menu>
-                            </li>
-                        ))}
+                                                <div className='py-1 bg-nav-yellowClar rounded'>
+                                                    {item.submenu.map((sub) => (
+                                                        <Menu.Item key={sub.name}>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="#"
+                                                                    className={classNames(
+                                                                        active ? 'text-nav-blue' : 'text-nav-blue',
+                                                                        'block px-4 py-2 text-2xl hover:bg-nav-yellow'
+                                                                    )}
+                                                                >{sub.name}</a>
+                                                            )}
+                                                        </Menu.Item>
+                                                    ))}
+                                                </div>
+                                            </Menu.Items>
+                                        </Transition>
+                                    </Menu>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
                 </div>
 
-
-                {!isOpen ? (<div className='hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg></a>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg></a>
-                    </div>) : (
-                    <div className='hidden md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg></a>
-                        <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16 lg:w-8 lg:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg></a>
-                    </div>
-                )}
+                <div className='md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
+                    <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 h-12 w-12 md:h-16 md:w-16 text-nav-yellow md:text-nav-blue text-center" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg></a>
+                    <a href="" className='inline-block lg:flex'><svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg></a>
+                </div>
             </header>
             <div className='lg:hidden justify-between md:flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
 
@@ -231,7 +223,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </Transition>
-            
+
         </>
     );
 };
