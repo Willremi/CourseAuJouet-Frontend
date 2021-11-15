@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux';
 import Routes from './Routes';
 import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
-import Navbar from './../components/layouts/Navbar';
+import Navbar from './../components/header/Navbar';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
 
 const contextClass = {

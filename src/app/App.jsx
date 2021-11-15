@@ -1,6 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import Navbar from './components/header/Navbar';
 import RoutesWithNavigation from './routes/RoutesWithNavigation';
 import { store } from './shared/redux-store/store';
 
@@ -15,8 +14,8 @@ import { store } from './shared/redux-store/store';
 const App = () => {
     return (
         <Provider store={ store }>
-			{/* <RoutesWithNavigation/> */}
-            <Navbar />
+			<RoutesWithNavigation/>
+           
 		</Provider>
     );
 };
