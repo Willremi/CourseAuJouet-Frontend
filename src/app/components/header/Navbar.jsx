@@ -53,12 +53,12 @@ const Navbar = () => {
                     <object className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' type="image/svg+xml" data={Logo}></object>
                 </div>
 
-                <div className='hidden lg:grid  md:items-start md:py-1 text-nav-yellow pr-12 w-full'>
+                <div className='hidden lg:grid md:py-1 text-nav-yellow pr-12 w-full'>
                     {/* Recherche */}
                     <input className='border-2 border-blue-300 rounded-3xl text-black text-lg' type="search" placeholder='Recherche' />
 
                     {/* Navigation */}
-                    <nav className='md:text-nav-blue font-semibold'>
+                    <nav className='hidden lg:grid md:text-nav-blue font-semibold'>
                         <ul className='hidden lg:flex text-nav-blue pt-6 justify-around'>
                             {navigation.map((item) => (
                                 <li key={item.name} className='px-4'>
@@ -107,7 +107,7 @@ const Navbar = () => {
                     </svg></a>
                 </div>
             </header>
-            <div className='lg:hidden justify-between md:flex bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+            <div className='lg:hidden justify-between bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
 
                 {!isOpen && (
                     <div className='md:flex lg:hidden md:flex-row md:items-start md:overflow-hidden px-2 md:py-1 text-nav-yellow md:text-nav-blue'>
