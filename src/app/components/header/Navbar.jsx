@@ -48,12 +48,16 @@ const Navbar = () => {
                     {!isOpen ? (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>) : (<svg className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" /></svg>)}
                 </button>
 
-                <div className='md:text-nav-blue font-semibold'>
+                <div className='md:text-nav-blue font-semibold md:h-20 lg:h-28'>
                     {/* <img className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' src={Logo} alt="logo" /> */}
                     <object className='hidden md:block md:text-center md:w-44 md:h-20 lg:w-72 lg:h-28' type="image/svg+xml" data={Logo}></object>
                 </div>
 
-                <div className='hidden lg:grid md:py-1 text-nav-yellow pr-12 w-full'>
+                {/* TODO: Problème d'affichage de la barre de recherche sur différents devices (1)
+                author: Rémi
+                */}
+                <div className='hidden lg:grid lg:pt-2 text-nav-yellow pr-12 w-full'>
+
                     {/* Recherche */}
                     <input className='border-2 border-blue-300 rounded-3xl text-black text-lg' type="search" placeholder='Recherche' />
 
@@ -96,6 +100,7 @@ const Navbar = () => {
                             ))}
                         </ul>
                     </nav>
+
                 </div>
 
                 <div className='md:flex text-nav-yellow font-semibold md:text-nav-blue text-lg md:text-xl'>
@@ -106,16 +111,21 @@ const Navbar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg></a>
                 </div>
+                
             </header>
-            <div className='lg:hidden justify-between bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
 
-                {!isOpen && (
+            {/* TODO:  Problème d'affichage de la barre de recherche sur différents devices (2)
+            author: Rémi
+            */}
+            <div className='lg:hidden bg-nav-blueClar md:bg-nav-yellow max-w-12xl mx-auto py-2 sm:px-6 lg:px-8'>
+                
                     <div className='md:flex lg:hidden md:flex-row md:items-start md:overflow-hidden px-2 md:py-1 text-nav-yellow md:text-nav-blue'>
-                        {/* <span>Recherche</span> */}
+                        {/* Recherche */}
                         <input className='border-2 border-blue-300 bg-red rounded-3xl w-full md:w-screen text-black text-lg' type="search" placeholder='Recherche' />
                     </div>
-                )}
+                
             </div>
+
             <Transition
                 show={isOpen}
                 enter="transition ease-out duration-100"
