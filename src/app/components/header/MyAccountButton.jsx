@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import ConnectionBtn from './../layouts/ConnectionBtn';
 
+//imports pour le formLogin
+import LoginView from "../../views/LoginView";
+
+
+
 /* Ce bouton fait apparaitre un modal ou l'on rassemblera le formulaire de login, le lien pour
 s'inscrire et le lien pour le mot de passe oublié.
 
@@ -58,18 +63,18 @@ function MyAccountButton() {
       
         <>
           <div
-            className={`transition-all duration-500 absolute z-40 top-20 w-screen ${ showModal ? 'h-72' : 'h-0 overflow-hidden'}
+            className={`transition-all duration-500 absolute z-40 top-20 w-screen ${ showModal ? 'h-screen' : 'h-0 overflow-hidden'}
             ${ showModal ? 'md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-0 md:top-20' : 'md:h-0 overflow-hidden'}
             ${ showModal ? 'lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-20' : 'lg:h-0 overflow-hidden'}
              ${ showModal ? 'xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-20' : 'xl:h-0 overflow-hidden'}
              ${ showModal ? '2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-0 2xl:top-20' : '2xl:h-0 overflow-hidden'}
             `}
           >
-            <div className={`w-full relative bg-white h-full overflow-hidden
-            md:w-5/6 md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? 'md:h-2/6' : "md:h-0 overflow-hidden"}
-            lg:w-2/6 lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${showModal ? 'lg:h-screen' : "lg:h-0 overflow-hidden"}
-            xl:w-3/6 xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${showModal ? 'xl:h-screen' : "xl:h-0 overflow-hidden"}
-            2xl:w-2/6 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${showModal ? '2xl:h-screen' : "2xl:h-0 overflow-hidden"}`}>
+            <div className={`w-full relative bg-white h-full
+            md:w-5/6 md:h-1/2 md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? null : "md:h-0"}
+            lg:w-2/6 lg:h-screen lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"}
+            xl:w-2/6 xl:h-screen xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"}
+            2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"}`}>
               
               {/* Bouton pour fermer le modal */}
                <button
@@ -91,12 +96,17 @@ function MyAccountButton() {
               </button>
               {/* FIN bouton fermer le modal */}
 
+              {/*partie login*/}
+              <div className={ showModal ? "p-5" : "hidden" }>
+                 <LoginView />
+              </div>
+
               {/*
             
              Mettre les futurs composants ici ! 
             
             */}
-            <ConnectionBtn />
+            {/* <ConnectionBtn /> */}
             </div>
           </div>
         </>
