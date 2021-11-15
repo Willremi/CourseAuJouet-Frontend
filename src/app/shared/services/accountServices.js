@@ -42,6 +42,7 @@ export function isAuthenticated() {
     try{
         const token = getToken()
         const payload = getPayloadToken()
+        console.log(payload)
         const roles = payload.role[0].role_name.split(",")
         const expirationDate = payload.exp
         const login = payload.email

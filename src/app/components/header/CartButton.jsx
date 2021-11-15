@@ -8,7 +8,6 @@ import { accountId } from "../../shared/services/accountServices";
 const CartButton = () => {
   const [count, setCount] = useState(null); // state qui enregistre le nombre d'éléments dans le panier
   const isLogged = useSelector(selectIsLogged);
-
   useEffect(() => {
     //Si l'utilisateur est connecté on va rechercher dans la BDD si son panier contient des articles
     if (isLogged) {
@@ -17,7 +16,7 @@ const CartButton = () => {
         .then((res) => {
           
           setCount(Object.keys(res.data.cart).length);
-          
+
         })
         .catch((error) => console.log(error));
         

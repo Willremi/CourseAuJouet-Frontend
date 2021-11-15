@@ -5,7 +5,7 @@ import { defaulValuesResetPassword } from "../../shared/constants/formik-yup/def
 import { ResetPasswordSchema } from "../../shared/constants/formik-yup/yup/yupUser";
 
 
-const ResetPassword = (submit) => (
+const ResetPassword = ({submit}) => (
     <Formik
     initialValues={defaulValuesResetPassword}
     onSubmit={submit}
@@ -13,7 +13,7 @@ const ResetPassword = (submit) => (
   >
     <Form className="mx-auto flex flex-col 
     sm:space-y-3
-    md:flex-row md:space-x-3
+    md:flex-row md:space-x-3 
     lg:mt-5 lg:space-x-3 lg:w-full lg:flex-row lg:justify-between
     xl:mt-5 xl:space-x-3 xl:w-full xl:flex-row xl:justify-between
     2xl:mt-5 2xl:space-y-3 2xl:w-full 2xl:flex-col 2xl:justify-between ">
@@ -22,7 +22,7 @@ const ResetPassword = (submit) => (
         name="password"
         placeholder="Nouveau mot de passe"
         component={CustomInput}
-        className="rounded-lg w-full p-3 mb-2"
+        className="rounded-lg w-full p-3 "
       />
         <ErrorMessage
           name="phone"
@@ -35,7 +35,7 @@ const ResetPassword = (submit) => (
         name="confirmPassword"
         placeholder="Confirmer votre nouveau mot de passe"
         component={CustomInput}
-        className="rounded-lg w-full p-3 mb-2"
+        className="rounded-lg w-full p-3 "
       />
       <ErrorMessage
           name="phone"
@@ -45,7 +45,7 @@ const ResetPassword = (submit) => (
 
       <button
         type="submit"
-        className="bg-yellow-500 text-white font-semibold p-3 rounded-lg w-full"
+        className="bg-yellow-500 text-white font-semibold rounded-lg w-full p-3"
       >
         Changer le mot de passe
       </button>
