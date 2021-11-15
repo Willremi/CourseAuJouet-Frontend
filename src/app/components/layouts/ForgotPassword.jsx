@@ -21,7 +21,7 @@ const ForgotPassword = ({ submit }) => (
         name="email"
         placeholder="Adresse e-mail"
         component={CustomInput}
-        className="rounded-lg w-full p-3"
+        className="rounded-lg w-full p-3 lowercase"
         noError
       />
 

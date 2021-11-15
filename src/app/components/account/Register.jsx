@@ -58,7 +58,7 @@ const RegisterForm = ({ submit, email }) => (
         id="email"
         type="email"
         placeholder="Adresse E-mail*"
-        className="input2"
+        className="input2 lowercase"
         required
       />
       <ErrorMessage name="email" className="text-red-500" component="span" />

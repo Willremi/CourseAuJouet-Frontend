@@ -22,6 +22,7 @@ const LoginForm = ({ submit, errorLog }) => (
           name="email"
           placeholder="Mail"
           component={CustomInput}
+          className="lowercase"
         />
 
         <label htmlFor="password" className="mt-4"> Votre mot de passe </label>
