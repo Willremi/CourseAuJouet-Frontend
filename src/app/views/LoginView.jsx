@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { selectIsLogged, signIn } from '../shared/redux-store/authenticationSlice';
+import { signIn } from '../shared/redux-store/authenticationSlice';
 import { authenticate } from '../api/backend/account';
 import { URL_HOME } from '../shared/constants/urls/urlConstants';
 import { isAuthenticated } from '../shared/services/accountServices';
 import Login from '../components/account/Login';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+
 
 /**
  * View/Page Login
@@ -13,17 +14,17 @@ import { useSelector } from 'react-redux';
  * @param {object} history 
  * @author Peter Mollet
  */
- const LoginView = ({ history }) => {
+ const LoginView = ({hideModal}) => {
     const [errorLog, setErrorLog] = useState(false)
     const dispatch = useDispatch()
-    const isLogged = useSelector(selectIsLogged)
-
+    const history = useHistory()
+    
     const handleLogin = (values) => {
         authenticate(values).then(res => {
             if(res.status === 200 && res.data.id_token) {
                 dispatch(signIn(res.data.id_token))
                 if(isAuthenticated)history.push(URL_HOME);
-                console.log(isAuthenticated());
+                hideModal(false)
             }
         }).catch(() => setErrorLog(true))
     }

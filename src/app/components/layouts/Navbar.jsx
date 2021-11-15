@@ -1,12 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { URL_HOME } from "./../../shared/constants/urls/urlConstants";
 import MyAccountButton from "../header/MyAccountButton";
 import SearchBar from "../header/SearchBar";
 import CartButton from "../header/CartButton";
 
 const Navbar = () => {
-  const history = useHistory();
+  
 
   return (
     <nav className="top-0 fixed z-50 w-full bg-white shadow-md">
