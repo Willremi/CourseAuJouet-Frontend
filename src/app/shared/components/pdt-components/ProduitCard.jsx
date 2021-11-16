@@ -5,23 +5,26 @@ import { useState, useEffect } from "react";
 
 function ProduitCard() {
 
-//   let data = {
-//     img: "monop.jpg",
-//     name: "Monopoly ville de Nantes",
-//     price: "30,99",
-//   };
-  const [produit, setProduit] = useState();
+  let data = {
+    img: "monop.jpg",
+    name: "Monopoly ville de Nantes",
+    price: "30,99",
+  };
+  // const [produit, setProduit] = useState([]);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-       axios
-       .get("https:BACKEND")
-        .then((res)=> {
-            setProduit(res.data);
-        })
+  //      axios
+  //      .get("http://localhost:3001/product")
+  //       .then((res)=> {
+  //           setProduit(res.data);
+  //       })
+  // .catch((err) => {
+  //   console.log(err)
+  // });
 
 
-  }, [])
+  // }, [])
 
 
 
