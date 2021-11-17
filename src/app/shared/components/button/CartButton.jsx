@@ -27,14 +27,14 @@ const CartButton = () => {
     <div>
       <Link
         to="/cart/:id"
-        className="flex flex-row mr-4 2xl:mr-10 cursor-pointer items-center opacity-50 text-yellow-500 transition-all 300ms hover:opacity-100
+        className="flex flex-row mr-4 2xl:mr-10 cursor-pointer items-center sm:text-nav-yellow text-nav-blue opacity-100
         md:mr-10
         lg:mr-12
         xl:mr-16"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-12 w-12 2xl:h-24 2xl:w-24"
+          className="h-12 w-12"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

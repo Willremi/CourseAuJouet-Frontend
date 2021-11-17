@@ -20,7 +20,7 @@ const SearchBar = () => {
       validationSchema={schemaFormSearch}
     >
 
-      <Form className="w-full px-4 flex mt-3 items-center">
+      <Form className="w-full px-4 flex mt-3 md:mt-0 items-center md:pb-2">
         
           <SearchIcon className="h-6 w-6 absolute ml-2.5 z-30 text-yellow-500" />
           <Field

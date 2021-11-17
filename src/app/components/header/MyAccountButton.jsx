@@ -27,13 +27,13 @@ function MyAccountButton() {
   return (
     <>
       <button
-        className="cursor-pointer flex flex-row items-center mr-4 text-yellow-500 transition-all opacity-50 hover:opacity-100"
+        className="cursor-pointer flex flex-row items-center mr-4 sm:text-nav-yellow text-nav-blue opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
        
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-12 2xl:h-24 w-12 2xl:w-24"
+            className="h-12 w-12"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -54,12 +54,12 @@ function MyAccountButton() {
 
       <>
         <div
-          className={`transition-all duration-500 absolute bg-nav-blueClar overflow-scroll z-40 top-16 left-0 w-screen ${
+          className={`transition-all duration-500 bg-nav-blueClar absolute overflow-scroll z-40 top-16 left-0 w-screen ${
             showModal ? "h-screen overflow-hidden" : "h-0 overflow-hidden"
           }
             ${
               showModal
-                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:top-40"
+                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:top-0"
                 : "md:h-0 overflow-hidden"
             }
             ${
@@ -69,12 +69,12 @@ function MyAccountButton() {
             }
              ${
                showModal
-                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-20"
+                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-28 xl:mt-3"
                  : "xl:h-0 overflow-hidden"
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-0 2xl:top-32"
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-0 2xl:top-28 2xl:mt-2 "
                  : "2xl:h-0 overflow-hidden"
              }
             `}

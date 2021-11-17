@@ -3,7 +3,7 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-  
+
     screens: {
       'sm': {
         'min': '320px',
@@ -25,8 +25,7 @@ module.exports = {
         'min': '1536px'
       },
     },
-
-
+    
     extend: {
 
       animation: {

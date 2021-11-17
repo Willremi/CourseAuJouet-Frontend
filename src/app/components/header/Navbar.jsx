@@ -20,11 +20,13 @@ const Navbar = () => {
       <header
         className="justify-between flex flex-col bg-nav-yellow w-screen
     sm:bg-nav-blueClar
+    sm:py-3
+    md:pt-3
       lg:px-8"
       >
         <div className="flex flex-row justify-between mb-3 2xl:w-11/12 2xl:mx-auto">
           {/* Burger menu pour mobile */}
-          <div className="flex flex-row w-full">
+          <div className="flex flex-row w-full items-center">
             {window.innerWidth <= 1024 ? (
               <button
                 className="w-12 h-12 mx-6"
@@ -52,7 +54,7 @@ const Navbar = () => {
             {/* 
             Logo du site qui renvoie a l'acceuil au clic
             */}
-            <Link to={URL_HOME} className="sm:hidden md:w-3/12 2xl:w-2/12">
+            <Link to={URL_HOME} className="sm:hidden md:w-3/12 xl:w-3/12 2xl:w-2/12 md:ml-3">
               <img src={Logo} alt="Logo" />
             </Link>
 
@@ -63,8 +65,8 @@ const Navbar = () => {
 
                 {/* Navigation */}
                 <div>
-                  <nav className="hidden lg:grid 2xl:grid md:text-nav-blue font-semibold">
-                    <ul className="hidden lg:flex 2xl:flex text-nav-blue pt-6 justify-around">
+                  <nav className="hidden lg:grid xl:grid 2xl:grid md:text-nav-blue font-semibold">
+                    <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue pt-6 justify-around">
                       {navigation.map((item) => (
                         <li key={item.name} className="px-4">
                           <Menu as="div">
@@ -117,7 +119,7 @@ const Navbar = () => {
             ) : null}
           </div>
 
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center 2xl:items-start 2xl:pt-3">
             {/* Bouton Mon compte */}
             <MyAccountButton />
 
