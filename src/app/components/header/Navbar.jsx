@@ -8,12 +8,17 @@ import { URL_HOME } from "./../../shared/constants/urls/urlConstants";
 import CartButton from "./../../shared/components/button/CartButton";
 import { navigation } from "../../shared/constants/dropdownmenu/dropDownMenuConstants";
 
+
 const Navbar = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
   const [isOpen, setIsOpen] = useState(false);
+  
+
+
+
 
   return (
     <>
