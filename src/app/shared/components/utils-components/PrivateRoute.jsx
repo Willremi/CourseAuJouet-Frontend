@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { isAuthenticated, accountRoles } from '../../services/accountServices';
-import { URL_HOME, URL_LOGIN } from '../../constants/urls/urlConstants';
+import { URL_HOME } from '../../constants/urls/urlConstants';
 
 /**
  * Component PriveRoute
@@ -18,7 +18,7 @@ export const PrivateRoute = ({component: Component, roles, ...rest}) => (
         {...rest}
         render={ props => {
             if (!isAuthenticated())
-                return <Redirect to={{ pathname: URL_LOGIN, state: {from: props.location} }}/>
+                return <Redirect to={{ pathname: URL_HOME, state: {from: props.location} }}/>
 
             if(roles){
                 const rolesUser = accountRoles()    

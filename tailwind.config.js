@@ -1,12 +1,50 @@
 module.exports = {
-  mode: 'jit',
+
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+  
+    screens: {
+      'sm': {
+        'min': '320px',
+        'max': '503px'
+      },
+      'md': {
+        'min': '504px',
+        'max': '1024px'
+      },
+      'lg': {
+        'min': '1025px',
+        'max': '1280px'
+      },
+      'xl': {
+        'min': '1281px',
+        'max': '1535px'
+      },
+      '2xl': {
+        'min': '1536px'
+      },
+    },
+
+
     extend: {
-      colors:{
-        primary:{
-          '100': '#b3d9ff',
+
+      animation: {
+        FadeIn: 'FadeIn 1s ease-in-out',
+        
+       },
+      keyframes: {
+        FadeIn: {
+          '0%': { opacity : 0 },
+          '100%': { opacity: 1 },
+        },
+       
+       },
+      backgroundOpacity: ['active'],
+
+      colors: {
+        primary: {
+          '10': '#b3d9ff',
           '200': '#80bfff',
           '300': '#4da6ff',
           '400': '#1a8cff',
@@ -16,7 +54,7 @@ module.exports = {
           '800': '#004d99',
           '900': '#004080',
         },
-        secondary:{
+        secondary: {
           '100': '#fad5b7',
           '200': '#f7ba88',
           '300': '#f39e58',

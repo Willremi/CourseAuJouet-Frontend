@@ -10,11 +10,11 @@ const HomeView = ({ history }) => {
                HOME 
             </p>
                         
-            { hasRole(ROLE_ADMIN) && (
+            {/* { hasRole(ROLE_ADMIN) && (
                 <button className="btn btn-primary" onClick={() => history.push(URL_ADMIN_HOME)}>
                     Admin
                 </button>
-            )}
+            )} */}
         </div>
     )
 }

@@ -41,6 +41,10 @@
         @apply text-white bg-yellow-500 hover:bg-yellow-600 hover:text-white 
         active:ring-yellow-500 ;
     }
+    .btn-yellow-border{
+        @apply text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-white 
+        active:ring-yellow-500 ;
+    }
     .btn-purple{
         @apply text-white bg-purple-600 hover:bg-purple-700 hover:text-white 
         active:ring-purple-500 ;
@@ -56,7 +60,7 @@
 
     /* INPUTS */
     .input{
-        @apply appearance-none relative block w-full px-3 py-2 
+        @apply appearance-none relative block w-full px-3 py-2
         border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md 
         focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-20 sm:text-sm
     }
@@ -77,7 +81,6 @@
     
 }
 
-
 /* ANIMATION CSS */
 .anim-delay-100{
     animation-delay: 0.1s;
@@ -88,3 +91,22 @@
 .anim-delay-600{
     animation-delay: 0.6s;
 }
+
+/* MAXENCE */
+
+.yupError {
+    @apply text-red-500
+}
+
+.input2{
+    @apply appearance-none relative block w-full px-3 py-2
+    border border-blue-300 placeholder-gray-500 text-gray-900 rounded-sm 
+    focus:outline-none focus:ring-blue-300 focus:border-blue-300  focus:z-20 sm:text-sm
+}
+
+.btn2{
+    @apply whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent 
+    rounded-sm shadow text-base font-medium focus:outline-none 
+    transform active:scale-95 active:ring-2 active:ring-offset-2 active:ring-white ;
+}
+
