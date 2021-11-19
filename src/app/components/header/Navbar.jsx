@@ -174,7 +174,7 @@ const Navbar = () => {
                           <Disclosure.Panel key={sub.name}>
                             {({ active }) => (
                               <Link
-                                to={sub.href}
+                                to={URL_HOME}
                                 className={classNames(
                                   active ? "text-nav-blue" : "text-nav-blue",
                                   "block pl-4 pr-60 py-2 text-2xl hover:bg-nav-yellow"
@@ -200,7 +200,7 @@ const Navbar = () => {
             <div className="py-3">
               <Link
                 className="text-2xl flex items-center ml-11 text-nav-blue font-police font-semibold"
-                to="#"
+                to={URL_HOME}
               >
                 Accueil
               </Link>
@@ -208,7 +208,7 @@ const Navbar = () => {
             <div className="py-2">
               <Link
                 className="text-2xl ml-11 items-center text-nav-blue font-police font-semibold flex justify-between"
-                href="/"
+                to={URL_HOME}
               >
                 Boutique
                 <svg
@@ -230,7 +230,7 @@ const Navbar = () => {
             <div className="py-2">
               <Link
                 className="text-2xl ml-11 items-center text-nav-blue font-police font-semibold flex justify-between"
-                to="#"
+                to={URL_HOME}
               >
                 Aide
                 <svg
@@ -252,7 +252,7 @@ const Navbar = () => {
             <div className="py-2">
               <Link
                 className="text-2xl ml-11 text-nav-blue font-police font-semibold flex justify-between items-center"
-                to="/"
+                to={URL_HOME}
               >
                 Profil
                 <svg

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { URL_HOME, URL_LOGIN, URL_ADMIN_HOME, URL_REGISTER, URL_CART, URL_VERIFY_USER_EMAIL, URL_FORGOT_PASSWORD, URL_RESET_PASSWORD } from '../shared/constants/urls/urlConstants';
+import { URL_HOME, URL_ADMIN_HOME, URL_REGISTER, URL_CART, URL_VERIFY_USER_EMAIL, URL_FORGOT_PASSWORD, URL_RESET_PASSWORD } from '../shared/constants/urls/urlConstants';
 import HomeView from '../views/HomeView';
-import LoginView from '../views/LoginView';
 import RegisterView from '../views/RegisterView';
 import CartView from '../views/CartView';
 import { customHistory } from '../shared/services/historyServices';
