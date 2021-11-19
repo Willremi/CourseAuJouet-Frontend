@@ -1,4 +1,3 @@
-import { Form } from "formik";
 import React, { useState } from "react";
 import { CarouselData } from "./CarouselData";
 import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
@@ -22,13 +21,13 @@ const Carousel = () => {
     }
 
     return(
-       <section className="relative h-full flex items-center justify-center">
-           <FaChevronLeft className="absolute inset-y-1/2 left-7 font text-5xl text-black  cursor-pointer select-none" onClick={prevSlide} />
-           <FaChevronRight className="absolute inset-y-1/2 right-7 font text-5xl text-black z-10 cursor-pointer select-none" onClick={nextSlide}/>
+       <section className="relative h-full flex items-center justify-center z-0">
+           <FaChevronLeft className="absolute inset-y-1/2 left-7 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
+           <FaChevronRight className="absolute inset-y-1/2 right-7 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
             {CarouselData.map((slide,index) => {
                 return (
-                    <div className={index === current ? 'slide active -z-10' : 'slide -z-10'} key={index}>
-                        {index === current && (<img src={slide.image} alt={slide.alt} className="w-full h-3/4 " />)}
+                    <div className={index === current ? 'slide active ' : 'slide'} key={index}>
+                        {index === current && (<img src={slide.image} alt={slide.alt} className="w-full h-3/4 z-10" />)}
                         
                     </div>
                 )

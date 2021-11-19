@@ -28,6 +28,10 @@ module.exports = {
     
     extend: {
 
+      zIndex: {
+        '-10': '-10',
+       },
+
       animation: {
         FadeIn: 'FadeIn 1s ease-in-out',
         
