@@ -8,8 +8,14 @@ const Carousel = () => {
     const length = CarouselData.length
 
     const nextSlide = () => {
-        s
+        setCurrent(current === length -1 ? 0 : current + 1)
     }
+    
+    const prevSlide = () => {
+        setCurrent(current === 0 ? length -1 : current - 1)
+    }
+
+    console.log(current)
 
     if (!Array.isArray(CarouselData) || length <= 0) {
         return null;
@@ -17,10 +23,15 @@ const Carousel = () => {
 
     return(
        <section className="relative h-full flex items-center justify-center">
-           <FaChevronLeft className="absolute inset-y-1/2 left-7 font text-5xl text-black z-10 cursor-pointer select-none" />
-           <FaChevronRight className="absolute inset-y-1/2 right-7 font text-5xl text-black z-10 cursor-pointer select-none" />
+           <FaChevronLeft className="absolute inset-y-1/2 left-7 font text-5xl text-black  cursor-pointer select-none" onClick={prevSlide} />
+           <FaChevronRight className="absolute inset-y-1/2 right-7 font text-5xl text-black z-10 cursor-pointer select-none" onClick={nextSlide}/>
             {CarouselData.map((slide,index) => {
-                return <img src={slide.image} alt={slide.alt} className="w-full h-3/4" />
+                return (
+                    <div className={index === current ? 'slide active -z-10' : 'slide -z-10'} key={index}>
+                        {index === current && (<img src={slide.image} alt={slide.alt} className="w-full h-3/4 " />)}
+                        
+                    </div>
+                )
             })}
 
        </section>
