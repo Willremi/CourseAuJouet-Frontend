@@ -1,18 +1,41 @@
-export function SortProductDate(response) {
-    
-    const mapped = response.map((products, i) => {
-        return {i, products}
+export function SortProductDate(response, days) {
+
+
+    /** 
+     * This function is used to sort products according to their online date (decreasing)
+     * @param {object} response: product data to be sorted
+     * @param {number} days:  Number of days before removing product from novelties
+     * @author Mathieu
+     **/
+
+    const presentTime = new Date()
+    const listOfProduct = [] //constant that will record products that are less than 30 minutes
+
+    response.map((products) => {
+
+        const sortProduct = new Date(products.on_sale_date) // Addition to this constant the date the product was put online
+        sortProduct.setDate(sortProduct.getDate() + days) // And add numbers of days
+        if (sortProduct > presentTime) { // if sortProduct is older than presentTime 
+            return listOfProduct.push({ //So we'll add the product in the array listOfProduct
+                products
+            })
+        } else {
+            return null
+        }
+
+
     })
-    
-    mapped.sort((a,b) => {
-        if(a.products.on_sale_date > b.products.on_sale_date){
+
+
+
+    listOfProduct.sort((a, b) => {
+        if (a.products.on_sale_date > b.products.on_sale_date) {
             return -1
         }
-        if(a.products.on_sale_date < b.products.on_sale_date){
+        if (a.products.on_sale_date < b.products.on_sale_date) {
             return 1
         }
         return 0
     })
-    console.log(mapped)
-    return mapped
+    return listOfProduct
 }

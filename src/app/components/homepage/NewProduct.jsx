@@ -8,8 +8,7 @@ const NewProduct = () => {
   useEffect(() => {
     GetNewProduct()
       .then((res) => {
-        setShowNewProduct(SortProductDate(res.data.product)) 
-        console.log(showNewProduct);
+        setShowNewProduct(SortProductDate(res.data.product, 7)) 
       })
       .catch((error) => console.log(error));
   }, []);
