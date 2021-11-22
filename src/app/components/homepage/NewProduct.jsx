@@ -15,6 +15,7 @@ const NewProduct = () => {
   
   return (
     <>
+    <h2 className="font-Annie font-semibold">CA VIENS D'ARRIVER</h2>
       {showNewProduct !== undefined ? (
         <div className="flex flex-row">
           {showNewProduct.map((show, index) => 

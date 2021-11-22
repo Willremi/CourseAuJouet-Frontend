@@ -74,6 +74,7 @@ module.exports = {
       }, 
       fontFamily: {
         police: ['Montserrat Alternates'],
+        Annie: ['Annie'],
       }
     }
   },
