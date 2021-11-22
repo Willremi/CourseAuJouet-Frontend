@@ -1,7 +1,7 @@
 import React from 'react'
 import { hasRole } from './../shared/services/accountServices';
-import { ROLE_ADMIN } from './../shared/constants/rolesConstant';
-import { URL_ADMIN_HOME } from './../shared/constants/urls/urlConstants';
+//import { ROLE_ADMIN } from './../shared/constants/rolesConstant';
+//import { URL_ADMIN_HOME } from './../shared/constants/urls/urlConstants';
 import  Carousel  from '../components/layouts/carousel/Carousel';
 
 const HomeView = ({ history }) => {

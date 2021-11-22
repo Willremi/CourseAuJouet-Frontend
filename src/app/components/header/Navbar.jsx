@@ -73,7 +73,7 @@ const Navbar = () => {
                   <nav className="hidden lg:grid xl:grid 2xl:grid md:text-nav-blue font-semibold">
                     <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue pt-6 justify-around">
                       {navigation.map((item) => (
-                        <li key={item.name} className="px-4">
+                        <li key={item.name} className="px-4 z-10">
                           <Menu as="div">
                             <div>
                               <Menu.Button className="text-2xl font-semibold">

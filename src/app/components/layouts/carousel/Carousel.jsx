@@ -27,7 +27,7 @@ const Carousel = () => {
             {CarouselData.map((slide,index) => {
                 return (
                     <div className={index === current ? 'slide active ' : 'slide'} key={index}>
-                        {index === current && (<img src={slide.image} alt={slide.alt} className="w-full h-3/4 z-10" />)}
+                        {index === current && (<img src={slide.image} alt={slide.alt} className="w-full h-3/4" />)}
                         
                     </div>
                 )
