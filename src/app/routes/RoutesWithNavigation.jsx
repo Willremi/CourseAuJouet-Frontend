@@ -4,8 +4,9 @@ import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux';
 import Routes from './Routes';
 import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
-import Navbar from './../components/layouts/Navbar';
+// import Navbar from '../../test/Navbar';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
+import Navbar from './../components/header/Navbar';
 
 const contextClass = {
     success: "bg-green-600",
@@ -25,14 +26,12 @@ const contextClass = {
 const RoutesWithNavigation = () => {
     
     const isLogged = useSelector(selectIsLogged)
-
     return (
         <BrowserRouter>
             <div>
                 { isLogged && <IdleTimerCustom />}
                 <Navbar/>
                 <main>
-                    
                     <Routes/>
                 </main>
                 <ToastContainer 

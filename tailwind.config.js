@@ -1,8 +1,9 @@
 module.exports = {
-  mode: "jit",
+
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+
     screens: {
       'sm': {
         'min': '320px',
@@ -24,10 +25,20 @@ module.exports = {
         'min': '1536px'
       },
     },
-
-
+    
     extend: {
 
+      animation: {
+        FadeIn: 'FadeIn 1s ease-in-out',
+        
+       },
+      keyframes: {
+        FadeIn: {
+          '0%': { opacity : 0 },
+          '100%': { opacity: 1 },
+        },
+       
+       },
       backgroundOpacity: ['active'],
 
       colors: {
@@ -52,9 +63,17 @@ module.exports = {
           '700': '#bf5d0d',
           '800': '#a7510c',
           '900': '#8f460a',
-        }
-
-
+        }, 
+        nav: {
+          'yellow': '#FFEECC', 
+          'yellowClar': '#FFF8EA',
+          'blue': '#33658A', 
+          'blueClar': '#4FA5E3',
+          'greyClar': '#DEDEDE', 
+        },
+      }, 
+      fontFamily: {
+        police: ['Montserrat Alternates'],
       }
     }
   },

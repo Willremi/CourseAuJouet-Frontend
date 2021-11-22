@@ -1,5 +1,5 @@
 export const defaulValuesLogin = { 
-    username:'', 
+    email:'', 
     password:'',
     rememberMe: false
 }
@@ -13,3 +13,12 @@ export   const defaulValuesRegister = {
     birthday_date: "",
     phone: "",
   };
+
+  export const defaulValuesForgotPassword = { 
+    email:'', 
+};
+
+export const defaulValuesResetPassword = {
+  password: "",
+  confirmPassword: "",
+}

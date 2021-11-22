@@ -4,27 +4,25 @@ import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
 import ProduitCard from "../../shared/components/pdt-components/ProduitCard";
 
-const submit = (values) => {
-  return console.log(values);
-};
+const RegisterForm = ({ submit, email }) => (
 
-const RegisterForm = () => (
   <Formik
     initialValues={defaulValuesRegister}
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
     <Form className="flex-col flex space-y-4">
+    <h2 className="text-center">Je souhaite créer mon compte</h2>
       <div className="flex space-x-2">
         <p>Civilité* :</p>
         <label>
-          <Field type="radio" name="Civility" id="CivilityMan" value="Man" />
+          <Field type="radio" name="civility" id="CivilityMan" value="Man" />
           Mr
         </label>
         <label>
           <Field
             type="radio"
-            name="Civility"
+            name="civility"
             id="CivilityWoman"
             value="Woman"
           />
@@ -61,7 +59,7 @@ const RegisterForm = () => (
         id="email"
         type="email"
         placeholder="Adresse E-mail*"
-        className="input2"
+        className="input2 lowercase"
         required
       />
       <ErrorMessage name="email" className="text-red-500" component="span" />
@@ -102,7 +100,7 @@ const RegisterForm = () => (
         <Field
           name="birthday_date"
           id="birthday_date"
-          type="text"
+          type="date"
           placeholder="Date de naissance"
           className="input2 sm:w-1/2 md:w-1/2"
         />
@@ -120,9 +118,18 @@ const RegisterForm = () => (
         />
       </div>
 
-      <button type="submit" className="btn btn-yellow self-center">
-        S'inscrire
-      </button>
+      {email ? (
+        <div className="sm:w-full md:w-full animate-FadeIn text-center  bg-green-700 text-white font-bold w-1/2 p-2 mx-auto rounded-lg">
+          <p>Votre inscription a bien été prise en compte.</p>
+          <p>
+            Veuillez vérifier vos emails afin de confirmer votre inscription
+          </p>
+        </div>
+      ) : (
+        <button type="submit" className="btn btn-yellow self-center">
+          S'inscrire
+        </button>
+      )}
       <p className="text-xs">* Champ obligatoire.</p>
       <p className="text-xs mt-4">
         En vous inscrivant vous acceptez notre politique de RGPD. Les données
@@ -133,13 +140,14 @@ const RegisterForm = () => (
   </Formik>
 );
 
-const Register = () => {
+const Register = (props) => {
   return (
- 
-    <div className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
-    xl:flex xl:ml-72 2xl:flex 2xl:ml-72">
-      <RegisterForm />
-      <ProduitCard/>
+    
+    <div
+      className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
+    xl:flex xl:ml-72 2xl:flex 2xl:ml-72"
+    >
+      <RegisterForm {...props} />
     </div>
   );
 };

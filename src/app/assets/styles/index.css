@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300&family=Roboto:wght@100&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,6 +41,10 @@
         @apply text-white bg-yellow-500 hover:bg-yellow-600 hover:text-white 
         active:ring-yellow-500 ;
     }
+    .btn-yellow-border{
+        @apply text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-white 
+        active:ring-yellow-500 ;
+    }
     .btn-purple{
         @apply text-white bg-purple-600 hover:bg-purple-700 hover:text-white 
         active:ring-purple-500 ;
@@ -74,7 +80,6 @@
     }
     
 }
-
 
 /* ANIMATION CSS */
 .anim-delay-100{
