@@ -1,18 +1,10 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 import { getProduct } from "../../../api/backend/account";
 import Card from "./Card";
 
 function ProduitCard() {
-
-
-  
-
-
-
-  const [produit, setProduit] = useState([{img: "mono.jpg", name: "Monopoly ville de Nantes", price: "30."}]
-  );
+  const [produit, setProduit] = useState([]);
 
   useEffect(() => {
     getProduct()
@@ -24,15 +16,9 @@ function ProduitCard() {
       });
   }, []);
 
-  return (
-    produit.map(pdt => {
-      return (
-        <Card props={pdt} />
-      )
-    })
-
-
-      );
+  return produit.map((pdt) => {
+    return <Card props={pdt} />;
+  });
 }
 
 export default ProduitCard;
