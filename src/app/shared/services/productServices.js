@@ -1,6 +1,5 @@
 export function SortProductDate(response, days) {
 
-
     /** 
      * This function is used to sort products according to their online date (decreasing)
      * @param {object} response: product data to be sorted
@@ -26,8 +25,6 @@ export function SortProductDate(response, days) {
 
     })
 
-
-
     listOfProduct.sort((a, b) => {
         if (a.products.on_sale_date > b.products.on_sale_date) {
             return -1
@@ -38,4 +35,24 @@ export function SortProductDate(response, days) {
         return 0
     })
     return listOfProduct
+}
+
+/**
+ * function that checks the expiration date of a product.
+ * Returns true if the product is still valid and false if it has expired
+ * @param {Date} products
+ * @param {Number} days (before expiration)
+ * @returns 
+ */
+
+export function expirationProductDate(products, days) { 
+    const expirationDate = new Date(products)
+    expirationDate.setDate(expirationDate.getDate() + days)
+    const today = Date.now()
+
+    if (expirationDate > today) {
+        return true
+    } else {
+        return false
+    }
 }

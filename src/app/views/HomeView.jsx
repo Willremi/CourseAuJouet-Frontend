@@ -6,10 +6,7 @@ import NewProduct from '../components/homepage/NewProduct';
 
 const HomeView = ({ history }) => {
     return (
-        <div>
-            <p className='text-primary-500 font-extrabold'>
-               HOME 
-            </p>
+        <div className="w-11/12 mx-auto my-3">
             <NewProduct />      
             {/* { hasRole(ROLE_ADMIN) && (
                 <button className="btn btn-primary" onClick={() => history.push(URL_ADMIN_HOME)}>

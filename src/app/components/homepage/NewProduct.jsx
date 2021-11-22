@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { SortProductDate } from "../../shared/services/productServices";
 import { GetNewProduct } from "./../../api/backend/product";
+import Card from './../../shared/components/pdt-components/Card';
+
+/**
+ * SortProductDate()
+ * @param 1er parametre données a envoyer 
+ * @param 2eme parametre nombre de jours d'apparition
+ * @author Mathieu
+ */
 
 const NewProduct = () => {
   const [showNewProduct, setShowNewProduct] = useState([]);
@@ -8,24 +16,20 @@ const NewProduct = () => {
   useEffect(() => {
     GetNewProduct()
       .then((res) => {
-        setShowNewProduct(SortProductDate(res.data.product, 7)) 
+        setShowNewProduct(SortProductDate(res.data.product, 30))
       })
       .catch((error) => console.log(error));
   }, []);
   
   return (
     <>
-    <h2 className="font-Annie font-semibold">CA VIENS D'ARRIVER</h2>
+    <h2 className="font-Annie font-semibold text-4xl text-secondary-600">CA VIENS D'ARRIVER</h2>
       {showNewProduct !== undefined ? (
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-between w-full mt-4">
           {showNewProduct.map((show, index) => 
-            <div key={index} className="w-1/6">
-              {index <= 2 ? <>
-              <img src={show.products.images[0]} alt={show.products.product_name} />
-              <p>{show.products.product_name}</p>
-              <p>{show.products.trademark}</p>
-              <p>{show.products.price}</p>
-              <p>{show.products.on_sale_date}</p>
+            <div key={index} className="w-2/6">
+              {index <= 3 ? <>
+              <Card products={show} />
             </> : null }
             </div>
             

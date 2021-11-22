@@ -11,6 +11,8 @@ import { PrivateRoute } from '../shared/components/utils-components/PrivateRoute
 import RegisteredUser from '../components/account/RegisteredUser';
 import ForgotPasswordView from '../views/ForgotPasswordView';
 import ResetPasswordView from './../views/ResetPasswordView';
+import { URL_PRODUCT_DETAIL } from './../shared/constants/urls/urlConstants';
+import DetailsProductView from './../views/DetailsProductView';
 
 
 /**
@@ -23,12 +25,13 @@ const Routes = () => {
     return (
         <Switch history={customHistory}>
             <PrivateRoute path={URL_ADMIN_HOME} component={AdminHomeView} roles={[ROLE_ADMIN]} />
-            <PrivateRoute path={URL_CART} component={CartView} roles={[ROLE_CUSTOMER]} />
+            <Route path={URL_CART} component={CartView} roles={[ROLE_CUSTOMER]} />
             <Route exact path={URL_HOME} component={HomeView} />
             <Route path={URL_REGISTER} component={RegisterView} />
             <Route path={URL_VERIFY_USER_EMAIL} component={RegisteredUser} />
             <Route path={URL_FORGOT_PASSWORD} component={ForgotPasswordView} />
             <Route path={URL_RESET_PASSWORD} component={ResetPasswordView} />
+            <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
         </Switch>
     );
 };

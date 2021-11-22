@@ -54,7 +54,7 @@ module.exports = {
           '900': '#004080',
         },
         secondary: {
-          '100': '#fad5b7',
+          '100': '#F6AE2D',
           '200': '#f7ba88',
           '300': '#f39e58',
           '400': '#f08228',
@@ -74,7 +74,7 @@ module.exports = {
       }, 
       fontFamily: {
         police: ['Montserrat Alternates'],
-        Annie: ['Annie'],
+        Annie: ['Annie Use Your Telescope'],
       }
     }
   },

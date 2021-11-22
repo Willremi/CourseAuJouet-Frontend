@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
-import ProduitCard from "../../shared/components/pdt-components/ProduitCard";
+
 
 const RegisterForm = ({ submit, email }) => (
 
