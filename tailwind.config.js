@@ -28,6 +28,11 @@ module.exports = {
     
     extend: {
 
+      width: {
+        '2/1': '200%',
+        'screen-90': '90vw',
+      },
+
       animation: {
         FadeIn: 'FadeIn 1s ease-in-out',
         

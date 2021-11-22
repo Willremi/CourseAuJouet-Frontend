@@ -90,7 +90,7 @@ const Navbar = () => {
                               leaveTo="transform opacity-0 scale-95"
                             >
                               <Menu.Items
-                                className="origin-top-right absolute mt-2 w-72
+                                className="origin-top-right absolute mt-2 w-72 z-10
                                       "
                               >
                                 <div className="py-1 bg-nav-yellowClar rounded">

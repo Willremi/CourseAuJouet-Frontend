@@ -25,17 +25,17 @@ const NewProduct = () => {
     <>
     <h2 className="font-Annie font-semibold text-4xl text-secondary-600">CA VIENS D'ARRIVER</h2>
       {showNewProduct !== undefined ? (
-        <div className="flex flex-row justify-between w-full mt-4">
+        <ul className="flex flex-row sm:overflow-scroll justify-between space-x-3 w-full mt-4">
           {showNewProduct.map((show, index) => 
-            <div key={index} className="w-2/6">
+            <li key={index} className="w-2/6 sm:w-full">
               {index <= 3 ? <>
               <Card products={show} />
             </> : null }
-            </div>
+            </li>
             
           
            )}
-        </div>
+        </ul>
       ) : null}
     </>
   );

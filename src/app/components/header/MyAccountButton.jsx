@@ -80,7 +80,7 @@ function MyAccountButton() {
             `}
         >
           <div
-            className={`w-full relative bg-white h-6/12 overflow-scroll
+            className={`w-full relative bg-white h-6/12 
 
             md:w-5/6 md:h-auto md:mx-auto md:mt-10 md:transition-all md:duration-500 ${
               showModal ? null : "md:h-0"

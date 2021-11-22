@@ -13,14 +13,14 @@ import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
 
 const Card = ({ products }) => {
 
-  const expirationDate = expirationProductDate(products.products.on_sale_date, 30)
+  const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30)
 
   return (
     <>
-      <div className="w-4/5 h-auto border-gray border-2 rounded-b-xl">
-        { expirationDate ? <span className="absolute rounded-full bg-secondary-100 -mt-2 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
+      <fieldset className="w-4/5 sm:w-screen-90 h-full border-gray border-2 rounded-b-xl">
+        { expirationNewProductDate ? <legend className="rounded-full bg-secondary-100 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
           Nouveau
-        </span> : null }
+        </legend> : null }
 
         <Link to={URL_PRODUCT_DETAIL + products.products.product_code}>
           <img
@@ -43,7 +43,7 @@ const Card = ({ products }) => {
 
           {/** Mettre la suite du code ici */}
         </div>
-      </div>
+      </fieldset>
     </>
   );
 };
