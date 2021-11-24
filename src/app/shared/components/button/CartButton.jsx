@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { selectIsLogged } from "../../redux-store/authenticationSlice"; 
 import { accountId } from "../../services/accountServices"; 
 import { GetallProductInCart } from './../../../api/backend/cart';
+import { URL_CART } from './../../constants/urls/urlConstants';
 
 const CartButton = () => {
   const [count, setCount] = useState(null); // state qui enregistre le nombre d'éléments dans le panier
@@ -26,7 +27,7 @@ const CartButton = () => {
   return (
     <div>
       <Link
-        to="/cart/:id"
+        to={URL_CART}
         className="flex flex-row mr-4 2xl:mr-10 cursor-pointer items-center sm:text-nav-yellow text-nav-blue opacity-100
         md:mr-10
         lg:mr-12
