@@ -16,10 +16,6 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   
-
-
-
-
   return (
     <>
       <header
