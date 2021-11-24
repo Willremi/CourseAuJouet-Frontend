@@ -110,3 +110,8 @@
     transform active:scale-95 active:ring-2 active:ring-offset-2 active:ring-white ;
 }
 
+
+/* Adrien */
+.carousel-text{
+    bottom: -20px;
+}
