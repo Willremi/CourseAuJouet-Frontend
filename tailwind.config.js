@@ -67,7 +67,7 @@ module.exports = {
           '600': '#d7690f',
           '700': '#bf5d0d',
           '800': '#a7510c',
-          '900': '#8f460a',
+          'trash': '#F26419',
         }, 
         nav: {
           'yellow': '#FFEECC', 
