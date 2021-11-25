@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { expirationProductDate } from "../../services/productServices";
 import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
+import { accountId } from "../../services/accountServices";
+import { AddToCart } from "../../../api/backend/cart";
 
 /**
  * expirationProductDate()
@@ -14,15 +16,23 @@ import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
 const Card = ({ products }) => {
 
   const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30)
+  const userid = accountId();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const id = e.target.id
+    AddToCart({id, userid}).then(res=>
+      console.log(res))
+  }
 
   return (
     <>
       <fieldset className="w-4/5 sm:w-screen-90 h-full border-gray border-2 rounded-b-xl">
-        { expirationNewProductDate ? <legend className="rounded-full bg-secondary-100 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
+        {expirationNewProductDate ? <legend className="rounded-full bg-secondary-100 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
           Nouveau
-        </legend> : null }
+        </legend> : null}
 
-        <Link to={URL_PRODUCT_DETAIL + products.products.product_code}>
+        <Link to={URL_PRODUCT_DETAIL + products.products._id}>
           <img
             src={products.products.images[0]}
             alt={products.products.product_name}
@@ -31,7 +41,7 @@ const Card = ({ products }) => {
         </Link>
 
         <div className="flex flex-col space-y-1 font-medium p-2 ">
-          <Link to={URL_PRODUCT_DETAIL + products.products.product_code}>
+          <Link to={URL_PRODUCT_DETAIL + products.products._id}>
             <p>{products.products.product_name}</p>
           </Link>
 
@@ -42,6 +52,20 @@ const Card = ({ products }) => {
           <p>{products.products.price / 100} €</p>
 
           {/** Mettre la suite du code ici */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-12 w-12"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor" id={products.products._id} onClick={handleClick}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+            />
+          </svg>
         </div>
       </fieldset>
     </>

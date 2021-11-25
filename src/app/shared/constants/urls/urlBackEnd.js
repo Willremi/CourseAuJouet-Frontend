@@ -8,3 +8,6 @@ export const URL_BACK_VALID_RESET_PASSWORD = '/valid-reset-password/'
 
 /* PRODUCT URL */
 export const URL_BACK_GET_NEW_PRODUCT = '/getnewproduct'
+
+/* PANIER URL */
+export const URL_BACK_ADD_TO_CART = '/addtocart'
