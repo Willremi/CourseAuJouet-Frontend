@@ -21,7 +21,7 @@ const Card = ({ products }) => {
   const handleClick = (e) => {
     e.preventDefault();
     const id = e.target.id
-    AddToCart({id, userid}).then(res=>
+    AddToCart({ id, userid }).then(res =>
       console.log(res))
   }
 
@@ -49,12 +49,13 @@ const Card = ({ products }) => {
             {products.products.trademark}
           </p>
 
-          <p>{products.products.price / 100} €</p>
+          <p id="prix" className=" w-14">{products.products.price / 100} €</p>
 
           {/** Mettre la suite du code ici */}
+          
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12"
+            className="h-12 w-12 text-yellow-400 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor" id={products.products._id} onClick={handleClick}
