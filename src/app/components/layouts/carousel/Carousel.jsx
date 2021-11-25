@@ -34,7 +34,7 @@ const Carousel = () => {
                             */}
                             {/* ceci est l'image */}
                             <div className={index === current 
-                                ? "relative opacity-1 transition duration-1000 hover:opacity-90 h-2/3 w-screen overflow-hidden rounded-b-xl bg-center bg-cover" 
+                                ? "relative opacity-1 transition duration-1000 hover:opacity-90 h-3/4 w-screen rounded-b-xl bg-center bg-cover sm:h-3/4" 
                                 : "opacity-40 transition duration-1000 ease-in hidden"}key={index} style={{ backgroundImage: `url(${slide.image})` }}>
 
                                     {/* les deux cheuvrons servant à manipuler le carousel */}
@@ -43,13 +43,13 @@ const Carousel = () => {
                                 
                                 {/* la div contenant les infos et le lien correspondant à l'image */}
                                 <div className={index === current 
-                                    ? " opacity-1 transition duration-1000 absolute top-20 left-20  text-center" 
+                                    ? " opacity-1 transition duration-1000 absolute sm:static sm:text-center sm:p-10 top-20 left-20  text-center" 
                                     : "opacity-0"} key={index}>
-                                    <p className="text-3xl sm:text-black text-yellow-400 text-center">
+                                    <p className="text-3xl  sm:text-blue-400 text-yellow-400 text-center">
                                     { index === current && slide.text}
                                     </p>
                                     <Link to={slide.link} >  
-                                        <button className="sm:bg-nav-blueClar bg-yellow-400 hover:bg-yellow-500 rounded-full px-7 py-2 mt-2">
+                                        <button className="sm:bg-nav-blueClar bg-yellow-400 hover:bg-yellow-500 rounded-full px-7 py-2 mt-2 sm:mt-4">
                                             Voir plus
                                         </button>
                                     </Link>
