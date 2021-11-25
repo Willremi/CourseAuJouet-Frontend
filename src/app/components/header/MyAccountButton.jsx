@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectIsLogged,
-  signOut,
-} from "../../shared/redux-store/authenticationSlice";
+import { selectIsLogged,signOut,} from "../../shared/redux-store/authenticationSlice";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
 
@@ -65,17 +62,17 @@ function MyAccountButton() {
             }
             ${
               showModal
-                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-0"
+                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-10 lg:top-40"
                 : "lg:h-0 overflow-hidden"
             }
              ${
                showModal
-                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-0"
+                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-10 xl:top-28 xl:mt-3"
                  : "xl:h-0 overflow-hidden"
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:top-0 2xl:z-0"
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-10 2xl:top-28 2xl:mt-2 "
                  : "2xl:h-0 overflow-hidden"
              }
             `}
