@@ -35,7 +35,7 @@ const CartButton = () => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-12 w-12"
+          className="h-12 w-12 md:w-8 md:h-8"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

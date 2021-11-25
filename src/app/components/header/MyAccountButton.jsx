@@ -33,7 +33,7 @@ function MyAccountButton() {
        
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12"
+            className="h-12 w-12 md:w-8 md:h-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -54,6 +54,7 @@ function MyAccountButton() {
 
       <>
         <div
+        
           className={`transition-all duration-500 bg-nav-blueClar absolute overflow-scroll z-40 top-16 left-0 w-screen ${
             showModal ? "h-screen overflow-hidden" : "h-0 overflow-hidden"
           }
@@ -64,17 +65,17 @@ function MyAccountButton() {
             }
             ${
               showModal
-                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-40"
+                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-0 lg:top-0"
                 : "lg:h-0 overflow-hidden"
             }
              ${
                showModal
-                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-28 xl:mt-3"
+                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-0 xl:top-0"
                  : "xl:h-0 overflow-hidden"
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-0 2xl:top-28 2xl:mt-2 "
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:top-0 2xl:z-0"
                  : "2xl:h-0 overflow-hidden"
              }
             `}

@@ -27,11 +27,13 @@ const CartView = () => {
           <p className="flex flex-row items-end md:text-base md:items-center"><TruckIcon className="w-1/12"/><span className="pl-4 pb-1 md:pb-0">Livraison standard gratuite</span></p>
         </div>
          {product !== undefined ? (
-        <div className="space-y-5 w-full">
-          {product.map((onCart) => (
-            <ProductInCart component={onCart} />
+        <ul className="space-y-5 w-full">
+          {product.map((onCart, index) => (
+            <li key={index}>
+            <ProductInCart  component={onCart} />
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
         <p>Votre panier est vide</p>
       )} 
