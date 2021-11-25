@@ -1,23 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
 
-const ProductInCart = ({ component }) => {
+const ProductInCart = ({ component, remove }) => {
   return (
     <div
-      className="flex flex-row w-full justify-between h-36 
-      sm:h-auto sm:bg-white sm:border-2 sm:border-gray-200 sm:rounded-xl sm:shadow-xl
-      md:h-28 md:bg-white md:border-2 md:border-gray-200 md:rounded-xl md:shadow-xl"
+      className="flex flex-row w-full justify-between h-auto 
+       sm:bg-white sm:border-2 sm:border-gray-200 sm:rounded-xl sm:shadow-xl sm:items-center
+       md:bg-white md:border-2 md:border-gray-200 md:rounded-xl md:shadow-xl"
     >
       <Link
         to={URL_PRODUCT_DETAIL + component._id}
         className="
-      sm:w-2/6 sm:border-0 
+      sm:w-3/6 sm:h-3/6 sm:border-0 
       md:w-2/6 md:border-0 
-      border-secondary-100 border-8 rounded-xl w-2/12 flex justify-center p-2 bg-white"
+      border-secondary-100 border-8 rounded-xl w-2/12 flex justify-center p-2 bg-white "
       >
         <img src={component.images[0]} alt={component.product_name} />
       </Link>
+      
       <div
         className="
       sm:1/2 sm:ml-0 sm:border-0 sm:shadow-none sm:h-auto sm:p-3
@@ -25,32 +27,22 @@ const ProductInCart = ({ component }) => {
       w-10/12 shadow-xl rounded-xl p-5 flex flex-col ml-10 justify-between bg-white border-4 border-gray-200"
       >
         <div>
-          <div className="flex items-center justify-between font-semibold text-2xl sm:text-lg sm:items-start md:text-lg">
-            <Link to={URL_PRODUCT_DETAIL + component._id}>{component.product_name}</Link>
-            <button className="text-gray-400 transition-all duration-300 hover:text-gray-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+          <div className="flex justify-between font-semibold text-2xl sm:text-base sm:items-start md:text-lg">
+            <Link to={URL_PRODUCT_DETAIL + component._id} className="flex">
+              {component.product_name}
+            </Link>
+            <button onClick={() => remove(component._id)}>
+              <XIcon className="w-6 h-6 sm:ml-1 text-gray-400 duration-300 hover:text-gray-700"/>
             </button>
+            
           </div>
-          <p className="font-light text-2xl sm:text-xl md:text-lg">
+          <p className="font-light text-2xl sm:text-base md:text-lg">
             {component.trademark}
           </p>
         </div>
 
         <div className="flex flex-row justify-between">
-          <p className="font-semibold text-3xl sm:text-xl md:text-lg">
+          <p className="font-semibold text-3xl sm:text-base md:text-lg">
             {component.price / 100}€
           </p>
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
