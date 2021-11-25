@@ -48,7 +48,7 @@ const Carousel = () => {
                                     <p className="text-3xl sm:text-black text-yellow-400 text-center">
                                     { index === current && slide.text}
                                     </p>
-                                    <Link to={slide.link} >
+                                    <Link to={slide.link} >  
                                         <button className="sm:bg-nav-blueClar bg-yellow-400 hover:bg-yellow-500 rounded-full px-7 py-2 mt-2">
                                             Voir plus
                                         </button>
