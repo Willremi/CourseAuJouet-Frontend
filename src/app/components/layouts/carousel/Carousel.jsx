@@ -20,11 +20,11 @@ const Carousel = () => {
     }
 
     return(
-        <section className="flex w-screen">
+        <section className="flex w-screen ">
             {/* mapage des données */}
                 {CarouselData.map((slide,index) => {
                     return (
-                        <div className="h-screen w-full">
+                        <div className="h-screen w-screen">
                             {/* ceci est l'image */}
                             <div className={index === current 
                                 ? "relative opacity-1 transition duration-1000 hover:opacity-90 h-3/4 w-screen rounded-b-xl bg-center bg-cover sm:h-3/4" 
