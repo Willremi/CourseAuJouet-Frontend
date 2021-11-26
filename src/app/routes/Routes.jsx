@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { URL_HOME, URL_ADMIN_HOME, URL_REGISTER, URL_CART, URL_VERIFY_USER_EMAIL, URL_FORGOT_PASSWORD, URL_RESET_PASSWORD } from '../shared/constants/urls/urlConstants';
+import { URL_HOME, URL_ADMIN_HOME, URL_REGISTER, URL_CART, URL_VERIFY_USER_EMAIL, URL_FORGOT_PASSWORD, URL_RESET_PASSWORD, URL_SEARCH_PAGE } from '../shared/constants/urls/urlConstants';
 import HomeView from '../views/HomeView';
 import RegisterView from '../views/RegisterView';
 import CartView from '../views/CartView';
@@ -13,6 +13,7 @@ import ForgotPasswordView from '../views/ForgotPasswordView';
 import ResetPasswordView from './../views/ResetPasswordView';
 import { URL_PRODUCT_DETAIL } from './../shared/constants/urls/urlConstants';
 import DetailsProductView from './../views/DetailsProductView';
+import SearchView from './../views/SearchView';
 
 
 /**
@@ -32,6 +33,7 @@ const Routes = () => {
             <Route path={URL_FORGOT_PASSWORD} component={ForgotPasswordView} />
             <Route path={URL_RESET_PASSWORD} component={ResetPasswordView} />
             <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
+            <Route path={URL_SEARCH_PAGE} component={SearchView} />
         </Switch>
     );
 };
