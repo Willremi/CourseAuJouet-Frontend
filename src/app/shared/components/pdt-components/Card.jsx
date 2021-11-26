@@ -16,6 +16,8 @@ import { AddToCart } from "../../../api/backend/cart";
 const Card = ({ products }) => {
 
   const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30)
+
+  // const userid = "61938ee3606376cc301b22ad";
   const userid = accountId();
 
   const handleClick = (e) => {
@@ -49,24 +51,26 @@ const Card = ({ products }) => {
             {products.products.trademark}
           </p>
 
-          <p id="prix" className=" w-14">{products.products.price / 100} €</p>
+          <div className="flex flex-row justify-between">
+            <p id="prix" className=" w-20">{products.products.price / 100} €</p>
 
           {/** Mettre la suite du code ici */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-12 text-yellow-400 cursor-pointer"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor" id={products.products._id} onClick={handleClick}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
           
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12 text-yellow-400 cursor-pointer"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor" id={products.products._id} onClick={handleClick}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-            />
-          </svg>
+          </div>
         </div>
       </fieldset>
     </>
