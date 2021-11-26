@@ -21,7 +21,7 @@ const Card = ({ products }) => {
   const userid = accountId();
 
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const id = e.target.id
     AddToCart({ id, userid }).then(res =>
       console.log(res))
