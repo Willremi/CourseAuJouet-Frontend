@@ -15,12 +15,11 @@ import { AddToCart } from "../../../api/backend/cart";
 
 const Card = ({ products }) => {
 
-  const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30)
+  const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30);
 
-  // const userid = "61938ee3606376cc301b22ad";
   const userid = accountId();
 
-  const handleClick = (e) => {
+  const addCart = (e) => {
     // e.preventDefault();
     const id = e.target.id
     AddToCart({ id, userid }).then(res =>
@@ -54,13 +53,13 @@ const Card = ({ products }) => {
           <div className="flex flex-row justify-between">
             <p id="prix" className=" w-20">{products.products.price / 100} €</p>
 
-          {/** Mettre la suite du code ici */}
+          {/* Bouton Ajout Panier */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-yellow-400 cursor-pointer"
+              className="h-12 w-12 md:h-10 md:w-10 text-yellow-400 cursor-pointer"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor" id={products.products._id} onClick={handleClick}
+              stroke="currentColor" id={products.products._id} onClick={addCart}
             >
               <path
                 strokeLinecap="round"
