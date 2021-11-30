@@ -1,27 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
 import { CustomInput } from "./../../shared/components/form-and-error-components/InputCustom";
 import { schemaFormSearch } from "./../../shared/constants/formik-yup/yup/yupSearch";
 import { SearchIcon } from "@heroicons/react/solid";
-import { getSearchResult } from "./../../api/backend/search";
-import { useHistory } from "react-router";
+import { useDispatch } from 'react-redux';
+import { getValues } from "../../shared/redux-store/searchSlice";
+import { getSearchResult } from "../../api/backend/search";
+import { useHistory } from 'react-router';
 import { URL_SEARCH_PAGE } from "../../shared/constants/urls/urlConstants";
 
-/* Barre de recherche 
-pour le moment ce n'est qu'un input elle n'est pas encore rattachée au back-end*/
-
 const SearchBar = () => {
-  
+  const dispatch = useDispatch()
+  const history = useHistory()
   
 
-  // Fonction qui recupère et affiche dans la console la valeur tapée dans la barre de recherche
   const SearchBarFunction = (values) => {
+    const searchedData = {search: values}
+    getSearchResult(searchedData)
+    .then((res) => {
+         dispatch(getValues(res.data.result, searchedData.search))
+         
+         history.push(URL_SEARCH_PAGE)
+    })
+    .catch((error) => console.log(error));
     
   };
 
   return (
     <Formik
-      initialValues={{ search: "" }}
+      initialValues={{ search: ''}}
       onSubmit={(values) => SearchBarFunction(values.search)}
       validationSchema={schemaFormSearch}
     >

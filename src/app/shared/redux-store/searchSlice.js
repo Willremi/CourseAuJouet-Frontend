@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getSearchResult } from './../../api/backend/search';
+import { setSearch, getSearch } from './../services/searchServices';
+
 
 /**
  * initial state: is logged check if the user is already authenticated when openning the Application
  * @author Peter Mollet
  */
- const initialState = { 
-    searchValue : ""
+const initialState = {
+    searchResult: getSearch(),
 }
 
 export const searchSlice = createSlice({
@@ -14,18 +15,15 @@ export const searchSlice = createSlice({
     initialState,
     reducers: {
         getValues: (state, action) => {
-
-            getSearchResult(action.payload)
-      .then((res) => {
-  
-      })
-      .catch((error) => console.log(error));
-            state.searchValue = action.payload
+            setSearch(action.payload)
+            state.searchResult = action.payload
         },
     }
+
 })
 
 export const { getValues } = searchSlice.actions
+    
+export const selectSearchResult = (state) => state.search.searchResult
 
-export const selectSearchValue = (state) => state.search.searchValue
 export default searchSlice.reducer

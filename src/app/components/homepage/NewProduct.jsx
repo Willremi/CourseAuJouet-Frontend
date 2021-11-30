@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { SortProductDate } from "../../shared/services/productServices";
 import { GetNewProduct } from "./../../api/backend/product";
 import Card from './../../shared/components/pdt-components/Card';
 
@@ -16,7 +15,7 @@ const NewProduct = () => {
   useEffect(() => {
     GetNewProduct()
       .then((res) => {
-        setShowNewProduct(SortProductDate(res.data.product, 30))
+        setShowNewProduct(res.data.product)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -28,9 +27,9 @@ const NewProduct = () => {
         <ul className="flex flex-row sm:overflow-scroll justify-between space-x-3 w-full mt-4">
           {showNewProduct.map((show, index) => 
             <li key={index} className="w-2/6 sm:w-full">
-              {index <= 3 ? <>
-              <Card products={show} />
-            </> : null }
+             
+              <Card key={index} products={show} />
+            
             </li>
             
           
