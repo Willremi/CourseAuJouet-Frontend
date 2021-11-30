@@ -32,6 +32,9 @@ module.exports = {
         '2/1': '200%',
         'screen-90': '90vw',
       },
+      zIndex: {
+        '-10': '-10',
+       },
 
       animation: {
         FadeIn: 'FadeIn 1s ease-in-out',
