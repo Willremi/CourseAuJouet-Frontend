@@ -6,7 +6,7 @@ import NewProduct from '../components/homepage/NewProduct';
 import  Carousel  from '../components/layouts/carousel/Carousel';
 const HomeView = ({ history }) => {
     return (
-        <>
+        <div>
             <Carousel />            
             <div className="w-11/12 mx-auto my-3">
                 <NewProduct />      
@@ -16,7 +16,7 @@ const HomeView = ({ history }) => {
                     </button>
                 )} */}
             </div>
-        </>
+        </div>
     )
 }
 

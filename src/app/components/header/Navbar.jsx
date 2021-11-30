@@ -18,10 +18,11 @@ const Navbar = () => {
 
   return (
     <>
-      <header
+      <div
         className="flex flex-col bg-nav-yellow w-screen
       sm:bg-nav-blueClar sm:py-3
         lg:px-8"
+        
       >
         <div className="flex flex-row justify-between mb-3 md:mb-0 2xl:w-11/12 2xl:mx-auto">
           {/* Burger menu pour mobile */}
@@ -129,7 +130,7 @@ const Navbar = () => {
         {window.innerWidth < 504 ? <SearchBar /> : null}
 
        
-      </header>
+      </div>
       <Transition
         show={isOpen}
         enter="transition ease-out duration-100"

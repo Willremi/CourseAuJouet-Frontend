@@ -32,6 +32,11 @@ module.exports = {
         '2/1': '200%',
         'screen-90': '90vw',
       },
+      height:{
+        'screen-40': '40vw',
+        'screen-50': '50vw',
+        '192' : '48rem'
+      },
       zIndex: {
         '-10': '-10',
        },

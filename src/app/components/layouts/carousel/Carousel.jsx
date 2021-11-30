@@ -20,23 +20,23 @@ const Carousel = () => {
     }
 
     return(
-        <section className="flex w-screen ">
+        <section>
             {/* mapage des données */}
                 {CarouselData.map((slide,index) => {
                     return (
-                        <div className="h-screen w-screen">
+                        <div key={index} className={`${index === current ? "w-screen h-screen-40 md:h-screen-40 sm:h-screen-50 relative" : "hidden"}`}>
                             {/* ceci est l'image */}
-                            <div className={index === current 
-                                ? "relative opacity-1 transition duration-1000 hover:opacity-90 h-3/4 w-screen rounded-b-xl bg-center bg-cover sm:h-3/4" 
-                                : "opacity-40 transition duration-1000 ease-in hidden"}key={index} style={{ backgroundImage: `url(${slide.image})` }}>
-
+                            <Link to={slide.link} >  
+                            <img src={slide.image} alt="produit" 
+                            className="w-full h-full object-bottom object-cover"/>
+                            </Link>
                                     {/* les deux cheuvrons servant à manipuler le carousel */}
                                     <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
                                     <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
                                 
                                 {/* la div contenant les infos et le lien correspondant à l'image */}
                                 <div className={index === current 
-                                    ? "opacity-1 transition duration-1000 absolute sm:static sm:p-10 top-20 left-20 text-center" 
+                                    ? "opacity-1 transition duration-1000 absolute sm:static sm:p-10 sm:hidden top-20 left-20 text-center" 
                                     : "opacity-0"} key={index}>
                                     <p className="text-3xl sm:text-blue-400 text-yellow-400 text-center">
                                     { index === current && slide.text}
@@ -48,7 +48,7 @@ const Carousel = () => {
                                     </Link>
                                 </div>
                             </div>  
-                        </div>
+                       
 
                     )
                 })}

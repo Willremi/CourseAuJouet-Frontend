@@ -31,7 +31,7 @@ const RoutesWithNavigation = () => {
         <BrowserRouter>
             <div>
                 { isLogged && <IdleTimerCustom />}
-                <Navbar/>
+                <Navbar />
                 <main>
                     <Routes/>
                 </main>
