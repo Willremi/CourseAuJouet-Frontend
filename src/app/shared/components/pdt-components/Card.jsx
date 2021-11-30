@@ -15,9 +15,12 @@ const Card = ({ products }) => {
 
   const expirationNewProductDate = expirationProductDate(products.products.on_sale_date, 30)
 
+  
+
+
   return (
     <>
-      <fieldset className="w-4/5 sm:w-screen-90 h-full border-gray border-2 rounded-b-xl">
+      <fieldset className="w-4/5 sm:w-screen-90 h-full border-gray border-2 rounded-b-xl bg-white flex flex-col justify-between">
         { expirationNewProductDate ? <legend className="rounded-full bg-secondary-100 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
           Nouveau
         </legend> : null }
@@ -26,7 +29,7 @@ const Card = ({ products }) => {
           <img
             src={products.products.images[0]}
             alt={products.products.product_name}
-            className="w-full h-auto flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
+            className="w-full h-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           />
         </Link>
 

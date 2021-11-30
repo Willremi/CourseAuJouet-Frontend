@@ -38,6 +38,7 @@ export function hasRole(role) {
  * @return {boolean} true if user is authenticated
  * @author Peter Mollet
  */
+
 export function isAuthenticated() {
     try{
         const token = getToken()

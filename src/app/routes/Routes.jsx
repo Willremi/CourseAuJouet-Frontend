@@ -25,7 +25,7 @@ const Routes = () => {
     return (
         <Switch history={customHistory}>
             <PrivateRoute path={URL_ADMIN_HOME} component={AdminHomeView} roles={[ROLE_ADMIN]} />
-            <Route path={URL_CART} component={CartView} roles={[ROLE_CUSTOMER]} />
+            <PrivateRoute path={URL_CART} component={CartView} roles={[ROLE_CUSTOMER]} />
             <Route exact path={URL_HOME} component={HomeView} />
             <Route path={URL_REGISTER} component={RegisterView} />
             <Route path={URL_VERIFY_USER_EMAIL} component={RegisteredUser} />

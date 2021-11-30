@@ -8,5 +8,6 @@ import { authenticationSlice } from './authenticationSlice';
  * @author Peter Mollet
  */
 export default combineReducers({
-    authenticationSlice
+    authenticationSlice,
+
 })

@@ -87,7 +87,7 @@
 }
 
 .input2{
-    @apply appearance-none relative block w-full px-3 py-2
+    @apply appearance-none block w-full px-3 py-2
     border border-blue-300 placeholder-gray-500 text-gray-900 rounded-sm 
     focus:outline-none focus:ring-blue-300 focus:border-blue-300  focus:z-20 sm:text-sm
 }
@@ -110,6 +110,7 @@
 .anim-delay-600{
     animation-delay: 0.6s;
 }
+
 
 
 
