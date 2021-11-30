@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { authenticationSlice } from './authenticationSlice';
+import { inCartReducer } from './inCartReducer';
 
 /**
  * Combine all the reducers create in different files, to add them in the redux-store

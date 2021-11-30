@@ -18,6 +18,8 @@ const CartView = () => {
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
 
+  console.log(product)
+
   useEffect(() => {
     GetallProductInCart(userId)
       .then((res) => {
