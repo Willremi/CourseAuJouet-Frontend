@@ -59,7 +59,7 @@ const CartView = () => {
           </p>
         </div>
         {product !== undefined ? (
-          <ul className="space-y-5 w-full">
+          <ul className="space-y-3 w-full">
             {product.map((onCart, index) => (
               <li key={index}>
                 <ProductInCart
