@@ -7,7 +7,7 @@ export function GetallProductInCart(id){
 }
 
 export function AddToCart(values) {
-    return apiBackEnd.post(URL_BACK_ADD_TO_CART, values)
+    return apiBackEnd.patch(URL_BACK_ADD_TO_CART, values)
 }
 
 export function RemoveOneProductInCart(values){
