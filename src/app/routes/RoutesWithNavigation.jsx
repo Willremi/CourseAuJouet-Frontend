@@ -26,11 +26,12 @@ const contextClass = {
 const RoutesWithNavigation = () => {
     
     const isLogged = useSelector(selectIsLogged)
+    
     return (
         <BrowserRouter>
             <div>
                 { isLogged && <IdleTimerCustom />}
-                <Navbar/>
+                <Navbar />
                 <main>
                     <Routes/>
                 </main>

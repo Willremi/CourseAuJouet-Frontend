@@ -15,27 +15,25 @@ const Navbar = () => {
   }
 
   const [isOpen, setIsOpen] = useState(false);
-  
   return (
     <>
-      <header
-        className="justify-between flex flex-col bg-nav-yellow w-screen
-    sm:bg-nav-blueClar
-    sm:py-3
-    md:pt-3
-      lg:px-8"
+      <div
+        className="flex flex-col bg-nav-yellow w-screen
+      sm:bg-nav-blueClar sm:py-3
+        lg:px-8"
+        
       >
-        <div className="flex flex-row justify-between mb-3 2xl:w-11/12 2xl:mx-auto">
+        <div className="flex flex-row justify-between mb-3 md:mb-0 2xl:w-11/12 2xl:mx-auto">
           {/* Burger menu pour mobile */}
           <div className="flex flex-row w-full items-center">
             {window.innerWidth <= 1024 ? (
               <button
-                className="w-12 h-12 mx-6"
+                className="w-12 h-12 mx-6 "
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {!isOpen ? (
                   <svg
-                    className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16"
+                    className="fill-current text-nav-yellow md:text-nav-blue md:h-6 md:w-6"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                   >
@@ -43,7 +41,7 @@ const Navbar = () => {
                   </svg>
                 ) : (
                   <svg
-                    className="fill-current text-nav-yellow md:text-nav-blue md:h-16 md:w-16"
+                    className="fill-current text-nav-yellow md:text-nav-blue md:h-6 md:w-6"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                   >
@@ -55,12 +53,12 @@ const Navbar = () => {
             {/* 
             Logo du site qui renvoie a l'acceuil au clic
             */}
-            <Link to={URL_HOME} className="sm:hidden md:w-3/12 xl:w-3/12 2xl:w-2/12 md:ml-3">
+            <Link to={URL_HOME} className="sm:hidden md:hidden xl:w-3/12 2xl:w-2/12 md:ml-3">
               <img src={Logo} alt="Logo" />
             </Link>
 
             {/* Recherche */}
-            {window.innerWidth >= 1024 ? (
+            {window.innerWidth >= 504 ? (
               <div className="flex flex-col w-full">
                 <SearchBar />
 
@@ -69,7 +67,7 @@ const Navbar = () => {
                   <nav className="hidden lg:grid xl:grid 2xl:grid md:text-nav-blue font-semibold">
                     <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue pt-6 justify-around">
                       {navigation.map((item) => (
-                        <li key={item.name} className="px-4">
+                        <li key={item.name} className="px-4 z-10">
                           <Menu as="div">
                             <div>
                               <Menu.Button className="text-2xl font-semibold">
@@ -128,12 +126,10 @@ const Navbar = () => {
             <CartButton />
           </div>
         </div>
-        {window.innerWidth < 1024 ? <SearchBar /> : null}
+        {window.innerWidth < 504 ? <SearchBar /> : null}
 
-        {/* TODO:  Problème d'affichage de la barre de recherche sur différents devices (2)
-            author: Rémi
-            */}
-      </header>
+       
+      </div>
       <Transition
         show={isOpen}
         enter="transition ease-out duration-100"

@@ -30,7 +30,7 @@ import { useHistory } from 'react-router';
     }
 
     return (
-            <Login submit={handleLogin} errorLog={errorLog} />
+            <Login submit={handleLogin} errorLog={errorLog} hideModal={hideModal}/>
     );
 };
 

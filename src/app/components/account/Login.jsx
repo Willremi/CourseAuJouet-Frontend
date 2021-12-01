@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 import { defaulValuesLogin } from '../../shared/constants/formik-yup/default-values-form/idefaultValuesUser';
 import { schemaFormLogin } from '../../shared/constants/formik-yup/yup/yupUser';
 import { CustomCheckbox, CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
-//import { ErrorMessSmall } from '../../shared/components/form-and-error-components/ErrorMessSmall';
 import ErrorMessSmall from './../../shared/components/form-and-error-components/ErrorMessSmall';
 
 
-const LoginForm = ({ submit, errorLog }) => (
+const LoginForm = ({ submit, errorLog, hideModal }) => (
   <Formik
     initialValues={defaulValuesLogin}
     validationSchema={schemaFormLogin}
@@ -65,7 +64,7 @@ const LoginForm = ({ submit, errorLog }) => (
           vous êtes nouveau ici ?
         </p>
 
-        <button className="btn btn-yellow-border ">
+        <button className="btn btn-yellow-border" onClick={() => hideModal(false)}>
           <Link to="/register">
             S'inscrire
         </Link>
