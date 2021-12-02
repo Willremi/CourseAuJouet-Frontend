@@ -18,7 +18,7 @@ const ProductInCart = ({ component, remove }) => {
       border-secondary-100 border-4 rounded-xl flex justify-center bg-white "
       >
         <img src={component.images[0]} alt={component.product_name} 
-        className="2xl:object-contain p-1"/>
+        className="2xl:object-contain md:object-contain p-1"/>
       </Link>
       
       <div
@@ -28,12 +28,16 @@ const ProductInCart = ({ component, remove }) => {
       w-10/12 shadow-xl rounded-xl p-3 flex flex-col justify-between bg-white border-4 border-gray-200"
       >
         <div>
-          <div className="flex justify-between font-semibold text-xl sm:text-base sm:items-start md:text-lg">
-            <Link to={URL_PRODUCT_DETAIL + component._id} className="flex">
+          <div className="flex justify-between font-semibold text-xl 
+          sm:text-base sm:items-start 
+          md:text-lg">
+            <Link to={URL_PRODUCT_DETAIL + component._id} className="flex sm:truncate md:truncate">
               {component.product_name}
             </Link>
             <button onClick={() => remove(component._id)}>
-              <XIcon className="w-6 h-6 sm:ml-1 text-gray-400 duration-300 hover:text-gray-700"/>
+              <XIcon className="w-6 h-6 text-gray-400 duration-300 hover:text-gray-700 
+              sm:ml-1 
+              md:ml-3"/>
             </button>
             
           </div>
@@ -46,14 +50,17 @@ const ProductInCart = ({ component, remove }) => {
           <p className="font-semibold text-xl sm:text-base md:text-lg">
             {component.price / 100}€
           </p>
-          <p className="font-semibold text-yellow-600 text-xl sm:hidden md:text-lg">
-            Disponible
-          </p>
-          {/** Vérifier la disponibilité dans un futur ticket */}
-
+          
           {/**
            * TODO Mettre le composant quantitée ici
            */}
+           
+           {/** Vérifier la disponibilité dans un futur ticket */}
+          <p className="font-semibold text-yellow-600 text-xl sm:hidden md:text-lg">
+            Disponible
+          </p>
+         
+
         </div>
       </div>
     </div>

@@ -143,8 +143,17 @@ const Navbar = () => {
         <div className="hidden md:block">
           <div className="flex">
             <ul className="bg-nav-yellowClar divide-y">
+              <li className="hover:bg-nav-yellow">
+              <Disclosure as="div">
+              <div>
+              <Link to={URL_HOME} className="block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue">
+                      Accueil
+              </Link>
+              </div>
+              </Disclosure>
+              </li>
               {navigation.map((item) => (
-                <li key={item.name} className="hover:bg-nav-yellow">
+                <li key={item.name} >
                   <Disclosure as="div">
                     <div id={item.name}>
                       <Disclosure.Button className="block pl-4 pr-60 py-2 text-3xl rounded font-semibold text-nav-blue">
@@ -162,6 +171,7 @@ const Navbar = () => {
                       leaveTo="-translate-x-full"
                     >
                       <div className="py-1 bg-nav-yellowClar rounded">
+                      
                         {item.submenu.map((sub) => (
                           <Disclosure.Panel key={sub.name}>
                             {({ active }) => (

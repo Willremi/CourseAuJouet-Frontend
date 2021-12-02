@@ -33,9 +33,11 @@ const SearchBar = () => {
       validationSchema={schemaFormSearch}
     >
       <Form className="w-full px-4 flex mt-2 items-center md:pb-2">
-        <SearchIcon className="h-6 w-6 absolute ml-2.5 z-30 text-yellow-500" />
+        <div className="bg-white p-2 rounded-l-full sm:p-1.65 border border-r-0">
+           <SearchIcon className="h-6 w-6 text-yellow-500" />
+        </div>
         <Field
-          className="pl-10 w-full rounded-full"
+          className="w-full rounded-r-full border-l-0 pl-0"
           type="search"
           name="search"
           placeholder="Rechercher..."

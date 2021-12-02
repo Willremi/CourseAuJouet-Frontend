@@ -1,9 +1,9 @@
 module.exports = {
-
+  mode:"jit",
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-
+    
     screens: {
       'sm': {
         'min': '320px',
@@ -27,7 +27,11 @@ module.exports = {
     },
     
     extend: {
-
+      padding: {
+        '1.75': '0.4375rem',
+        '1.70': '0.400rem',
+        '1.65': '0.37rem',
+      },
       width: {
         '2/1': '200%',
         'screen-90': '90vw',
