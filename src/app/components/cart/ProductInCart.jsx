@@ -48,6 +48,12 @@ const ProductInCart = ({ component, remove }) => {
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
           </p>
+          <p className="font-semibold">
+            Quantité :
+            <input type="button" value="+" />
+            <input type="text" value="1"/> 
+            <input type="button" value="-" />
+          </p>
           {/** Vérifier la disponibilité dans un futur ticket */}
 
           {/**
