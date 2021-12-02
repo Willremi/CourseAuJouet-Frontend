@@ -6,6 +6,7 @@ import {
 import ProductInCart from "../components/cart/ProductInCart";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
+import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 
 /**
  * ReloadComponent is used to update the component when a product is removed from cart
@@ -71,8 +72,9 @@ const CartView = () => {
           </ul>
         ) : (
           <p>Votre panier est vide</p>
-        )}
+        )} 
       </div>
+     <SummaryOfOrders product={product}/>
     </div>
   );
 };
