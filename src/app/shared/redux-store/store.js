@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authenticationReducer from './authenticationSlice'
-import cartLengthSlice from './inCartReducer';
+import inCartReducer from './inCartSlice';
 
 /**
  * To configure the store redux. 
@@ -10,6 +10,6 @@ import cartLengthSlice from './inCartReducer';
  export const store = configureStore({
 	reducer: {
 		auth: authenticationReducer,
-		cartLength: cartLengthSlice
+		inCart: inCartReducer
 	},
 });
