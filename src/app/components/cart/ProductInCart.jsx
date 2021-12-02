@@ -51,7 +51,7 @@ const ProductInCart = ({ component, remove }) => {
           {/** Vérifier la disponibilité dans un futur ticket */}
 
           {/**
-           * TODO Mettre le composant quantitée ici
+           * TODO Mettre le composant quantité ici
            */}
         </div>
       </div>
