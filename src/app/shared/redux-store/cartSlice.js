@@ -8,17 +8,20 @@ import { createSlice } from "@reduxjs/toolkit"
      product: 1, 
      price: 2
  }
+ 
 
  export const cartSlice = createSlice({
      name: 'cart', 
-     initialState, 
+     initialState,
      reducers: {
-         increment: (state) => {
+         increment: (state, action) => {
              if(state.product < 5) {
                 state.product += 1
              }
+            
+            
          }, 
-         decrement: (state) => {
+         decrement: (state, action) => {
              if(state.product > 1) {
                  state.product -= 1
              }
@@ -29,3 +32,4 @@ import { createSlice } from "@reduxjs/toolkit"
  export const {increment, decrement} = cartSlice.actions
 
  export default cartSlice.reducer
+ 

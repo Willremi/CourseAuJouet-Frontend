@@ -56,6 +56,7 @@ const ProductInCart = ({ component, remove }) => {
           </p>
           
           <span>{prix * count}€</span>
+          <span>{component.stock - count}</span>
           <p className="font-semibold">
             Quantité :
             <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement())}>-</button>
