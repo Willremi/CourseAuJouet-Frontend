@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
+import { decrement, increment } from "../../shared/redux-store/cartSlice";
 
 const ProductInCart = ({ component, remove }) => {
+  const count = useSelector(state => state.cart.product)
+  const prix = useSelector(state => state.cart.price)
+  const dispatch = useDispatch()
+
   return (
     <div
       className="flex flex-row w-full justify-between h-auto 
@@ -48,11 +54,13 @@ const ProductInCart = ({ component, remove }) => {
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
           </p>
+          
+          <span>{prix * count}€</span>
           <p className="font-semibold">
             Quantité :
-            <input type="button" value="+" />
-            <input type="text" value="1"/> 
-            <input type="button" value="-" />
+            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement())}>-</button>
+            <label>{count}</label>
+            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(increment())}>+</button>
           </p>
           {/** Vérifier la disponibilité dans un futur ticket */}
 
