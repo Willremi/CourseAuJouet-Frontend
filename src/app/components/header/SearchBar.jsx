@@ -19,7 +19,6 @@ const SearchBar = () => {
     getSearchResult(searchedData)
     .then((res) => {
          dispatch(getValues(res.data.result, searchedData.search))
-         
          history.push(URL_SEARCH_PAGE)
     })
     .catch((error) => console.log(error));

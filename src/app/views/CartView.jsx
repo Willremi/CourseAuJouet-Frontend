@@ -7,6 +7,8 @@ import ProductInCart from "../components/cart/ProductInCart";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
+import { Link } from 'react-router-dom';
+import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
 
 /**
  * ReloadComponent is used to update the component when a product is removed from cart
@@ -70,11 +72,22 @@ const CartView = () => {
               </li>
             ))} 
             <SummaryOfOrders product={product}/>
+            <div className="w-9/12 ml-auto text-center mr-5 py-6
+            sm:mx-auto
+            md:mx-auto
+            lg:mx-auto
+            ">
+              <Link to={URL_ORDER_ADDRESS} className="btn btn-yellow rounded-full transition duration-300">
+                Passer la commande
+              </Link>
+            </div>
+        
           </ul>
          
         ) : (
           <p>Votre panier est vide</p>
         )} 
+       
       </div>
      
     </div>

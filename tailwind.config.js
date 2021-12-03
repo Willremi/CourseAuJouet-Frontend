@@ -6,7 +6,7 @@ module.exports = {
     
     screens: {
       'sm': {
-        'min': '320px',
+        'min': '0px',
         'max': '503px'
       },
       'md': {
@@ -72,7 +72,7 @@ module.exports = {
         },
         secondary: {
           '100': '#F6AE2D',
-          '200': '#f7ba88',
+          '200': '#f9ca76',
           '300': '#f39e58',
           '400': '#f08228',
           '500': "#ed7410",

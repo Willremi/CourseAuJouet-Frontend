@@ -13,9 +13,10 @@ const ProductInCart = ({ component, remove }) => {
       <Link
         to={URL_PRODUCT_DETAIL + component._id}
         className="
-      sm:w-3/6 sm:h-3/6 sm:border-0 
+        
+      sm:w-2/6 sm:h-3/6 sm:border-0 
       md:w-2/6 md:border-0 
-      border-secondary-100 border-4 rounded-xl flex justify-center bg-white "
+      w-2/12 border-secondary-100 border-4 rounded-xl flex justify-center bg-white "
       >
         <img src={component.images[0]} alt={component.product_name} 
         className="2xl:object-contain md:object-contain p-1"/>
@@ -25,7 +26,7 @@ const ProductInCart = ({ component, remove }) => {
         className="
       sm:1/2 sm:ml-0 sm:border-0 sm:shadow-none sm:h-auto sm:p-3
       md:1/2 m:ml-0 md:border-0 md:shadow-none md:h-auto md:p-3
-      w-10/12 shadow-xl rounded-xl p-3 flex flex-col justify-between bg-white border-4 border-gray-200"
+      w-9/12 shadow-xl rounded-xl p-3 flex flex-col justify-between bg-white border-4 border-gray-200"
       >
         <div>
           <div className="flex justify-between font-semibold text-xl 

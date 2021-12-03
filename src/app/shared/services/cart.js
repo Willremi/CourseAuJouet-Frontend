@@ -17,10 +17,26 @@ export const addProductInCart = (ProductId) => {
         .catch((error) => console.log(error))
 }
 
-export function Pricing(productList) {
+export function Pricing(productList, Delivery) {
     let calculating = {
         TotalPrice: 0,
-        taxes: 0
+        taxes: 0,
+        Delivery: 0
+    }
+
+
+    switch (Delivery) {
+        case 'Magasin':
+            calculating.Delivery = 0
+            break
+        case 'Relais':
+            calculating.Delivery = 0
+            break
+        case 'Domicile':
+            calculating.Delivery = 350
+            break
+        default:
+            return calculating.Delivery = "Gratuit";
     }
     if (productList)
         productList.map((p) => {
@@ -28,5 +44,7 @@ export function Pricing(productList) {
             calculating.taxes = calculating.taxes + (p.price * 0.20)
             return null
         })
+
     return calculating
+
 }
