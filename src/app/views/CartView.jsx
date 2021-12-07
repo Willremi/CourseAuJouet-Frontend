@@ -31,7 +31,7 @@ const CartView = () => {
       dispatch(getData(res.data.cart))
     })
     .catch((error) => console.log(error));
-  }, [userId, ReloadComponent]);
+  }, [userId, ReloadComponent, dispatch]);
 
   if(product) {
     ReduxProduct(product)

@@ -15,23 +15,18 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        getData: (state,action) => {
+        getData: (state, action) => {
             state.product = action.payload
-        }, 
+        },
         increment: (state, action) => {
-            
-               if(state.product[action.payload].quantity < 5) {
+            if (state.product[action.payload].quantity < 5) {
                 state.product[action.payload].quantity++
-               }
-           
-            
-
+            }
         },
         decrement: (state, action) => {
-                if(state.product[action.payload].quantity > 1) {
-                    state.product[action.payload].quantity--
-                }
-        
+            if (state.product[action.payload].quantity > 1) {
+                state.product[action.payload].quantity--
+            }
         }
     }
 })

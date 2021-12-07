@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { XIcon } from "@heroicons/react/solid";
@@ -51,17 +51,17 @@ const ProductInCart = ({ component, remove, index }) => {
 
         <div className="flex flex-row justify-between">
           <p className="font-semibold text-3xl sm:text-base md:text-lg">
-            {(cart[index].quantity * component.price) / 100}€
+            {cart ? (cart[index].quantity * component.price) / 100 : null}€
           </p>
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
           </p>
           
           {/* gestion */}
-          
           <p className="font-semibold">
             Quantité :
             
+          {/* Styliser les bouton compter à faire*/}
             <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement(index))}>-</button>
 
             <label>{cart ? cart[index].quantity : null}</label>
