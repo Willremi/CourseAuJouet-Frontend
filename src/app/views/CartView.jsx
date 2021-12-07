@@ -6,6 +6,9 @@ import {
 import ProductInCart from "../components/cart/ProductInCart";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
+import { ReduxProduct } from "../shared/services/cart";
+import { useDispatch } from "react-redux";
+import { getData } from "../shared/redux-store/cartSlice";
 
 /**
  * ReloadComponent is used to update the component when a product is removed from cart
@@ -13,18 +16,28 @@ import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
  * @author Mathieu
  */
 
+
+
 const CartView = () => {
   const [product, setProduct] = useState();
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     GetallProductInCart(userId)
-      .then((res) => {
-        setProduct(res.data.cart);
-      })
-      .catch((error) => console.log(error));
+    .then((res) => {
+      setProduct(res.data.cart);
+      dispatch(getData(res.data.cart))
+    })
+    .catch((error) => console.log(error));
   }, [userId, ReloadComponent]);
+
+  if(product) {
+    ReduxProduct(product)
+    console.log("CartView ReduxProd :", ReduxProduct(product))
+  }
+
 
   const handleRemoveProduct = (productId) => {
     const values = { userId: userId, productId: productId };
@@ -60,11 +73,12 @@ const CartView = () => {
         </div>
         {product !== undefined ? (
           <ul className="space-y-5 w-full">
-            {product.map((onCart, index) => (
+          {product.map((onCart, index) => (
               <li key={index}>
                 <ProductInCart
                   component={onCart}
                   remove={handleRemoveProduct}
+                  index={index}
                 />
               </li>
             ))}

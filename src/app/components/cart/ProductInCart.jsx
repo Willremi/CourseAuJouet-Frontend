@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
-import { decrement, increment } from "../../shared/redux-store/cartSlice";
+import { decrement, increment, selectQuantity} from "../../shared/redux-store/cartSlice";
 
-const ProductInCart = ({ component, remove }) => {
-  const count = useSelector(state => state.cart.product)
-  const prix = useSelector(state => state.cart.price)
+
+const ProductInCart = ({ component, remove, index }) => {
+ 
+  const cart = useSelector(selectQuantity);
   const dispatch = useDispatch()
+
 
   return (
     <div
@@ -49,19 +51,22 @@ const ProductInCart = ({ component, remove }) => {
 
         <div className="flex flex-row justify-between">
           <p className="font-semibold text-3xl sm:text-base md:text-lg">
-            {component.price / 100}€
+            {(cart[index].quantity * component.price) / 100}€
           </p>
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
           </p>
           
-          <span>{prix * count}€</span>
-          <span>{component.stock - count}</span>
+          {/* gestion */}
+          
           <p className="font-semibold">
             Quantité :
-            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement())}>-</button>
-            <label>{count}</label>
-            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(increment())}>+</button>
+            
+            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement(index))}>-</button>
+
+            <label>{cart ? cart[index].quantity : null}</label>
+
+            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(increment(index))}>+</button>
           </p>
           {/** Vérifier la disponibilité dans un futur ticket */}
 
