@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
+import { store } from "../shared/redux-store/store";
 import {
   GetallProductInCart,
   RemoveOneProductInCart,
 } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
+import { setInCart } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 
@@ -17,13 +20,16 @@ const CartView = () => {
   const [product, setProduct] = useState();
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
+  const dispatch = useDispatch()
 
-  console.log(product)
+  // console.log(product)
 
   useEffect(() => {
     GetallProductInCart(userId)
       .then((res) => {
         setProduct(res.data.cart);
+        console.log(res.data.cart);
+        dispatch(setInCart(res.data.cart));
       })
       .catch((error) => console.log(error));
   }, [userId, ReloadComponent]);
