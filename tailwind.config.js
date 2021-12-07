@@ -35,6 +35,7 @@ module.exports = {
       width: {
         '2/1': '200%',
         'screen-90': '90vw',
+        'autocompletion': '97.4%',
       },
       height:{
         'screen-40': '40vw',

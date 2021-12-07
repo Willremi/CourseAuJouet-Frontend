@@ -14,3 +14,4 @@ export const URL_BACK_REMOVE_ONE_PRODUCT_IN_CART = '/removeproduct'
 
 /** SearchBar */
 export const URL_BACK_GET_SEARCH_RESULT = '/getsearchproduct'
+export const URL_BACK_AUTO_COMPLETE_SEARCH = '/autocompletesearch/'

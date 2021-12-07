@@ -21,6 +21,8 @@ const CartView = () => {
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
 
+  
+
   useEffect(() => {
     GetallProductInCart(userId)
       .then((res) => {
