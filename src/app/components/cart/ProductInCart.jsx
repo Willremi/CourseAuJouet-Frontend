@@ -58,18 +58,21 @@ const ProductInCart = ({ component, remove, index }) => {
 
           {/* Quantité */}
           <div className="font-semibold flex">
-          <p className="text-lg lg:text-2xl xl:text-2xl">Qté :</p>
-
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 xl:ml-2 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
+          <p className="font-semibold text-2xl sm:text-base md:text-lg mr-1 xl:mr-2">Qté :</p>
+          
+          <div className="flex border-collapse border-2 border-opacity-60 border-yellow-500 rounded">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
 
-          <span className="px-4 border-2 border-yellow-500 rounded border-opacity-85 md:h-7 xl:h-8">{cart ? cart[index].quantity : null}</span>
+          <span className="px-4 border border-opacity-25 border-yellow-500 md:h-7">{cart ? cart[index].quantity : null}</span>
 
           <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor" onClick={() => dispatch(increment(index))}>
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
           </svg>
           </div>
+          </div>
+          
           {/** Vérifier la disponibilité dans un futur ticket */}
 
           {/**
