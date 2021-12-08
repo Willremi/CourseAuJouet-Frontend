@@ -35,7 +35,7 @@ const CartView = () => {
 
   if(product) {
     ReduxProduct(product)
-    console.log("CartView ReduxProd :", ReduxProduct(product))
+    // console.log("CartView ReduxProd :", ReduxProduct(product))
   }
 
 

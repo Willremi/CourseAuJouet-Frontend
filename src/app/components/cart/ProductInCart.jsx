@@ -9,7 +9,7 @@ import { decrement, increment, selectQuantity } from "../../shared/redux-store/c
 const ProductInCart = ({ component, remove, index }) => {
 
   const cart = useSelector(selectQuantity);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -56,27 +56,17 @@ const ProductInCart = ({ component, remove, index }) => {
             Disponible
           </p>
 
-          {/* gestion */}
-          {/* <p className="font-semibold">
-            Quantité :
-            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement(index))}>
-              -
-            </button>
-
-
-            <label>{cart ? cart[index].quantity : null}</label>
-
-            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(increment(index))}>+</button>
-          </p> */}
+          {/* Quantité */}
           <div className="font-semibold flex">
-          <p className="sm:hidden text-md lg:text-2xl xl:text-2xl">Qté :</p>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 xl:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
+          <p className="text-lg lg:text-2xl xl:text-2xl">Qté :</p>
+
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 xl:ml-2 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
 
-          <span className="px-4 border-2 border-yellow-500 rounded border-opacity-75 md:h-7 xl:h-8">{cart ? cart[index].quantity : null}</span>
+          <span className="px-4 border-2 border-yellow-500 rounded border-opacity-85 md:h-7 xl:h-8">{cart ? cart[index].quantity : null}</span>
 
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500" viewBox="0 0 20 20" fill="currentColor" onClick={() => dispatch(increment(index))}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor" onClick={() => dispatch(increment(index))}>
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
           </svg>
           </div>
