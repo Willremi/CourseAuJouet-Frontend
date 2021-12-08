@@ -36,6 +36,8 @@ module.exports = {
         '2/1': '200%',
         'screen-90': '90vw',
         'autocompletion': '97.4%',
+        'autocompletion-lg': '94%',
+        'autocompletion-md': '95.5%',
       },
       height:{
         'screen-40': '40vw',
