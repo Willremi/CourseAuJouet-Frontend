@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
-import { decrement, increment, selectQuantity} from "../../shared/redux-store/cartSlice";
+import { decrement, increment, selectQuantity } from "../../shared/redux-store/cartSlice";
 
 
 const ProductInCart = ({ component, remove, index }) => {
- 
+
   const cart = useSelector(selectQuantity);
   const dispatch = useDispatch()
-
 
   return (
     <div
@@ -27,7 +26,7 @@ const ProductInCart = ({ component, remove, index }) => {
       >
         <img src={component.images[0]} alt={component.product_name} />
       </Link>
-      
+
       <div
         className="
       sm:1/2 sm:ml-0 sm:border-0 sm:shadow-none sm:h-auto sm:p-3
@@ -40,9 +39,9 @@ const ProductInCart = ({ component, remove, index }) => {
               {component.product_name}
             </Link>
             <button onClick={() => remove(component._id)}>
-              <XIcon className="w-6 h-6 sm:ml-1 text-gray-400 duration-300 hover:text-gray-700"/>
+              <XIcon className="w-6 h-6 sm:ml-1 text-gray-400 duration-300 hover:text-gray-700" />
             </button>
-            
+
           </div>
           <p className="font-light text-2xl sm:text-base md:text-lg">
             {component.trademark}
@@ -56,23 +55,38 @@ const ProductInCart = ({ component, remove, index }) => {
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
           </p>
-          
+
           {/* gestion */}
-          <p className="font-semibold">
+          {/* <p className="font-semibold">
             Quantité :
-            
-          {/* Styliser les bouton compter à faire*/}
-            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement(index))}>-</button>
+            <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(decrement(index))}>
+              -
+            </button>
+
 
             <label>{cart ? cart[index].quantity : null}</label>
 
             <button className="rounded-lg mx-1 px-1 py-1 bg-blue-500 text-blue-100" onClick={() => dispatch(increment(index))}>+</button>
-          </p>
+          </p> */}
+          <div className="font-semibold flex">
+          <p className="sm:hidden text-md lg:text-2xl xl:text-2xl">Qté :</p>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 xl:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+
+          <span className="px-4 border-2 border-yellow-500 rounded border-opacity-75 md:h-7 xl:h-8">{cart ? cart[index].quantity : null}</span>
+
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500" viewBox="0 0 20 20" fill="currentColor" onClick={() => dispatch(increment(index))}>
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+          </svg>
+          </div>
           {/** Vérifier la disponibilité dans un futur ticket */}
 
           {/**
            * TODO Mettre le composant quantité ici
            */}
+          
+
         </div>
       </div>
     </div>

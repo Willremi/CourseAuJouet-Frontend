@@ -6,7 +6,7 @@ import {
 import ProductInCart from "../components/cart/ProductInCart";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
-import { ReduxProduct } from "../shared/services/cart";
+import { ReduxProduct } from "../shared/services/cartServices";
 import { useDispatch } from "react-redux";
 import { getData } from "../shared/redux-store/cartSlice";
 
