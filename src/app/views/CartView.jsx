@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-  GetallProductInCart,
-  RemoveOneProductInCart,
-} from "../api/backend/cart";
+import { useDispatch, useSelector } from 'react-redux';
+import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
+import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 
@@ -14,22 +13,28 @@ import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
  */
 
 const CartView = () => {
-  const [product, setProduct] = useState();
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
-
+  const inCart = useSelector(selectInCart)
+  const dispatch = useDispatch()
+  
   useEffect(() => {
+    //Récupère tous les produits de l'utilisateur logué via axios pour les dispatch au store Redux 
     GetallProductInCart(userId)
       .then((res) => {
-        setProduct(res.data.cart);
+        dispatch(setInCart(res.data.cart));
       })
       .catch((error) => console.log(error));
-  }, [userId, ReloadComponent]);
+  });
 
+  //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {
     const values = { userId: userId, productId: productId };
     RemoveOneProductInCart(values)
-      .then(() => setReloadComponent(!ReloadComponent))
+    .then(() => {
+      setReloadComponent(!ReloadComponent)
+      dispatch(removeInCart(values))
+    })
       .catch((err) => console.log(err));
   };
 
@@ -58,9 +63,9 @@ const CartView = () => {
             </span>
           </p>
         </div>
-        {product !== undefined ? (
+        {inCart !== undefined ? (
           <ul className="space-y-5 w-full">
-            {product.map((onCart, index) => (
+            {inCart.map((onCart, index) => (
               <li key={index}>
                 <ProductInCart
                   component={onCart}
