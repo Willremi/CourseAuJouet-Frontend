@@ -5,7 +5,6 @@ import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
 import { decrement, increment, selectQuantity } from "../../shared/redux-store/cartSlice";
 
-
 const ProductInCart = ({ component, remove, index }) => {
 
   const cart = useSelector(selectQuantity);
@@ -61,13 +60,10 @@ const ProductInCart = ({ component, remove, index }) => {
             <p className="font-semibold text-2xl sm:text-base md:text-lg mr-1 xl:mr-2">Qté :</p>
 
             <div className="flex border-2 border-yellow-500 rounded-full px-1 xl:px-2">
-
-              <MinusIcon className="w-5 text-yellow-500 cursor-pointer" onClick={() => dispatch(decrement(index))} />
+              <MinusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(decrement(index))} />
               <span className="text-base md:text-lg lg:text-xl xl:text-xl px-3 xl:px-4">{cart ? cart[index].quantity : null}</span>
-              <PlusIcon className="w-5 text-yellow-500 cursor-pointer" onClick={() => dispatch(increment(index))} />
-
+              <PlusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(increment(index))} />
             </div>
-
 
             {/* <div className="flex">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-7 md:w-7 lg:h-9 lg:w-9 xl:h-8 xl:w-8 text-yellow-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" onClick={() => dispatch(decrement(index))}>
