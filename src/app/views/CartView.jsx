@@ -25,7 +25,7 @@ const CartView = () => {
         dispatch(setInCart(res.data.cart));
       })
       .catch((error) => console.log(error));
-  });
+  }, [ userId, dispatch ] );
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {
