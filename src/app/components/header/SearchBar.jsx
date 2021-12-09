@@ -8,12 +8,17 @@ import { autoCompleteSearch, getSearchResult } from "../../api/backend/search";
 import { useHistory } from "react-router";
 import { URL_SEARCH_PAGE } from "../../shared/constants/urls/urlConstants";
 import { CustomInput } from "./../../shared/components/form-and-error-components/InputCustom";
+import { useClickOutside } from "../../shared/hooks/useClickOutSideHook";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [Autocompletion, setAutocompletion] = useState([]);
-  const [showElement, setShowElement] = useState(true)
+  const [showElement, setShowElement] = useState(true);
+  
+  let domNode = useClickOutside(() => {
+    setShowElement(false)
+  })
 
   const SearchBarFunction = (values) => {
     const searchedData = { search: values };
@@ -38,14 +43,13 @@ const SearchBar = () => {
   };
 
   return (
-    <>
+    <div>
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values) => {
           SearchBarFunction(values.search);
         }}
         validationSchema={schemaFormSearch}
-        
       >
         {({ resetForm, values }) => (
           <Form className="w-full px-4 flex mt-2 items-center md:pb-2 relative">
@@ -61,28 +65,36 @@ const SearchBar = () => {
               component={CustomInput}
               onClick={() => setShowElement(true)}
               onKeyUp={() => {
-                setShowElement(true)
-                handleSubmitChange(values.search)
+                setShowElement(true);
+                handleSubmitChange(values.search);
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   SearchBarFunction(values.search);
                   resetForm();
                 }
-                if(e.key === "Escape") {
-                  resetForm()
+                if (e.key === "Escape") {
+                  resetForm();
                 }
               }}
               noError
               searchBar
             />
-            <button onClick={() => resetForm()} className="absolute right-7 z-20 text-gray-400 hover:text-gray-500"><XIcon className="w-6 h-6"/></button>
+            <button
+              onClick={() => {
+                resetForm();
+                setShowElement(false);
+              }}
+              className="absolute right-7 z-20 text-gray-400 hover:text-gray-500"
+            >
+              <XIcon className="w-6 h-6" />
+            </button>
             {Autocompletion ? (
               <ul
-                
+                ref={domNode}
                 className={`${
                   showElement
-                    ? "bg-white rounded-lg top-11 z-20 absolute w-autocompletion border border-gray-300 shadow-xl px-5 sm:w-11/12 md:w-autocompletion-md lg:w-autocompletion-lg"
+                    ? "bg-white rounded-lg top-11 z-20 absolute w-autocompletion border border-gray-300 shadow-xl sm:px-5 sm:w-11/12 md:w-autocompletion-md lg:w-autocompletion-lg"
                     : "hidden"
                 }`}
               >
@@ -90,12 +102,12 @@ const SearchBar = () => {
                   <li
                     key={index}
                     onClick={() => {
-                      SearchBarFunction(suggestion.product_name)
-                      setShowElement(false)
-                      }}
-                    className="py-2 cursor-pointer font-semibold text-gray-400 hover:bg-nav-blueClar hover:text-white whitespace-nowrap overflow-hidden"
+                      SearchBarFunction(suggestion.product_name);
+                      setShowElement(false);
+                    }}
+                    className="py-2 cursor-pointer rounded-lg font-semibold text-gray-400 hover:bg-nav-blueClar hover:text-white whitespace-nowrap overflow-hidden 2xl:px-5"
                   >
-                  {suggestion.product_name} 
+                    {suggestion.product_name}
                   </li>
                 ))}
               </ul>
@@ -103,7 +115,7 @@ const SearchBar = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 
