@@ -22,11 +22,11 @@ const NewProduct = () => {
   
   return (
     <>
-    <h2 className="font-Annie font-semibold text-4xl text-secondary-600">CA VIENS D'ARRIVER</h2>
+    <h2 className="font-Annie font-semibold text-4xl text-secondary-600">ÇA VIENT D'ARRIVER</h2>
       {showNewProduct !== undefined ? (
-        <ul className="flex flex-row sm:overflow-scroll justify-between space-x-3 w-full mt-4">
+        <ul className="flex flex-row sm:overflow-scroll md:overflow-scroll lg:overflow-scroll justify-between space-x-3 w-full mt-4 sm:pr-10 md:pr-8">
           {showNewProduct.map((show, index) => 
-            <li key={index} className="w-2/6 sm:w-full">
+            <li key={index} className="w-2/6 sm:w-full md:w-full">
              
               <Card key={index} products={show} />
             

@@ -30,9 +30,11 @@ const Card = ({ products }) => {
           />
         </Link>
 
-        <div className="flex flex-col space-y-1 font-medium p-2 justify-between h-full">
-          <div>
-            <Link to={URL_PRODUCT_DETAIL + products.product_code}>
+        <div className=" flex flex-col space-y-1 font-medium p-2 justify-between h-full">
+          <div className="w-64 truncate">
+            <Link 
+            className=""
+            to={URL_PRODUCT_DETAIL + products.product_code}>
               {products.product_name}
             </Link>
 
