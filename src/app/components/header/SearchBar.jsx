@@ -4,7 +4,7 @@ import { schemaFormSearch } from "./../../shared/constants/formik-yup/yup/yupSea
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { getValues } from "../../shared/redux-store/searchSlice";
-import { autoCompleteSearch, getSearchResult } from "../../api/backend/search";
+import { autoCompleteSearch, GetAutoCompletionProduct, getSearchResult } from "../../api/backend/search";
 import { useHistory } from "react-router";
 import { URL_SEARCH_PAGE } from "../../shared/constants/urls/urlConstants";
 import { CustomInput } from "./../../shared/components/form-and-error-components/InputCustom";
@@ -41,6 +41,16 @@ const SearchBar = () => {
       setAutocompletion(null);
     }
   };
+
+  const selectProductOnAutoCompletionList = (values) => {
+    const searchedData = { search: values };
+    GetAutoCompletionProduct(searchedData)
+      .then((res) => {
+        dispatch(getValues(res.data.result, searchedData.search));
+        history.push(URL_SEARCH_PAGE);
+      })
+      .catch((error) => console.log(error));
+  }
 
   return (
     <div>
@@ -102,7 +112,7 @@ const SearchBar = () => {
                   <li
                     key={index}
                     onClick={() => {
-                      SearchBarFunction(suggestion.product_name);
+                      selectProductOnAutoCompletionList(suggestion.product_name);
                       setShowElement(false);
                     }}
                     className="py-2 cursor-pointer rounded-lg font-semibold text-gray-400 hover:bg-nav-blueClar hover:text-white whitespace-nowrap overflow-hidden 2xl:px-5"
