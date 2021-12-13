@@ -3,11 +3,13 @@ import React from 'react'
 // import { ROLE_ADMIN } from './../shared/constants/rolesConstant';
 // import { URL_ADMIN_HOME } from './../shared/constants/urls/urlConstants';
 import NewProduct from '../components/homepage/NewProduct';
-import  Carousel  from '../components/layouts/carousel/Carousel';
+import  Slider  from '../components/layouts/carousel/Slider';
+import { sliderData } from '../components/layouts/carousel/CarouselData';
+
 const HomeView = ({ history }) => {
     return (
         <div>
-            <Carousel />            
+            <Slider slides={sliderData} />            
             <div className="w-11/12 mx-auto my-3">
                 <NewProduct />      
                 {/* { hasRole(ROLE_ADMIN) && (
