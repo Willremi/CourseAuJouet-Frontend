@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
-import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
+import { setInCart, removeInCart, selectInCart, selectQuantity } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 import { ReduxProduct } from "../shared/services/cart";
@@ -22,6 +22,7 @@ const CartView = () => {
   const [ReloadComponent, setReloadComponent] = useState(false);
   const [product, setProduct] = useState([]);
   const inCart = useSelector(selectInCart)
+  const quantityProduct = useSelector(selectQuantity)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -39,6 +40,8 @@ const CartView = () => {
     ReduxProduct(product)
     // console.log("CartView ReduxProd :", ReduxProduct(product))
   }
+
+  console.log(quantityProduct);
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {
@@ -89,7 +92,7 @@ const CartView = () => {
 
             ))}
 
-            <SummaryOfOrders product={inCart} />
+            <SummaryOfOrders product={quantityProduct} />
             <div className="w-9/12 ml-auto text-center mr-5 py-6
             sm:mx-auto
             md:mx-auto

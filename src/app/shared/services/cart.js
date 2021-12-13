@@ -40,7 +40,7 @@ export function Pricing(productList, Delivery) {
     
     if (productList)
         productList.map((p) => {
-            calculating.TotalPrice = calculating.TotalPrice + p.price
+            calculating.TotalPrice = calculating.TotalPrice + (p.price * p.quantity)
             calculating.taxes = calculating.taxes + (p.price * 0.20)
             return null
         })

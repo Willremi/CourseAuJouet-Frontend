@@ -10,14 +10,6 @@ const ProductInCart = ({ component, remove, index }) => {
   const cart = useSelector(selectQuantity);
   const dispatch = useDispatch();
 
-  const getTotalProduct = () => {
-    return cart.reduce(
-      (accumul, component) => accumul + component.quantity * component.price / 100, 0
-    )
-  }
-
-  // console.log(getTotalProduct());
-
   return (
     <div
       className="flex flex-row w-full justify-around h-32
