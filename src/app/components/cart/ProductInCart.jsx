@@ -69,10 +69,6 @@ const ProductInCart = ({ component, remove, index }) => {
 
           {/** Vérifier la disponibilité dans un futur ticket */}
 
-          {/**
-           * TODO Mettre le composant quantité ici
-           */}
-
         </div>
       </div>
     </div>
