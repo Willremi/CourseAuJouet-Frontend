@@ -14,7 +14,7 @@ import { signOut } from '../../shared/redux-store/authenticationSlice';
 const IdleTimerCustom = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const timeOut = 1000 * 60 * 15
+    const timeOut = 1000 * 60 * 60
 
     const handleOnAction = () => clearTimeout(timeOut)
 

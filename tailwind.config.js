@@ -1,12 +1,12 @@
 module.exports = {
-
+  mode:"jit",
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-
+    
     screens: {
       'sm': {
-        'min': '320px',
+        'min': '0px',
         'max': '503px'
       },
       'md': {
@@ -27,10 +27,17 @@ module.exports = {
     },
     
     extend: {
-
+      padding: {
+        '1.75': '0.4375rem',
+        '1.70': '0.400rem',
+        '1.65': '0.37rem',
+      },
       width: {
         '2/1': '200%',
         'screen-90': '90vw',
+        'autocompletion': '97.4%',
+        'autocompletion-lg': '94%',
+        'autocompletion-md': '95.5%',
       },
       height:{
         'screen-40': '40vw',
@@ -68,7 +75,7 @@ module.exports = {
         },
         secondary: {
           '100': '#F6AE2D',
-          '200': '#f7ba88',
+          '200': '#f9ca76',
           '300': '#f39e58',
           '400': '#f08228',
           '500': "#ed7410",

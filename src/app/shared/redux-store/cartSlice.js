@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReduxProduct } from "../services/cartServices";
+import { ReduxProduct } from "../services/cart";
 
 
 /**
@@ -8,7 +8,8 @@ import { ReduxProduct } from "../services/cartServices";
  */
 
 const initialState = {
-    product: ReduxProduct()
+    product: ReduxProduct(),
+    inCart: []
 }
 
 export const cartSlice = createSlice({
@@ -27,7 +28,14 @@ export const cartSlice = createSlice({
             if (state.product[action.payload].quantity > 1) {
                 state.product[action.payload].quantity--
             }
+        },
+        setInCart: (state, { payload }) => {
+            state.inCart = payload
+        },
+        removeInCart: (state, action) => {
+            state.inCart = state.inCart.filter((inCart) => inCart._id !== action.payload.productId);
         }
+
     }
 })
 
@@ -35,6 +43,8 @@ export const cartSlice = createSlice({
 
 
 export const selectQuantity = (state) => state.cart.product
-export const { increment, decrement, getData } = cartSlice.actions
+export const { increment, decrement, getData, setInCart , removeInCart } = cartSlice.actions;
 
-export default cartSlice.reducer
+export const selectInCart = (state) => state.cart.inCart
+
+export default cartSlice.reducer;
