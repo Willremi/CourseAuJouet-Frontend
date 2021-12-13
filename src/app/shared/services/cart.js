@@ -24,7 +24,6 @@ export function Pricing(productList, Delivery) {
         Delivery: 0
     }
 
-
     switch (Delivery) {
         case 'Magasin':
             calculating.Delivery = 0
@@ -38,6 +37,7 @@ export function Pricing(productList, Delivery) {
         default:
             return calculating.Delivery = "Gratuit";
     }
+    
     if (productList)
         productList.map((p) => {
             calculating.TotalPrice = calculating.TotalPrice + p.price

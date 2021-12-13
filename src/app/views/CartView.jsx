@@ -17,30 +17,25 @@ import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
  * @author Mathieu
  */
 
-
-
 const CartView = () => {
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
   const [product, setProduct] = useState([]);
   const inCart = useSelector(selectInCart)
   const dispatch = useDispatch()
-  
-
-  
 
   useEffect(() => {
     //Récupère tous les produits de l'utilisateur logué via axios pour les dispatch au store Redux 
     GetallProductInCart(userId)
-    .then((res) => {
-      setProduct(res.data.cart);
-      dispatch(getData(res.data.cart))
-      dispatch(setInCart(res.data.cart))
-    })
-    .catch((error) => console.log(error));
+      .then((res) => {
+        setProduct(res.data.cart);
+        dispatch(getData(res.data.cart))
+        dispatch(setInCart(res.data.cart))
+      })
+      .catch((error) => console.log(error));
   }, [userId, ReloadComponent, dispatch]);
 
-  if(product) {
+  if (product) {
     ReduxProduct(product)
     // console.log("CartView ReduxProd :", ReduxProduct(product))
   }
@@ -49,10 +44,10 @@ const CartView = () => {
   const handleRemoveProduct = (productId) => {
     const values = { userId: userId, productId: productId };
     RemoveOneProductInCart(values)
-    .then(() => {
-      setReloadComponent(!ReloadComponent)
-      dispatch(removeInCart(values))
-    })
+      .then(() => {
+        setReloadComponent(!ReloadComponent)
+        dispatch(removeInCart(values))
+      })
       .catch((err) => console.log(err));
   };
 
@@ -84,15 +79,17 @@ const CartView = () => {
         {inCart !== undefined ? (
           <ul className="space-y-5 w-full">
             {inCart.map((onCart, index) => (
-              <li key={index}>
-                <ProductInCart
-                  component={onCart}
-                  remove={handleRemoveProduct}
-                  index={index}
-                />
-              </li>
-            ))} 
-            <SummaryOfOrders product={inCart}/>
+                <li key={index}>
+                  <ProductInCart
+                    component={onCart}
+                    remove={handleRemoveProduct}
+                    index={index}
+                  />
+                </li>
+
+            ))}
+
+            <SummaryOfOrders product={inCart} />
             <div className="w-9/12 ml-auto text-center mr-5 py-6
             sm:mx-auto
             md:mx-auto
@@ -102,15 +99,15 @@ const CartView = () => {
                 Passer la commande
               </Link>
             </div>
-        
+
           </ul>
-         
+
         ) : (
           <p>Votre panier est vide</p>
-        )} 
-       
+        )}
+
       </div>
-     
+
     </div>
   );
 };

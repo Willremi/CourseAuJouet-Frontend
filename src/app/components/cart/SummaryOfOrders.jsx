@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Pricing } from "../../shared/services/cart";
 import DeliveryMode from "./DeliveryMode";
+
 const SummaryOfOrders = ({ product }) => {
   const [ModeValue, setModeValue] = useState("Magasin");
 
@@ -10,7 +11,8 @@ const SummaryOfOrders = ({ product }) => {
   };
 
   const totalPrice = Pricing(product, ModeValue);
-  console.log(totalPrice);
+  // console.log(totalPrice);
+
   return (
     <>
       <h2
