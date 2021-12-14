@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const delay = 3000;
 
-function Slideshow() {
+function Carousel() {
   const [index, setIndex] = useState(0);
   const length = CarouselData.length
   const timeoutRef = useRef(null);
@@ -75,4 +75,4 @@ const prevSlide = () => {
   );
 }
 
-export default Slideshow
+export default Carousel
