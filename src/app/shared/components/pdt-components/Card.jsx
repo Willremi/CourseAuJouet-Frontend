@@ -5,6 +5,7 @@ import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
 import { addProductInCart } from "./../../services/cart";
 import { useSelector } from "react-redux";
 import { selectIsLogged } from "./../../redux-store/authenticationSlice";
+import { ShoppingCartIcon } from "@heroicons/react/solid";
 
 const Card = ({ products }) => {
   const isLogged = useSelector(selectIsLogged);
@@ -32,9 +33,7 @@ const Card = ({ products }) => {
 
         <div className=" flex flex-col space-y-1 font-medium p-2 justify-between h-full">
           <div className="w-64 truncate">
-            <Link 
-            className=""
-            to={URL_PRODUCT_DETAIL + products.product_code}>
+            <Link className="" to={URL_PRODUCT_DETAIL + products.product_code}>
               {products.product_name}
             </Link>
 
@@ -57,20 +56,7 @@ const Card = ({ products }) => {
                       )
               }
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 md:h-10 md:w-10 text-yellow-400 cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                />
-              </svg>
+              <ShoppingCartIcon className="h-12 w-12 md:h-10 md:w-10 text-yellow-400 cursor-pointer" />
             </button>
           </div>
         </div>
