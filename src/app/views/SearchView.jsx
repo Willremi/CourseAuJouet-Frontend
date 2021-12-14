@@ -24,22 +24,26 @@ const SearchView = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-row items-center my-6 sm:flex-col sm:items-start">
+    <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto flex flex-row items-center my-6 sm:flex-col sm:items-start">
         <h2 className="font-Annie font-semibol text-4xl text-secondary-600 mr-3">
           Résultat pour "Texte de l'input recherche"
         </h2>
         <span>{`(nombres) article(s) trouvé(s)`}</span>
+       
+        
+      
+      
       </div>
 
       {/* Filtre de recherche */}
+
       <SearchFilter searchResult={searchResult} handleChange={handleChange} filterValue={filterValue}/>
+      
 
       {/* Liste des résultats de la recherche */}
-      <div className="w-11/12 mx-auto my-5">
         <SearchResultList searchResult={searchResult} filterValue={filterValue}/>
-      </div>
-    </>
+    </div>
   );
 };
 

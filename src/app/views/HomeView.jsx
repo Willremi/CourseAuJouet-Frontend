@@ -8,7 +8,7 @@ const HomeView = ({ history }) => {
     return (
         <div>
             <Carousel />            
-            <div className="w-11/12 mx-auto my-3 sm:w-full sm:ml-5 md:w-full md:ml-3">
+            <div className="w-11/12 mx-auto my-3">
                 <NewProduct />      
                 {/* { hasRole(ROLE_ADMIN) && (
                     <button className="btn btn-primary" onClick={() => history.push(URL_ADMIN_HOME)}>

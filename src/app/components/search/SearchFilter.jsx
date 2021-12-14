@@ -9,11 +9,11 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
 
   return (
     <Formik>
-      <Form className="w-11/12 mx-auto flex flex-row sm:flex-col items-center sm:justify-between sm:w-full">
+      <Form className="w-11/12 mx-auto flex flex-wrap ">
         <Field
           as="select"
           name="trademarkFilter"
-          className="border-gray-300 border ml-3 rounded-md outline-none sm:mt-2"
+          className="border-0 rounded-lg shadow-md m-1 text-nav-blue font-semibold"
           onChange={(e) =>
             handleChange(
               e.target.value,
@@ -22,7 +22,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
             )
           }
         >
-          <option value="undefined" className="">
+          <option value="undefined">
             MARQUE
           </option>
           {Filter.TrademarkFilter.map((trademarkFilter, index) => (
@@ -35,7 +35,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
         <Field
           as="select"
           name="sortbyage"
-          className="border-gray-300 border ml-3 rounded-md outline-none sm:mt-2"
+          className="border-0 rounded-lg shadow-md m-1 text-nav-blue font-semibold"
           onChange={(e) =>
             handleChange(
               filterValue.trademark,
@@ -44,7 +44,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
             )
           }
         >
-          <option value="undefined" className="">
+          <option value="undefined">
             AGE
           </option>
           {Filter.AgeFilter.map((ageFilter, index) => (
@@ -57,7 +57,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
         <Field
           as="select"
           name="categoryFilter"
-          className="border-gray-300 border ml-3 rounded-md outline-none sm:mt-2"
+          className="border-0 rounded-lg shadow-md m-1 text-nav-blue font-semibold"
           onChange={(e) =>
             handleChange(
               filterValue.trademark,
@@ -66,7 +66,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
             )
           }
         >
-          <option value="undefined" className="">
+          <option value="undefined">
             CATEGORIE
           </option>
           {Filter.CategoryFilter.map((categoryFilter, index) => (

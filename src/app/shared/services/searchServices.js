@@ -45,7 +45,7 @@ export function FilteringSearchProduct (product, filter) {
     var TrademarkFilter = [];
     var CategoryFilter = [];
     var AgeFilter = [];
-    product.map((getUniqueData) => {
+    product.forEach((getUniqueData) => {
       if (!TrademarkFilter.includes(getUniqueData.trademark)) {
         TrademarkFilter.push(getUniqueData.trademark);
       }

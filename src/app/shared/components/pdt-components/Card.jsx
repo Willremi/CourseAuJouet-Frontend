@@ -16,7 +16,7 @@ const Card = ({ products }) => {
 
   return (
     <>
-      <fieldset className="w-4/5 sm:w-full h-full border-gray border-2 rounded-b-xl bg-white flex flex-col justify-between">
+      <fieldset className="w-full h-full border-gray border-2 rounded-b-xl bg-white flex flex-col justify-between">
         {expirationNewProductDate ? (
           <legend className="rounded-full bg-secondary-100 ml-1 font-semibold border text-lg border-white text-nav-blue py-0.5 px-10">
             Nouveau
@@ -32,7 +32,7 @@ const Card = ({ products }) => {
         </Link>
 
         <div className=" flex flex-col space-y-1 font-medium p-2 justify-between h-full">
-          <div className="w-64 truncate">
+          <div>
             <Link className="" to={URL_PRODUCT_DETAIL + products.product_code}>
               {products.product_name}
             </Link>
