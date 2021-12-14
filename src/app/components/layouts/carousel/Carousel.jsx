@@ -4,11 +4,21 @@ import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-const delay = 15000;
+const delay = 3000;
 
 function Slideshow() {
   const [index, setIndex] = useState(0);
+  const length = CarouselData.length
   const timeoutRef = useRef(null);
+
+  const nextSlide = () => {
+    setIndex(index === length -1 ? 0 : index + 1)
+}
+
+const prevSlide = () => {
+    setIndex(index === 0 ? length -1 : index - 1)
+}
+
 
   function resetTimeout() {
     if (timeoutRef.current) {
@@ -25,32 +35,35 @@ function Slideshow() {
         ),
       delay
     );
-
     return () => {
         resetTimeout()
     };
   }, [index]);
 
   return (
-    <div className="slideshow w-full">
+    <div className="h-3/5 relative m-auto overflow-hidden">
+        <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
+        <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
+
+
       <div
-        className="slideshowSlider"
+        className="whitespace-nowrap transition ease-in-out duration-1000"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
         {CarouselData.map((slide, index) => (
           <div
-            className="slide"
+            className="inline-block bg-cover bg-center h-60vh w-full"
             key={index}
+            style={{backgroundImage: "url(" + slide.image + ")"}}
           >
-              <img src={slide.image} />
           </div>
         ))}
       </div>
 
-      <div className="slideshowDots">
+      <div className="-mt-12 text-center">
         {CarouselData.map((_, idx) => (
           <div key={idx}
-          className={`slideshowDot${index === idx ? " active" : ""}`}
+          className={`${index === idx ? " bg-black" : "bg-nav-greyClar  "} inline-block h-1 w-10 cursor-pointer mt-4 mx-2 opacity-50`}
           onClick={() => {
             setIndex(idx);
           }}
