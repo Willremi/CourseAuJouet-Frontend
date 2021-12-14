@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CarouselData } from "./CarouselData";
 import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
-
+import { TransitionGroup, CSSTransition} from 'react-transition-group';
 const Carousel = () => {
     const [current, setCurrent] = useState(0)
     const length = CarouselData.length
@@ -26,9 +26,16 @@ const Carousel = () => {
                     return (
                         <div key={index} className={`${index === current ? "w-screen h-screen-40 md:h-screen-40 sm:h-screen-50 relative" : "hidden"}`}>
                             {/* ceci est l'image */}
-                            <Link to={slide.link} >  
-                            <img src={slide.image} alt="produit" 
-                            className="w-full h-full object-bottom object-cover"/>
+                            <Link to={slide.link} >
+                                <TransitionGroup>
+                                    <CSSTransition
+                                        key={current}
+                                        timeout={1000}
+                                        classNames='slide-right'
+                                    >
+                                        <img src={slide.image} alt="produit" className="w-full h-full object-bottom object-cover"/>
+                                    </CSSTransition>
+                                </TransitionGroup>
                             </Link>
                                     {/* les deux cheuvrons servant à manipuler le carousel */}
                                     <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
