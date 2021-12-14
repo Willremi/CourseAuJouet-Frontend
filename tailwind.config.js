@@ -7,10 +7,10 @@ module.exports = {
     screens: {
       'sm': {
         'min': '0px',
-        'max': '503px'
+        'max': '504px'
       },
       'md': {
-        'min': '504px',
+        'min': '505px',
         'max': '1024px'
       },
       'lg': {
@@ -27,6 +27,7 @@ module.exports = {
     },
     
     extend: {
+      
       padding: {
         '1.75': '0.4375rem',
         '1.70': '0.400rem',
@@ -35,6 +36,8 @@ module.exports = {
       width: {
         '2/1': '200%',
         'screen-90': '90vw',
+        'screen-50': '50vw',
+        'screen-40': '40vw',
         'autocompletion': '97.4%',
         'autocompletion-lg': '94%',
         'autocompletion-md': '95.5%',

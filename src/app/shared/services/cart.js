@@ -24,7 +24,6 @@ export function Pricing(productList, Delivery) {
         Delivery: 0
     }
 
-
     switch (Delivery) {
         case 'Magasin':
             calculating.Delivery = 0
@@ -38,13 +37,20 @@ export function Pricing(productList, Delivery) {
         default:
             return calculating.Delivery = "Gratuit";
     }
+    
     if (productList)
         productList.map((p) => {
-            calculating.TotalPrice = calculating.TotalPrice + p.price
-            calculating.taxes = calculating.taxes + (p.price * 0.20)
+            calculating.TotalPrice = calculating.TotalPrice + (p.price * p.quantity)
+            calculating.taxes = calculating.taxes + (p.price * p.quantity * 0.20)
             return null
         })
 
     return calculating
 
 }
+
+export const ReduxProduct = (product) => {
+    if(product === undefined){ 
+      
+      return undefined
+  } else { return {product: product} }}
