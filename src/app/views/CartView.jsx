@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
-import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
+import { getData, setInCart, removeInCart, selectInCart, selectQuantity } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
+import { ReduxProduct } from "../shared/services/cart";
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
 import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
@@ -18,26 +19,37 @@ import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
 const CartView = () => {
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
+  const [product, setProduct] = useState([]);
   const inCart = useSelector(selectInCart)
+  const quantityProduct = useSelector(selectQuantity)
   const dispatch = useDispatch()
   
   useEffect(() => {
     //Récupère tous les produits de l'utilisateur logué via axios pour les dispatch au store Redux 
     GetallProductInCart(userId)
       .then((res) => {
-        dispatch(setInCart(res.data.cart));
+        setProduct(res.data.cart);
+        dispatch(getData(res.data.cart))
+        dispatch(setInCart(res.data.cart))
       })
       .catch((error) => console.log(error));
-  }, [ userId, dispatch ] );
+  }, [userId, ReloadComponent, dispatch]);
+
+  if (product) {
+    ReduxProduct(product)
+    // console.log("CartView ReduxProd :", ReduxProduct(product))
+  }
+
+  console.log(quantityProduct);
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {
     const values = { userId: userId, productId: productId };
     RemoveOneProductInCart(values)
-    .then(() => {
-      setReloadComponent(!ReloadComponent)
-      dispatch(removeInCart(values))
-    })
+      .then(() => {
+        setReloadComponent(!ReloadComponent)
+        dispatch(removeInCart(values))
+      })
       .catch((err) => console.log(err));
   };
 
@@ -69,14 +81,17 @@ const CartView = () => {
         {inCart !== undefined ? (
           <ul className="space-y-5 w-full">
             {inCart.map((onCart, index) => (
-              <li key={index}>
-                <ProductInCart
-                  component={onCart}
-                  remove={handleRemoveProduct}
-                />
-              </li>
-            ))} 
-            <SummaryOfOrders product={inCart}/>
+                <li key={index}>
+                  <ProductInCart
+                    component={onCart}
+                    remove={handleRemoveProduct}
+                    index={index}
+                  />
+                </li>
+
+            ))}
+
+            <SummaryOfOrders product={quantityProduct} />
             <div className="w-9/12 ml-auto text-center mr-5 py-6
             sm:mx-auto
             md:mx-auto
@@ -86,15 +101,15 @@ const CartView = () => {
                 Passer la commande
               </Link>
             </div>
-        
+
           </ul>
-         
+
         ) : (
           <p>Votre panier est vide</p>
-        )} 
-       
+        )}
+
       </div>
-     
+
     </div>
   );
 };
