@@ -40,8 +40,6 @@ const CartView = () => {
     // console.log("CartView ReduxProd :", ReduxProduct(product))
   }
 
-  console.log(quantityProduct);
-
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {
     const values = { userId: userId, productId: productId };
