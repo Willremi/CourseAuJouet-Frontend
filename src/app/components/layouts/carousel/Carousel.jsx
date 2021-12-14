@@ -3,7 +3,6 @@ import { CarouselData } from "./CarouselData";
 import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
 
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 const delay = 3000;
 
 function Slideshow() {
@@ -31,7 +30,7 @@ const prevSlide = () => {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === colors.length - 1 ? 0 : prevIndex + 1
+          prevIndex === CarouselData.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -51,19 +50,21 @@ const prevSlide = () => {
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
         {CarouselData.map((slide, index) => (
-          <div
-            className="inline-block bg-cover bg-center h-60vh w-full"
-            key={index}
-            style={{backgroundImage: "url(" + slide.image + ")"}}
-          >
-          </div>
+            <Link to={slide.link}>
+                <div
+                    className="inline-block bg-cover bg-center h-60vh w-full"
+                    key={index}
+                    style={{backgroundImage: "url(" + slide.image + ")"}}
+                />           
+            </Link>
+
         ))}
       </div>
 
       <div className="-mt-12 text-center">
         {CarouselData.map((_, idx) => (
           <div key={idx}
-          className={`${index === idx ? " bg-black" : "bg-nav-greyClar  "} inline-block h-1 w-10 cursor-pointer mt-4 mx-2 opacity-50`}
+          className={`${index === idx ? " bg-black" : "bg-nav-greyClar  "} inline-block h-2 w-10 cursor-pointer mt-4 mx-2 opacity-50`}
           onClick={() => {
             setIndex(idx);
           }}
