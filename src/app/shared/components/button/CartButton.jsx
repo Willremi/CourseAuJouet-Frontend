@@ -1,12 +1,29 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetallProductInCart } from "../../../api/backend/cart";
 import { selectIsLogged } from "../../redux-store/authenticationSlice"; 
+import { selectInCart, setInCart } from "../../redux-store/cartSlice";
 import { URL_CART } from './../../constants/urls/urlConstants';
+import { accountId } from './../../services/accountServices';
 
 const CartButton = () => {
   const isLogged = useSelector(selectIsLogged);
-  const getInCart = useSelector(state => state.cart.inCart); //Renvoi un tableau des produits
+  const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
+  const dispatch = useDispatch()
+  
+useEffect(() => {
+  if(isLogged){
+    var id =  accountId()
+    GetallProductInCart(id)
+  .then((res) => {
+    dispatch(setInCart(res.data.cart))
+  })
+  .catch((err) => console.log(err))
+  }
+  
+}, [dispatch, isLogged])
 
   return (
     <div>
