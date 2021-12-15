@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ManagerView = () => {
+const ManagerAdministrationView = () => {
     return (
         <div>
             Page gestion manager
@@ -8,4 +8,4 @@ const ManagerView = () => {
     )
 }
 
-export default ManagerView
+export default ManagerAdministrationView
