@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import ManagerLeftAside from "../../components/profil_component/ManagerLeftAside";
+import { selectComponent } from './../../shared/redux-store/ProfilSlice';
+
 
 const ManagerAdministrationView = () => {
-    return (
-        <div>
-            Page gestion manager
-        </div>
-    )
-}
+    const selectMenu = useSelector(selectComponent)
 
-export default ManagerAdministrationView
+  return (
+    <div className="flex flex-row">
+     <ManagerLeftAside selectMenu={selectMenu}/>
+    </div>
+  );
+};
+
+export default ManagerAdministrationView;
