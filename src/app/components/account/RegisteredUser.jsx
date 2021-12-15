@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { verifyUser } from "../../api/backend/account";
 import ModalAuth from "../../shared/components/modal-components/ModalAuth";
 import NewProduct from "../homepage/NewProduct";
+import Carousel from "../layouts/carousel/Carousel";
 
 const RegisteredUser = () => {
   const token = useParams();
@@ -14,6 +15,7 @@ const RegisteredUser = () => {
 
   return (
     <div className="container">
+      <Carousel />
       <NewProduct />
       <ModalAuth />
     </div>
