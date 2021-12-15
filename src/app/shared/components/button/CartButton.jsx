@@ -12,15 +12,18 @@ const CartButton = () => {
   const isLogged = useSelector(selectIsLogged);
   const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
   const dispatch = useDispatch()
-  const id = accountId()
-
+  
 useEffect(() => {
-  GetallProductInCart(id)
+  if(isLogged){
+    var id =  accountId()
+    GetallProductInCart(id)
   .then((res) => {
     dispatch(setInCart(res.data.cart))
   })
   .catch((err) => console.log(err))
-}, [dispatch, id])
+  }
+  
+}, [dispatch, isLogged])
 
   return (
     <div>
