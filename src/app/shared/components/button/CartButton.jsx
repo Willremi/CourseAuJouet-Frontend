@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetallProductInCart } from "../../../api/backend/cart";
 import { selectIsLogged } from "../../redux-store/authenticationSlice"; 
-import { accountId } from "../../services/accountServices"; 
-import { GetallProductInCart } from './../../../api/backend/cart';
+import { selectInCart, setInCart } from "../../redux-store/cartSlice";
 import { URL_CART } from './../../constants/urls/urlConstants';
+import { accountId } from './../../services/accountServices';
 
 const CartButton = () => {
-  const [count, setCount] = useState(null); // state qui enregistre le nombre d'éléments dans le panier
   const isLogged = useSelector(selectIsLogged);
-  useEffect(() => {
-    //Si l'utilisateur est connecté on va rechercher dans la BDD si son panier contient des articles
-    if (isLogged) {
-      const id = accountId();
-      GetallProductInCart(id) // mettre l'id de l'utilisateur quand le token sera dans le localstorage sera terminé
-        .then((res) => {
-          
-          setCount(Object.keys(res.data.cart).length);
-
-        })
-        .catch((error) => console.log(error));
-        
-    }
-  }, [isLogged, count]);
+  const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
+  const dispatch = useDispatch()
+  
+useEffect(() => {
+  if(isLogged){
+    var id =  accountId()
+    GetallProductInCart(id)
+  .then((res) => {
+    dispatch(setInCart(res.data.cart))
+  })
+  .catch((err) => console.log(err))
+  }
+  
+}, [dispatch, isLogged])
 
   return (
     <div>
@@ -49,7 +50,7 @@ const CartButton = () => {
         </svg>
         {isLogged ? (
           <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
-            {count}
+            {getInCart.length}
           </span>
         ) : null}
         
