@@ -51,8 +51,8 @@ function Carousel() {
 
   return (
     <div className="h-3/5 relative m-auto overflow-hidden">
-        <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
-        <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
+        <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={prevSlide} />
+        <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
 
 
       <div

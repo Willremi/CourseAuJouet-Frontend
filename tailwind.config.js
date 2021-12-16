@@ -24,6 +24,9 @@ module.exports = {
       '2xl': {
         'min': '1536px'
       },
+    inset:{
+      '37' : '9.4rem',
+    }
     },
     
     extend: {
