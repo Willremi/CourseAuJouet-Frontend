@@ -24,14 +24,14 @@ const NewProduct = () => {
     <>
     <h2 className="font-Annie font-semibold text-4xl text-secondary-600 my-3">ÇA VIENT D'ARRIVER</h2>
       {showNewProduct !== undefined ? (
-        <ul className={`grid grid-cols-4 gap-x-3 w-2/3 mx-auto
-        sm:overflow-scroll sm:gap-x-44
-        md:overflow-scroll  ${window.innerWidth < 700 && window.innerWidth > 504 ? 'md:gap-x-44' : 'md:gap-x-10'}`}
+        <ul className={`grid grid-cols-4 gap-x-3 
+        sm:overflow-scroll
+        md:overflow-scroll`}
         
         
         >
           {showNewProduct.map((show, index) => 
-            <li key={index}>
+            <li key={index} className="flex pt-3 w-4/6 lg:w-full xl:w-full md:w-full sm:w-full">
              
               <Card key={index} products={show} />
             

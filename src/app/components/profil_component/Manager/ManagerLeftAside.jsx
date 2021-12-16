@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from '@iconify/react';
 import { useDispatch } from 'react-redux';
-import { setComponent } from "../../shared/redux-store/ProfilSlice";
+import { setComponent } from "../../../shared/redux-store/ProfilSlice";
 
 const ManagerLeftAside = ({selectMenu}) => {
     const dispatch = useDispatch()
