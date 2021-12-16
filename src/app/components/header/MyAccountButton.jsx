@@ -117,7 +117,7 @@ function MyAccountButton() {
             <div className="p-5">
               {isLogged ? (
                 <button
-                  className="ml-8 btn btn-green"
+                  className="ml-8 w-3/4 btn btn-yellow"
                   onClick={() => handleSignOut()
                   }
                 >
