@@ -12,7 +12,7 @@ const CartButton = () => {
   const isLogged = useSelector(selectIsLogged);
   const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
   const dispatch = useDispatch()
-  
+
 useEffect(() => {
   if(isLogged){
     var id =  accountId()

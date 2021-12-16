@@ -11,4 +11,4 @@ export const URL_SEARCH_PAGE = '/search'
 export const URL_ORDER_ADDRESS = '/order/address_delivery'
 
 /** MANAGER **/
-export const URL_ADMINISTRATION_MANAGER = '/manager/administration'
+export const URL_DASHBOARD_MANAGER = '/manager/dashboard'

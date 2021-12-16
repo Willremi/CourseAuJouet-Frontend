@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsLogged,signOut,} from "../../shared/redux-store/authenticationSlice";
+import {
+  selectIsLogged,
+  signOut,
+} from "../../shared/redux-store/authenticationSlice";
+import { hasRole } from "../../shared/services/accountServices";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
+import Manager from "../modal_component/Manager";
+import {
+  ROLE_CUSTOMER,
+  ROLE_MANAGER,
+} from "./../../shared/constants/rolesConstant";
 
 /* Ce bouton fait apparaitre un modal ou l'on rassemblera le formulaire de login, le lien pour
 s'inscrire et le lien pour le mot de passe oublié.
@@ -17,9 +26,9 @@ function MyAccountButton() {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    dispatch(signOut())
-    setShowModal(false)
-  }
+    dispatch(signOut());
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -27,22 +36,20 @@ function MyAccountButton() {
         className="cursor-pointer flex flex-row items-center mr-4 sm:text-nav-yellow text-nav-blue opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
-       
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-12 w-12 md:w-8 md:h-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-       
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12 md:w-8 md:h-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
       </button>
 
       {/* condition pour qui verifie la constante showmodal avec sa valeur boléenne,
@@ -51,7 +58,6 @@ function MyAccountButton() {
 
       <>
         <div
-        
           className={`transition-all duration-500 bg-nav-blueClar absolute overflow-scroll z-40 top-16 left-0 w-screen ${
             showModal ? "h-screen overflow-hidden" : "h-0 overflow-hidden"
           }
@@ -114,17 +120,20 @@ function MyAccountButton() {
             {/* FIN bouton fermer le modal */}
 
             {/*partie login*/}
-            <div className="p-5">
+            <div>
               {isLogged ? (
-                <button
-                  className="ml-8 w-3/4 btn btn-yellow"
-                  onClick={() => handleSignOut()
-                  }
-                >
-                  Se déconnecter
-                </button>
+                <>
+                  {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal}/> : null}
+                  {hasRole(ROLE_CUSTOMER) ? <button
+                    className="ml-8 w-3/4 btn btn-yellow"
+                    onClick={() => handleSignOut()}
+                  >
+                    Se déconnecter
+                  </button> : null}
+                  
+                </>
               ) : (
-                <LoginView hideModal={setShowModal}/>
+                <LoginView hideModal={setShowModal} />
               )}
             </div>
 

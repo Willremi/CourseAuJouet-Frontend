@@ -88,6 +88,9 @@ module.exports = {
           '800': '#a7510c',
           'trash': '#F26419',
         }, 
+        cyan:{
+          '100': '#55DDE0'
+        },
         nav: {
           'yellow': '#FFEECC', 
           'yellowClar': '#FFF8EA',
