@@ -8,7 +8,7 @@ import { decrement, increment } from "../../shared/redux-store/cartSlice";
 const ProductInCart = ({ component, remove, index, inCart }) => {
 
   const dispatch = useDispatch();
-console.log(inCart)
+
   return (
     <div
       className="flex flex-row w-full justify-around h-32
