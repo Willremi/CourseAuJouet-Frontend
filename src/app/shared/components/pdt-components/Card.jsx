@@ -74,3 +74,4 @@ const Card = ({ products }) => {
 };
 
 export default Card;
+

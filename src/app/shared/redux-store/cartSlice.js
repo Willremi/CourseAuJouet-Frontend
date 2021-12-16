@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReduxProduct } from "../services/cart";
 
 
 /**
@@ -8,7 +7,6 @@ import { ReduxProduct } from "../services/cart";
  */
 
 const initialState = {
-    product: ReduxProduct(),
     inCart: []
 }
 
@@ -16,21 +14,22 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        getData: (state, action) => {
-            state.product = action.payload
-        },
         increment: (state, action) => {
-            if (state.product[action.payload].quantity < 5) {
-                state.product[action.payload].quantity++
-            }
+            state.inCart.forEach(inCart => {
+                if(inCart._id === action.payload && inCart.quantity < 5) {
+                    inCart.quantity++
+                }
+            })
         },
         decrement: (state, action) => {
-            if (state.product[action.payload].quantity > 1) {
-                state.product[action.payload].quantity--
-            }
+            state.inCart.forEach(inCart => {
+                if(inCart._id === action.payload && inCart.quantity > 1) {
+                    inCart.quantity--
+                }
+            })
         },
-        setInCart: (state, { payload }) => {
-            state.inCart = payload
+        setInCart: (state, action ) => {
+            state.inCart = action.payload
         },
         removeInCart: (state, action) => {
             state.inCart = state.inCart.filter((inCart) => inCart._id !== action.payload.productId);
@@ -39,14 +38,12 @@ export const cartSlice = createSlice({
         AddToCart: (state, action) => {
            state.inCart.push(action.payload)
         }
-
     }
 })
 
 
 
 
-export const selectQuantity = (state) => state.cart.product
 export const { increment, decrement, getData, setInCart , removeInCart, AddToCart } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart
