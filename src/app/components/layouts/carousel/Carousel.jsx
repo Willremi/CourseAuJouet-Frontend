@@ -1,43 +1,53 @@
 import React, { useState, useEffect, useRef } from "react";
-import { CarouselData } from "./CarouselData";
 import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
+import { getCarousel } from "../../../api/backend/carousel";
 
 const delay = 3000;
 
 function Carousel() {
   const [index, setIndex] = useState(0);
-  const length = CarouselData.length
+  const [inCarousel, setInCarousel]= useState([])
+  const length = inCarousel.length
   const timeoutRef = useRef(null);
 
+  
   const nextSlide = () => {
     setIndex(index === length -1 ? 0 : index + 1)
-}
-
-const prevSlide = () => {
+  }
+  
+  const prevSlide = () => {
     setIndex(index === 0 ? length -1 : index - 1)
-}
-
-
+  }
+  
+  
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
   }
 
+  useEffect( () => {
+    getCarousel()
+      .then(res => {
+        const carousel = res.data;
+        setInCarousel(carousel);
+      })
+  },[])
+  
   useEffect(() => {
       resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === CarouselData.length - 1 ? 0 : prevIndex + 1
+          prevIndex === inCarousel.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
     return () => {
         resetTimeout()
     };
-  }, [index]);
+  }, [index, inCarousel.length]);
 
   return (
     <div className="h-3/5 relative m-auto overflow-hidden">
@@ -49,11 +59,11 @@ const prevSlide = () => {
         className="whitespace-nowrap transition ease-in-out duration-1000"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
-        {CarouselData.map((slide, index) => (
-            <Link to={slide.link}>
+        {inCarousel.map((slide, index) => (
+            <Link key={index} to={slide.link}>
                 <div
                     className="inline-block bg-cover bg-center h-60vh w-full"
-                    key={index}
+                    
                     style={{backgroundImage: "url(" + slide.image + ")"}}
                 />           
             </Link>
@@ -62,7 +72,7 @@ const prevSlide = () => {
       </div>
 
       <div className="-mt-12 text-center">
-        {CarouselData.map((_, idx) => (
+        {inCarousel.map((_, idx) => (
           <div key={idx}
           className={`${index === idx ? " bg-black" : "bg-nav-greyClar  "} inline-block h-2 w-10 cursor-pointer mt-4 mx-2 opacity-50`}
           onClick={() => {

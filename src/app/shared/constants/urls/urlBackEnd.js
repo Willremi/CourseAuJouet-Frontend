@@ -16,3 +16,8 @@ export const URL_BACK_REMOVE_ONE_PRODUCT_IN_CART = '/removeproduct'
 export const URL_BACK_GET_SEARCH_RESULT = '/getsearchproduct'
 export const URL_BACK_AUTO_COMPLETE_SEARCH = '/autocompletesearch/'
 export const URL_BACK_GET_AUTOCOMPLETION_PRODUCT = '/getonSelectedAutoCompletion'
+
+/* Carousel URL */
+export const URL_BACK_GET_CAROUSEL = '/getcarousel'
+export const URL_BACK_ADD_ONE_SLIDE_IN_CAROUSEL = '/addcarousel'
+export const URL_BACK_DELETE_ONE_SLIDE_IN_CAROUSEL = '/deletecarousel'
