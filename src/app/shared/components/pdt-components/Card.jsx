@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { expirationProductDate } from "../../services/productServices";
 import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
 import { addProductInCart } from "./../../services/cart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectIsLogged } from "./../../redux-store/authenticationSlice";
+import { accountId } from "../../services/accountServices";
+import { AddToCart } from "../../../api/backend/cart";
+import { addInCart } from "../../redux-store/cartSlice";
 
 const Card = ({ products }) => {
   const isLogged = useSelector(selectIsLogged);
@@ -12,6 +15,22 @@ const Card = ({ products }) => {
     products.on_sale_date,
     30
   );
+  const dispatch = useDispatch()
+
+  const addProductInCart = (ProductId) => {
+    const userId = accountId()
+
+    const values = {
+        ProductId: ProductId,
+        userId: userId
+    }
+    AddToCart(values)
+        .then((res) => {
+          console.log(res.data)
+          dispatch(addInCart(values))
+        })
+        .catch((error) => console.log(error))
+}
 
   return (
     <>
@@ -48,7 +67,7 @@ const Card = ({ products }) => {
             <button
               onClick={
                 isLogged
-                  ? () => addProductInCart(products._id)
+                  ? () => addProductInCart(products)
                   : () =>
                       console.log(
                         "Vous devez être connecté pour ajouter cet article"
@@ -78,3 +97,4 @@ const Card = ({ products }) => {
 };
 
 export default Card;
+
