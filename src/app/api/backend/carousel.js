@@ -13,4 +13,4 @@ export function addOneSlideInCarousel(values){
 
 export function deleteOneSlideInCarousel(values){
     return apiBackEnd.delete(URL_BACK_DELETE_ONE_SLIDE_IN_CAROUSEL, values)
-}
+}   

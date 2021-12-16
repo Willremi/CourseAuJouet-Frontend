@@ -60,10 +60,10 @@ function Carousel() {
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
         {inCarousel.map((slide, index) => (
-            <Link to={slide.link}>
+            <Link key={index} to={slide.link}>
                 <div
                     className="inline-block bg-cover bg-center h-60vh w-full"
-                    key={index}
+                    
                     style={{backgroundImage: "url(" + slide.image + ")"}}
                 />           
             </Link>
