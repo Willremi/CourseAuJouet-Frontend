@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ReduxProduct } from "../services/cart";
 
 
 /**
@@ -8,7 +7,6 @@ import { ReduxProduct } from "../services/cart";
  */
 
 const initialState = {
-    product: ReduxProduct(),
     inCart: []
 }
 
@@ -16,18 +14,23 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        getData: (state, action) => {
-            state.product = action.payload
-        },
         increment: (state, action) => {
-            if (state.product[action.payload].quantity < 5) {
-                state.product[action.payload].quantity++
-            }
+            state.inCart.map(inCart => {
+                if(inCart._id === action.payload) { 
+                    if(inCart.quantity < 5) {
+                        inCart.quantity++ 
+                    }
+                }
+            })
         },
         decrement: (state, action) => {
-            if (state.product[action.payload].quantity > 1) {
-                state.product[action.payload].quantity--
-            }
+            state.inCart.map(inCart => {
+                if(inCart._id === action.payload) {
+                    if(inCart.quantity > 1) {
+                        inCart.quantity-- 
+                    }
+                }
+            })
         },
         setInCart: (state, action ) => {
             state.inCart = action.payload
