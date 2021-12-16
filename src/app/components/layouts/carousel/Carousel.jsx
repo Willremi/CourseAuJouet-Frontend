@@ -1,58 +1,88 @@
-import React, { useState } from "react";
-import { CarouselData } from "./CarouselData";
+import React, { useState, useEffect, useRef } from "react";
 import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
+import { getCarousel } from "../../../api/backend/carousel";
 
-const Carousel = () => {
-    const [current, setCurrent] = useState(0)
-    const length = CarouselData.length
-    
-    const nextSlide = () => {
-        setCurrent(current === length -1 ? 0 : current + 1)
+const delay = 3000;
+
+function Carousel() {
+  const [index, setIndex] = useState(0);
+  const [inCarousel, setInCarousel]= useState([])
+  const length = inCarousel.length
+  const timeoutRef = useRef(null);
+
+  
+  const nextSlide = () => {
+    setIndex(index === length -1 ? 0 : index + 1)
+  }
+  
+  const prevSlide = () => {
+    setIndex(index === 0 ? length -1 : index - 1)
+  }
+  
+  
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
+  }
 
-    const prevSlide = () => {
-        setCurrent(current === 0 ? length -1 : current - 1)
-    }
+  useEffect( () => {
+    getCarousel()
+      .then(res => {
+        const carousel = res.data;
+        setInCarousel(carousel);
+      })
+  },[])
+  
+  useEffect(() => {
+      resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === inCarousel.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+    return () => {
+        resetTimeout()
+    };
+  }, [index, inCarousel.length]);
 
-    if (!Array.isArray(CarouselData) || length <= 0) {
-        return null;
-    }
+  return (
+    <div className="h-3/5 relative m-auto overflow-hidden">
+        <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
+        <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
 
-    return(
-        <section>
-            {/* mapage des données */}
-                {CarouselData.map((slide,index) => {
-                    return (
-                        <div key={index} className={`${index === current ? "w-screen h-screen-40 md:h-screen-40 sm:h-screen-50 relative" : "hidden"}`}>
-                            {/* ceci est l'image */}
-                            <Link to={slide.link} >  
-                            <img src={slide.image} alt="produit" 
-                            className="w-full h-full object-bottom object-cover"/>
-                            </Link>
-                                    {/* les deux cheuvrons servant à manipuler le carousel */}
-                                    <FaChevronLeft className="absolute inset-y-1/2 left-6 sm:left-1 md:left-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={prevSlide} />
-                                    <FaChevronRight className="absolute inset-y-1/2 right-6 sm:right-1 md:right-3 font text-5xl text-black z-20 cursor-pointer select-none opacity-40" onClick={nextSlide}/>
-                                
-                                {/* la div contenant les infos et le lien correspondant à l'image */}
-                                <div className={index === current 
-                                    ? "opacity-1 transition duration-1000 absolute sm:static sm:p-10 sm:hidden top-20 left-20 text-center" 
-                                    : "opacity-0"} key={index}>
-                                    <p className="text-3xl sm:text-blue-400 text-yellow-400 text-center">
-                                    { index === current && slide.text}
-                                    </p>
-                                    <Link to={slide.link} >  
-                                        <button className="sm:bg-nav-blueClar bg-yellow-400 hover:bg-yellow-500 rounded-full px-7 py-2 mt-2 sm:mt-4">
-                                            Voir plus
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>  
-                       
 
-                    )
-                })}
-       </section>
-    )
-};
+      <div
+        className="whitespace-nowrap transition ease-in-out duration-1000"
+        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+      >
+        {inCarousel.map((slide, index) => (
+            <Link key={index} to={slide.link}>
+                <div
+                    className="inline-block bg-cover bg-center h-60vh w-full"
+                    
+                    style={{backgroundImage: "url(" + slide.image + ")"}}
+                />           
+            </Link>
+
+        ))}
+      </div>
+
+      <div className="-mt-12 text-center">
+        {inCarousel.map((_, idx) => (
+          <div key={idx}
+          className={`${index === idx ? " bg-black" : "bg-nav-greyClar  "} inline-block h-2 w-10 cursor-pointer mt-4 mx-2 opacity-50`}
+          onClick={() => {
+            setIndex(idx);
+          }}
+           ></div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default Carousel

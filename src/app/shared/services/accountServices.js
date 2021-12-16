@@ -28,6 +28,7 @@ export function accountId(){
 }
 
 export function hasRole(role) {
+    
     return accountRoles().includes(role)
 }
 

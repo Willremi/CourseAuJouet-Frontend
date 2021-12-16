@@ -34,11 +34,10 @@ export const cartSlice = createSlice({
         },
         removeInCart: (state, action) => {
             state.inCart = state.inCart.filter((inCart) => inCart._id !== action.payload.productId);
-        }, 
-        addInCart: (state, action) => {
+        },
 
-            // state.inCart = [...state.inCart, action.payload]
-            console.log(action.payload);
+        AddToCart: (state, action) => {
+           state.inCart.push(action.payload)
         }
     }
 })
@@ -47,7 +46,7 @@ export const cartSlice = createSlice({
 
 
 export const selectQuantity = (state) => state.cart.product
-export const { increment, decrement, getData, setInCart , removeInCart, addInCart } = cartSlice.actions;
+export const { increment, decrement, getData, setInCart , removeInCart, AddToCart } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart
 

@@ -23,7 +23,7 @@ const CartView = () => {
   const inCart = useSelector(selectInCart)
   const quantityProduct = useSelector(selectQuantity)
   const dispatch = useDispatch()
-  // console.log("inCart:", inCart);
+  
   useEffect(() => {
     //Récupère tous les produits de l'utilisateur logué via axios pour les dispatch au store Redux 
     GetallProductInCart(userId)
@@ -37,7 +37,6 @@ const CartView = () => {
 
   if (product) {
     ReduxProduct(product)
-    // console.log("CartView ReduxProd :", ReduxProduct(product))
   }
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux

@@ -5,13 +5,14 @@ import {
     accountId
 } from './accountServices';
 
-export const addProductInCart = (ProductId) => {
+export const addProductInCart = (Product) => {
     const userId = accountId()
 
     const values = {
-        ProductId: ProductId,
+        Product: Product,
         userId: userId
     }
+    
     AddToCart(values)
         .then((res) => console.log(res.data))
         .catch((error) => console.log(error))

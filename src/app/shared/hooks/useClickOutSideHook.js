@@ -5,7 +5,6 @@ import {
 
 export let useClickOutside = (handler) => {
     let domNode = useRef();
-    // console.log(domNode)
     useEffect(() => {
         let maybeHandler = (event) => {
             if (domNode.current !== null) {
