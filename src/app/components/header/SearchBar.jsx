@@ -77,11 +77,11 @@ const SearchBar = () => {
               placeholder="Rechercher..."
               autoComplete="off"
               component={CustomInput}
-              onClick={() => {
-                if (Autocompletion.lenght > 0) {
-                  setShowElement(true);
-                }
-              }}
+              // onClick={() => {
+              //   if (Autocompletion.length > 0) {
+              //     setShowElement(true);
+              //   }
+              // }}
               onKeyUp={() => {
                 setShowElement(true);
                 handleSubmitChange(values.search);
