@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
-import { getData, setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
+import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";

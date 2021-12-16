@@ -48,7 +48,6 @@ export const cartSlice = createSlice({
 
 
 
-export const selectQuantity = (state) => state.cart.product
 export const { increment, decrement, getData, setInCart , removeInCart, AddToCart } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart

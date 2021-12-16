@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
-import { decrement, increment, selectInCart, selectQuantity } from "../../shared/redux-store/cartSlice";
+import { decrement, increment, selectInCart } from "../../shared/redux-store/cartSlice";
 
 const ProductInCart = ({ component, remove, index }) => {
 
