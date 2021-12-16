@@ -15,20 +15,16 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         increment: (state, action) => {
-            state.inCart.map(inCart => {
-                if(inCart._id === action.payload) { 
-                    if(inCart.quantity < 5) {
-                        inCart.quantity++ 
-                    }
+            state.inCart.forEach(inCart => {
+                if(inCart._id === action.payload && inCart.quantity < 5) {
+                    inCart.quantity++
                 }
             })
         },
         decrement: (state, action) => {
-            state.inCart.map(inCart => {
-                if(inCart._id === action.payload) {
-                    if(inCart.quantity > 1) {
-                        inCart.quantity-- 
-                    }
+            state.inCart.forEach(inCart => {
+                if(inCart._id === action.payload && inCart.quantity > 1) {
+                    inCart.quantity--
                 }
             })
         },
