@@ -29,9 +29,10 @@ const SearchView = () => {
     <div className="w-11/12 mx-auto">
       <div className="w-11/12 mx-auto flex flex-row items-center my-6 sm:flex-col sm:items-start">
         <h2 className="font-Annie font-semibol text-4xl text-secondary-600 mr-3">
-          Résultat pour "{valueInput.search}"
+          {searchResult.length === 0 ? "Aucun résultat" : "Résultat"} pour "{valueInput.search}"
         </h2>
-        <span>{`${searchResult.length} article(s) trouvé(s)`}</span>
+        {/* <span>{`${searchResult.length} article(s) trouvé(s)`}</span> */}
+        <span>{`${searchResult.length} article${searchResult.length > 1 ? 's' : ''} trouvé${searchResult.length > 1 ? 's' : ''}`}</span>
        
         
       
