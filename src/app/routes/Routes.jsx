@@ -11,7 +11,7 @@ import {
   URL_FORGOT_PASSWORD,
   URL_RESET_PASSWORD,
   URL_SEARCH_PAGE,
-  URL_DASHBOARD_MANAGER
+  URL_DASHBOARD
 } from "../shared/constants/urls/urlConstants";
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
@@ -49,15 +49,15 @@ const Routes = () => {
       <PrivateRoute
         path={URL_CART}
         component={CartView}
-        roles={[ROLE_CUSTOMER]}
+        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />
       <PrivateRoute
         path={URL_ORDER_ADDRESS}
         component={OrderAddressView}
-        roles={[ROLE_CUSTOMER]}
+        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />
       <PrivateRoute
-        path={URL_DASHBOARD_MANAGER}
+        path={URL_DASHBOARD}
         component={ManagerAdministrationView}
         roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />

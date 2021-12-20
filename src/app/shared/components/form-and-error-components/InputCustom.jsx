@@ -11,13 +11,17 @@ import { ErrorMessage } from 'formik'
  * @example <Field type="email" name="email" placeholder="Email" component={ InsyInput } className='my-0'/>
  * @author Peter Mollet
  */
-export const CustomInput = ({searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
+export const CustomInput = ({label, textarea, searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
     return (
-        <div className='relative w-full'>
+        <div className={`relative w-full ${errorRight ? 'flex items-center' : ''}`}>
+            <label htmlFor={name} className="font-semibold px-3">
+                {label}
+            </label>
             <input
                 id={name}
                 name={name}
                 type={type}
+                component={textarea}
                 className={`input ${ searchBar ? null : errors[name] && touched[name] && 'input-error'} ${className} `}
                 {...field}
                 {...rest}

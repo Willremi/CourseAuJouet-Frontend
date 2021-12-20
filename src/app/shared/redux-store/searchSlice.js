@@ -19,7 +19,6 @@ export const searchSlice = createSlice({
             state.searchResult = action.payload
         },
     }
-
 })
 
 export const { getValues } = searchSlice.actions

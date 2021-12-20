@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { URL_DASHBOARD_MANAGER } from "../../shared/constants/urls/urlConstants";
+import { URL_DASHBOARD } from "../../shared/constants/urls/urlConstants";
 import { useDispatch } from 'react-redux';
 import { setComponent } from "../../shared/redux-store/ProfilSlice";
 
@@ -13,7 +13,7 @@ const Manager = ({ handleSignOut, setShowModal }) => {
         onClick={() => {
           dispatch(setComponent("DashBoard"))
           setShowModal(false)}}
-        to={URL_DASHBOARD_MANAGER}
+        to={URL_DASHBOARD}
         className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10"
         >
             Menu du manager
@@ -22,10 +22,10 @@ const Manager = ({ handleSignOut, setShowModal }) => {
         onClick={() => {
           dispatch(setComponent("Produits"))
           setShowModal(false)}}
-        to={URL_DASHBOARD_MANAGER}
+        to={URL_DASHBOARD}
         className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10"
       >
-        Gestion du Magasin
+        Gestion des produits
       </Link>
       <button className="btn btn-green" onClick={() => handleSignOut()}>
         Se déconnecter

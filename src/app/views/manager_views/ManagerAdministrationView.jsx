@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectComponent } from './../../shared/redux-store/ProfilSlice';
 import { ROLE_MANAGER } from './../../shared/constants/rolesConstant';
 import { hasRole } from "../../shared/services/accountServices"; 
@@ -8,7 +8,7 @@ import ManagerProduct from "../../components/profil_component/Manager/ManagerPro
 
 const ManagerAdministrationView = () => {
     const selectMenu = useSelector(selectComponent)
-
+    const dispatch = useDispatch()
   return (
     <div className="flex flex-row">
 {/********************* CUSTOMERS ***********************/}
@@ -16,8 +16,8 @@ const ManagerAdministrationView = () => {
 {/*********************  MANAGERS ***********************/}
 {hasRole(ROLE_MANAGER) &&
 <>
-<ManagerLeftAside selectMenu={selectMenu}/>
-<ManagerProduct />
+<ManagerLeftAside dispatch={dispatch} selectMenu={selectMenu}/>
+<ManagerProduct dispatch={dispatch} selectMenu={selectMenu}/>
 </>
 
 }
