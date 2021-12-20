@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setSearch, getSearch } from './../services/searchServices';
+import { setSearch, getSearch, setInput, getInput } from './../services/searchServices';
 
 
 /**
@@ -8,7 +8,7 @@ import { setSearch, getSearch } from './../services/searchServices';
  */
 const initialState = {
     searchResult: getSearch(), 
-    valueInput: ''
+    valueInput: getInput()
 }
 
 export const searchSlice = createSlice({
@@ -20,6 +20,7 @@ export const searchSlice = createSlice({
             state.searchResult = action.payload
         },
         getValueInput: (state, action) => {
+            setInput(action.payload)
             state.valueInput = action.payload
         }
     }

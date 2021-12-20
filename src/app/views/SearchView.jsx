@@ -8,7 +8,6 @@ import { useState } from "react";
 const SearchView = () => {
   const searchResult = useSelector(selectSearchResult);
   const valueInput = useSelector(inputValue)
-  console.log(searchResult.length);
 
   const [filterValue, setFilterValue] = useState({
     trademark: "undefined",
@@ -32,10 +31,7 @@ const SearchView = () => {
           {searchResult.length === 0 ? "Aucun résultat" : "Résultat"} pour "{valueInput.search}"
         </h2>
         {/* <span>{`${searchResult.length} article(s) trouvé(s)`}</span> */}
-        <span className="text-nav-blue font-semibold text-xl">{`${searchResult.length} article${searchResult.length > 1 ? 's' : ''} trouvé${searchResult.length > 1 ? 's' : ''}`}</span>
-       
-        
-      
+        <span className="text-nav-blue font-semibold text-xl">{`${searchResult.length} article${searchResult.length > 1 ? 's' : ''} trouvé${searchResult.length > 1 ? 's' : ''}`}</span>      
       
       </div>
 
