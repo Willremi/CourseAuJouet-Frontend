@@ -7,7 +7,7 @@ export const defaulValuesAddProduct = {
     required_age :"3",
     category: "Peluche",
     SubCategory : "Pokemon",
-    images: "",
+    images: [],
     description: "Piiiiiiikaaaaachuuuuuuuuu",
     status : true
 }

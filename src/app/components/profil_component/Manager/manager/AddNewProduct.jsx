@@ -12,15 +12,16 @@ const AddNewProduct = () => {
   const [ImagesArray, setImagesArray] = useState(null);
   const [ImagesValues, setImagesValues] = useState(null);
 
-  
-
   function submitProduct(values, images) {
-    
+
     const formData = new FormData();
 
     formData.append("product_name", values.product_name);
     formData.append("trademark", values.trademark);
-    formData.append("images", images);
+    for(let i = 0 ; i < images.length ; i++){
+      formData.append("images", images[i]);
+    }
+    
     formData.append("reference", values.reference);
     formData.append("stock", values.Stock);
     formData.append("price", values.Price);
@@ -136,14 +137,15 @@ const AddNewProduct = () => {
             name="images"
             className="w-3/12 rounded-xl mr-3 border-0"
             id="image"
+            multiple
             onChange={(e) => {
-              console.log(e.target.files)
               if (ImagesValues) {
-                setImagesValues(...ImagesValues,
-                  e.currentTarget.files[0],
+                setImagesValues(
+                [ ...ImagesValues,
+                  e.currentTarget.files[0]],
                 );
               } else {
-                setImagesValues(e.currentTarget.files[0]);
+                setImagesValues([e.currentTarget.files[0]]);
               }
               const fileReader = new FileReader();
               fileReader.onload = () => {
