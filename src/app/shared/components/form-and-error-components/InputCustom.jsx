@@ -13,10 +13,7 @@ import { ErrorMessage } from 'formik'
  */
 export const CustomInput = ({label, textarea, searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
     return (
-        <div className={`relative w-full ${errorRight ? 'flex items-center' : ''}`}>
-            <label htmlFor={name} className="font-semibold px-3">
-                {label}
-            </label>
+        <>
             <input
                 id={name}
                 name={name}
@@ -32,7 +29,7 @@ export const CustomInput = ({label, textarea, searchBar, noError, errorRight, cl
                     className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`}
                 />
             )}
-        </div>
+        </>
     )
 }
 

@@ -125,7 +125,7 @@ function MyAccountButton() {
                 <>
                   {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal}/> : null}
                   {hasRole(ROLE_CUSTOMER) ? <button
-                    className="ml-8 btn btn-green"
+                    className="ml-8 btn btn-yellow"
                     onClick={() => handleSignOut()}
                   >
                     Se déconnecter

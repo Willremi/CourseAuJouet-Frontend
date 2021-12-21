@@ -1,13 +1,13 @@
 export const defaulValuesAddProduct = {
-    product_name: "Peluche Pikachu",
-    trademark:"Pokemon",
-    reference:"PIKAPIKA",
-    Stock:"15",
-    Price:"2999",
-    required_age :"3",
-    category: "Peluche",
-    SubCategory : "Pokemon",
+    product_name: "",
+    trademark:"",
+    reference:"",
+    Stock:"",
+    Price:"",
+    required_age :"",
+    category: "",
+    SubCategory : "",
     images: [],
-    description: "Piiiiiiikaaaaachuuuuuuuuu",
+    description: "",
     status : true
 }
