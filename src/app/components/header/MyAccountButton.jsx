@@ -58,33 +58,33 @@ function MyAccountButton() {
 
       <>
         <div
-          className={`transition-all duration-500 bg-nav-blueClar absolute overflow-scroll z-40 top-16 left-0 w-screen ${
-            showModal ? "h-screen overflow-hidden" : "h-0 overflow-hidden"
+          className={`transition-all duration-500 bg-nav-blueClar absolute  top-16 left-0 w-screen ${
+            showModal ? "h-screen overflow-hidden z-40" : "h-0 overflow-hidden"
           }
             ${
               showModal
-                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:top-0"
+                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-40 md:top-14"
                 : "md:h-0 overflow-hidden"
             }
             ${
               showModal
-                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-10 lg:top-40"
+                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-40 lg:top-36 lg:mt-2"
                 : "lg:h-0 overflow-hidden"
             }
              ${
                showModal
-                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-10 xl:top-28 xl:mt-3"
+                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-40 xl:top-28 xl:mt-3"
                  : "xl:h-0 overflow-hidden"
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-10 2xl:top-28 2xl:mt-2 "
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-5 "
                  : "2xl:h-0 overflow-hidden"
              }
             `}
         >
           <div
-            className={`w-full relative bg-white h-6/12 
+            className={`w-full relative bg-white h-6/12 z-40
 
             md:w-5/6 md:h-auto md:mx-auto md:mt-10 md:transition-all md:duration-500 ${
               showModal ? null : "md:h-0"
@@ -125,7 +125,7 @@ function MyAccountButton() {
                 <>
                   {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal}/> : null}
                   {hasRole(ROLE_CUSTOMER) ? <button
-                    className="ml-8 w-3/4 btn btn-yellow"
+                    className="ml-8 w-3/4 btn btn-yellow mt-2 z-40"
                     onClick={() => handleSignOut()}
                   >
                     Se déconnecter
