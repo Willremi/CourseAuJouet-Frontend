@@ -55,14 +55,19 @@ const removeImages = (index) => {
       onSubmit={(values) => submitProduct(values, ImagesValues)}
     >
       <Form className="flex-col flex space-y-4">
-        <h2 className="text-center uppercase my-5 w-full font-semibold text-2xl text-darkblue-100">
+        <h2 className="text-center uppercase my-5 w-full font-semibold text-2xl text-darkblue-100
+        sm:text-md">
           Ajouter un nouveau produit
         </h2>
 
-        <p className="text-md text-red-700 w-59/100 mx-auto underline">* Champs obligatoire.</p>
+        <p className="text-md text-red-700 w-59/100 mx-auto underline
+        sm:w-full
+        ">* Champs obligatoire.</p>
 
-        <div className="flex flex-row items-center w-59/100 mx-auto">
-          <label htmlFor="product_name" className="w-1/6 font-semibold">
+        <div className="flex flex-row items-center w-59/100 mx-auto 
+        sm:flex-col sm:w-full">
+          <label htmlFor="product_name" className="w-1/6 font-semibold
+          sm:w-full">
             Nomination*
           </label>
           <div className="flex flex-col w-full mr-3">
@@ -76,8 +81,10 @@ const removeImages = (index) => {
           </div>
         </div>
 
-        <div className="flex flex-row items-center w-59/100 mx-auto">
-          <label htmlFor="trademark" className="w-1/6 font-semibold">
+        <div className="flex flex-row items-center w-59/100 mx-auto 
+        sm:w-full sm:flex-col">
+          <label htmlFor="trademark" className="w-1/6 font-semibold
+          sm:w-full">
             Marque*
           </label>
           <div className="flex flex-col w-full mr-3">
@@ -92,9 +99,12 @@ const removeImages = (index) => {
           
         </div>
 
-        <div className="flex flex-row w-59/100 mx-auto">
-          <div className="flex flex-row items-center w-1/2">
-            <label htmlFor="reference" className="w-5/12 font-semibold">
+        <div className="flex flex-row w-59/100 mx-auto 
+        sm:w-full sm:flex-col">
+          <div className="flex flex-row items-center w-1/2 
+          sm:w-full sm:flex-col">
+            <label htmlFor="reference" className="w-5/12 font-semibold
+            sm:w-full">
               Référence*
             </label>
             <div className="flex flex-col w-full mr-3">
@@ -107,11 +117,13 @@ const removeImages = (index) => {
               />
             </div>
           </div>
-          <div className="flex flex-row items-center w-1/2 ">
-            <label htmlFor="Stock*" className="w-2/6 font-semibold ">
+          <div className="flex flex-row items-center w-1/2 
+          sm:w-full sm:flex-col">
+            <label htmlFor="Stock*" className="w-2/6 font-semibold 
+            sm:w-full">
               Stock*
             </label>
-            <div className="flex flex-col w-full mr-3">
+            <div className="flex flex-col w-full mr-3 sm:flex-col">
               <Field
                 type="number"
                 name="Stock"
@@ -123,13 +135,17 @@ const removeImages = (index) => {
           </div>
         </div>
 
-        <div className="flex flex-row w-59/100 mx-auto">
-          <div className="flex flex-row w-full">
-            <div className="flex flex-row items-center w-1/2">
-              <label htmlFor="Price" className="w-5/12 font-semibold">
+        <div className="flex flex-row w-59/100 mx-auto 
+        sm:w-full sm:flex-col">
+          <div className="flex flex-row w-full 
+          sm:w-full sm:flex-col">
+            <div className="flex flex-row items-center w-1/2 
+            sm:w-full sm:flex-col">
+              <label htmlFor="Price" className="w-5/12 font-semibold
+              sm:w-full">
                 Prix*
               </label>
-              <div className="flex flex-col w-full mr-3">
+              <div className="flex flex-col w-full mr-3 ">
                 <Field
                   type="number"
                   name="Price"
@@ -140,11 +156,13 @@ const removeImages = (index) => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center w-1/2 ">
-              <label htmlFor="required_age" className="w-2/6 font-semibold">
+            <div className="flex flex-row items-center w-1/2 
+            sm:w-full sm:flex-col">
+              <label htmlFor="required_age" className="w-2/6 font-semibold
+              sm:w-full">
                 Âge Requis*
               </label>
-              <div className="flex flex-col w-full mr-3">
+              <div className="flex flex-col w-full mr-3 ">
                 <Field
                   type="number"
                   name="required_age"
@@ -157,13 +175,17 @@ const removeImages = (index) => {
           </div>
         </div>
 
-        <div className="flex flex-row w-59/100 mx-auto">
-          <div className="flex flex-row w-full">
-            <div className="flex flex-row items-center w-1/2 ">
-              <label htmlFor="category" className="w-5/12 font-semibold">
+        <div className="flex flex-row w-59/100 mx-auto 
+        sm:w-full">
+          <div className="flex flex-row w-full 
+          sm:w-full sm:flex-col">
+            <div className="flex flex-row items-center w-1/2 
+            sm:w-full sm:flex-col">
+              <label htmlFor="category" className="w-5/12 font-semibold
+              sm:w-full">
                 Catégorie*
               </label>
-              <div className="flex flex-col w-full mr-3">
+              <div className="flex flex-col w-full mr-3 ">
                 <Field
                   type="text"
                   name="category"
@@ -174,8 +196,10 @@ const removeImages = (index) => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center w-1/2 ">
-              <label htmlFor="SubCategory" className="font-semibold w-2/6">
+            <div className="flex flex-row items-center w-1/2 
+            sm:w-full sm:flex-col">
+              <label htmlFor="SubCategory" className="font-semibold w-2/6
+              sm:w-full">
                 Sous-catégorie
               </label>
               <div className="flex flex-col w-full mr-3">
@@ -247,11 +271,13 @@ const removeImages = (index) => {
           ) : null}
         </div>
 
-        <div className="flex flex-row justify-center">
-          <label htmlFor="description" className="font-semibold w-1/12">
+        <div className="flex flex-row justify-center 
+        sm:w-full sm:flex-col">
+          <label htmlFor="description" className="font-semibold w-1/12
+          sm:w-full">
             Description*
           </label>
-          <div className="flex flex-col w-51/100">
+          <div className="flex flex-col w-51/100 sm:w-full">
             <Field
             name="description"
             className="rounded-xl resize-y h-40 "
@@ -264,11 +290,13 @@ const removeImages = (index) => {
           </div>
           
         </div>
-        <div className="flex flex-row items-center w-59/100 mx-auto">
-          <label htmlFor="status" className="font-semibold w-14/100 ">
+        <div className="flex flex-row items-center w-59/100 mx-auto 
+        sm:w-full sm:flex-col">
+          <label htmlFor="status" className="font-semibold w-14/100 
+          sm:w-full">
             Status*
           </label>
-          <Field as="select" name="status" className="rounded-xl">
+          <Field as="select" name="status" className="rounded-xl sm:w-full">
             <option value="Online">En ligne</option>
             <option value="Offline">Hors ligne</option>
           </Field>

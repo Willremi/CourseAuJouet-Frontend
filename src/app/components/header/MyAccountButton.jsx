@@ -123,25 +123,27 @@ function MyAccountButton() {
             <div>
               {isLogged ? (
                 <>
-                  {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal}/> : null}
-                  {hasRole(ROLE_CUSTOMER) ? <button
-                    className="ml-8 btn btn-yellow"
-                    onClick={() => handleSignOut()}
-                  >
-                    Se déconnecter
-                  </button> : null}
-                  
+                  {hasRole(ROLE_MANAGER) ? (
+                    <Manager
+                      handleSignOut={handleSignOut}
+                      setShowModal={setShowModal}
+                    />
+                  ) : null}
+                  {hasRole(ROLE_CUSTOMER) ? (
+                    <div className="flex flex-col">
+                      <button
+                        className="w-1/3 mx-auto btn btn-yellow my-3"
+                        onClick={() => handleSignOut()}
+                      >
+                        Se déconnecter
+                      </button>
+                    </div>
+                  ) : null}
                 </>
               ) : (
                 <LoginView hideModal={setShowModal} />
               )}
             </div>
-
-            {/*
-            
-             Mettre les futurs composants ici ! 
-            
-            */}
           </div>
         </div>
       </>

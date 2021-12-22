@@ -42,7 +42,7 @@ const ManagerAdministrationView = () => {
         <div className="flex flex-row">
           {/*********************  MANAGERS ***********************/}
           <ManagerLeftAside />
-          <div className="w-11/12 mx-10 my-5">
+          <div className="w-11/12 mx-10 my-5 sm:mx-auto">
             <ManagerRoute />
           </div>
         </div>

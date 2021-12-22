@@ -29,7 +29,7 @@ const dispatch = useDispatch()
       >
         Gestion des produits
       </Link>
-      <button className="btn btn-green" onClick={() => handleSignOut()}>
+      <button className="w-1/3 mx-auto btn btn-yellow my-3" onClick={() => handleSignOut()}>
         Se déconnecter
       </button>
     </div>
