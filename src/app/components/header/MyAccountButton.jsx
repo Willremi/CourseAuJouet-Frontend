@@ -119,7 +119,7 @@ function MyAccountButton() {
                   {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal} /> : null}
                   
                   {/* Customer */}
-                  {hasRole(ROLE_CUSTOMER) ? <Customer /> : null}
+                  {hasRole(ROLE_CUSTOMER) ? <Customer  setShowModal={setShowModal} /> : null}
 
                   {hasRole(ROLE_CUSTOMER) ? <button
                     className="ml-8 w-3/4 btn btn-yellow mt-2 z-40"

@@ -11,7 +11,8 @@ import {
   URL_FORGOT_PASSWORD,
   URL_RESET_PASSWORD,
   URL_SEARCH_PAGE,
-  URL_DASHBOARD_MANAGER
+  URL_DASHBOARD_MANAGER,
+  URL_DASHBOARD_CUSTOMER
 } from "../shared/constants/urls/urlConstants";
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
@@ -31,6 +32,7 @@ import DetailsProductView from "./../views/DetailsProductView";
 import SearchView from "./../views/SearchView";
 import OrderAddressView from "./../views/OrderAddressView";
 import ManagerAdministrationView from "./../views/manager_views/ManagerAdministrationView";
+import CustomerView from "../views/customer_views/CustomerView";
 
 /**
  * Routes of the application
@@ -60,6 +62,11 @@ const Routes = () => {
         path={URL_DASHBOARD_MANAGER}
         component={ManagerAdministrationView}
         roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
+      />
+      <PrivateRoute 
+        path={URL_DASHBOARD_CUSTOMER}
+        component={CustomerView}
+        roles={[ROLE_CUSTOMER]}
       />
       <Route exact path={URL_HOME} component={HomeView} />
       <Route path={URL_REGISTER} component={RegisterView} />
