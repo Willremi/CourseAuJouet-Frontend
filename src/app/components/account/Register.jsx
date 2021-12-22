@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { defaulValuesRegister } from "../../shared/constants/formik-yup/default-values-form/idefaultValuesUser";
 import { schemaFormRegister } from "../../shared/constants/formik-yup/yup/yupUser";
+import { EyeIcon } from '@heroicons/react/solid';
 
-
-const RegisterForm = ({ submit, email }) => (
-
+const RegisterForm = ({ submit, email, viewPassword, setViewPassword }) => (
   <Formik
     initialValues={defaulValuesRegister}
     validationSchema={schemaFormRegister}
     onSubmit={submit}
   >
     <Form className="flex-col flex space-y-4">
-    <h2 className="text-center">Je souhaite créer mon compte</h2>
+      <h2 className="text-center">Je souhaite créer mon compte</h2>
       <div className="flex space-x-2">
         <p>Civilité* :</p>
         <label>
@@ -29,8 +28,8 @@ const RegisterForm = ({ submit, email }) => (
           Mme
         </label>
       </div>
-
-      <Field
+     
+        <Field
         name="lastName"
         id="lastName"
         type="text"
@@ -39,8 +38,10 @@ const RegisterForm = ({ submit, email }) => (
         required
       />
       <ErrorMessage name="lastName" className="text-red-500" component="span" />
-
-      <Field
+  
+      
+   
+        <Field
         name="firstName"
         id="firstName"
         type="text"
@@ -53,8 +54,10 @@ const RegisterForm = ({ submit, email }) => (
         className="text-red-500"
         component="span"
       />
-
-      <Field
+      
+      
+      
+        <Field
         name="email"
         id="email"
         type="email"
@@ -63,30 +66,46 @@ const RegisterForm = ({ submit, email }) => (
         required
       />
       <ErrorMessage name="email" className="text-red-500" component="span" />
+      
+      
 
-      <Field
-        name="password"
-        id="password"
-        type="password"
-        placeholder="Mot de Passe*"
-        className="input2"
-        required
-      />
-      <ErrorMessage name="password" className="text-red-500" component="span" />
+      <div className="relative">
+      <button type="button" onClick={() => setViewPassword(!viewPassword)}>
+            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-50 text-gray-500 duration-200 hover:text-gray-700" />
+          </button>
+        <Field
+          name="password"
+          id="password"
+          type={viewPassword ? "text" : "password"}
+          placeholder="Mot de Passe*"
+          className="input2"
+          required
+        />
+        <ErrorMessage
+          name="password"
+          className="text-red-500"
+          component="span"
+        />
+      </div>
 
-      <Field
-        name="confirmPassword"
-        id="confirmPassword"
-        type="password"
-        placeholder="Confirmation mot de passe*"
-        className="input2"
-        required
-      />
-      <ErrorMessage
-        name="confirmPassword"
-        className="text-red-500"
-        component="span"
-      />
+      <div className="relative">
+      <button type="button" onClick={() => setViewPassword(!viewPassword)}>
+            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-50 text-gray-500 duration-200 hover:text-gray-700" />
+      </button>
+        <Field
+          name="confirmPassword"
+          id="confirmPassword"
+          type={viewPassword ? "text" : "password"}
+          placeholder="Confirmation mot de passe*"
+          className="input2"
+          required
+        />
+        <ErrorMessage
+          name="confirmPassword"
+          className="text-red-500"
+          component="span"
+        />
+      </div>
 
       <div className="flex sm:space-x-2 md:space-x-4 lg:space-x-4 xl:space-x-4 2xl:space-x-4">
         <Field
@@ -141,13 +160,17 @@ const RegisterForm = ({ submit, email }) => (
 );
 
 const Register = (props) => {
+  const [viewPassword, setViewPassword] = useState(false);
   return (
-    
     <div
       className="sm:flex sm:mt-40 sm:ml-14 sm:w-9/12 md:flex md:mt-40 md:w-3/4 md:ml-28 lg:flex lg: mt-40 lg:ml-40 lg:w-9/12
     xl:flex xl:ml-72 2xl:flex 2xl:ml-72"
     >
-      <RegisterForm {...props} />
+      <RegisterForm
+        {...props}
+        viewPassword={viewPassword}
+        setViewPassword={setViewPassword}
+      />
     </div>
   );
 };
