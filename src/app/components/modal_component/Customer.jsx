@@ -11,9 +11,11 @@ const Customer = ({setShowModal}) => {
     return (
         <div className='flex flex-col'>
             <h2 className='font-semibold uppercase text-xl m-4'>{user.lastname} {user.firstname}</h2>
-            <Link to={URL_DASHBOARD} onClick={() => {
-          dispatch(setComponent("DashBoard"))
-          setShowModal(false)}} className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10">Informations du compte</Link>
+            <Link to={URL_DASHBOARD} 
+            onClick={() => {
+          dispatch(setComponent(true))
+          setShowModal(false)}} 
+          className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10">Informations du compte</Link>
         </div>
     );
 };

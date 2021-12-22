@@ -8,7 +8,8 @@ import IdleTimerCustom from './../components/account/IdleTimerCustom';
 import Navbar from './../components/header/Navbar';
 import ManagerAdministrationView from '../views/manager_views/ManagerAdministrationView';
 import { hasRole } from '../shared/services/accountServices';
-import { ROLE_MANAGER } from './../shared/constants/rolesConstant';
+import { ROLE_CUSTOMER, ROLE_MANAGER } from './../shared/constants/rolesConstant';
+import CustomerView from '../views/customer_views/CustomerView';
 
 const contextClass = {
     success: "bg-green-600",
@@ -37,6 +38,10 @@ const RoutesWithNavigation = () => {
                 <main>
                     <Routes/>
                     {isLogged && hasRole(ROLE_MANAGER) ? <ManagerAdministrationView />: null} 
+                    {isLogged && hasRole(ROLE_CUSTOMER) ? 
+                    <CustomerView /> : 
+                    null
+                    }
                 </main>
                 <ToastContainer 
                     toastClassName={({ type }) => contextClass[type || "default"] + 

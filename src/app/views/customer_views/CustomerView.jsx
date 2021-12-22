@@ -1,22 +1,35 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import CustomerLeftAside from '../../components/profil_component/Customer/CustomerLeftAside';
-import CustomerProfil from '../../components/profil_component/Customer/CustomerProfil';
-import { ROLE_CUSTOMER } from '../../shared/constants/rolesConstant';
-import { selectComponent } from '../../shared/redux-store/ProfilSlice';
-import { hasRole } from '../../shared/services/accountServices';
+import CustomerRoute from '../../components/profil_component/Customer/CustomerRoute';
+import { URL_DASHBOARD } from '../../shared/constants/urls/urlConstants';
 
 const CustomerView = () => {
-    const selectMenu = useSelector(selectComponent)
+
+    const location = useLocation()
+    const [authorizedView, setAuthorizedView] = useState(false)
+
+    useEffect(() => {
+        const URL_CUSTOMER = [URL_DASHBOARD]
+
+        if(URL_CUSTOMER.indexOf(location.pathname) !== -1) {
+            setAuthorizedView(true)
+        } else {
+            setAuthorizedView(false)
+        }
+    }, [location.pathname])
+
     return (
-        <div className='flex flex-row'>
-            {hasRole(ROLE_CUSTOMER) && 
-            <>
-                <CustomerLeftAside selectMenu={selectMenu} />
-                <CustomerProfil />
-            </>
-            }
-        </div>
+        <>
+        {authorizedView ? (
+            <div className='flex flex-row'>
+                <CustomerLeftAside />
+                <div className='w-11/12 mx-10 my-5'>
+                    <CustomerRoute />
+                </div>
+            </div>
+        ) : null}
+        </>
     );
 };
 

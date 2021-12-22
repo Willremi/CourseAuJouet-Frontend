@@ -19,3 +19,6 @@ export const URL_BACK_TO_STORE = '/returnofcontrol'
 export const URL_MANAGER_MESSAGE = '/managermessage'
 export const URL_MANAGER_STATISTIQUES = '/statistiques'
 export const URL_MANAGER_SETTINGS = '/settings'
+
+/** CUSTOMER **/
+export const URL_PROFIL = '/profil'

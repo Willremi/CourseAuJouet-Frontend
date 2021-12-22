@@ -1,7 +1,7 @@
 import React from 'react';
 import { accountUser } from '../../../../shared/services/accountServices';
 
-const Profil = () => {
+const ProfilUser = () => {
     const user = accountUser()
     return (
         <>
@@ -16,4 +16,4 @@ const Profil = () => {
     );
 };
 
-export default Profil;
+export default ProfilUser;
