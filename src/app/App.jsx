@@ -19,7 +19,6 @@ const App = () => {
     return (
         <Provider store={ store }>
 			<RoutesWithNavigation/>
-           
 		</Provider>
     );
 };

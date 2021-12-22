@@ -7,7 +7,7 @@ import { UploadIcon, XIcon } from "@heroicons/react/solid";
 import { PostNewProduct } from "../../../../api/backend/product";
 import { Icon } from "@iconify/react";
 
-const AddNewProduct = ({selectMenu, dispatch}) => {
+const AddNewProduct = () => {
   const [ImagesArray, setImagesArray] = useState(null);
   const [ImagesValues, setImagesValues] = useState(null);
   const [reload, setReload] = useState(false)

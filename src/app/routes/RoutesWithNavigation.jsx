@@ -4,9 +4,11 @@ import { ToastContainer } from 'react-toastify'
 import { useSelector } from 'react-redux';
 import Routes from './Routes';
 import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
-// import Navbar from '../../test/Navbar';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
 import Navbar from './../components/header/Navbar';
+import ManagerAdministrationView from '../views/manager_views/ManagerAdministrationView';
+import { hasRole } from '../shared/services/accountServices';
+import { ROLE_MANAGER } from './../shared/constants/rolesConstant';
 
 const contextClass = {
     success: "bg-green-600",
@@ -34,6 +36,7 @@ const RoutesWithNavigation = () => {
                 <Navbar />
                 <main>
                     <Routes/>
+                    {isLogged && hasRole(ROLE_MANAGER) ? <ManagerAdministrationView />: null} 
                 </main>
                 <ToastContainer 
                     toastClassName={({ type }) => contextClass[type || "default"] + 
