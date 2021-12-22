@@ -11,13 +11,14 @@ import { ErrorMessage } from 'formik'
  * @example <Field type="email" name="email" placeholder="Email" component={ InsyInput } className='my-0'/>
  * @author Peter Mollet
  */
-export const CustomInput = ({searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
+export const CustomInput = ({label, textarea, searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
     return (
-        <div className='relative w-full'>
+        <>
             <input
                 id={name}
                 name={name}
                 type={type}
+                component={textarea}
                 className={`input ${ searchBar ? null : errors[name] && touched[name] && 'input-error'} ${className} `}
                 {...field}
                 {...rest}
@@ -28,7 +29,7 @@ export const CustomInput = ({searchBar, noError, errorRight, className, type, fi
                     className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`}
                 />
             )}
-        </div>
+        </>
     )
 }
 

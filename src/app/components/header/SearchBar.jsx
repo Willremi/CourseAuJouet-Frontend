@@ -82,7 +82,7 @@ const SearchBar = () => {
               autoComplete="off"
               component={CustomInput}
               // onClick={() => {
-              //   if (Autocompletion.length > 0) {
+              //   if (Autocompletion.lenght > 0) {
               //     setShowElement(true);
               //   }
               // }}

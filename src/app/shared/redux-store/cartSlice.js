@@ -15,18 +15,14 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         increment: (state, action) => {
-            state.inCart.forEach(inCart => {
-                if(inCart._id === action.payload && inCart.quantity < 5) {
-                    inCart.quantity++
-                }
-            })
+            if (state.inCart[action.payload].quantity < 5) {
+                state.inCart[action.payload].quantity++
+            }
         },
         decrement: (state, action) => {
-            state.inCart.forEach(inCart => {
-                if(inCart._id === action.payload && inCart.quantity > 1) {
-                    inCart.quantity--
-                }
-            })
+            if (state.inCart[action.payload].quantity > 1) {
+                state.inCart[action.payload].quantity--
+            }
         },
         setInCart: (state, action ) => {
             state.inCart = action.payload

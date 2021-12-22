@@ -7,7 +7,7 @@ export const URL_BACK_VALID_RESET_PASSWORD = '/valid-reset-password/'
 /* PRODUCT URL */
 export const URL_BACK_GET_NEW_PRODUCT = '/getnewproduct'
 export const URL_BACK_GET_ALL_PRODUCT = '/getallproduct'
- 
+export const URL_BACK_ADD_NEW_PRODUCT = '/addnewproduct'
 export const URL_BACK_GET_POPULAR_PRODUCT = '/getpopularproduct'
 
 /* CART URL */

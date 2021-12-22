@@ -11,7 +11,11 @@ export const URL_SEARCH_PAGE = '/search'
 export const URL_ORDER_ADDRESS = '/order/address_delivery'
 
 /** MANAGER **/
-export const URL_DASHBOARD_MANAGER = '/manager/dashboard'
-
-/** CUSTOMER **/
-export const URL_DASHBOARD_CUSTOMER = '/customer/dashboard'
+export const URL_DASHBOARD = '/dashboard'
+export const URL_LIST_OF_PRODUCT = '/listproduct'
+export const URL_ADD_PRODUCT = '/addproduct'
+export const URL_MANAGER_ORDER = '/managerorder'
+export const URL_BACK_TO_STORE = '/returnofcontrol'
+export const URL_MANAGER_MESSAGE = '/managermessage'
+export const URL_MANAGER_STATISTIQUES = '/statistiques'
+export const URL_MANAGER_SETTINGS = '/settings'

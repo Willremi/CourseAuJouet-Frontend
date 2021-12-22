@@ -31,12 +31,20 @@ module.exports = {
     
     extend: {
       
+      scale: {
+        '200': '2.00',
+      },
+
       padding: {
         '1.75': '0.4375rem',
         '1.70': '0.400rem',
         '1.65': '0.37rem',
       },
       width: {
+        '14/100':'14%',
+        '51/100':'51%',
+        '59/100':'59%',
+        '1/10': '10%',
         '2/1': '200%',
         'screen-90': '90vw',
         'screen-50': '50vw',
@@ -46,6 +54,7 @@ module.exports = {
         'autocompletion-md': '95.5%',
       },
       height:{
+        '1/10':'10%',
         'screen-40': '40vw',
         'screen-50': '50vw',
         '60vh' : '60vh',
@@ -91,8 +100,11 @@ module.exports = {
           '800': '#a7510c',
           'trash': '#F26419',
         }, 
+        darkblue:{
+         '100' : '#2F4858'},
         cyan:{
-          '100': '#55DDE0'
+          '100': '#55DDE0',
+          '200':'#9BE4D8'
         },
         nav: {
           'yellow': '#FFEECC', 

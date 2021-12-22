@@ -5,7 +5,9 @@ import React from 'react'
 import NewProduct from '../components/homepage/NewProduct';
 import PopularProduct from '../components/homepage/PopularProduct';
 import  Carousel  from '../components/layouts/carousel/Carousel';
-const HomeView = ({ history }) => {
+
+const HomeView = () => {
+
     return (
         <div>
             <Carousel />            

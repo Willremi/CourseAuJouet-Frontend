@@ -24,7 +24,6 @@ export const searchSlice = createSlice({
             state.valueInput = action.payload
         }
     }
-
 })
 
 export const { getValues, getValueInput } = searchSlice.actions

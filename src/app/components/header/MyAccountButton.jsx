@@ -122,7 +122,7 @@ function MyAccountButton() {
                   {hasRole(ROLE_CUSTOMER) ? <Customer  setShowModal={setShowModal} /> : null}
 
                   {hasRole(ROLE_CUSTOMER) ? <button
-                    className="ml-8 w-3/4 btn btn-yellow mt-2 z-40"
+                    className="ml-8 btn btn-yellow"
                     onClick={() => handleSignOut()}
                   >
                     Se déconnecter

@@ -3,7 +3,7 @@ import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { Link } from "react-router-dom";
 import { getCarousel } from "../../../api/backend/carousel";
 
-const delay = 3000;
+const delay = 5000;
 
 function Carousel() {
   const [index, setIndex] = useState(0);

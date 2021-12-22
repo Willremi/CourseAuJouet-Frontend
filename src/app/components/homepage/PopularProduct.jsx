@@ -19,7 +19,7 @@ const PopularProduct = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-  
+
   return (
     <>
     <h2 className="font-Annie font-semibold text-4xl text-secondary-600">Les + Populaires</h2>

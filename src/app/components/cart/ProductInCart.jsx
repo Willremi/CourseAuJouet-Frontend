@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
-import { decrement, increment, selectInCart } from "../../shared/redux-store/cartSlice";
+import { decrement, increment } from "../../shared/redux-store/cartSlice";
 
-const ProductInCart = ({ component, remove, index }) => {
+const ProductInCart = ({ component, remove, index, inCart }) => {
 
-  const cart = useSelector(selectInCart);
   const dispatch = useDispatch();
 
   return (
@@ -55,7 +54,7 @@ const ProductInCart = ({ component, remove, index }) => {
 
         <div className="flex flex-row justify-between">
           <p className="font-semibold text-3xl sm:text-base md:text-lg">
-            {cart ? (cart[index].quantity * component.price) / 100 : null}€
+            {inCart ? (inCart[index].quantity * component.price) / 100 : null}€
           </p>
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
@@ -66,9 +65,9 @@ const ProductInCart = ({ component, remove, index }) => {
             <p className="font-semibold text-2xl sm:text-base md:text-lg mr-1 xl:mr-2">Qté :</p>
 
             <div className="flex border-2 border-yellow-500 rounded-full px-1 xl:px-2">
-              <MinusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(decrement(component._id))} />
-              <span className="text-base md:text-lg lg:text-xl xl:text-xl px-3 xl:px-4">{cart ? cart[index].quantity : null}</span>
-              <PlusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(increment(component._id))} />
+              <MinusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(decrement(index))} />
+              <span className="text-base md:text-lg lg:text-xl xl:text-xl px-3 xl:px-4">{inCart ? inCart[index].quantity : null}</span>
+              <PlusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(increment(index))} />
             </div>
 
           </div>
