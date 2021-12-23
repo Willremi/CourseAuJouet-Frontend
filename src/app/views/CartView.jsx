@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
-import { setInCart, removeInCart, selectInCart, selectQuantity } from "../shared/redux-store/cartSlice";
+import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 
@@ -20,7 +20,6 @@ const CartView = () => {
   const userId = accountId();
   const [ReloadComponent, setReloadComponent] = useState(false);
   const inCart = useSelector(selectInCart)
-  const quantityProduct = useSelector(selectQuantity)
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -84,7 +83,7 @@ const CartView = () => {
 
             ))}
 
-            <SummaryOfOrders product={quantityProduct} />
+            <SummaryOfOrders product={inCart} />
             <div className="w-9/12 ml-auto text-center mr-5 py-6
             sm:mx-auto
             md:mx-auto
