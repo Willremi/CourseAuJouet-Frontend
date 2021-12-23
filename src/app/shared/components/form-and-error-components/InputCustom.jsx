@@ -20,6 +20,7 @@ export const CustomInput = ({label, textarea, searchBar, noError, errorRight, cl
                 type={type}
                 component={textarea}
                 onChange={onChange}
+                value={value}
                 className={`input ${ searchBar ? null : errors[name] && touched[name] && 'input-error'} ${className} `}
                 {...field}
                 {...rest}

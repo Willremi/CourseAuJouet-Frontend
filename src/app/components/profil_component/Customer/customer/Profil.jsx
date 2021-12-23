@@ -17,15 +17,18 @@ const ProfilUser = () => {
             <h2 className='text-nav-blue font-semibold uppercase text-xl'>Données personnelles</h2>
             {/* <p>{user.civility}</p> */}
             
-            <Formik initialValues={valuesProfil}>
+            <Formik initialValues={valuesProfil} onSubmit={values => console.log(values)}>
                 <Form>
                     <div className='flex'>
-                        <Field type="text" name="lastName" component={CustomInput} value={user.lastname} />
-                        <Field type="text" name="firstName" component={CustomInput} value={user.firstname} />
+                        <Field type="text" name="lastName" component={CustomInput} value={valuesProfil.lastName} />
+                        <Field type="text" name="firstName" component={CustomInput} value={valuesProfil.firstName} />
                     </div>
-                    <Field type="text" name="email" component={CustomInput} value={user.email} />
-                    <Field type="date" name="birthday_date" component={CustomInput} value={user.birthday_date} />
-                    <Field type="text" name="phone" component={CustomInput} value={user.phone === null ? 'Non renseigné' : user.phone} />
+                    <Field type="text" name="email" component={CustomInput} value={valuesProfil.email} />
+                    <Field type="date" name="birthday_date" component={CustomInput} value={valuesProfil.birthday_date} />
+                    <Field type="text" name="phone" component={CustomInput} value={valuesProfil.phone === null ? 'Non renseigné' : valuesProfil.phone} />
+                    <button type="submit" className="btn btn-yellow mb-2">
+          Modifier
+        </button>
                 </Form>
             </Formik>
         </>
