@@ -4,7 +4,7 @@ export const defaulValuesLogin = {
     rememberMe: false
 }
 
-export   const defaulValuesRegister = {
+export const defaulValuesRegister = {
     lastName: "",
     firstName: "",
     email: "",

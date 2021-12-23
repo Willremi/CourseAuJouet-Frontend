@@ -4,16 +4,17 @@ import { ROLE_CUSTOMER } from '../../../shared/constants/rolesConstant';
 import { URL_DASHBOARD } from '../../../shared/constants/urls/urlConstants';
 import { customHistory } from '../../../shared/services/historyServices';
 import ProfilUser from './customer/Profil';
+import { Switch } from "react-router-dom";
 
 const CustomerRoute = () => {
     return (
-        <switch history={customHistory}>
+        <Switch history={customHistory}>
             <PrivateRoute
             path={URL_DASHBOARD}
             component={ProfilUser}
             roles={[ROLE_CUSTOMER]}
             />
-        </switch>
+        </Switch>
     );
 };
 
