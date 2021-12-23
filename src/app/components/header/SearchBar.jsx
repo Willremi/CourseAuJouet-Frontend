@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { schemaFormSearch } from "./../../shared/constants/formik-yup/yup/yupSearch";
 import { SearchIcon, XIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
-import { getValues } from "../../shared/redux-store/searchSlice";
+import { getValueInput, getValues } from "../../shared/redux-store/searchSlice";
 import {
   autoCompleteSearch,
   GetAutoCompletionProduct,
@@ -19,6 +19,7 @@ const SearchBar = () => {
   const history = useHistory();
   const [Autocompletion, setAutocompletion] = useState([]);
   const [showElement, setShowElement] = useState(false);
+  
 
   let domNode = useClickOutside(() => {
     setShowElement(false);
@@ -28,7 +29,9 @@ const SearchBar = () => {
     const searchedData = { search: values };
     getSearchResult(searchedData)
       .then((res) => {
-        dispatch(getValues(res.data.result, searchedData.search));
+        dispatch(getValues(res.data.result, searchedData.search)
+        );
+        dispatch(getValueInput(searchedData))
         history.push(URL_SEARCH_PAGE);
       })
       .catch((error) => console.log(error));
@@ -51,6 +54,7 @@ const SearchBar = () => {
     GetAutoCompletionProduct(searchedData)
       .then((res) => {
         dispatch(getValues(res.data.result, searchedData.search));
+        dispatch(getValueInput(searchedData))
         history.push(URL_SEARCH_PAGE);
       })
       .catch((error) => console.log(error));
@@ -78,7 +82,7 @@ const SearchBar = () => {
               autoComplete="off"
               component={CustomInput}
               // onClick={() => {
-              //   if (Autocompletion.lenght > 0) {
+              //   if (Autocompletion.length > 0) {
               //     setShowElement(true);
               //   }
               // }}

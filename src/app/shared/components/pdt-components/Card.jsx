@@ -38,7 +38,7 @@ const Card = ({ products }) => {
             <div>
               <Link
                 className="truncate"
-                to={URL_PRODUCT_DETAIL + products.product_code}
+                to={URL_PRODUCT_DETAIL + products._id}
               >
                 {products.product_name}
               </Link>
@@ -74,3 +74,4 @@ const Card = ({ products }) => {
 };
 
 export default Card;
+

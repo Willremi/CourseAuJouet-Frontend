@@ -1,3 +1,24 @@
+export const setInput = (state) => {
+  try {
+    const serializedValue = JSON.stringify(state)
+    localStorage.setItem('search', serializedValue)
+  } catch (err) {
+    // ignore write error
+  }
+}
+
+export function getInput() {
+  try {
+    const serializedValue = localStorage.getItem('search')
+    if(serializedValue === null) {
+      return undefined
+    }
+    return JSON.parse(serializedValue)
+  } catch (err) {
+    return undefined
+  }
+}
+
 export const setSearch = (state) => {
     try {
         const serializedState = JSON.stringify(state);
