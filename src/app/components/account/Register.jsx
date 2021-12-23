@@ -71,7 +71,7 @@ const RegisterForm = ({ submit, email, viewPassword, setViewPassword }) => (
 
       <div className="relative">
       <button type="button" onClick={() => setViewPassword(!viewPassword)}>
-            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-50 text-gray-500 duration-200 hover:text-gray-700" />
+            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-0 text-gray-500 duration-200 hover:text-gray-700" />
           </button>
         <Field
           name="password"
@@ -90,7 +90,7 @@ const RegisterForm = ({ submit, email, viewPassword, setViewPassword }) => (
 
       <div className="relative">
       <button type="button" onClick={() => setViewPassword(!viewPassword)}>
-            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-50 text-gray-500 duration-200 hover:text-gray-700" />
+            <EyeIcon className="absolute h-6 w-6 top-2 right-3 z-0 text-gray-500 duration-200 hover:text-gray-700" />
       </button>
         <Field
           name="confirmPassword"

@@ -102,7 +102,7 @@ function MyAccountButton() {
             {/* Bouton croix pour fermer le modal */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 transition-all opacity-50 overflow-hidden hover:opacity-100"
+              className="absolute top-8 right-3 transition-all opacity-50 overflow-hidden hover:opacity-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
