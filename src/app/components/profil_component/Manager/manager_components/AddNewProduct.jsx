@@ -16,8 +16,6 @@ const AddNewProduct = () => {
   const [reload, setReload] = useState(false);
   const [success, SetSuccess] = useState();
 
-  // const [getError, setGetError] = useState()
-
   function submitProduct(values, images, resetForm) {
     console.log("images values : ", images);
     if (images.length === 0) {
@@ -57,21 +55,27 @@ const AddNewProduct = () => {
   }
   console.log(ImagesArray, ImagesValues)
   const removeImages = (index) => {
-  
     ImagesArray.splice(index, 1);
     ImagesValues.splice(index, 1);
     setReload(!reload);
   };
 
-
-
   return (
     <>
       <Link
         to={URL_LIST_OF_PRODUCT}
-        className="hover:underline flex font-semibold text-darkblue-100"
+        className="hover:underline flex font-semibold text-darkblue-100 text-lg
+        lg:text-base
+        xl:text-base
+        2xl:text-base"
       >
-        <ArrowCircleLeftIcon className="h-6 w-6 mr-2" />
+        <ArrowCircleLeftIcon 
+        className="mr-2 w-8 h-8
+        lg:h-6 lg:w-6
+        xl:h-6 xl:w-6
+        2xl:h-6 2xl:w-6" />
+       
+       
         Retour à la liste des produits
       </Link>
       <Formik
@@ -81,30 +85,39 @@ const AddNewProduct = () => {
           }}
       >
         {({resetForm}) => (
-          <Form className="flex-col flex space-y-4">
+          <Form className="flex-col flex space-y-2
+          lg:space-y-4
+          xl:space-y-4
+          2xl:space-y-4">
           <h2
-            className="text-center uppercase my-5 w-full font-semibold text-2xl text-darkblue-100
+            className="text-2xl text-center uppercase my-5 w-full font-semibold  text-darkblue-100
         sm:text-md"
+       
           >
             Ajouter un nouveau produit
           </h2>
 
           <p
-            className="text-md text-red-700 w-59/100 mx-auto underline
-        sm:w-full
-        "
+            className="w-full text-md text-red-700 mx-auto underline
+            lg:w-59/100
+            xl:w-59/100
+           2xl:w-59/100"
           >
             * Champs obligatoire.
           </p>
 
           <div
-            className="flex flex-row items-center w-59/100 mx-auto 
-        sm:flex-col sm:w-full"
+            className="flex items-center mx-auto flex-col w-full
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
           >
             <label
               htmlFor="product_name"
-              className="w-1/6 font-semibold
-          sm:w-full"
+              className="font-semibold w-full mr-3
+              lg:w-1/6
+              xl:w-1/6
+              2xl:w-1/6"
             >
               Nomination*
             </label>
@@ -120,13 +133,17 @@ const AddNewProduct = () => {
           </div>
 
           <div
-            className="flex flex-row items-center w-59/100 mx-auto 
-        sm:w-full sm:flex-col"
+            className="flex items-center  mx-auto  flex-col w-full
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
           >
             <label
               htmlFor="trademark"
-              className="w-1/6 font-semibold
-          sm:w-full"
+              className="font-semibold w-full mr-3
+              lg:w-1/6
+              xl:w-1/6
+              2xl:w-1/6"
             >
               Marque*
             </label>
@@ -142,17 +159,23 @@ const AddNewProduct = () => {
           </div>
 
           <div
-            className="flex flex-row w-59/100 mx-auto 
-        sm:w-full sm:flex-col"
+            className="flex w-full flex-col mx-auto
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
           >
             <div
-              className="flex flex-row items-center w-1/2 
-          sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+              lg:w-1/2 lg:flex-row
+              xl:w-1/2 xl:flex-row
+              2xl:w-1/2 2xl:flex-row"
             >
               <label
                 htmlFor="reference"
-                className="w-5/12 font-semibold
-            sm:w-full"
+                className="w-full font-semibold mr-3
+                lg:w-5/12
+                xl:w-5/12
+                2xl:w-5/12"
               >
                 Référence*
               </label>
@@ -167,17 +190,21 @@ const AddNewProduct = () => {
               </div>
             </div>
             <div
-              className="flex flex-row items-center w-1/2 
-          sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+              lg:w-1/2 lg:flex-row
+              xl:w-1/2 xl:flex-row
+              2xl:w-1/2 2xl:flex-row"
             >
               <label
                 htmlFor="Stock*"
-                className="w-2/6 font-semibold 
-            sm:w-full"
+                className="w-full font-semibold mr-3
+                lg:w-7/12
+                xl:w-7/12
+                2xl:w-5/12"
               >
                 Stock*
               </label>
-              <div className="flex flex-col w-full mr-3 sm:flex-col">
+              <div className="flex flex-col w-full mr-3">
                 <Field
                   type="number"
                   name="Stock"
@@ -190,21 +217,27 @@ const AddNewProduct = () => {
           </div>
 
           <div
-            className="flex flex-row w-59/100 mx-auto 
-        sm:w-full sm:flex-col"
+            className="flex w-full flex-col mx-auto" 
+          
           >
             <div
-              className="flex flex-row w-full 
-          sm:w-full sm:flex-col"
+            className="flex w-full flex-col mx-auto 
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
+          >
+            <div
+              className="w-full flex-col flex items-center
+              lg:w-1/2 lg:flex-row
+              xl:w-1/2 xl:flex-row
+              2xl:w-1/2 2xl:flex-row"
             >
-              <div
-                className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
-              >
                 <label
                   htmlFor="Price"
-                  className="w-5/12 font-semibold
-              sm:w-full"
+                  className="w-full font-semibold mr-3
+                  lg:w-5/12
+                  xl:w-5/12
+                  2xl:w-5/12"
                 >
                   Prix*
                 </label>
@@ -220,13 +253,17 @@ const AddNewProduct = () => {
               </div>
 
               <div
-                className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
+                className="w-full flex-col flex items-center
+                lg:w-1/2 lg:flex-row
+                xl:w-1/2 xl:flex-row
+                2xl:w-1/2 2xl:flex-row"
               >
                 <label
                   htmlFor="required_age"
-                  className="w-2/6 font-semibold
-              sm:w-full"
+                  className="w-full font-semibold mr-3
+                  lg:w-7/12
+                  xl:w-7/12
+                  2xl:w-5/12"
                 >
                   Âge Requis*
                 </label>
@@ -244,21 +281,27 @@ const AddNewProduct = () => {
           </div>
 
           <div
-            className="flex flex-row w-59/100 mx-auto 
-        sm:w-full"
+            className="flex w-full flex-col mx-auto"
+            
+          >
+           <div
+            className="flex w-full flex-col mx-auto
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
           >
             <div
-              className="flex flex-row w-full 
-          sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+              lg:w-1/2 lg:flex-row
+              xl:w-1/2 xl:flex-row
+              2xl:w-1/2 2xl:flex-row"
             >
-              <div
-                className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
-              >
                 <label
                   htmlFor="category"
-                  className="w-5/12 font-semibold
-              sm:w-full"
+                  className="w-full font-semibold mr-3
+                  lg:w-5/12
+                  xl:w-5/12
+                  2xl:w-5/12"
                 >
                   Catégorie*
                 </label>
@@ -274,13 +317,17 @@ const AddNewProduct = () => {
               </div>
 
               <div
-                className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
+                className="w-full flex-col flex items-center
+                lg:w-1/2 lg:flex-row
+                xl:w-1/2 xl:flex-row
+                2xl:w-1/2 2xl:flex-row"
               >
                 <label
                   htmlFor="SubCategory"
-                  className="font-semibold w-2/6
-              sm:w-full"
+                  className="w-full font-semibold mr-3
+                  lg:w-7/12
+                  xl:w-7/12
+                  2xl:w-5/12"
                 >
                   Sous-catégorie
                 </label>
@@ -341,11 +388,17 @@ const AddNewProduct = () => {
             ) : null}
 
             {ImagesArray ? (
-              <div className="flex flex-wrap w-8/12 mx-auto">
+              <div className="flex flex-wrap mx-auto w-full  
+              sm:justify-around
+              md:justify-around
+              xl:w-8/12
+              2xl:w-8/12">
                 {ImagesArray.map((viewImage, index) => (
                   <div
                     key={index}
-                    className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg"
+                    className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
+                    sm:w-1/3 
+                    md:w-1/5"
                   >
                     <img
                       src={viewImage}
@@ -362,17 +415,22 @@ const AddNewProduct = () => {
           </div>
 
           <div
-            className="flex flex-row justify-center 
-        sm:w-full sm:flex-col"
+            className="flex w-full flex-col justify-center
+            lg:flex-row
+            xl:flex-row
+        2xl:flex-row"
           >
             <label
               htmlFor="description"
-              className="font-semibold w-1/12
+              className="font-semibold w-1/12 mr-3
           sm:w-full"
             >
               Description*
             </label>
-            <div className="flex flex-col w-51/100 sm:w-full">
+            <div className="flex flex-col w-full font-semibold
+                  lg:w-51/100
+                  xl:w-51/100
+                  2xl:w-51/100">
               <Field
                 name="description"
                 className="rounded-xl resize-y h-40 "
@@ -385,24 +443,29 @@ const AddNewProduct = () => {
             </div>
           </div>
           <div
-            className="flex flex-row items-center w-59/100 mx-auto 
-        sm:w-full sm:flex-col"
+            className="flex items-center mx-auto flex-col w-full
+            lg:flex-row lg:w-59/100
+            xl:flex-row xl:w-59/100
+            2xl:flex-row 2xl:w-59/100"
           >
             <label
               htmlFor="status"
-              className="font-semibold w-14/100 
-          sm:w-full"
+              className="font-semibold w-full mr-3
+              lg:w-1/6
+              xl:w-1/6
+              2xl:w-1/6"
             >
               Status*
             </label>
-            <Field as="select" name="status" className="rounded-xl sm:w-full">
+            <Field as="select" name="status" className="rounded-xl w-full
+            ">
               <option value="Online">En ligne</option>
               <option value="Offline">Hors ligne</option>
             </Field>
           </div>
 
-          <div className="font-semibold flex flex-row">
-            <button type="submit" className="btn btn-yellow font-bold mx-auto">
+          <div className="font-semibold flex flex-row ">
+            <button type="submit" className="btn btn-yellow font-bold mx-auto my-5">
               <Icon icon="fa-solid:upload" className="mr-3 w-10 h-10" /> Ajouter
               le produit
             </button>
