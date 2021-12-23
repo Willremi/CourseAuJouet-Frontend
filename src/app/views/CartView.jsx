@@ -5,7 +5,6 @@ import ProductInCart from "../components/cart/ProductInCart";
 import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { accountId } from "../shared/services/accountServices";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
-
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
 import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
@@ -30,8 +29,6 @@ const CartView = () => {
       })
       .catch((error) => console.log(error));
   }, [userId, ReloadComponent, dispatch]);
-
-
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (productId) => {

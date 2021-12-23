@@ -24,8 +24,8 @@ export const cartSlice = createSlice({
                 state.inCart[action.payload].quantity--
             }
         },
-        setInCart: (state, { payload }) => {
-            state.inCart = payload
+        setInCart: (state, action ) => {
+            state.inCart = action.payload
         },
         removeInCart: (state, action) => {
             state.inCart = state.inCart.filter((inCart) => inCart._id !== action.payload.productId);
@@ -34,10 +34,8 @@ export const cartSlice = createSlice({
         AddToCart: (state, action) => {
            state.inCart.push(action.payload)
         }
-
     }
 })
-
 
 
 
