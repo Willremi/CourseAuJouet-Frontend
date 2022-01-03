@@ -6,9 +6,8 @@ import { ShoppingCartIcon } from "@heroicons/react/solid";
 import { useDispatch } from 'react-redux';
 import { AddToCart } from '../../redux-store/cartSlice'
 const Card = ({ products }) => {
-
+  
   const dispatch = useDispatch()
-
   const expirationNewProductDate = expirationProductDate(
     products.on_sale_date,
     30
@@ -52,6 +51,7 @@ const Card = ({ products }) => {
               <button
                 onClick={
                  () => {
+                      
                       dispatch(AddToCart(products))}
                 }
               >

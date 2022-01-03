@@ -45,8 +45,18 @@ export const cartSlice = createSlice({
         },
         
         AddToCart: (state, action) => {
-           state.inCart.push(action.payload)
            setUserCart(action.payload)
+            state.inCart.push(action.payload)
+            console.log("Vous avez ajouté " + action.payload.product_name + " dans votre panier")
+        },
+
+        AddQuantityProductOnCartClick: (state, action) => {
+            if (state.inCart[action.payload].quantity < 5) {
+                state.inCart[action.payload].quantity++
+            }
+            else {
+                console.log("Vous avez atteint la quantité maximum pour ce produit")
+            }
         }
     }
 })
@@ -54,7 +64,7 @@ export const cartSlice = createSlice({
 
 
 
-export const { increment, decrement, setInCart , removeInCart, AddToCart } = cartSlice.actions;
+export const { increment, decrement, setInCart , removeInCart, AddToCart, AddQuantityProductOnCartClick } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart
 

@@ -1,18 +1,11 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectInCart, setInCart } from "../../redux-store/cartSlice";
-import { URL_CART } from './../../constants/urls/urlConstants';
-import { getUserCart } from './../../services/cart';
+import { selectInCart } from "../../redux-store/cartSlice";
+import { URL_CART } from "./../../constants/urls/urlConstants";
 
 const CartButton = () => {
   const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
-  const dispatch = useDispatch()
-
-useEffect(() => {
-    dispatch(setInCart(getUserCart()))
-}, [dispatch])
 
   return (
     <div>
@@ -37,12 +30,10 @@ useEffect(() => {
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           />
         </svg>
-       
-          <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
-            {getInCart.length}
-          </span>
-        
-        
+
+        <span className="text-black font-bold mt-6 -ml-4 bg-yellow-300 w-1 h-1 p-3 flex items-center justify-center rounded-full">
+          {getInCart ? getInCart.length : 0}
+        </span>
       </Link>
     </div>
   );

@@ -24,7 +24,7 @@ export const setUserCart = (state) => {
 }
 
 export function RemoveOneProductInCart(productindex) {
-    console.log(productindex)
+
     try {
         let serializedState = sessionStorage.getItem('userCart')
         if (serializedState === null) {
