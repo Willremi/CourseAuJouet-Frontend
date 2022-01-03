@@ -7,7 +7,7 @@ const ProfilUser = () => {
     const user = accountUser()
     const valuesProfil = {
         lastName: user.lastname,
-        firstName: user.firstname, 
+        firstName: user.firstname,
         email: user.email,
         birthday_date: user.birthday_date,
         phone: user.phone
@@ -16,7 +16,7 @@ const ProfilUser = () => {
         <>
             <h2 className='text-nav-blue font-semibold uppercase text-xl'>Données personnelles</h2>
             {/* <p>{user.civility}</p> */}
-            
+
             <Formik initialValues={valuesProfil} onSubmit={values => console.log(values)}>
                 <Form>
                     <div className='flex'>
@@ -27,8 +27,8 @@ const ProfilUser = () => {
                     <Field type="date" name="birthday_date" component={CustomInput} value={valuesProfil.birthday_date} />
                     <Field type="text" name="phone" component={CustomInput} value={valuesProfil.phone === null ? 'Non renseigné' : valuesProfil.phone} />
                     <button type="submit" className="btn btn-yellow mb-2">
-          Modifier
-        </button>
+                        Modifier
+                    </button>
                 </Form>
             </Formik>
         </>
