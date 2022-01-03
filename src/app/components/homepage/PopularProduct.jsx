@@ -20,8 +20,6 @@ const PopularProduct = () => {
       .catch((error) => console.log(error));
   }, []);
 
-console.log(showPopularProduct)
-
   return (
     <>
     <h2 className="font-Annie font-semibold text-4xl text-secondary-600 my-3 uppercase">Les + Populaires</h2>

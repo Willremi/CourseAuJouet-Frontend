@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RemoveOneProductInCart } from "../services/cart";
+import { setUserCart } from './../services/cart';
 
 
 /**
@@ -28,11 +30,23 @@ export const cartSlice = createSlice({
             state.inCart = action.payload
         },
         removeInCart: (state, action) => {
-            state.inCart = state.inCart.filter((inCart) => inCart._id !== action.payload.productId);
+            let temporaryArray = []
+            state.inCart.map((product, index) => {
+                if(index === action.payload){
+                   
+                }
+                else {
+                   temporaryArray.push(product)
+                }
+                return temporaryArray
+            })
+            RemoveOneProductInCart(action.payload)
+            state.inCart = temporaryArray
         },
-
+        
         AddToCart: (state, action) => {
            state.inCart.push(action.payload)
+           setUserCart(action.payload)
         }
     }
 })
@@ -40,7 +54,7 @@ export const cartSlice = createSlice({
 
 
 
-export const { increment, decrement, getData, setInCart , removeInCart, AddToCart } = cartSlice.actions;
+export const { increment, decrement, setInCart , removeInCart, AddToCart } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart
 
