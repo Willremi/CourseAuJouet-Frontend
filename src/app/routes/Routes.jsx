@@ -44,10 +44,9 @@ const Routes = () => {
         component={AdminHomeView}
         roles={[ROLE_ADMIN]}
       />
-      <PrivateRoute
+      <Route
         path={URL_CART}
         component={CartView}
-        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />
       <PrivateRoute
         path={URL_ORDER_ADDRESS}

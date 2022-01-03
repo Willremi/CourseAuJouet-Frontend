@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RemoveOneProductInCart } from "../services/cart";
-import { setUserCart } from './../services/cart';
+import { setUserCart, getUserCart } from './../services/cart';
 
 
 /**
@@ -9,7 +9,7 @@ import { setUserCart } from './../services/cart';
  */
 
 const initialState = {
-    inCart: []
+    inCart: getUserCart()
 }
 
 export const cartSlice = createSlice({
@@ -46,6 +46,9 @@ export const cartSlice = createSlice({
         
         AddToCart: (state, action) => {
            setUserCart(action.payload)
+           if(state.inCart === undefined){
+            state.inCart = [action.payload]
+           }
             state.inCart.push(action.payload)
             console.log("Vous avez ajouté " + action.payload.product_name + " dans votre panier")
         },
