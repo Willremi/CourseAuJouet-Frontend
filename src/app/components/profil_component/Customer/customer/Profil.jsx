@@ -7,19 +7,45 @@ import { accountUser } from '../../../../shared/services/accountServices';
 const ProfilUser = () => {
     const user = accountUser()
     const valuesProfil = {
+        civility: user.civility,
         lastName: user.lastname,
         firstName: user.firstname,
         email: user.email,
         birthday_date: user.birthday_date,
-        phone: user.phone === null ? 'Non renseigné' : user.phone
+        phone: user.phone === null ? '000000000' : user.phone
     }
     return (
         <>
             <h2 className='text-nav-blue font-semibold uppercase text-xl'>Données personnelles</h2>
-            {/* <p>{user.civility}</p> */}
 
             <Formik initialValues={valuesProfil} validationSchema={EditUserSchema} onSubmit={values => console.log(values)}>
                 <Form>
+                    <div className="flex space-x-2">
+                        <p>Civilité : </p>
+                        <label>
+                            <Field type="radio" name="civility" id="CivilityMan" value="Man" />
+                            Mr
+                        </label>
+                        <label>
+                            <Field
+                                type="radio"
+                                name="civility"
+                                id="CivilityWoman"
+                                value="Woman"
+                            />
+                            Mme
+                        </label>
+                        <label>
+                            <Field
+                                type="radio"
+                                name="civility"
+                                id="CivilityOther"
+                                value="Other"
+                            />
+                            Autre
+                        </label>
+                    </div>
+
                     <div className='flex'>
                         <Field type="text" name="lastName" component={CustomInput} />
                         <Field type="text" name="firstName" component={CustomInput} />
