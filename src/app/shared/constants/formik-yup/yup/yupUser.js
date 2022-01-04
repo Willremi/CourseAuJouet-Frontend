@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const schemaFormLogin = Yup.object().shape({
   email: Yup.string().required("L'adresse email est requise")
-            .email("L'adresse mail n'est pas valide"),
+    .email("L'adresse mail n'est pas valide"),
   password: Yup.string().required("Le mot de passe est requis"),
 });
 
@@ -44,7 +44,7 @@ export const ForgotPasswordSchema = Yup.object().shape({
 });
 
 export const ResetPasswordSchema = Yup.object().shape({
-password: Yup.string()
+  password: Yup.string()
     .required("Le mot de passe est obligatoire")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -57,3 +57,22 @@ password: Yup.string()
     )
     .required("La confirmation du mot de passe est obligatoire"),
 });
+
+export const EditUserSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .required("Le prénom est obligatoire")
+    .matches(/^[\p{L}\s]{2,}$/u, "Le prénom n'est pas au bon format"),
+  lastName: Yup.string()
+    .required("Le nom est obligatoire")
+    .matches(/^[\p{L}\s]{2,}$/u, "Le nom n'est pas au bon format"),
+  email: Yup.string()
+    .required("L'adresse E-mail est obligatoire")
+    .email("veuillez entrez un email valide "),
+  phone: Yup.string().matches(
+    /^[+]?[0-9]{8,}$/,
+    "Le numéro de  telephone n'est pas au bon format"
+  ).nullable(true),
+  birthday_date: Yup.string().required(
+    "Veuillez entrer votre date de naissance"
+  ),
+})

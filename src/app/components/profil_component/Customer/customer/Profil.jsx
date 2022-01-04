@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import { CustomInput } from '../../../../shared/components/form-and-error-components/InputCustom';
+import { EditUserSchema } from '../../../../shared/constants/formik-yup/yup/yupUser';
 import { accountUser } from '../../../../shared/services/accountServices';
 
 const ProfilUser = () => {
@@ -10,22 +11,22 @@ const ProfilUser = () => {
         firstName: user.firstname,
         email: user.email,
         birthday_date: user.birthday_date,
-        phone: user.phone
+        phone: user.phone === null ? 'Non renseigné' : user.phone
     }
     return (
         <>
             <h2 className='text-nav-blue font-semibold uppercase text-xl'>Données personnelles</h2>
             {/* <p>{user.civility}</p> */}
 
-            <Formik initialValues={valuesProfil} onSubmit={values => console.log(values)}>
+            <Formik initialValues={valuesProfil} validationSchema={EditUserSchema} onSubmit={values => console.log(values)}>
                 <Form>
                     <div className='flex'>
-                        <Field type="text" name="lastName" component={CustomInput} value={valuesProfil.lastName} />
-                        <Field type="text" name="firstName" component={CustomInput} value={valuesProfil.firstName} />
+                        <Field type="text" name="lastName" component={CustomInput} />
+                        <Field type="text" name="firstName" component={CustomInput} />
                     </div>
-                    <Field type="text" name="email" component={CustomInput} value={valuesProfil.email} />
-                    <Field type="date" name="birthday_date" component={CustomInput} value={valuesProfil.birthday_date} />
-                    <Field type="text" name="phone" component={CustomInput} value={valuesProfil.phone === null ? 'Non renseigné' : valuesProfil.phone} />
+                    <Field type="text" name="email" component={CustomInput} />
+                    <Field type="date" name="birthday_date" component={CustomInput} />
+                    <Field type="text" name="phone" component={CustomInput} />
                     <button type="submit" className="btn btn-yellow mb-2">
                         Modifier
                     </button>
