@@ -59,7 +59,7 @@ const CartView = () => {
             {inCart.map((onCart, index) => (
                 <li key={index}>
                   <ProductInCart
-                  inCart={inCart}
+                    inCart={inCart}
                     component={onCart}
                     remove={handleRemoveProduct}
                     index={index}

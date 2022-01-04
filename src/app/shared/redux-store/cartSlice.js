@@ -1,6 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { RemoveOneProductInCart } from "../services/cart";
-import { setUserCart, getUserCart } from './../services/cart';
+import {
+    createSlice
+} from "@reduxjs/toolkit";
+import {
+    RemoveOneProductInCart
+} from "../services/cart";
+import {
+    setUserCart,
+    getUserCart
+} from './../services/cart';
 
 
 /**
@@ -26,38 +33,43 @@ export const cartSlice = createSlice({
                 state.inCart[action.payload].quantity--
             }
         },
-        setInCart: (state, action ) => {
+        setInCart: (state, action) => {
             state.inCart = action.payload
         },
         removeInCart: (state, action) => {
             let temporaryArray = []
             state.inCart.map((product, index) => {
-                if(index === action.payload){
-                   
-                }
-                else {
-                   temporaryArray.push(product)
+                if (index === action.payload) {
+
+                } else {
+                    temporaryArray.push(product)
                 }
                 return temporaryArray
             })
             RemoveOneProductInCart(action.payload)
             state.inCart = temporaryArray
         },
-        
+
         AddToCart: (state, action) => {
-           setUserCart(action.payload)
-           if(state.inCart === undefined){
-            state.inCart = [action.payload]
-           }
-            state.inCart.push(action.payload)
+            let addQuantityToProduct = {
+                ...action.payload,
+                quantity: 1
+            }
+            setUserCart(addQuantityToProduct)
+            if (state.inCart === undefined) {
+                state.inCart = [addQuantityToProduct]
+            } else {
+                state.inCart.push(addQuantityToProduct)
+            }
+
+
             console.log("Vous avez ajouté " + action.payload.product_name + " dans votre panier")
         },
 
         AddQuantityProductOnCartClick: (state, action) => {
             if (state.inCart[action.payload].quantity < 5) {
                 state.inCart[action.payload].quantity++
-            }
-            else {
+            } else {
                 console.log("Vous avez atteint la quantité maximum pour ce produit")
             }
         }
@@ -67,7 +79,14 @@ export const cartSlice = createSlice({
 
 
 
-export const { increment, decrement, setInCart , removeInCart, AddToCart, AddQuantityProductOnCartClick } = cartSlice.actions;
+export const {
+    increment,
+    decrement,
+    setInCart,
+    removeInCart,
+    AddToCart,
+    AddQuantityProductOnCartClick
+} = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart
 

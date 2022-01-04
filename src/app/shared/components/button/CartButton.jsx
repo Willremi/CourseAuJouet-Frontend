@@ -6,7 +6,6 @@ import { URL_CART } from "./../../constants/urls/urlConstants";
 
 const CartButton = () => {
   const getInCart = useSelector(selectInCart); //Renvoi un tableau des produits
-
   return (
     <div>
       <Link
