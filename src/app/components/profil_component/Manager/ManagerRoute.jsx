@@ -7,9 +7,11 @@ import {
 import { PrivateRoute } from "./../../../shared/components/utils-components/PrivateRoute";
 import ListOfProduct from "./manager_components/ListOfProduct";
 import AddNewProduct from "./manager_components/AddNewProduct";
+import ModifyProduct from "./manager_components/ModifyProduct";
 import {
   URL_LIST_OF_PRODUCT,
   URL_ADD_PRODUCT,
+  URL_MODIFY_PRODUCT
 } from "./../../../shared/constants/urls/urlConstants";
 const ManagerRoute = () => {
   return (
@@ -22,6 +24,11 @@ const ManagerRoute = () => {
       <PrivateRoute
         path={URL_ADD_PRODUCT}
         component={AddNewProduct}
+        roles={[ROLE_MANAGER]}
+      />
+      <PrivateRoute
+        path={URL_MODIFY_PRODUCT}
+        component={ModifyProduct}
         roles={[ROLE_MANAGER]}
       />
     </Switch>

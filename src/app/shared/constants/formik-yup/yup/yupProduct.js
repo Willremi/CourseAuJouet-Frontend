@@ -14,3 +14,33 @@ export const schemaFormAddProduct = Yup.object().shape({
     ),
     description: Yup.string().required("La description de l'article est obligatoire"),
 })
+
+export const ModifyProductSchema = Yup.object().shape({
+    product_name: Yup.string()
+      .required("Le nom est obligatoire"),
+    reference: Yup.string()
+      .required("La réference est obligatoire"),
+    stock: Yup.string()
+      .required("Le stock est obligatoire")
+      .matches(/^[0-9]*$/, "Le stock doit être exprimé en chiffres"),// REGEX pour uniquement des chiffres
+    price: Yup.string()
+      .required("Le prix est nécessaire")
+      .matches(/^[0-9]*$/, "Le prix doit être exprimé en chiffres"),
+    age: Yup.string()
+      .required("L'age est nécessaire")
+      .oneOf(["0/24","3/4","5/7","8/10","11+"],"La tranche d'âge est nécessaire"),
+    trademark: Yup.string()
+      .required("La marque est nécessaire"),
+    category: Yup.string()
+      .required("La catégorie est nécessaire"),
+    subcategory: Yup.string()
+      .required("La sous-catégorie est nécessaire"),
+    // image: Yup.string()
+    //   .required("Une URL d'image est requise"),
+    description: Yup.string()
+      .required("Une description du produit est nécessaire"),
+    status: Yup.boolean()
+      .required("Le statut est nécessaire")
+      .oneOf([true,false], "Le statut est nécessaire")
+  });
+  

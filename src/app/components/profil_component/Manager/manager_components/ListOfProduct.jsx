@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../../../api/backend/product";
 import { Icon } from "@iconify/react";
 import { MinusCircleIcon, PlusIcon } from "@heroicons/react/solid";
-import { Link } from 'react-router-dom';
-import { URL_ADD_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
+import { Link} from 'react-router-dom';
+import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
+import { useDispatch } from "react-redux";
+import { setProductId } from "../../../../shared/redux-store/updateProductSlice";
 
 const ListOfProduct = () => {
+
+  const dispatch = useDispatch()
   const [product, setProduct] = useState([]);
   useEffect(() => {
     getAllProducts()
@@ -14,7 +18,6 @@ const ListOfProduct = () => {
   }, []);
 
   const onSaleDate = (data) => {
-
     let date =new Date(data)
     let day = date.getDay()
     let Month = date.getMonth()
@@ -29,7 +32,12 @@ const ListOfProduct = () => {
 
     return day + "/" + Month + "/" + Year
   }
+  
+  function setProductStateAndRedirect(id){
 
+    dispatch(setProductId(id))
+    
+  }
   return (
     <>
       <div className="flex flex-row justify-end 
@@ -93,12 +101,14 @@ const ListOfProduct = () => {
                 </button>
               </td>
               <td className="flex flex-row justify-around pr-3 w-1/12">
-                <button>
-                  <Icon
-                    icon="carbon:change-catalog"
-                    className="scale-150 text-nav-blue"
-                  />
-                </button>
+                  <Link to={URL_MODIFY_PRODUCT}>            
+                    <button onClick={() =>setProductStateAndRedirect(product) }>
+                      <Icon
+                        icon="carbon:change-catalog"
+                        className="scale-150 text-nav-blue"
+                      />
+                    </button>
+                  </Link>
                 <button>
                   <Icon
                     icon="bx:bxs-trash"
