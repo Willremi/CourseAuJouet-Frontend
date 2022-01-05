@@ -18,6 +18,8 @@ export const schemaFormAddProduct = Yup.object().shape({
 export const ModifyProductSchema = Yup.object().shape({
     product_name: Yup.string()
       .required("Le nom est obligatoire"),
+      trademark: Yup.string()
+        .required("La marque est nécessaire"),
     reference: Yup.string()
       .required("La réference est obligatoire"),
     stock: Yup.string()
@@ -26,11 +28,8 @@ export const ModifyProductSchema = Yup.object().shape({
     price: Yup.string()
       .required("Le prix est nécessaire")
       .matches(/^[0-9]*$/, "Le prix doit être exprimé en chiffres"),
-    age: Yup.string()
-      .required("L'age est nécessaire")
-      .oneOf(["0/24","3/4","5/7","8/10","11+"],"La tranche d'âge est nécessaire"),
-    trademark: Yup.string()
-      .required("La marque est nécessaire"),
+    required_age: Yup.string()
+      .required("L'age est nécessaire"),
     category: Yup.string()
       .required("La catégorie est nécessaire"),
     subcategory: Yup.string()
@@ -41,6 +40,5 @@ export const ModifyProductSchema = Yup.object().shape({
       .required("Une description du produit est nécessaire"),
     status: Yup.boolean()
       .required("Le statut est nécessaire")
-      .oneOf([true,false], "Le statut est nécessaire")
   });
   

@@ -15,8 +15,10 @@ const ModifyProduct = () => {
     const [reload, setReload] = useState(false)
   
     function submitProduct(values) {
-      const formData = new FormData();
+        console.log(values);
+      var formData = new FormData();
   
+      formData.append("_id", product._id)
       formData.append("product_name", values.product_name);
       formData.append("trademark", values.trademark);
     //   for (let i = 0; i < images.length; i++) {
@@ -41,13 +43,13 @@ const ModifyProduct = () => {
         .catch((error) => console.log(error));
     }
   
-  const removeImages = (index) => {
-    console.log(index)
-    ImagesArray.splice(index, 1)
-    setReload(!reload)
-  };
+//   const removeImages = (index) => {
+//     console.log(index)
+//     ImagesArray.splice(index, 1)
+//     setReload(!reload)
+//   };
   
-    console.log("ImagesArray : ",ImagesArray)
+    // console.log("ImagesArray : ",ImagesArray)
   
   
     return (
@@ -81,6 +83,7 @@ const ModifyProduct = () => {
   
           <div className="flex flex-row items-center w-59/100 mx-auto 
           sm:flex-col sm:w-full">
+
             <label htmlFor="product_name" className="w-1/6 font-semibold
             sm:w-full">
               Nomination*
@@ -108,7 +111,7 @@ const ModifyProduct = () => {
               name="trademark"
               className="w-full rounded-xl mr-3"
               component={CustomInput}
-              errorRight
+              hidden
             />
             </div>
             
@@ -134,7 +137,7 @@ const ModifyProduct = () => {
             </div>
             <div className="flex flex-row items-center w-1/2 
             sm:w-full sm:flex-col">
-              <label htmlFor="stock*" className="w-2/6 font-semibold 
+              <label htmlFor="stock" className="w-2/6 font-semibold 
               sm:w-full">
                 Stock*
               </label>
@@ -156,7 +159,7 @@ const ModifyProduct = () => {
             sm:w-full sm:flex-col">
               <div className="flex flex-row items-center w-1/2 
               sm:w-full sm:flex-col">
-                <label htmlFor="Price" className="w-5/12 font-semibold
+                <label htmlFor="price" className="w-5/12 font-semibold
                 sm:w-full">
                   Prix*
                 </label>
@@ -173,14 +176,14 @@ const ModifyProduct = () => {
   
               <div className="flex flex-row items-center w-1/2 
               sm:w-full sm:flex-col">
-                <label htmlFor="required_age" className="w-2/6 font-semibold
+                <label htmlFor="age" className="w-2/6 font-semibold
                 sm:w-full">
                   Âge Requis*
                 </label>
                 <div className="flex flex-col w-full mr-3 ">
                   <Field
                     type="number"
-                    name="required_age"
+                    name="age"
                     className="rounded-xl w-full"
                     component={CustomInput}
                     errorRight
@@ -318,7 +321,7 @@ const ModifyProduct = () => {
           </div>
   
           <div className="font-semibold mx-auto flex flex-row">
-            <button type="submit" className="btn btn-yellow font-bold" onClick={submitProduct}>
+            <button type="submit" className="btn btn-yellow font-bold">
               <Icon icon="fa-solid:upload" className="mr-3 w-10 h-10" /> Modifier
               le produit
             </button>
