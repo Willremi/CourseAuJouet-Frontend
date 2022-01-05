@@ -8,6 +8,7 @@ import { setValueMenu } from '../services/profilNavigationServices';
  */
  const initialState = { 
     selectMenu : getValueMenu(),
+    editUser: []
 }
 
 export const ProfilSlice = createSlice({
@@ -17,11 +18,14 @@ export const ProfilSlice = createSlice({
         setComponent: (state, action) => {
             setValueMenu(action.payload)
             state.selectMenu = action.payload
-        },
+        }, 
+        modifUser: (state, action) => {
+            console.log(action.payload);
+        }
     }
 })
 
-export const { setComponent } = ProfilSlice.actions
+export const { setComponent, modifUser } = ProfilSlice.actions
 
 export const selectComponent = (state) => state.DashBoardValue.selectMenu
 
