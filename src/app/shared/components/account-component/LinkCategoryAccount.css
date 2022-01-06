@@ -11,6 +11,9 @@
     background-color: white;
     margin: 20px
 }
+.card-container:hover {
+  border: black 3px solid;
+}
 
 
 
