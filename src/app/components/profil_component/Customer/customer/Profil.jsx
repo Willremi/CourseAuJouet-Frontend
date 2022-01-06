@@ -33,7 +33,7 @@ const ProfilUser = () => {
             <Formik initialValues={valuesProfil} validationSchema={EditUserSchema} onSubmit={handleEdit}>
                 <Form>
                     {/* genre */}
-                    <div className="flex space-x-2 mb-4">
+                    <div className=" grid md:flex xl:flex md:space-x-2 xl:space-x-2 mb-4">
                         <p className='text-nav-blue font-semibold text-lg'>Civilité : </p>
                         <label>
                             <Field type="radio" name="civility" value="Man" className="ml-3  mr-2" />
