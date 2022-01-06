@@ -70,7 +70,7 @@ const ProfilUser = () => {
                     <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="my-4 border-b-4 border-r-4  border-gray-300" />
                     <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="my-4 border-b-4 border-r-4  border-gray-300" />
 
-                    <button type="submit" className="btn btn-yellow mb-2">
+                    <button type="submit" className="btn btn-yellow mb-2 text-nav-blue font-semibold">
                         Modifier
                     </button>
                 </Form>
