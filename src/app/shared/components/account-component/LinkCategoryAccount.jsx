@@ -2,9 +2,7 @@ import React from "react";
 import "./LinkCategoryAccount.css";
 import { Link } from "react-router-dom";
 
-export default function LinkCategoryAccount(props) {
-  console.log(props);
-  //  console.log("Le titre en props", props.title)
+export default function LinkCategoryAccount({props}) {
 
   return (
     <>
