@@ -1,6 +1,8 @@
 import {
     createSlice
 } from "@reduxjs/toolkit";
+import handleQuantityProductWarning from "../components/form-and-success-components/handleQuantityProductWarning";
+import handleSessionStorageSuccess from "../components/form-and-success-components/HandleStorageSuccess";
 import {
     RemoveOneProductInCart
 } from "../services/cart";
@@ -27,10 +29,18 @@ export const cartSlice = createSlice({
             if (state.inCart[action.payload].quantity < 5) {
                 state.inCart[action.payload].quantity++
             }
+            else {
+                let message = "la quantité de l'article ne peut pas être supérieur à 5"
+                handleQuantityProductWarning(message)
+                }
         },
         decrement: (state, action) => {
             if (state.inCart[action.payload].quantity > 1) {
                 state.inCart[action.payload].quantity--
+            }
+            else {
+            let message = "la quantité de l'article ne peut pas être inférieur à 1"
+            handleQuantityProductWarning(message)
             }
         },
         setInCart: (state, action) => {
@@ -61,9 +71,8 @@ export const cartSlice = createSlice({
             } else {
                 state.inCart.push(addQuantityToProduct)
             }
-
-
-            console.log("Vous avez ajouté " + action.payload.product_name + " dans votre panier")
+            let message = "Vous avez ajouté " + action.payload.product_name + " dans votre panier"
+            handleSessionStorageSuccess(message)
         },
 
         AddQuantityProductOnCartClick: (state, action) => {

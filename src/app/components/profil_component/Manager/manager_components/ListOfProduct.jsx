@@ -76,7 +76,7 @@ const ListOfProduct = () => {
               <td className="flex w-5/12 py-1 pl-5 truncate sm:hidden">
                 {product.product_name}
               </td>
-              <td className="flex w-3/12 ml-5">{product._id}</td>
+              <td className="flex w-3/12 ml-5">{product.reference}</td>
               <td className="flex w-3/12 ">{onSaleDate(product.on_sale_date)}</td>
               <td className="flex w-1/12 ">{product.price / 100}€</td>
               <td className="flex w-2/12 ">

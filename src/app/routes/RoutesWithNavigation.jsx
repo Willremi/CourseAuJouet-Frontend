@@ -44,7 +44,7 @@ const RoutesWithNavigation = () => {
                     }
                     bodyClassName={() => "text-sm font-white font-med block p-3"}
                     position="bottom-left"
-                    autoClose={3000}
+                    autoClose={5000}
                 />
             </div>
         </BrowserRouter>
