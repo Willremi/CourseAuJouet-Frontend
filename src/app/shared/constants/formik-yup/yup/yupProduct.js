@@ -34,8 +34,8 @@ export const ModifyProductSchema = Yup.object().shape({
       .required("La catégorie est nécessaire"),
     subcategory: Yup.string()
       .required("La sous-catégorie est nécessaire"),
-    // image: Yup.string()
-    //   .required("Une URL d'image est requise"),
+    stockedImages: Yup.array().of(Yup.string()),
+    images: Yup.array().of(Yup.string()),
     description: Yup.string()
       .required("Une description du produit est nécessaire"),
     status: Yup.boolean()

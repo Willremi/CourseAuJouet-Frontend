@@ -13,18 +13,25 @@ const ModifyProduct = () => {
     const [ImagesArray, setImagesArray] = useState(null);
     const [ImagesValues, setImagesValues] = useState(null);
     const [reload, setReload] = useState(false)
+
+    const [stockedImagesArray, setStockedImagesArray] = useState([product.images])
+    console.log(product.images);
   
-    function submitProduct(values) {
-        console.log(values);
+    function submitProduct(values, images) {
       var formData = new FormData();
   
       formData.append("_id", product._id)
       formData.append("product_name", values.product_name);
       formData.append("trademark", values.trademark);
-    //   for (let i = 0; i < images.length; i++) {
-    //     formData.append("images", images[i]);
-    //   }
-  
+      if(images){
+             for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i]);
+      } 
+      }
+
+      for (let i = 0; i < values.stockedImages.length; i++) {
+        formData.append("stockedImages", values.stockedImages[i]);
+      }
       formData.append("reference", values.reference);
       formData.append("stock", values.stock);
       formData.append("price", values.price);
@@ -34,23 +41,22 @@ const ModifyProduct = () => {
       formData.append("description", values.description);
       formData.append("status", values.status);
   
-      // for (var value of formData.values()) {
-      //   console.log(value);
-      // }
-  
       PostModifyProduct(formData)
         .then((res) => console.log(res.data.message))
         .catch((error) => console.log(error));
     }
   
-//   const removeImages = (index) => {
-//     console.log(index)
-//     ImagesArray.splice(index, 1)
-//     setReload(!reload)
-//   };
-  
-    // console.log("ImagesArray : ",ImagesArray)
-  
+  const removeImages = (index) => {
+    console.log(index)
+    ImagesArray.splice(index, 1)
+    setReload(!reload)
+  };
+
+  const removeStockedImages = (index) => {
+    console.log(index)
+    stockedImagesArray.splice(index, 1)
+    setReload(!reload)
+  };
   
     return (
       <Formik
@@ -64,12 +70,13 @@ const ModifyProduct = () => {
             required_age: product.required_age,
             category: product.category,
             subcategory : product.subcategory,
-            // images: [],
+            stockedImages: product.images,
+            images: [],
             description: product.description,
             status : product.status
         }}
         validationSchema={ModifyProductSchema }
-        onSubmit={(values) => submitProduct(values)}
+        onSubmit={(values) => submitProduct(values, ImagesValues)}
       >
         <Form className="flex-col flex space-y-4">
         <h2 className="text-center uppercase my-5 w-full font-semibold text-2xl text-darkblue-100
@@ -176,14 +183,14 @@ const ModifyProduct = () => {
   
               <div className="flex flex-row items-center w-1/2 
               sm:w-full sm:flex-col">
-                <label htmlFor="age" className="w-2/6 font-semibold
+                <label htmlFor="required_age" className="w-2/6 font-semibold
                 sm:w-full">
                   Âge Requis*
                 </label>
                 <div className="flex flex-col w-full mr-3 ">
                   <Field
                     type="number"
-                    name="age"
+                    name="required_age"
                     className="rounded-xl w-full"
                     component={CustomInput}
                     errorRight
@@ -232,8 +239,46 @@ const ModifyProduct = () => {
               </div>
             </div>
           </div>
-  
-          {/* <div className="flex flex-col w-full">
+          {/** div pour manipuler les fichiers déjà en BDD */}
+          <div className="flex flex-col w-full">
+          <label
+              htmlFor="stockedImages"
+              className="font-semibold mx-auto flex flex-row"
+            >
+              Images déjà uploaded
+            </label>
+            <input
+              type="file"
+              name="stockedImages"
+              className="hidden"
+              id="stockedImages"
+              multiple
+            />
+            {stockedImagesArray ? (
+              <div className="flex flex-wrap w-8/12 mx-auto">
+                {stockedImagesArray.map((stockedImage, index) => (
+                  <div
+                    key={index}
+                    className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg"
+                  >
+                    <img
+                      src={stockedImage}
+                      alt="uploadimage"
+                      className="w-full p-1 h-full rounded-lg m-auto object-cover"
+                    />
+                    <button type="button" onClick={() => removeStockedImages(index)}>
+                      <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+          </div>
+
+
+          {/* div pour ajouter des fichiers  */}
+          <div className="flex flex-col w-full">
             <label
               htmlFor="images"
               className="font-semibold mx-auto flex flex-row"
@@ -287,7 +332,7 @@ const ModifyProduct = () => {
                 ))}
               </div>
             ) : null}
-          </div> */}
+          </div>
   
           <div className="flex flex-row justify-center 
           sm:w-full sm:flex-col">

@@ -3,21 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
  const initialState = {
-     productId : {}
+     product : {}
  }
 
 export const updateProductSlice = createSlice({
     name: 'product',
     initialState,
     reducers: {
-        setProductId: (state, action) => {
-            state.productId = action.payload
+        setProductToChange: (state, action) => {
+            state.product = action.payload
+            console.log(action.payload);
         }
     }
 })
 
-export const { setProductId } = updateProductSlice.actions
+export const { setProductToChange } = updateProductSlice.actions
 
-export const selectComponent = (state) => state.productToUpdate.productId
+export const selectComponent = (state) => state.productToUpdate.product
 
 export default updateProductSlice.reducer

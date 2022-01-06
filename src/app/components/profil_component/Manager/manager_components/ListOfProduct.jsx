@@ -5,7 +5,8 @@ import { MinusCircleIcon, PlusIcon } from "@heroicons/react/solid";
 import { Link} from 'react-router-dom';
 import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 import { useDispatch } from "react-redux";
-import { setProductId } from "../../../../shared/redux-store/updateProductSlice";
+import { setProductToChange } from "../../../../shared/redux-store/updateProductSlice";
+
 
 const ListOfProduct = () => {
 
@@ -34,8 +35,8 @@ const ListOfProduct = () => {
   }
   
   function setProductStateAndRedirect(id){
-
-    dispatch(setProductId(id))
+    console.log(id);
+    dispatch(setProductToChange(id))
     
   }
   return (
