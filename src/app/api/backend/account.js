@@ -22,5 +22,5 @@ export function validResetPassword(id, values) {
 }
 
 export function editProfil(id, values) {
-    return apiBackEnd.post(URL_EDIT_PROFIL+ id, values)
+    return apiBackEnd.patch(URL_EDIT_PROFIL+ id, values)
 }
