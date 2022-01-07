@@ -63,24 +63,26 @@ const ProfilUser = () => {
                     {/* Nom et Prénom */}
                     <div className='md:flex xl:flex'>
                         <label className='text-nav-blue font-semibold text-lg w-2/4'>Nom
-                            <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                            <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                         </label>
                         <label className='text-nav-blue font-semibold text-lg sm:my-4 xl:ml-2 w-2/4'>Prénom
-                            <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                            <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                         </label>
                     </div>
 
-                    {/* Email/Date de naissance/téléphone */}
+                    {/* Email */}
                     <label className='text-nav-blue font-semibold text-lg'>E-mail
-                        <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                        <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
 
+                    {/* Date de naissance */}
                     <label className='text-nav-blue font-semibold text-lg'>Date de naissance
-                        <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                        <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
 
+                    {/* Téléphone */}
                     <label className='text-nav-blue font-semibold text-lg'>Téléphone
-                        <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300" />
+                        <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
 
                     <button type="submit" className="btn btn-yellow mt-3 text-nav-blue font-semibold">
