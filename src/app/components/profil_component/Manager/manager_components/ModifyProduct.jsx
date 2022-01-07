@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Formik, Field, Form, ErrorMessage} from 'formik';
 import { CustomInput } from "./../../../../shared/components/form-and-error-components/InputCustom";
 import { useSelector } from 'react-redux';
 import { selectComponent } from '../../../../shared/redux-store/updateProductSlice';
 import { ModifyProductSchema } from '../../../../shared/constants/formik-yup/yup/yupProduct';
-import { PostModifyProduct } from "../../../../api/backend/product";
+import { deleteOneStockedImage, PostModifyProduct } from "../../../../api/backend/product";
 import { UploadIcon, XIcon } from "@heroicons/react/solid";
 import { Icon } from "@iconify/react";
 
@@ -12,11 +12,36 @@ const ModifyProduct = () => {
     const product = useSelector(selectComponent)
     const [ImagesArray, setImagesArray] = useState(null);
     const [ImagesValues, setImagesValues] = useState(null);
+    const [stockedImages, setStockedImages] = useState(null);
     const [reload, setReload] = useState(false)
 
-    const [stockedImagesArray, setStockedImagesArray] = useState([product.images])
-    console.log(product.images);
+    useEffect( () => {
+      setStockedImages(product.images)
+    },[])
+
+  // TODO: toujours un probleme de supression d'un element du tableau
+  //       qui décale les index et fait supprimer une image uniquement en dur et non en BDD
+    const removeImages = (index) => {
+      console.log(index)
+      ImagesArray.splice(index, 1)
+      setReload(!reload)
+    };
   
+    const removeStockedImages = (index) => {
+      let imagesArray = []
+
+      stockedImages.forEach(element =>{
+        imagesArray.push(element)
+      })
+      delete imagesArray[index];
+      deleteOneStockedImage({_id:product._id,stockedImage: stockedImages ,deletedImage:product.images[index]})
+      .then((res) => console.log(res.data.message))
+      .catch((error) => console.log(error));
+      setStockedImages(imagesArray)
+      setReload(!reload);
+      console.log("ceci est imageArray: ",imagesArray);
+    };
+    
     function submitProduct(values, images) {
       var formData = new FormData();
   
@@ -24,13 +49,9 @@ const ModifyProduct = () => {
       formData.append("product_name", values.product_name);
       formData.append("trademark", values.trademark);
       if(images){
-             for (let i = 0; i < images.length; i++) {
-        formData.append("images", images[i]);
-      } 
-      }
-
-      for (let i = 0; i < values.stockedImages.length; i++) {
-        formData.append("stockedImages", values.stockedImages[i]);
+        for (let i = 0; i < images.length; i++) {
+          formData.append("images", images[i]);
+        } 
       }
       formData.append("reference", values.reference);
       formData.append("stock", values.stock);
@@ -46,18 +67,7 @@ const ModifyProduct = () => {
         .catch((error) => console.log(error));
     }
   
-  const removeImages = (index) => {
-    console.log(index)
-    ImagesArray.splice(index, 1)
-    setReload(!reload)
-  };
 
-  const removeStockedImages = (index) => {
-    console.log(index)
-    stockedImagesArray.splice(index, 1)
-    setReload(!reload)
-  };
-  
     return (
       <Formik
         // obligé de placer les values initiales au niveau du form pour faire appel au state redux
@@ -70,7 +80,6 @@ const ModifyProduct = () => {
             required_age: product.required_age,
             category: product.category,
             subcategory : product.subcategory,
-            stockedImages: product.images,
             images: [],
             description: product.description,
             status : product.status
@@ -181,21 +190,37 @@ const ModifyProduct = () => {
                 </div>
               </div>
   
-              <div className="flex flex-row items-center w-1/2 
-              sm:w-full sm:flex-col">
-                <label htmlFor="required_age" className="w-2/6 font-semibold
-                sm:w-full">
+              <div
+                className="w-full flex-col flex items-center
+                lg:w-1/2 lg:flex-row
+                xl:w-1/2 xl:flex-row
+                2xl:w-1/2 2xl:flex-row"
+              >
+                <label
+                  htmlFor="required_age"
+                  className="w-full font-semibold mr-3
+                  lg:w-7/12
+                  xl:w-7/12
+                  2xl:w-5/12"
+                >
                   Âge Requis*
                 </label>
                 <div className="flex flex-col w-full mr-3 ">
                   <Field
-                    type="number"
-                    name="required_age"
-                    className="rounded-xl w-full"
-                    component={CustomInput}
-                    errorRight
-                  />
+                as="select"
+                name="required_age"
+                className="rounded-xl w-full"
+                >
+                    <option >Selection</option>
+                    <option value="0 - 12 mois">0 - 12 mois</option>
+                    <option value="12 - 36 mois">12 - 36 mois</option>
+                    <option value="3 - 5 ans">3 - 5 ans</option>
+                    <option value="6 - 8 ans">6 - 8 ans</option>
+                    <option value="9 - 11 ans">9 - 11 ans</option>
+                    <option value="12 ans et +">12 ans et +</option>
+                </Field>
                 </div>
+
               </div>
             </div>
           </div>
@@ -241,22 +266,14 @@ const ModifyProduct = () => {
           </div>
           {/** div pour manipuler les fichiers déjà en BDD */}
           <div className="flex flex-col w-full">
-          <label
-              htmlFor="stockedImages"
+          <div
               className="font-semibold mx-auto flex flex-row"
             >
               Images déjà uploaded
-            </label>
-            <input
-              type="file"
-              name="stockedImages"
-              className="hidden"
-              id="stockedImages"
-              multiple
-            />
-            {stockedImagesArray ? (
+            </div>
+            {stockedImages ? (
               <div className="flex flex-wrap w-8/12 mx-auto">
-                {stockedImagesArray.map((stockedImage, index) => (
+                {stockedImages.map((stockedImage, index) => (
                   <div
                     key={index}
                     className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg"
@@ -272,7 +289,7 @@ const ModifyProduct = () => {
                   </div>
                 ))}
               </div>
-            ) : null}
+            ) : <span>Il n'y a plus d'images stockées veuillez en ajouter ci dessous</span>}
 
           </div>
 

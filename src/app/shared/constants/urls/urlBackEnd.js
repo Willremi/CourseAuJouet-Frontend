@@ -10,6 +10,7 @@ export const URL_BACK_GET_ALL_PRODUCT = '/getallproduct'
 export const URL_BACK_ADD_NEW_PRODUCT = '/addnewproduct'
 export const URL_BACK_MODIFY_PRODUCT = '/modifyproduct'
 export const URL_BACK_GET_POPULAR_PRODUCT = '/getpopularproduct'
+export const URL_DELETE_ONE_STOCKED_IMAGE = '/deleteoneimage'
 
 /* CART URL */
 export const URL_BACK_ADD_TO_CART = '/addtocart'
