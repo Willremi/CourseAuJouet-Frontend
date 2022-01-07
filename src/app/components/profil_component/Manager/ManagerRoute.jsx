@@ -10,10 +10,17 @@ import AddNewProduct from "./manager_components/AddNewProduct";
 import {
   URL_LIST_OF_PRODUCT,
   URL_ADD_PRODUCT,
+  URL_PROFIL,
 } from "./../../../shared/constants/urls/urlConstants";
+import ProfilUser from "../Profil";
 const ManagerRoute = () => {
   return (
     <Switch history={customHistory}>
+      <PrivateRoute 
+        path={URL_PROFIL}
+        component={ProfilUser}
+        roles={[ROLE_MANAGER]}
+      />
       <PrivateRoute
         path={URL_LIST_OF_PRODUCT}
         component={ListOfProduct}
