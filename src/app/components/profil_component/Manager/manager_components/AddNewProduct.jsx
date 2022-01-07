@@ -16,9 +16,9 @@ const AddNewProduct = () => {
   const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
   const [selectedImages, setSelectedImages] = useState([])
-
+  console.log("Images Values : ", ImagesValues)
   const imagesHandleChange = (e) => {
-    
+    console.log(e.target.files)
     if(e.target.files){
       setImagesValues([...ImagesValues, ...e.target.files])
       const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
@@ -390,7 +390,7 @@ const AddNewProduct = () => {
               htmlFor="images"
               className="font-semibold mx-auto flex flex-row"
             >
-              <span className="btn btn-yellow font-bold mx-auto">
+              <span className="btn btn-yellow font-bold mx-auto cursor-pointer">
                 <UploadIcon className="w-10 h-10 mr-3" /> Ajouter une image
               </span>
             </label>
@@ -401,6 +401,7 @@ const AddNewProduct = () => {
               id="images"
               accept="image/*"
               multiple
+              onClick={(e) => {e.target.value = null}}
               onChange={(e) => {imagesHandleChange(e)}}
             />
 
