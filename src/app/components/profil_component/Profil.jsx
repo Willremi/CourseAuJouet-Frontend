@@ -1,9 +1,10 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { editProfil } from '../../../../api/backend/account';
-import { CustomInput } from '../../../../shared/components/form-and-error-components/InputCustom';
-import { EditUserSchema } from '../../../../shared/constants/formik-yup/yup/yupUser';
-import { accountUser } from '../../../../shared/services/accountServices';
+import { editProfil } from '../../api/backend/account';
+import { CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
+import { EditUserSchema } from '../../shared/constants/formik-yup/yup/yupUser';
+import { accountUser } from '../../shared/services/accountServices';
+
 
 const ProfilUser = () => {
     const user = accountUser()
@@ -60,9 +61,9 @@ const ProfilUser = () => {
                     </div>
 
                     {/* Nom et Prénom */}
-                    <div className='flex'>
+                    <div className='md:flex xl:flex'>
                         <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="mr-2 border-b-4 border-r-4  border-gray-300" />
-                        <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="ml-2 border-b-4 border-r-4  border-gray-300" />
+                        <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className=" sm:my-4 xl:ml-2 border-b-4 border-r-4  border-gray-300" />
                     </div>
 
                     {/* Email/Date de naissance/téléphone */}

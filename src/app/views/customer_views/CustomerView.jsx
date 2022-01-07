@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import CustomerLeftAside from '../../components/profil_component/Customer/CustomerLeftAside';
 import CustomerRoute from '../../components/profil_component/Customer/CustomerRoute';
-import { URL_DASHBOARD, URL_PROFIL } from '../../shared/constants/urls/urlConstants';
+import { URL_PROFIL } from '../../shared/constants/urls/urlConstants';
 
 const CustomerView = () => {
 

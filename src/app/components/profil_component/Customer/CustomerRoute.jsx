@@ -3,8 +3,8 @@ import { PrivateRoute } from '../../../shared/components/utils-components/Privat
 import { ROLE_CUSTOMER } from '../../../shared/constants/rolesConstant';
 import { URL_DASHBOARD, URL_PROFIL } from '../../../shared/constants/urls/urlConstants';
 import { customHistory } from '../../../shared/services/historyServices';
-import ProfilUser from './customer/Profil';
 import { Switch } from "react-router-dom";
+import ProfilUser from '../Profil';
 
 const CustomerRoute = () => {
     return (

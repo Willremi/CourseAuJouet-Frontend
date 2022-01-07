@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { URL_DASHBOARD, URL_PROFIL } from '../../shared/constants/urls/urlConstants';
+import { URL_PROFIL } from '../../shared/constants/urls/urlConstants';
 import { setComponent } from '../../shared/redux-store/ProfilSlice';
 import { accountUser } from '../../shared/services/accountServices';
 import { Link } from 'react-router-dom';

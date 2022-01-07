@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { URL_DASHBOARD, URL_PROFIL } from '../../../shared/constants/urls/urlConstants';
+import { URL_PROFIL } from '../../../shared/constants/urls/urlConstants';
 
 const CustomerLeftAside = () => {
     return (
