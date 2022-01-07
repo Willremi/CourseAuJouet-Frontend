@@ -17,14 +17,14 @@ const ListOfProduct = () => {
 
     let date =new Date(data)
     let day = date.getDay()
-    let Month = date.getMonth()
+    let Month = date.getMonth() + 1
     let Year = date.getFullYear()
     
     if(day < 10){
       day = "0" + day
     }
     if(Month < 10){
-      Month = "0"+Month
+      Month = "0"+ Month
     }
 
     return day + "/" + Month + "/" + Year
