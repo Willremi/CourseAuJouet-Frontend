@@ -7,8 +7,6 @@ import { selectIsLogged } from './../shared/redux-store/authenticationSlice';
 import IdleTimerCustom from './../components/account/IdleTimerCustom';
 import Navbar from './../components/header/Navbar';
 import ManagerAdministrationView from '../views/manager_views/ManagerAdministrationView';
-import { hasRole } from '../shared/services/accountServices';
-import { ROLE_MANAGER } from './../shared/constants/rolesConstant';
 
 const contextClass = {
     success: "bg-green-600",
@@ -35,8 +33,9 @@ const RoutesWithNavigation = () => {
                 { isLogged && <IdleTimerCustom />}
                 <Navbar />
                 <main>
-                    <Routes/>
-                    {isLogged && hasRole(ROLE_MANAGER) ? <ManagerAdministrationView />: null} 
+                <ManagerAdministrationView /> 
+                <Routes/>
+                  
                 </main>
                 <ToastContainer 
                     toastClassName={({ type }) => contextClass[type || "default"] + 
