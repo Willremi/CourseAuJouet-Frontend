@@ -34,7 +34,7 @@ const ProfilUser = () => {
             <Formik initialValues={valuesProfil} validationSchema={EditUserSchema} onSubmit={handleEdit}>
                 <Form>
                     {/* genre */}
-                    <div className=" grid md:flex xl:flex md:space-x-2 xl:space-x-2 mb-4">
+                    <div className=" grid md:flex xl:flex md:space-x-2 xl:space-x-2 mb-2">
                         <p className='text-nav-blue font-semibold text-lg'>Civilité : </p>
                         <label>
                             <Field type="radio" name="civility" value="Man" className="ml-3  mr-2" />
@@ -62,16 +62,28 @@ const ProfilUser = () => {
 
                     {/* Nom et Prénom */}
                     <div className='md:flex xl:flex'>
-                        <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="mr-2 border-b-4 border-r-4  border-gray-300" />
-                        <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className=" sm:my-4 xl:ml-2 border-b-4 border-r-4  border-gray-300" />
+                        <label className='text-nav-blue font-semibold text-lg w-2/4'>Nom
+                            <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                        </label>
+                        <label className='text-nav-blue font-semibold text-lg sm:my-4 xl:ml-2 w-2/4'>Prénom
+                            <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                        </label>
                     </div>
 
                     {/* Email/Date de naissance/téléphone */}
-                    <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="my-4 border-b-4 border-r-4  border-gray-300" />
-                    <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="my-4 border-b-4 border-r-4  border-gray-300" />
-                    <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="my-4 border-b-4 border-r-4  border-gray-300" />
+                    <label className='text-nav-blue font-semibold text-lg'>E-mail
+                        <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                    </label>
 
-                    <button type="submit" className="btn btn-yellow mb-2 text-nav-blue font-semibold">
+                    <label className='text-nav-blue font-semibold text-lg'>Date de naissance
+                        <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="border-b-4 border-r-4  border-gray-300 mb-3" />
+                    </label>
+
+                    <label className='text-nav-blue font-semibold text-lg'>Téléphone
+                        <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300" />
+                    </label>
+
+                    <button type="submit" className="btn btn-yellow mt-3 text-nav-blue font-semibold">
                         Modifier
                     </button>
                 </Form>
