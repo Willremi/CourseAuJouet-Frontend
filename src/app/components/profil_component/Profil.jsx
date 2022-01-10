@@ -34,7 +34,7 @@ const ProfilUser = () => {
             <Formik initialValues={valuesProfil} validationSchema={EditUserSchema} onSubmit={handleEdit}>
                 <Form>
                     {/* genre */}
-                    <div className=" grid md:flex xl:flex md:space-x-2 xl:space-x-2 mb-2">
+                    <div className=" grid md:flex lg:flex xl:flex md:space-x-2 xl:space-x-2 mb-2">
                         <p className='text-nav-blue font-semibold text-lg'>Civilité : </p>
                         <label>
                             <Field type="radio" name="civility" value="Man" className="ml-3  mr-2" />
@@ -61,7 +61,7 @@ const ProfilUser = () => {
                     </div>
 
                     {/* Nom et Prénom */}
-                    <div className='md:flex xl:flex'>
+                    <div className='md:flex lg:flex xl:flex'>
                         <label className='text-nav-blue font-semibold text-lg w-2/4'>Nom
                             <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                         </label>
