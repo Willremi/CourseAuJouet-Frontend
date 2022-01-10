@@ -16,9 +16,9 @@ const AddNewProduct = () => {
   const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
   const [selectedImages, setSelectedImages] = useState([])
-  console.log("Images Values : ", ImagesValues)
+ 
   const imagesHandleChange = (e) => {
-    console.log(e.target.files)
+    
     if(e.target.files){
       setImagesValues([...ImagesValues, ...e.target.files])
       const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
@@ -75,14 +75,13 @@ const AddNewProduct = () => {
       formData.append("description", values.description);
       formData.append("status", values.status);
 
-      for (var value of formData.values()) {
-        console.log(value);
-      }
+      // for (var value of formData.values()) {
+      //   console.log(value);
+      // }
 
       PostNewProduct(formData)
-        .then((res) => {
-         
-         
+        .then(() => {
+                   
           resetForm()
           setSelectedImages([])
           setImagesValues([])
