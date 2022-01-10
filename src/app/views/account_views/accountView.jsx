@@ -47,6 +47,7 @@ export default function AccountView() {
       case "CUSTOMER": {
         setUserState({
           cardOne: {
+            svg: "bi bi-person-circle",
             title: "Mon profil",
             description: "Modifiez les informations de votre profil.",
             url: "/",
@@ -68,7 +69,7 @@ export default function AccountView() {
             url: "/",
           },
           cardFive: {
-            title: "Supprimer me compte",
+            title: "Supprimer le compte",
             description: "Supprimez votre compte.",
             url: "/",
           },
