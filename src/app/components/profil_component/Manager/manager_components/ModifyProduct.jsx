@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 const ModifyProduct = () => {
   const product = useSelector(selectComponent);
+  const [ImagesArray, setImagesArray] = useState([]);
   const [ImagesValues, setImagesValues] = useState([]);
   const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
