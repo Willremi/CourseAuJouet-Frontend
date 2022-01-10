@@ -2,19 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { expirationProductDate } from "../../services/productServices";
 import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
-import { addProductInCart } from "./../../services/cart";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLogged } from "./../../redux-store/authenticationSlice";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
-import { AddToCart } from "../../redux-store/cartSlice";
-
+import { useDispatch } from 'react-redux';
+import { AddToCart } from '../../redux-store/cartSlice'
 const Card = ({ products }) => {
-  const isLogged = useSelector(selectIsLogged);
+  
+  const dispatch = useDispatch()
   const expirationNewProductDate = expirationProductDate(
     products.on_sale_date,
     30
   );
-  const dispatch = useDispatch()
 
   return (
     <>
@@ -38,7 +35,7 @@ const Card = ({ products }) => {
             <div>
               <Link
                 className="truncate"
-                to={URL_PRODUCT_DETAIL + products.product_code}
+                to={URL_PRODUCT_DETAIL + products._id}
               >
                 {products.product_name}
               </Link>
@@ -53,14 +50,9 @@ const Card = ({ products }) => {
               {/* Bouton Ajout Panier */}
               <button
                 onClick={
-                  isLogged
-                    ? () => {
-                      dispatch(AddToCart(products))
-                      addProductInCart(products)}
-                    : () =>
-                        console.log(
-                          "Vous devez être connecté pour ajouter cet article"
-                        )
+                 () => {
+                      
+                      dispatch(AddToCart(products))}
                 }
               >
                 <ShoppingCartIcon className="h-12 w-12 md:h-10 md:w-10 text-yellow-400 cursor-pointer" />
@@ -74,3 +66,4 @@ const Card = ({ products }) => {
 };
 
 export default Card;
+

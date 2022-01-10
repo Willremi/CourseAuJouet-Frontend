@@ -19,7 +19,7 @@ const IdleTimerCustom = () => {
     const handleOnAction = () => clearTimeout(timeOut)
 
     const handleOnIdle = () => {
-        toast.warn("Idle timed out")
+        toast.warn("Temps d’inactivité écoulé")
         dispatch(signOut())
         history.push(URL_HOME)
     }

@@ -49,7 +49,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
           </option>
           {Filter.AgeFilter.map((ageFilter, index) => (
             <option key={index} value={`${ageFilter}`}>
-              +{ageFilter} ans
+              {ageFilter}
             </option>
           ))}
         </Field>

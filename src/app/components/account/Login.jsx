@@ -80,12 +80,11 @@ const LoginForm = ({
 
         <p className="self-center mt-4 mb-1">vous êtes nouveau ici ?</p>
 
-        <button
+       
+          <Link to="/register" 
           className="btn btn-yellow-border"
-          onClick={() => hideModal(false)}
-        >
-          <Link to="/register">S'inscrire</Link>
-        </button>
+          onClick={() => hideModal(false)}>S'inscrire</Link>
+        
       </div>
     </Form>
   </Formik>

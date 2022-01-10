@@ -1,13 +1,13 @@
 export const defaulValuesAddProduct = {
     product_name: "",
-    trademark:"",
-    reference:"",
-    Stock:"",
-    Price:"",
-    required_age :"",
+    trademark: "",
+    reference: "",
+    Stock: "",
+    Price: "",
+    required_age: "",
     category: "",
-    SubCategory : "",
+    SubCategory: "",
     images: [],
     description: "",
-    status : true
+    status: true
 }
