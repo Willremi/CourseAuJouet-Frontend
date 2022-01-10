@@ -34,9 +34,9 @@ const ListOfProduct = () => {
     return day + "/" + Month + "/" + Year
   }
   
-  function setProductStateAndRedirect(id){
-    console.log(id);
-    dispatch(setProductToChange(id))
+  function setProductStateAndRedirect(produit){
+    console.log(produit);
+    dispatch(setProductToChange(produit))
     
   }
   return (
