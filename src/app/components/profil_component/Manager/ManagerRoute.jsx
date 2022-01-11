@@ -2,6 +2,8 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import { customHistory } from "./../../../shared/services/historyServices";
 import {
+  ROLE_ADMIN,
+  ROLE_CUSTOMER,
   ROLE_MANAGER,
 } from "./../../../shared/constants/rolesConstant";
 import { PrivateRoute } from "./../../../shared/components/utils-components/PrivateRoute";
@@ -19,7 +21,7 @@ const ManagerRoute = () => {
       <PrivateRoute 
         path={URL_PROFIL}
         component={ProfilUser}
-        roles={[ROLE_MANAGER]}
+        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />
       <PrivateRoute
         path={URL_LIST_OF_PRODUCT}
