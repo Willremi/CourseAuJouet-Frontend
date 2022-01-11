@@ -11,22 +11,24 @@ import { useEffect } from "react";
 
 const ModifyProduct = () => {
   const product = useSelector(selectComponent);
-  const [ImagesArray, setImagesArray] = useState([]);
   const [ImagesValues, setImagesValues] = useState([]);
   const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
   const [selectedImages, setSelectedImages] = useState([]);
   const [stockedImagesArray, setStockedImagesArray] = useState([]);
+  const [deletedImages, setDeletedImages] = useState([]);
 
-  console.log("Selected Images : ", selectedImages);
-  console.log("Images Values : ", ImagesValues);
-  console.log("stocked images : ",stockedImagesArray);
+
+  // console.log("Selected Images : ", selectedImages);
+  // console.log("Images Values : ", ImagesValues);
+  // console.log("stocked images array : ",stockedImagesArray);
 
   useEffect(() => {
    setStockedImagesArray([...stockedImagesArray, ...product.images])
   }, [product.images])
 
   function submitProduct(values, images) {
+    console.log(deletedImages);
     var formData = new FormData();
 
     formData.append("_id", product._id);
@@ -38,8 +40,11 @@ const ModifyProduct = () => {
       }
     }
 
-    for (let i = 0; i < values.stockedImages.length; i++) {
-      formData.append("stockedImages", values.stockedImages[i]);
+    for (let i = 0; i < stockedImagesArray.length; i++) {
+      formData.append("stockedImages", stockedImagesArray[i]);
+    }
+    for (let i = 0; i < deletedImages.length; i++) {
+      formData.append("deletedImages", deletedImages[i]);
     }
     formData.append("reference", values.reference);
     formData.append("stock", values.stock);
@@ -65,9 +70,9 @@ const ModifyProduct = () => {
       setErrorImage(false);
     }
   }
-
-  const PreviewImages = (source) => {
-    return source.map((photo, index) => {
+// gestion des images stokées
+  const PreviewStockedImages = () => {
+    return stockedImagesArray.map((photo, index) => {
       return <div
       key={index}
       className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
@@ -79,17 +84,46 @@ const ModifyProduct = () => {
         alt="uploadimage"
         className="w-full p-1 h-full rounded-lg m-auto object-cover"
       />
-      <button type="button" onClick={() => removeImages(index)}>
+      <button type="button" onClick={ () => removeStockedImages(index)}>
+        <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
+      </button>
+    </div>
+    })
+  }
+  const removeStockedImages = (index) => {
+    console.log("deleted Images : ", deletedImages);
+    console.log("stocked image index",stockedImagesArray[index]);
+    setDeletedImages([...deletedImages, stockedImagesArray[index]])
+    stockedImagesArray.splice(index, 1);
+    setReload(!reload);
+    console.log("deleted fin de fonction",deletedImages);
+  }
+
+// gestion des images upload
+  const PreviewImages = () => {
+    return selectedImages.map((photo, index) => {
+      return <div
+      key={index}
+      className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
+      sm:w-1/3 
+      md:w-1/5"
+    >
+      <img
+        src={photo}
+        alt="uploadimage"
+        className="w-full p-1 h-full rounded-lg m-auto object-cover"
+      />
+      <button type="button" onClick={ () => removeImages(index)}>
         <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
       </button>
     </div>
     })
   }
 
+
   const removeImages = (index) => {
     selectedImages.splice(index, 1);
     ImagesValues.splice(index, 1);
-    stockedImagesArray.splice(index, 1);
     setReload(!reload);
   };
 
@@ -330,7 +364,7 @@ const ModifyProduct = () => {
         </div>
         {/** div pour manipuler les fichiers déjà en BDD */}
        
-        {stockedImagesArray && PreviewImages(stockedImagesArray)}
+        {stockedImagesArray && PreviewStockedImages()}
        
 
         {/* div pour ajouter des fichiers  */}
@@ -355,7 +389,7 @@ const ModifyProduct = () => {
           />
 
         </div>
-        {selectedImages && PreviewImages(selectedImages)}
+        {selectedImages && PreviewImages()}
         <div
           className="flex flex-row justify-center 
           sm:w-full sm:flex-col"
