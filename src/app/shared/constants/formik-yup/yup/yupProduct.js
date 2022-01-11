@@ -29,7 +29,7 @@ export const ModifyProductSchema = Yup.object().shape({
       .required("Le prix est nécessaire")
       .matches(/^[0-9]*$/, "Le prix doit être exprimé en chiffres"),
     required_age: Yup.string()
-      .required("L'age est nécessaire"),
+      .required("La tranche d'âge est requis"),
     category: Yup.string()
       .required("La catégorie est nécessaire"),
     subcategory: Yup.string()

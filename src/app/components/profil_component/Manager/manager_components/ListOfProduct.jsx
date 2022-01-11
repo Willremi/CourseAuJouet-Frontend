@@ -6,6 +6,7 @@ import { Link} from 'react-router-dom';
 import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 import { useDispatch } from "react-redux";
 import { setProductToChange } from "../../../../shared/redux-store/updateProductSlice";
+import { setProductState } from "../../../../shared/services/productServices";
 
 
 const ListOfProduct = () => {
@@ -34,10 +35,10 @@ const ListOfProduct = () => {
     return day + "/" + Month + "/" + Year
   }
   
-  function setProductStateAndRedirect(produit){
+  function setProductToModify(produit){
     console.log(produit);
     dispatch(setProductToChange(produit))
-    
+    setProductState(produit)
   }
   return (
     <>
@@ -103,7 +104,7 @@ const ListOfProduct = () => {
               </td>
               <td className="flex flex-row justify-around pr-3 w-1/12">
                   <Link to={URL_MODIFY_PRODUCT}>            
-                    <button onClick={() =>setProductStateAndRedirect(product) }>
+                    <button onClick={() =>setProductToModify(product) }>
                       <Icon
                         icon="carbon:change-catalog"
                         className="scale-150 text-nav-blue"

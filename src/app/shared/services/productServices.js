@@ -56,3 +56,26 @@ export function expirationProductDate(products, days) {
         return false
     }
 }
+
+const PRODUCT_STATE = "product"
+/**
+ * @param {object} state
+ * To save the state of product in localstorage
+ */
+export function setProductState(state){
+    localStorage.setItem(PRODUCT_STATE, state)
+}
+
+/**
+ * To get the state of product in localstorage
+ */
+export function getProductState(){
+    return localStorage.getItem(PRODUCT_STATE)
+}
+
+/**
+ * To delete the state of product in localstorage
+ */
+export function deleteProductState(){
+    localStorage.removeItem(PRODUCT_STATE)
+}

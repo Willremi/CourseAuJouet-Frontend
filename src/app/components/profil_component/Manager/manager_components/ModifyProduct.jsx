@@ -8,6 +8,8 @@ import { PostModifyProduct } from "../../../../api/backend/product";
 import { UploadIcon, XIcon } from "@heroicons/react/solid";
 import { Icon } from "@iconify/react";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { URL_LIST_OF_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 
 const ModifyProduct = () => {
   const product = useSelector(selectComponent);
@@ -17,18 +19,16 @@ const ModifyProduct = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [stockedImagesArray, setStockedImagesArray] = useState([]);
   const [deletedImages, setDeletedImages] = useState([]);
-
-
-  // console.log("Selected Images : ", selectedImages);
-  // console.log("Images Values : ", ImagesValues);
-  // console.log("stocked images array : ",stockedImagesArray);
+  const history = useHistory();
 
   useEffect(() => {
-   setStockedImagesArray([...stockedImagesArray, ...product.images])
-  }, [product.images])
+    setStockedImagesArray([...stockedImagesArray, ...product.images]);
+  }, [product.images]);
 
   function submitProduct(values, images) {
-    console.log(deletedImages);
+    if(images.length === 0 && stockedImagesArray.length === 0){
+      alert("Merci d'ajouter au moins une image")
+    } else {
     var formData = new FormData();
 
     formData.append("_id", product._id);
@@ -56,70 +56,77 @@ const ModifyProduct = () => {
     formData.append("status", values.status);
 
     PostModifyProduct(formData)
-      .then((res) => console.log(res.data.message))
+      .then((res) => {
+        if(res.status === 200)history.push(URL_LIST_OF_PRODUCT)
+      })
       .catch((error) => console.log(error));
-  }
+  }      
+}
 
   const imagesHandleChange = (e) => {
-    
-    if(e.target.files){
-      setImagesValues([...ImagesValues, ...e.target.files])
-      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
-      setSelectedImages((prevImages) => prevImages.concat(fileArray))
-      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file))
+    if (e.target.files) {
+      setImagesValues([...ImagesValues, ...e.target.files]);
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+      setSelectedImages((prevImages) => prevImages.concat(fileArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
       setErrorImage(false);
     }
-  }
-// gestion des images stokées
+  };
+  // gestion des images stokées
   const PreviewStockedImages = () => {
     return stockedImagesArray.map((photo, index) => {
-      return <div
-      key={index}
-      className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
-      sm:w-1/3 
-      md:w-1/5"
-    >
-      <img
-        src={photo}
-        alt="uploadimage"
-        className="w-full p-1 h-full rounded-lg m-auto object-cover"
-      />
-      <button type="button" onClick={ () => removeStockedImages(index)}>
-        <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
-      </button>
-    </div>
-    })
-  }
+      return (
+        <div
+          key={index}
+          className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
+                  sm:w-1/3 
+                  md:w-1/5"
+        >
+          <img
+            src={photo}
+            alt="uploadimage"
+            className="w-full p-1 h-full rounded-lg m-auto object-cover"
+          />
+          <button type="button" onClick={() => removeStockedImages(index)}>
+            <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
+          </button>
+        </div>
+      );
+    });
+  };
   const removeStockedImages = (index) => {
     console.log("deleted Images : ", deletedImages);
-    console.log("stocked image index",stockedImagesArray[index]);
-    setDeletedImages([...deletedImages, stockedImagesArray[index]])
+    console.log("stocked image index", stockedImagesArray[index]);
+    setDeletedImages([...deletedImages, stockedImagesArray[index]]);
     stockedImagesArray.splice(index, 1);
     setReload(!reload);
-    console.log("deleted fin de fonction",deletedImages);
-  }
+    console.log("deleted fin de fonction", deletedImages);
+  };
 
-// gestion des images upload
+  // gestion des images upload
   const PreviewImages = () => {
     return selectedImages.map((photo, index) => {
-      return <div
-      key={index}
+      return (
+        <div
+          key={index}
       className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
-      sm:w-1/3 
-      md:w-1/5"
-    >
-      <img
-        src={photo}
-        alt="uploadimage"
-        className="w-full p-1 h-full rounded-lg m-auto object-cover"
-      />
-      <button type="button" onClick={ () => removeImages(index)}>
-        <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
-      </button>
-    </div>
-    })
-  }
-
+                    sm:w-1/3 
+                    md:w-1/5"
+        >
+          <img
+            src={photo}
+            alt="uploadimage"
+            className="w-full p-1 h-full rounded-lg m-auto object-cover"
+          />
+          <button type="button" onClick={() => removeImages(index)}>
+            <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
+          </button>
+        </div>
+      );
+    });
+  };
 
   const removeImages = (index) => {
     selectedImages.splice(index, 1);
@@ -147,33 +154,44 @@ const ModifyProduct = () => {
       validationSchema={ModifyProductSchema}
       onSubmit={(values) => submitProduct(values, ImagesValues)}
     >
-      <Form className="flex-col flex space-y-4">
+      <Form
+        className="flex-col flex space-y-2
+            lg:space-y-4
+            xl:space-y-4
+            2xl:space-y-4"
+      >
         <h2
           className="text-center uppercase my-5 w-full font-semibold text-2xl text-darkblue-100
-            sm:text-md"
+                      sm:text-md"
         >
           Modifier ce produit : {product.product_name}
         </h2>
 
         <p
-          className="text-md text-red-700 w-59/100 mx-auto underline
-          sm:w-full
-          "
+          className="w-full text-md text-red-700 mx-auto underline
+                        lg:w-59/100
+                        xl:w-59/100
+                        2xl:w-59/100"
         >
           * Champs obligatoire.
         </p>
 
         <div
-          className="flex flex-row items-center w-59/100 mx-auto 
-          sm:flex-col sm:w-full"
+          className="flex items-center mx-auto flex-col w-full
+              lg:flex-row lg:w-59/100
+              xl:flex-row xl:w-59/100
+              2xl:flex-row 2xl:w-59/100"
         >
           <label
             htmlFor="product_name"
-            className="w-1/6 font-semibold
-            sm:w-full"
+            className="font-semibold w-full mr-3
+                                  lg:w-1/6
+                                  xl:w-1/6
+                                  2xl:w-1/6"
           >
             Nomination*
           </label>
+
           <div className="flex flex-col w-full mr-3">
             <Field
               type="text"
@@ -186,13 +204,17 @@ const ModifyProduct = () => {
         </div>
 
         <div
-          className="flex flex-row items-center w-59/100 mx-auto 
-          sm:w-full sm:flex-col"
+          className="flex items-center  mx-auto  flex-col w-full
+                          lg:flex-row lg:w-59/100
+                          xl:flex-row xl:w-59/100
+                          2xl:flex-row 2xl:w-59/100"
         >
           <label
             htmlFor="trademark"
-            className="w-1/6 font-semibold
-            sm:w-full"
+            className="font-semibold w-full mr-3
+                              lg:w-1/6
+                              xl:w-1/6
+                              2xl:w-1/6"
           >
             Marque*
           </label>
@@ -208,20 +230,27 @@ const ModifyProduct = () => {
         </div>
 
         <div
-          className="flex flex-row w-59/100 mx-auto 
-          sm:w-full sm:flex-col"
+          className="flex w-full flex-col mx-auto
+                          lg:flex-row lg:w-59/100
+                          xl:flex-row xl:w-59/100
+                          2xl:flex-row 2xl:w-59/100"
         >
           <div
-            className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
+            className="w-full flex-col flex items-center
+                              lg:w-1/2 lg:flex-row
+                              xl:w-1/2 xl:flex-row
+                              2xl:w-1/2 2xl:flex-row"
           >
             <label
               htmlFor="reference"
-              className="w-5/12 font-semibold
-              sm:w-full"
+              className="w-full font-semibold mr-3
+                                  lg:w-5/12
+                                  xl:w-5/12
+                                  2xl:w-5/12"
             >
               Référence*
             </label>
+
             <div className="flex flex-col w-full mr-3">
               <Field
                 type="text"
@@ -232,18 +261,24 @@ const ModifyProduct = () => {
               />
             </div>
           </div>
+
           <div
-            className="flex flex-row items-center w-1/2 
-            sm:w-full sm:flex-col"
+            className="w-full flex-col flex items-center
+                            lg:w-1/2 lg:flex-row
+                            xl:w-1/2 xl:flex-row
+                            2xl:w-1/2 2xl:flex-row"
           >
             <label
-              htmlFor="stock"
-              className="w-2/6 font-semibold 
-              sm:w-full"
+              htmlFor="Stock*"
+              className="w-full font-semibold mr-3
+                                  lg:w-7/12
+                                  xl:w-7/12
+                                  2xl:w-5/12"
             >
               Stock*
             </label>
-            <div className="flex flex-col w-full mr-3 sm:flex-col">
+
+            <div className="flex flex-col w-full mr-3">
               <Field
                 type="number"
                 name="stock"
@@ -255,22 +290,25 @@ const ModifyProduct = () => {
           </div>
         </div>
 
-        <div
-          className="flex flex-row w-59/100 mx-auto 
-          sm:w-full sm:flex-col"
-        >
+        <div className="flex w-full flex-col mx-auto">
           <div
-            className="flex flex-row w-full 
-            sm:w-full sm:flex-col"
+            className="flex w-full flex-col mx-auto 
+                              lg:flex-row lg:w-59/100
+                              xl:flex-row xl:w-59/100
+                              2xl:flex-row 2xl:w-59/100"
           >
             <div
-              className="flex flex-row items-center w-1/2 
-              sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+                                lg:w-1/2 lg:flex-row
+                                xl:w-1/2 xl:flex-row
+                                2xl:w-1/2 2xl:flex-row"
             >
               <label
-                htmlFor="price"
-                className="w-5/12 font-semibold
-                sm:w-full"
+                htmlFor="Price"
+                className="w-full font-semibold mr-3
+                                    lg:w-5/12
+                                    xl:w-5/12
+                                    2xl:w-5/12"
               >
                 Prix*
               </label>
@@ -286,45 +324,59 @@ const ModifyProduct = () => {
             </div>
 
             <div
-              className="flex flex-row items-center w-1/2 
-              sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+                                lg:w-1/2 lg:flex-row
+                                xl:w-1/2 xl:flex-row
+                                2xl:w-1/2 2xl:flex-row"
             >
               <label
                 htmlFor="required_age"
-                className="w-2/6 font-semibold
-                sm:w-full"
+                className="w-full font-semibold mr-3
+                                    lg:w-7/12
+                                    xl:w-7/12
+                                    2xl:w-5/12"
               >
                 Âge Requis*
               </label>
               <div className="flex flex-col w-full mr-3 ">
-                <Field
-                  type="number"
-                  name="required_age"
-                  className="rounded-xl w-full"
-                  component={CustomInput}
-                  errorRight
-                />
-              </div>
+                  <Field
+                as="select"
+                name="required_age"
+                className="rounded-xl w-full"
+                >
+                    <option >Selection</option>
+                    <option value="0 - 12 mois">0 - 12 mois</option>
+                    <option value="12 - 36 mois">12 - 36 mois</option>
+                    <option value="3 - 5 ans">3 - 5 ans</option>
+                    <option value="6 - 8 ans">6 - 8 ans</option>
+                    <option value="9 - 11 ans">9 - 11 ans</option>
+                    <option value="12 ans et +">12 ans et +</option>
+                </Field>
+                </div>
+
             </div>
           </div>
         </div>
 
-        <div
-          className="flex flex-row w-59/100 mx-auto 
-          sm:w-full"
-        >
+        <div className="flex w-full flex-col mx-auto">
           <div
-            className="flex flex-row w-full 
-            sm:w-full sm:flex-col"
+            className="flex w-full flex-col mx-auto
+              lg:flex-row lg:w-59/100
+              xl:flex-row xl:w-59/100
+              2xl:flex-row 2xl:w-59/100"
           >
             <div
-              className="flex flex-row items-center w-1/2 
-              sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+                lg:w-1/2 lg:flex-row
+                xl:w-1/2 xl:flex-row
+                2xl:w-1/2 2xl:flex-row"
             >
               <label
                 htmlFor="category"
-                className="w-5/12 font-semibold
-                sm:w-full"
+                className="w-full font-semibold mr-3
+                    lg:w-5/12
+                    xl:w-5/12
+                    2xl:w-5/12"
               >
                 Catégorie*
               </label>
@@ -340,13 +392,17 @@ const ModifyProduct = () => {
             </div>
 
             <div
-              className="flex flex-row items-center w-1/2 
-              sm:w-full sm:flex-col"
+              className="w-full flex-col flex items-center
+                  lg:w-1/2 lg:flex-row
+                  xl:w-1/2 xl:flex-row
+                  2xl:w-1/2 2xl:flex-row"
             >
               <label
                 htmlFor="SubCategory"
-                className="font-semibold w-2/6
-                sm:w-full"
+                className="w-full font-semibold mr-3
+                    lg:w-7/12
+                    xl:w-7/12
+                    2xl:w-5/12"
               >
                 Sous-catégorie
               </label>
@@ -363,9 +419,14 @@ const ModifyProduct = () => {
           </div>
         </div>
         {/** div pour manipuler les fichiers déjà en BDD */}
-       
-        {stockedImagesArray && PreviewStockedImages()}
-       
+
+        <div className="flex flex-wrap mx-auto w-full  
+              sm:justify-around
+              md:justify-around
+              xl:w-8/12
+              2xl:w-8/12">
+          {stockedImagesArray && PreviewStockedImages()}
+        </div>
 
         {/* div pour ajouter des fichiers  */}
         <div className="flex flex-col w-full">
@@ -383,25 +444,40 @@ const ModifyProduct = () => {
             className="hidden"
             id="images"
             multiple
-            onClick={(e) => {e.target.value = null}}
-            onChange={(e) => {imagesHandleChange(e)}}
-
+            onClick={(e) => {
+              e.target.value = null;
+            }}
+            onChange={(e) => {
+              imagesHandleChange(e);
+            }}
           />
-
         </div>
-        {selectedImages && PreviewImages()}
+        <div className="flex flex-wrap mx-auto w-full  
+              sm:justify-around
+              md:justify-around
+              xl:w-8/12
+              2xl:w-8/12">
+               {selectedImages && PreviewImages()}
+               </div> 
         <div
-          className="flex flex-row justify-center 
-          sm:w-full sm:flex-col"
+          className="flex w-full flex-col justify-center
+              lg:flex-row
+              xl:flex-row
+          2xl:flex-row"
         >
           <label
             htmlFor="description"
-            className="font-semibold w-1/12
+            className="font-semibold w-1/12 mr-3
             sm:w-full"
           >
             Description*
           </label>
-          <div className="flex flex-col w-51/100 sm:w-full">
+          <div
+            className="flex flex-col w-full font-semibold
+                    lg:w-51/100
+                    xl:w-51/100
+                    2xl:w-51/100"
+          >
             <Field
               name="description"
               className="rounded-xl resize-y h-40 "
@@ -413,28 +489,33 @@ const ModifyProduct = () => {
             />
           </div>
         </div>
+
         <div
-          className="flex flex-row items-center w-59/100 mx-auto 
-          sm:w-full sm:flex-col"
+          className="flex items-center mx-auto flex-col w-full
+              lg:flex-row lg:w-59/100
+              xl:flex-row xl:w-59/100
+              2xl:flex-row 2xl:w-59/100"
         >
           <label
             htmlFor="status"
-            className="font-semibold w-14/100 
-            sm:w-full"
+            className="font-semibold w-full mr-3
+                lg:w-1/6
+                xl:w-1/6
+                2xl:w-1/6"
           >
             Statut*
           </label>
-          <Field as="select" name="status" className="rounded-xl sm:w-full">
+          <Field as="select" name="status" className="rounded-xl w-full">
             <option value="Online">En ligne</option>
             <option value="Offline">Hors ligne</option>
           </Field>
         </div>
 
         <div className="font-semibold mx-auto flex flex-row">
-          <button type="submit" className="btn btn-yellow font-bold">
-            <Icon icon="fa-solid:upload" className="mr-3 w-10 h-10" /> Modifier
-            le produit
-          </button>
+            <button type="submit" className="btn btn-yellow font-bold">
+              <Icon icon="fa-solid:upload" className="mr-3 w-10 h-10" /> Modifier
+              le produit
+            </button>
         </div>
       </Form>
     </Formik>
