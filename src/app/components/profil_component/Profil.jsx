@@ -85,7 +85,7 @@ const ProfilUser = () => {
                         <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
 
-                    <button type="submit" className="btn btn-yellow mt-3 text-nav-blue font-semibold">
+                    <button type="submit" className="btn btn-yellow mt-3 text-yellow-50 font-semibold">
                         Modifier
                     </button>
                 </Form>
