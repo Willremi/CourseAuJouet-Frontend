@@ -59,6 +59,64 @@ export function getUserCart() {
     }
 }
 
+export function AddeOneProductQuantity(productindex) {
+
+    try {
+        let serializedState = sessionStorage.getItem('userCart')
+        if (serializedState === null) {
+            return undefined
+        } else {
+            let TemporaryArray = []
+            serializedState = JSON.parse(serializedState)
+            serializedState.map((product, index) => {
+                if (index === productindex){
+                    product.quantity = product.quantity + 1
+                      console.log('modifier', product.quantity)
+                return TemporaryArray.push(product)
+                }
+                  
+                else {
+                    console.log('pas modifier')
+                   return TemporaryArray.push(product)
+                }
+            })
+            serializedState = JSON.stringify(TemporaryArray)
+            sessionStorage.setItem('userCart', serializedState)
+        }
+    } catch (err) {
+        return undefined
+    }
+}
+
+export function deleteOneProductQuantity(productindex) {
+
+    try {
+        let serializedState = sessionStorage.getItem('userCart')
+        if (serializedState === null) {
+            return undefined
+        } else {
+            let TemporaryArray = []
+            serializedState = JSON.parse(serializedState)
+            serializedState.map((product, index) => {
+                if (index === productindex){
+                    product.quantity = product.quantity - 1
+                      console.log('modifier', product.quantity)
+                return TemporaryArray.push(product)
+                }
+                  
+                else {
+                    console.log('pas modifier')
+                   return TemporaryArray.push(product)
+                }
+            })
+            serializedState = JSON.stringify(TemporaryArray)
+            sessionStorage.setItem('userCart', serializedState)
+        }
+    } catch (err) {
+        return undefined
+    }
+}
+
 export function Pricing(productList, Delivery) {
     let calculating = {
         TotalPrice: 0,
