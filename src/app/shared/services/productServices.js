@@ -63,14 +63,14 @@ const PRODUCT_STATE = "product"
  * To save the state of product in localstorage
  */
 export function setProductState(state){
-    localStorage.setItem(PRODUCT_STATE, state)
+    localStorage.setItem(PRODUCT_STATE,  JSON.stringify(state))
 }
 
 /**
  * To get the state of product in localstorage
  */
 export function getProductState(){
-    return localStorage.getItem(PRODUCT_STATE)
+    return JSON.parse(localStorage.getItem(PRODUCT_STATE))
 }
 
 /**

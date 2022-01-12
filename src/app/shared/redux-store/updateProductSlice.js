@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setProductState } from '../services/productServices';
 
 
 
@@ -11,8 +12,8 @@ export const updateProductSlice = createSlice({
     initialState,
     reducers: {
         setProductToChange: (state, action) => {
-            console.log(action.payload)
             state.product = action.payload
+            setProductState(action.payload)
         }
     }
 })

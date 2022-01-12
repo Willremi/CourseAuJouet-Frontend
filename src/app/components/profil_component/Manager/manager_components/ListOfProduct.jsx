@@ -6,7 +6,6 @@ import { Link} from 'react-router-dom';
 import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 import { useDispatch } from "react-redux";
 import { setProductToChange } from "../../../../shared/redux-store/updateProductSlice";
-import { setProductState } from "../../../../shared/services/productServices";
 
 
 const ListOfProduct = () => {
@@ -36,9 +35,7 @@ const ListOfProduct = () => {
   }
   
   function setProductToModify(produit){
-    console.log(produit);
     dispatch(setProductToChange(produit))
-    setProductState(produit)
   }
   return (
     <>

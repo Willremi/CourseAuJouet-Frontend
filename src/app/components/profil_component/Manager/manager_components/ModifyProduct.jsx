@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { CustomInput } from "./../../../../shared/components/form-and-error-components/InputCustom";
-import { useSelector } from "react-redux";
-import { selectComponent } from "../../../../shared/redux-store/updateProductSlice";
 import { ModifyProductSchema } from "../../../../shared/constants/formik-yup/yup/yupProduct";
 import { PostModifyProduct } from "../../../../api/backend/product";
 import { UploadIcon, XIcon } from "@heroicons/react/solid";
@@ -10,24 +8,26 @@ import { Icon } from "@iconify/react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { URL_LIST_OF_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
+import { deleteProductState, getProductState } from "../../../../shared/services/productServices";
 
 const ModifyProduct = () => {
-  const product = useSelector(selectComponent);
+
+  const history = useHistory();
+  const product = getProductState();
   const [ImagesValues, setImagesValues] = useState([]);
-  const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
+  const [errorImage, setErrorImage] = useState(false);
   const [selectedImages, setSelectedImages] = useState([]);
   const [stockedImagesArray, setStockedImagesArray] = useState([]);
   const [deletedImages, setDeletedImages] = useState([]);
-  const history = useHistory();
 
   useEffect(() => {
     setStockedImagesArray([...stockedImagesArray, ...product.images]);
-  }, [product.images]);
+  },[] );
 
   function submitProduct(values, images) {
     if(images.length === 0 && stockedImagesArray.length === 0){
-      alert("Merci d'ajouter au moins une image")
+      setErrorImage(true)
     } else {
     var formData = new FormData();
 
@@ -58,6 +58,7 @@ const ModifyProduct = () => {
     PostModifyProduct(formData)
       .then((res) => {
         if(res.status === 200)history.push(URL_LIST_OF_PRODUCT)
+        deleteProductState()
       })
       .catch((error) => console.log(error));
   }      
@@ -452,6 +453,12 @@ const ModifyProduct = () => {
             }}
           />
         </div>
+        {errorImage ? (
+              <span className="text-center mt-3 text-red-500">
+                *Veuillez ajouter au moins une image
+              </span>
+            ) : null}
+
         <div className="flex flex-wrap mx-auto w-full  
               sm:justify-around
               md:justify-around
