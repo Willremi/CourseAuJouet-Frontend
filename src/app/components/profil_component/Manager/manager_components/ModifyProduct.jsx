@@ -57,7 +57,7 @@ const ModifyProduct = () => {
 
     PostModifyProduct(formData)
       .then((res) => {
-        if(res.status === 200)history.push(URL_LIST_OF_PRODUCT)
+        if(res.status === 201)history.push(URL_LIST_OF_PRODUCT)
         deleteProductState()
       })
       .catch((error) => console.log(error));

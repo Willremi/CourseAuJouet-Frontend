@@ -1,9 +1,12 @@
 import * as Yup from 'yup'
 
 export const schemaFormAddProduct = Yup.object().shape({
-    product_name: Yup.string().required("Le nom du produit est requis"),
-    trademark : Yup.string().required("La marque du produit est requis"),
-    reference: Yup.string().required("La référence du produit est requis"),
+    product_name: Yup.string().required("Le nom du produit est requis")
+    .max(65, "La taille du nom est limitée à 65 caractères"),
+    trademark : Yup.string().required("La marque du produit est requis")
+    .max(65, "La taille de la marque est limitée à 65 caractères"),
+    reference: Yup.string().required("La référence du produit est requis")
+    .max(30, "La taille de la réference est limitée à 30 caractères"),
     Stock: Yup.number().required("Entrez votre stock en possession")
     .min(0,"Le stock ne peut pas être négatif"),
     Price: Yup.number().required("Votre produit n'a pas de prix")
@@ -19,11 +22,14 @@ export const schemaFormAddProduct = Yup.object().shape({
 
 export const ModifyProductSchema = Yup.object().shape({
     product_name: Yup.string()
-      .required("Le nom est obligatoire"),
+      .required("Le nom est obligatoire")
+      .max(65, "La taille du nom est limitée à 65 caractères"),
       trademark: Yup.string()
-        .required("La marque est nécessaire"),
+        .required("La marque est nécessaire")
+        .max(65, "La taille de la marque est limitée à 65 caractères"),
     reference: Yup.string()
-      .required("La réference est obligatoire"),
+      .required("La réference est obligatoire")
+      .max(30, "La taille de la réference est limitée à 30 caractères"),
     stock: Yup.string()
       .required("Le stock est obligatoire")
       .matches(/^[0-9]*$/, "Le stock doit être exprimé en chiffres"),// REGEX pour uniquement des chiffres
