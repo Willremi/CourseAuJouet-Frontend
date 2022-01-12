@@ -9,6 +9,7 @@ import {
   increment,
   selectInCart,
 } from "../../redux-store/cartSlice";
+import HandleQuantityProductInCart from "../form-and-success-components/HandleQuantityProductInCart";
 const Card = ({ products }) => {
   const productInCart = useSelector(selectInCart);
   const dispatch = useDispatch();
@@ -59,12 +60,13 @@ const Card = ({ products }) => {
                     let inCart = productInCart.findIndex((element) => element.product_name === products.product_name)
                       console.log(inCart)
                       if (inCart === -1) {
-                        console.log("nouveau produit");
+                        
                         console.log(productInCart);
                         dispatch(AddToCart(products));
                       } else {
-                        console.log("Ajout d'une quantité");
+                        console.log(products);
                         dispatch(increment(inCart));
+                        
                       }
                   }
                   

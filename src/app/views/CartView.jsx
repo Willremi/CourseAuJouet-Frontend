@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import ProductInCart from "../components/cart/ProductInCart";
-import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
+import { removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
 import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
-import { getUserCart } from './../shared/services/cart';
 
 /**
  * ReloadComponent is used to update the component when a product is removed from cart
@@ -19,11 +18,6 @@ const CartView = () => {
   const inCart = useSelector(selectInCart)
   const dispatch = useDispatch()
   
-  // useEffect(() => {
-  //   //Récupère tous les produits de l'utilisateur stocké dans le sessionstorage pour les dispatch au store Redux 
-  //       dispatch(setInCart(getUserCart()))
-  // }, [dispatch]);
-
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (index) => {
         dispatch(removeInCart(index))

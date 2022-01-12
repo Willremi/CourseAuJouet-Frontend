@@ -1,6 +1,7 @@
 import {
     createSlice
 } from "@reduxjs/toolkit";
+import HandleQuantityProductInCart from "../components/form-and-success-components/HandleQuantityProductInCart";
 import handleQuantityProductWarning from "../components/form-and-success-components/handleQuantityProductWarning";
 import handleSessionStorageSuccess from "../components/form-and-success-components/HandleStorageSuccess";
 import {
@@ -32,20 +33,22 @@ export const cartSlice = createSlice({
                 state.inCart[action.payload].quantity++
                 console.log(state.inCart[action.payload].quantity)
                 AddeOneProductQuantity(action.payload)
-            }
-            else {
+                let message = `Vous avez maintenant ${state.inCart[action.payload].quantity} ${state.inCart[action.payload].product_name} dans votre panier`
+                HandleQuantityProductInCart(message)
+            } else {
                 let message = "la quantité de l'article ne peut pas être supérieur à 5"
                 handleQuantityProductWarning(message)
-                }
+            }
         },
         decrement: (state, action) => {
             if (state.inCart[action.payload].quantity > 1) {
                 state.inCart[action.payload].quantity--
                 deleteOneProductQuantity(action.payload)
-            }
-            else {
-            let message = "la quantité de l'article ne peut pas être inférieur à 1"
-            handleQuantityProductWarning(message)
+                let message = `Vous avez maintenant ${state.inCart[action.payload].quantity} articles du produit ${state.inCart[action.payload].product_name}`
+                HandleQuantityProductInCart(message)
+            } else {
+                let message = "la quantité de l'article ne peut pas être inférieur à 1"
+                handleQuantityProductWarning(message)
             }
         },
         setInCart: (state, action) => {
@@ -66,12 +69,12 @@ export const cartSlice = createSlice({
         },
 
         AddToCart: (state, action) => {
-            
+
             let addQuantityToProduct = {
                 ...action.payload,
                 quantity: 1
             }
-            
+
             if (state.inCart === undefined) {
                 state.inCart = [addQuantityToProduct]
             } else {
