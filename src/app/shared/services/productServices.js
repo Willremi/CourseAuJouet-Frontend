@@ -57,24 +57,4 @@ export function expirationProductDate(products, days) {
     }
 }
 
-// export function ReadingImages(values) {
 
-//     let DefinePreviewImages = [...values] || []
-//     let PreviewImages = []
-//     console.log("Define", DefinePreviewImages)
-//     DefinePreviewImages.forEach((item, index) => {
-//         var fileReader = new FileReader();
-//         console.log("File : ", item)
-//         console.log("New filereader", fileReader)
-//         fileReader.onload = () => {
-//             console.log("filereader On Load : ", fileReader)
-//             if (fileReader.readyState === 2) {
-//                 console.log("resultFildeReader: ", fileReader.result)
-//                 PreviewImages.push(fileReader.result);
-//             }
-//             fileReader.readAsDataURL(PreviewImages[index]);
-//         };
-//     })
-//     console.log("previewimage : ", PreviewImages)
-//     return PreviewImages;
-// }
