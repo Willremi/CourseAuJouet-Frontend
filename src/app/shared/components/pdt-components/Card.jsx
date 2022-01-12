@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 import { expirationProductDate } from "../../services/productServices";
 import { URL_PRODUCT_DETAIL } from "./../../constants/urls/urlConstants";
 import { ShoppingCartIcon } from "@heroicons/react/solid";
-import { useDispatch } from 'react-redux';
-import { AddToCart } from '../../redux-store/cartSlice'
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AddToCart,
+  increment,
+  selectInCart,
+} from "../../redux-store/cartSlice";
 const Card = ({ products }) => {
-  
-  const dispatch = useDispatch()
+  const productInCart = useSelector(selectInCart);
+  const dispatch = useDispatch();
   const expirationNewProductDate = expirationProductDate(
     products.on_sale_date,
     30
   );
+
+  console.log(productInCart);
 
   return (
     <>
@@ -23,7 +29,6 @@ const Card = ({ products }) => {
         ) : null}
 
         <Link to={URL_PRODUCT_DETAIL + products._id}>
-        
           <img
             src={products.images[0]}
             alt={products.product_name}
@@ -33,10 +38,7 @@ const Card = ({ products }) => {
         <div className="px-3 pt-3 pb-1 flex flex-col space-y-1 font-medium justify-between h-full">
           <div className="overflow-hidden flex flex-col">
             <div>
-              <Link
-                className="truncate"
-                to={URL_PRODUCT_DETAIL + products._id}
-              >
+              <Link className="truncate" to={URL_PRODUCT_DETAIL + products._id}>
                 {products.product_name}
               </Link>
 
@@ -49,10 +51,26 @@ const Card = ({ products }) => {
 
               {/* Bouton Ajout Panier */}
               <button
-                onClick={
-                 () => {
-                      
-                      dispatch(AddToCart(products))}
+                onClick={() => {
+                  if(productInCart === undefined){
+                    dispatch(AddToCart(products));
+                  }
+                  else{
+                    let inCart = productInCart.findIndex((element) => element.product_name === products.product_name)
+                      console.log(inCart)
+                      if (inCart === -1) {
+                        console.log("nouveau produit");
+                        console.log(productInCart);
+                        dispatch(AddToCart(products));
+                      } else {
+                        console.log("Ajout d'une quantité");
+                        dispatch(increment(inCart));
+                      }
+                  }
+                  
+                   
+                   
+                   }
                 }
               >
                 <ShoppingCartIcon className="h-12 w-12 md:h-10 md:w-10 text-yellow-400 cursor-pointer" />
@@ -66,4 +84,3 @@ const Card = ({ products }) => {
 };
 
 export default Card;
-

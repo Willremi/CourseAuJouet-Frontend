@@ -4,6 +4,8 @@ import {
 import handleQuantityProductWarning from "../components/form-and-success-components/handleQuantityProductWarning";
 import handleSessionStorageSuccess from "../components/form-and-success-components/HandleStorageSuccess";
 import {
+    AddeOneProductQuantity,
+    deleteOneProductQuantity,
     RemoveOneProductInCart
 } from "../services/cart";
 import {
@@ -28,6 +30,8 @@ export const cartSlice = createSlice({
         increment: (state, action) => {
             if (state.inCart[action.payload].quantity < 5) {
                 state.inCart[action.payload].quantity++
+                console.log(state.inCart[action.payload].quantity)
+                AddeOneProductQuantity(action.payload)
             }
             else {
                 let message = "la quantité de l'article ne peut pas être supérieur à 5"
@@ -37,6 +41,7 @@ export const cartSlice = createSlice({
         decrement: (state, action) => {
             if (state.inCart[action.payload].quantity > 1) {
                 state.inCart[action.payload].quantity--
+                deleteOneProductQuantity(action.payload)
             }
             else {
             let message = "la quantité de l'article ne peut pas être inférieur à 1"
@@ -61,27 +66,22 @@ export const cartSlice = createSlice({
         },
 
         AddToCart: (state, action) => {
+            
             let addQuantityToProduct = {
                 ...action.payload,
                 quantity: 1
             }
-            setUserCart(addQuantityToProduct)
+            
             if (state.inCart === undefined) {
                 state.inCart = [addQuantityToProduct]
             } else {
                 state.inCart.push(addQuantityToProduct)
             }
+            setUserCart(addQuantityToProduct)
             let message = "Vous avez ajouté " + action.payload.product_name + " dans votre panier"
             handleSessionStorageSuccess(message)
         },
 
-        AddQuantityProductOnCartClick: (state, action) => {
-            if (state.inCart[action.payload].quantity < 5) {
-                state.inCart[action.payload].quantity++
-            } else {
-                console.log("Vous avez atteint la quantité maximum pour ce produit")
-            }
-        }
     }
 })
 
@@ -94,7 +94,6 @@ export const {
     setInCart,
     removeInCart,
     AddToCart,
-    AddQuantityProductOnCartClick
 } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart

@@ -19,16 +19,17 @@ const CartView = () => {
   const inCart = useSelector(selectInCart)
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    //Récupère tous les produits de l'utilisateur stocké dans le sessionstorage pour les dispatch au store Redux 
-        dispatch(setInCart(getUserCart()))
-  }, [dispatch]);
+  // useEffect(() => {
+  //   //Récupère tous les produits de l'utilisateur stocké dans le sessionstorage pour les dispatch au store Redux 
+  //       dispatch(setInCart(getUserCart()))
+  // }, [dispatch]);
 
   //Supprime le produit à la fois dans la BDD et également dans le State redux
   const handleRemoveProduct = (index) => {
         dispatch(removeInCart(index))
   };
 
+  console.log(inCart)
   return (
     <div className="w-11/12 mx-auto">
       <h2

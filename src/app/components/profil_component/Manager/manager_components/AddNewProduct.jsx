@@ -390,7 +390,7 @@ const AddNewProduct = () => {
               className="font-semibold mx-auto flex flex-row"
             >
               <span className="btn btn-yellow font-bold mx-auto cursor-pointer">
-                <UploadIcon className="w-10 h-10 mr-3" /> Ajouter une image
+                <UploadIcon className="w-10 h-10 mr-3" /> Ajouter des images
               </span>
             </label>
             <input
