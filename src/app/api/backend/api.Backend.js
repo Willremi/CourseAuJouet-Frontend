@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getToken } from "../../shared/services/tokenServices";
 import handleHttpError from './../../shared/components/form-and-error-components/HandleHttpError';
+import handleHttpSuccess from './../../shared/components/form-and-success-components/HandleHttpSuccess';
 
 /**
  * Instance axios to the BACKEND 
@@ -30,6 +31,9 @@ apiBackEnd.interceptors.request.use( request => {
 apiBackEnd.interceptors.response.use(
     response => {
         console.log(response.status);
+        if(response.status !== 200){
+            handleHttpSuccess(response)
+        }
         return response;
     },
     error => handleHttpError(error)

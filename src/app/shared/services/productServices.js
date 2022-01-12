@@ -45,7 +45,7 @@ export function SortProductDate(response, days) {
  * @returns 
  */
 
-export function expirationProductDate(products, days) { 
+export function expirationProductDate(products, days) {
     const expirationDate = new Date(products)
     expirationDate.setDate(expirationDate.getDate() + days)
     const today = Date.now()

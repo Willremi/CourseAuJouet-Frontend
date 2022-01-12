@@ -7,7 +7,7 @@ import { URL_DASHBOARD, URL_LIST_OF_PRODUCT } from "../../shared/constants/urls/
 const Manager = ({ handleSignOut, setShowModal }) => {
   return (
     <div className="flex flex-col">
-        <h2 className="font-semibold uppercase text-xl m-4">Nom Prenom</h2>
+        <h2 className="font-semibold uppercase text-xl m-4 mt-10">Nom Prenom</h2>
         <Link
         to={URL_DASHBOARD}
         onClick={() => {

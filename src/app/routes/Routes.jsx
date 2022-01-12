@@ -15,7 +15,6 @@ import {
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
 import CartView from "../views/CartView";
-import { customHistory } from "../shared/services/historyServices";
 import AdminHomeView from "../views/AdminHomeView";
 import {
   ROLE_ADMIN,
@@ -38,16 +37,15 @@ import OrderAddressView from "./../views/OrderAddressView";
  */
 const Routes = () => {
   return (
-    <Switch history={customHistory}>
+    <Switch>
       <PrivateRoute
         path={URL_ADMIN_HOME}
         component={AdminHomeView}
         roles={[ROLE_ADMIN]}
       />
-      <PrivateRoute
+      <Route
         path={URL_CART}
         component={CartView}
-        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
       />
       <PrivateRoute
         path={URL_ORDER_ADDRESS}

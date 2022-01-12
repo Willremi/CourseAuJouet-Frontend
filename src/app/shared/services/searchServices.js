@@ -1,3 +1,24 @@
+export const setInput = (state) => {
+  try {
+    const serializedValue = JSON.stringify(state)
+    localStorage.setItem('search', serializedValue)
+  } catch (err) {
+    // ignore write error
+  }
+}
+
+export function getInput() {
+  try {
+    const serializedValue = localStorage.getItem('search')
+    if(serializedValue === null) {
+      return undefined
+    }
+    return JSON.parse(serializedValue)
+  } catch (err) {
+    return undefined
+  }
+}
+
 export const setSearch = (state) => {
     try {
         const serializedState = JSON.stringify(state);
@@ -32,7 +53,7 @@ export function FilteringSearchProduct (product, filter) {
     filterProduct = filterProduct.filter(item => item.trademark.toLowerCase() === filter.trademark.toLowerCase())
   }
   if(filter.requiredAge !== "undefined"){
-   filterProduct = filterProduct.filter(item => item.required_age.toString() === filter.requiredAge)
+   filterProduct = filterProduct.filter(item => item.required_age.toString() >= filter.requiredAge)
   }
   if(filter.category !== "undefined"){
     filterProduct = filterProduct.filter(item => item.category.toLowerCase() === filter.category.toLowerCase())

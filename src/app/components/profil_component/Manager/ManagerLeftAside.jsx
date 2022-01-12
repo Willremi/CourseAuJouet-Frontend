@@ -7,7 +7,9 @@ const ManagerLeftAside = () => {
     
   return (
     <aside className="bg-nav-yellow h-screen w-60 flex flex-col text-center text-gray-600 pt-16
-    sm:hidden">
+    sm:hidden
+    md:hidden
+    ">
       <NavLink
       to={URL_DASHBOARD}
       activeClassName='bg-secondary-300 hover:bg-secondary-300 text-white border-blue-400'
