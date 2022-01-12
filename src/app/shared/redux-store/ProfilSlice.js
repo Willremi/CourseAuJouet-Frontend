@@ -23,6 +23,4 @@ export const ProfilSlice = createSlice({
 
 export const { setComponent } = ProfilSlice.actions
 
-export const selectComponent = (state) => state.DashBoardValue.selectMenu
-
 export default ProfilSlice.reducer
