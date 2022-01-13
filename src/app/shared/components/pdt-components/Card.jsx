@@ -9,7 +9,7 @@ import {
   increment,
   selectInCart,
 } from "../../redux-store/cartSlice";
-import HandleQuantityProductInCart from "../form-and-success-components/HandleQuantityProductInCart";
+
 const Card = ({ products }) => {
   const productInCart = useSelector(selectInCart);
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Card = ({ products }) => {
     30
   );
 
-  console.log(productInCart);
+ 
 
   return (
     <>
