@@ -31,7 +31,7 @@ const ListOfProduct = () => {
       day = "0" + day
     }
     if (Month < 10) {
-      Month = "0" + Month;
+      Month = "0" + (Month + 1);
     }
 
     return day + "/" + Month + "/" + Year
