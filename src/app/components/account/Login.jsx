@@ -10,6 +10,7 @@ import {
 } from "../../shared/components/form-and-error-components/InputCustom";
 import ErrorMessSmall from "./../../shared/components/form-and-error-components/ErrorMessSmall";
 import { EyeIcon } from "@heroicons/react/solid";
+import ReactFacebookLogin from "react-facebook-login";
 
 const LoginForm = ({
   submit,
@@ -17,6 +18,7 @@ const LoginForm = ({
   hideModal,
   setViewPassword,
   viewPassword,
+  responseFacebook
 }) => (
   <Formik
     initialValues={defaulValuesLogin}
@@ -73,6 +75,12 @@ const LoginForm = ({
         <button type="submit" className="btn btn-yellow mb-2">
           Se connecter
         </button>
+        <ReactFacebookLogin
+            appId="458989835602531"
+            autoLoad={true}
+            fields="name,email,picture"
+            // onClick={componentClicked}
+            callback={responseFacebook} />,
 
         {errorLog && (
           <ErrorMessSmall middle message="Login/Password incorrect(s)" />
@@ -93,6 +101,9 @@ const LoginForm = ({
 const Login = (props) => {
   const [viewPassword, setViewPassword] = useState(false);
   
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
   return (
     <div className="p-3">
       <h2 className="my-5 text-2xl">Vous avez déjà un compte ?</h2>
@@ -100,6 +111,7 @@ const Login = (props) => {
         {...props}
         viewPassword={viewPassword}
         setViewPassword={setViewPassword}
+        responseFacebook={responseFacebook}
       />
     </div>
   );
