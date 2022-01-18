@@ -2,146 +2,141 @@ import React, { useState, useEffect } from "react";
 import LinkCategoryAccount from "../../shared/components/account-component/LinkCategoryAccount";
 
 import { getPayloadToken } from "../../shared/services/tokenServices";
-import "./AccountView.css";
 
 export default function AccountView() {
+  const payload = getPayloadToken();
+  const roles = payload.role[0].role_name.split(",");
 
-    const payload = getPayloadToken()
-    const roles = payload.role[0].role_name.split(",")
- 
-  const [userState, setUserState] = useState({
-    cardOne: {
+  const [userState, setUserState] = useState([
+    {
       title: "",
       description: "",
       url: "",
     },
-    cardTwo: {
+    {
       title: "",
       description: "",
       url: "",
     },
-    cardThree: {
+    {
       title: "",
       description: "",
       url: "",
     },
-    cardFour: {
+    {
       title: "",
       description: "",
       url: "",
     },
-    cardFive: {
+    {
       title: "",
       description: "",
       url: "",
     },
-  });
+  ]);
+
+  console.log('clg 1', userState)
 
   useEffect(() => {
     getPropsByRole();
   }, []);
 
   const getPropsByRole = () => {
-
     switch (roles[0]) {
       case "CUSTOMER": {
-        setUserState({
-          cardOne: {
+        setUserState([
+           {
             svg: "bi bi-person-circle",
             title: "Mon profil",
             description: "Modifiez les informations de votre profil.",
             url: "/",
           },
-          cardTwo: {
+          {
             title: "Mes commandes",
             description: "Suivre, retourner ou acheter à nouveau.",
             url: "/",
           },
-          cardThree: {
+          {
             title: "Addresse",
             description:
               "Modifiez les adresses et les préférences de livraison.",
             url: "/",
           },
-          cardFour: {
+          {
             title: "Vos Paiements",
             description: "Archivez ou telechargez vos factures.",
             url: "/",
           },
-          cardFive: {
+          {
             title: "Supprimer le compte",
             description: "Supprimez votre compte.",
             url: "/",
           },
-        });
+        ]);
 
         break;
       }
 
       case "MANAGER": {
+        setUserState([
+         {
+            title: "Ma boutique.",
+            description: "Modifiez les informations de votre boutique.",
+            url: "/",
+          },
+        {
+            title: "Mes commandes",
+            description: "Suivre les dernières commandes effectuées.",
+            url: "/",
+          },
+           {
+            title: "Gestion des produits",
+            description: "Ajoutez, modifiez et supprimez vos produits.",
+            url: "/",
+          },
+         {
+            title: "Null",
+            description: "Null.",
+            url: "null",
+          },
+        {
+            title: "Supprimer me compte",
+            description: "Supprimez votre compte.",
+            url: "/",
+          },
+        ]);
 
-        setUserState({
-            cardOne: {
-              title: "Ma boutique.",
-              description: "Modifiez les informations de votre boutique.",
-              url: "/",
-            },
-            cardTwo: {
-              title: "Mes commandes",
-              description: "Suivre les dernières commandes effectuées.",
-              url: "/",
-            },
-            cardThree: {
-              title: "Gestion des produits",
-              description:
-                "Ajoutez, modifiez et supprimez vos produits.",
-              url: "/",
-            },
-            cardFour: {
-              title: "Null",
-              description: "Null.",
-              url: "null",
-            },
-            cardFive: {
-              title: "Supprimer me compte",
-              description: "Supprimez votre compte.",
-              url: "/",
-            },
-          });
-  
         break;
       }
 
       case "ADMIN": {
-
-        setUserState({
-            cardOne: {
-              title: "Mon profil",
-              description: "Modifiez les informations de votre profil.",
-              url: "/",
-            },
-            cardTwo: {
-              title: "Commandes",
-              description: "Suivre les commandes passées sur le site.",
-              url: "/",
-            },
-            cardThree: {
-              title: "Gestion des utilisateurs",
-              description:
-                "Voir la liste des utilisateurs inscrits sur le site.",
-              url: "/",
-            },
-            cardFour: {
-              title: "Gestion des produits",
-              description: "Gérer les produits disponible sur le site",
-              url: "/",
-            },
-            cardFive: {
-              title: "Supprimer me compte",
-              description: "Supprimez votre compte.",
-              url: "/",
-            },
-          });
+        setUserState([
+       {
+            title: "Mon profil",
+            description: "Modifiez les informations de votre profil.",
+            url: "/",
+          },
+          {
+            title: "Commandes",
+            description: "Suivre les commandes passées sur le site.",
+            url: "/",
+          },
+           {
+            title: "Gestion des utilisateurs",
+            description: "Voir la liste des utilisateurs inscrits sur le site.",
+            url: "/",
+          },
+           {
+            title: "Gestion des produits",
+            description: "Gérer les produits disponible sur le site",
+            url: "/",
+          },
+           {
+            title: "Supprimer me compte",
+            description: "Supprimez votre compte.",
+            url: "/",
+          },
+        ]);
         break;
       }
       default:
@@ -149,23 +144,17 @@ export default function AccountView() {
     }
   };
 
-
-
   return (
-    <div className="account-container">
-      <div className="account-title">
-        <h2>Mon Compte </h2>
-      </div>
-      <div className="first-row-card">
-      <LinkCategoryAccount props={userState.cardOne} />
-      <LinkCategoryAccount props={userState.cardTwo} />
-      </div>
-      <div className="second-row-card">
-      <LinkCategoryAccount props={userState.cardThree} />
-      <LinkCategoryAccount props={userState.cardFour} />
-      <LinkCategoryAccount props={userState.cardFive} />
-      </div>
-      
+    <div className="flex sm:flex-col sm:justify-between sm:space-y-6 sm:items-center w-full md:flex-col md:justify-between md:space-y-6 md:items-center lg:content-start">
+      <h2 className="sm:text-2xl sm:ml-12 sm:mt-4 sm:place-self-start md:text-2xl md:mt-4 md:place-self-start md:ml-12 lg:flex-row  ">
+        Mon Compte{" "}
+      </h2>
+      {userState.map((card) => (
+          <LinkCategoryAccount props={card} />
+      )
+        
+      )}
+
     </div>
   );
 }
