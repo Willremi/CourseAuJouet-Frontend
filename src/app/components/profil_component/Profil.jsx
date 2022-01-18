@@ -3,8 +3,8 @@ import React from 'react';
 import { editProfil } from '../../api/backend/account';
 import { CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
 import { EditUserSchema } from '../../shared/constants/formik-yup/yup/yupUser';
-import { accountUser } from '../../shared/services/accountServices';
-
+import { accountId, accountUser } from '../../shared/services/accountServices';
+import { encodeToken, getPayloadToken, setToken } from '../../shared/services/tokenServices';
 
 const ProfilUser = () => {
     const user = accountUser()
@@ -17,11 +17,20 @@ const ProfilUser = () => {
         phone: user.phone === null ? '' : user.phone
     }
 
-
     const handleEdit = (values) => {
-        const userId = user.userId;
+        const getToken = getPayloadToken()
+        getToken.civility = values.civility
+        getToken.lastname = values.lastName
+        getToken.firstname = values.firstName
+        getToken.email = values.email.toLowerCase()
+        getToken.birthday_date = values.birthday_date
+        getToken.phone = values.phone
+        
+        const userUpdate = encodeToken(getToken)
+        const userId = accountId();
         editProfil(userId, values).then(res => {
             console.log(res.data.message)
+            setToken(userUpdate)
 
         })
             .catch((error) => console.log(error))
