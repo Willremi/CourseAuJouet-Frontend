@@ -1,5 +1,5 @@
 import apiBackEnd from './api.Backend';
-import { URL_BACK_AUTHENTICATE, URL_BACK_REGISTER, URL_BACK_RESET_PASSWORD, URL_BACK_VALID_RESET_PASSWORD, URL_BACK_VERIFY_EMAIL_USER } from './../../shared/constants/urls/urlBackEnd';
+import { URL_BACK_AUTHENTICATE, URL_BACK_LOGIN_GOOGLE, URL_BACK_REGISTER, URL_BACK_RESET_PASSWORD, URL_BACK_VALID_RESET_PASSWORD, URL_BACK_VERIFY_EMAIL_USER } from './../../shared/constants/urls/urlBackEnd';
 
 export function register(values) {
     return apiBackEnd.post(URL_BACK_REGISTER, values)
@@ -19,4 +19,8 @@ export function resetPassword(value) {
 
 export function validResetPassword(id, values) {
     return apiBackEnd.post(URL_BACK_VALID_RESET_PASSWORD + id, values)
+}
+
+export function connectWithGoogle(values) {
+    return apiBackEnd.post(URL_BACK_LOGIN_GOOGLE, values)
 }

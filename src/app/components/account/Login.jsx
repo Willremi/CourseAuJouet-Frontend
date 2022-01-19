@@ -118,9 +118,10 @@ const Login = (props) => {
   // }
   const googleSuccess = async (res) => {
     const result = res?.profileObj; // ?. => ne donne pas d'erreur si profileObj est undefined
-    const token = res?.tokenId;
-    console.log("result:", result);
-    console.log("token:", token);
+    connectWithGoogle(result)
+    // const token = res?.tokenId;
+    // console.log("result:", result);
+    // console.log("token:", token);
   }
   const googleFailure = async (error) => {
     console.log(error);
