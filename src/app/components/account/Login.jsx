@@ -11,6 +11,7 @@ import {
 import ErrorMessSmall from "./../../shared/components/form-and-error-components/ErrorMessSmall";
 import { EyeIcon } from "@heroicons/react/solid";
 import ReactFacebookLogin from "react-facebook-login";
+import GoogleLogin from 'react-google-login';
 import { connectWithGoogle } from "../../api/backend/account";
 
 const LoginForm = ({
@@ -19,7 +20,9 @@ const LoginForm = ({
   hideModal,
   setViewPassword,
   viewPassword,
-  google
+  googleSuccess,
+  googleFailure,
+  // responseFacebook
 }) => (
   <Formik
     initialValues={defaulValuesLogin}
@@ -81,10 +84,15 @@ const LoginForm = ({
             autoLoad={true}
             fields="name,email,picture"
             // onClick={componentClicked}
-            callback={responseFacebook} />, */}
-        <Link to={undefined} className="btn btn-yellow-border" onClick={google}>
-          connect with google
-        </Link>
+            callback={responseFacebook} 
+            /> */}
+
+        <GoogleLogin
+          clientId="286030895718-ntorq5iqa5isuht2ic96dk25fduk280k.apps.googleusercontent.com"
+          onSuccess={googleSuccess}
+          onFailure={googleFailure}
+          cookiePolicy={"single_host_origin"}
+          />
 
         {errorLog && (
           <ErrorMessSmall middle message="Login/Password incorrect(s)" />
@@ -104,14 +112,21 @@ const LoginForm = ({
 
 const Login = (props) => {
   const [viewPassword, setViewPassword] = useState(false);
-  
-  // const responseFacebook = (response) => {
-  //   console.log(response);
-  // }
 
-  const google = () => {
-    connectWithGoogle();
+  // const responseFacebook = (res) => {
+  //   console.log(res);
+  // }
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj; // ?. => ne donne pas d'erreur si profileObj est undefined
+    const token = res?.tokenId;
+    console.log("result:", result);
+    console.log("token:", token);
   }
+  const googleFailure = async (error) => {
+    console.log(error);
+    console.log("Zut ! Google Log In n'a pas fonctionné");
+  }
+
   return (
     <div className="p-3">
       <h2 className="my-5 text-2xl">Vous avez déjà un compte ?</h2>
@@ -120,7 +135,8 @@ const Login = (props) => {
         viewPassword={viewPassword}
         setViewPassword={setViewPassword}
         // responseFacebook={responseFacebook}
-        google={google}
+        googleSuccess={googleSuccess}
+        googleFailure={googleFailure}
       />
     </div>
   );
