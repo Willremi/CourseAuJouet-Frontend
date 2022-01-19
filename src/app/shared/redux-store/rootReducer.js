@@ -3,6 +3,7 @@ import { authenticationSlice } from './authenticationSlice';
 import { searchSlice } from "./searchSlice";
 import { cartSlice } from './cartSlice';
 import { updateProductSlice } from './updateProductSlice';
+import { deliverySlice } from './deliverySlice';
 /**
  * Combine all the reducers create in different files, to add them in the redux-store
  * So, if you create a new reducer, it needs to be added here
@@ -13,6 +14,6 @@ export default combineReducers({
     authenticationSlice,
     searchSlice,
     cartSlice,
-    updateProductSlice
-
+    updateProductSlice,
+    deliverySlice
 })

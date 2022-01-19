@@ -3,6 +3,7 @@ import authenticationReducer from './authenticationSlice'
 import cartReducer from './cartSlice';
 import searchReducer from './searchSlice';
 import updateReducer from './updateProductSlice'
+import deliveryReducer from './deliverySlice'
 /**
  * To configure the store redux. 
  * 
@@ -13,6 +14,7 @@ import updateReducer from './updateProductSlice'
 		auth: authenticationReducer,
 		search: searchReducer, 
 		cart: cartReducer,
-		productToUpdate: updateReducer
+		productToUpdate: updateReducer,
+		delivery: deliveryReducer
 	},
 });
