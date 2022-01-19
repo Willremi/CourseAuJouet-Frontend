@@ -33,10 +33,13 @@ function MyAccountButton() {
   return (
     <>
       <button
-        className="cursor-pointer flex flex-row items-center mr-4 sm:text-nav-yellow text-nav-blue opacity-100"
+        className="w-full cursor-pointer flex flex-row items-center sm:text-nav-yellow text-nav-blue opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
-        <svg
+        
+        {isLogged ? <p className="w-full text-right font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour Melissandre !</p>
+        
+        : <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-12 w-12 md:w-8 md:h-8"
           fill="none"
@@ -49,7 +52,7 @@ function MyAccountButton() {
             strokeWidth={2}
             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
-        </svg>
+        </svg> }
       </button>
 
       {/* condition pour qui verifie la constante showmodal avec sa valeur boléenne,
@@ -78,7 +81,7 @@ function MyAccountButton() {
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-5 "
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-2.5 "
                  : "2xl:h-0 overflow-hidden"
              }
             `}

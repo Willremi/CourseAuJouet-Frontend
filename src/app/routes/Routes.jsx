@@ -11,6 +11,7 @@ import {
   URL_FORGOT_PASSWORD,
   URL_RESET_PASSWORD,
   URL_SEARCH_PAGE,
+  URL_PAYMENT,
 } from "../shared/constants/urls/urlConstants";
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
@@ -28,6 +29,7 @@ import ResetPasswordView from "./../views/ResetPasswordView";
 import DetailsProductView from "./../views/DetailsProductView";
 import SearchView from "./../views/SearchView";
 import OrderAddressView from "./../views/OrderAddressView";
+import PaymentView from './../views/PaymentView';
 
 /**
  * Routes of the application
@@ -59,6 +61,7 @@ const Routes = () => {
       <Route path={URL_RESET_PASSWORD} component={ResetPasswordView} />
       <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
       <Route path={URL_SEARCH_PAGE} component={SearchView} />
+      <Route path={URL_PAYMENT} component={PaymentView}/>
     </Switch>
   );
 };

@@ -10,10 +10,11 @@ const CartButton = () => {
     <div>
       <Link
         to={URL_CART}
-        className="flex flex-row mr-4 2xl:mr-10 cursor-pointer items-center sm:text-nav-yellow text-nav-blue opacity-100
+        className="flex flex-row cursor-pointer items-center sm:text-nav-yellow text-nav-blue opacity-100
         md:mr-10
         lg:mr-12
-        xl:mr-16"
+        xl:mr-16
+        2xl:ml-2 2xl:-mt-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
