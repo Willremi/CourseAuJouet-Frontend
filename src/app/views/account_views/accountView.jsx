@@ -12,26 +12,31 @@ export default function AccountView() {
       title: "",
       description: "",
       url: "",
+      icon:"",
     },
     {
       title: "",
       description: "",
       url: "",
+      icon:"",
     },
     {
       title: "",
       description: "",
       url: "",
+      icon:"",
     },
     {
       title: "",
       description: "",
       url: "",
+      icon:"",
     },
     {
       title: "",
       description: "",
       url: "",
+      icon:"",
     },
   ]);
 
@@ -46,31 +51,35 @@ export default function AccountView() {
       case "CUSTOMER": {
         setUserState([
            {
-            svg: "bi bi-person-circle",
             title: "Mon profil",
             description: "Modifiez les informations de votre profil.",
             url: "/",
+            icon:"mdi:account",
           },
           {
             title: "Mes commandes",
             description: "Suivre, retourner ou acheter à nouveau.",
             url: "/",
+            icon:"mdi:basket-check",
           },
           {
             title: "Addresse",
             description:
               "Modifiez les adresses et les préférences de livraison.",
             url: "/",
+            icon:"mdi:home",
           },
           {
             title: "Vos Paiements",
             description: "Archivez ou telechargez vos factures.",
             url: "/",
+            icon:"mdi:credit-card-check",
           },
           {
             title: "Supprimer le compte",
             description: "Supprimez votre compte.",
             url: "/",
+            icon:"mdi:alert-octagon",
           },
         ]);
 
@@ -83,26 +92,31 @@ export default function AccountView() {
             title: "Ma boutique.",
             description: "Modifiez les informations de votre boutique.",
             url: "/",
+            icon:"mdi:store",
           },
         {
             title: "Mes commandes",
             description: "Suivre les dernières commandes effectuées.",
             url: "/",
+            icon:"mdi:basket-check",
           },
            {
             title: "Gestion des produits",
             description: "Ajoutez, modifiez et supprimez vos produits.",
             url: "/",
+            icon:"mdi:gift-outline",
           },
          {
-            title: "Null",
-            description: "Null.",
-            url: "null",
+            title: "Paiements",
+            description: "Affichez et gerez vos factures..",
+            url: "/",
+            icon:"mdi:cash",
           },
         {
             title: "Supprimer me compte",
             description: "Supprimez votre compte.",
             url: "/",
+            icon:"mdi:alert-octagon",
           },
         ]);
 
@@ -115,26 +129,31 @@ export default function AccountView() {
             title: "Mon profil",
             description: "Modifiez les informations de votre profil.",
             url: "/",
+            icon:"mdi:account",
           },
           {
             title: "Commandes",
             description: "Suivre les commandes passées sur le site.",
             url: "/",
+            icon:"mdi:basket-check",
           },
            {
             title: "Gestion des utilisateurs",
             description: "Voir la liste des utilisateurs inscrits sur le site.",
             url: "/",
+            icon:"mdi:account-group",
           },
            {
             title: "Gestion des produits",
             description: "Gérer les produits disponible sur le site",
             url: "/",
+            icon:"mdi:gift-outline",
           },
            {
             title: "Supprimer me compte",
             description: "Supprimez votre compte.",
             url: "/",
+            icon:"mdi:alert-octagon",
           },
         ]);
         break;
