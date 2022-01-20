@@ -7,10 +7,9 @@ export default function LinkCategoryAccount({props}) {
   console.log('2',props)
   return (
     <>
-      <Link to={props.url} className="sm:w-10/12 md:w-10/12 lg:w-9/12">
-        <div className="flex-col border border-black cursor-pointer inline-block bg-white sm:w-10/12 sm:h-40 hover:border-2 sm:ml-12 md:w-9/12 md:h-40
-        lg:w-10/12 lg:h-40">
-          <div className="flex flex-row mt-6 space-x-4 sm:ml-4 md:ml-6 ">
+      <Link to={props.url} className="sm:w-10/12 sm:mt-8 md:w-10/12 md:mt-8 lg:w-5/12 lg:m-4 ">
+        <div className="flex-col w-full  h-40 border border-secondary-300 cursor-pointer bg-none  hover:border-2 ">
+          <div className="flex flex-row mt-6 space-x-4 sm:ml-4 md:ml-6 text-primary-500 lg:ml-4  ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -28,7 +27,7 @@ export default function LinkCategoryAccount({props}) {
             <h3>{props.title}</h3>
             
           </div>
-          <p className="text-gray-500 mt-6 pl-6">{props.description}</p>
+          <p className="text-primary-200 mt-6 pl-6">{props.description}</p>
         </div>
       </Link>
     </>
