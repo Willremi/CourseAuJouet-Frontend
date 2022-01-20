@@ -22,7 +22,7 @@ const LoginForm = ({
   viewPassword,
   googleSuccess,
   googleFailure,
-  // responseFacebook
+  facebookSuccess
 }) => (
   <Formik
     initialValues={defaulValuesLogin}
@@ -79,13 +79,12 @@ const LoginForm = ({
         <button type="submit" className="btn btn-yellow mb-2">
           Se connecter
         </button>
-        {/* <ReactFacebookLogin
+        <ReactFacebookLogin
             appId="458989835602531"
             autoLoad={true}
             fields="name,email,picture"
-            // onClick={componentClicked}
-            callback={responseFacebook} 
-            /> */}
+            callback={facebookSuccess}
+            />
 
         <GoogleLogin
           clientId="286030895718-ntorq5iqa5isuht2ic96dk25fduk280k.apps.googleusercontent.com"
@@ -113,20 +112,6 @@ const LoginForm = ({
 const Login = (props) => {
   const [viewPassword, setViewPassword] = useState(false);
 
-  // const responseFacebook = (res) => {
-  //   console.log(res);
-  // }
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj; // ?. => ne donne pas d'erreur si profileObj est undefined
-    connectWithGoogle(result)
-    // const token = res?.tokenId;
-    // console.log("result:", result);
-    // console.log("token:", token);
-  }
-  const googleFailure = async (error) => {
-    console.log(error);
-    console.log("Zut ! Google Log In n'a pas fonctionné");
-  }
 
   return (
     <div className="p-3">
@@ -135,9 +120,6 @@ const Login = (props) => {
         {...props}
         viewPassword={viewPassword}
         setViewPassword={setViewPassword}
-        // responseFacebook={responseFacebook}
-        googleSuccess={googleSuccess}
-        googleFailure={googleFailure}
       />
     </div>
   );
