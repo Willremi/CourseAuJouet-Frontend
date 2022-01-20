@@ -23,9 +23,10 @@ const Navbar = () => {
         lg:px-8"
         
       >
-        <div className="sm:w-11/12 flex flex-row justify-between mb-3 md:mb-0 2xl:w-11/12 2xl:mx-auto">
-          {/* Burger menu pour mobile */}
-          <div className="flex flex-row w-full sm:w-1/2 items-center">
+        <div className="sm:w-full flex flex-row mb-2 md:mb-0 justify-between 2xl:w-full 2xl:ml-2">
+          
+          <div className="flex flex-row w-10/12 ml-4 sm:w-1/2 items-center">
+            {/* Burger menu pour mobile */}
             {window.innerWidth <= 1024 ? (
               <button
                 className="w-12 h-12 mx-6 "
@@ -118,7 +119,7 @@ const Navbar = () => {
             ) : null}
           </div>
 
-          <div className="sm:w-full sm:justify-between flex flex-row items-center 2xl:items-start 2xl:mt-4">
+          <div className="sm:w-full sm:justify-between w-auto flex flex-row items-center 2xl:items-start 2xl:mt-4 2xl:mr-10">
             {/* Bouton Mon compte */}
             <MyAccountButton />
 

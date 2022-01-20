@@ -5,6 +5,7 @@ import {
   signOut,
 } from "../../shared/redux-store/authenticationSlice";
 import { hasRole } from "../../shared/services/accountServices";
+import { getPayloadToken } from "../../shared/services/tokenServices";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
 import Manager from "../modal_component/Manager";
@@ -24,7 +25,7 @@ function MyAccountButton() {
   const isLogged = useSelector(selectIsLogged);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-
+  const infoclient = getPayloadToken()
   const handleSignOut = () => {
     dispatch(signOut());
     setShowModal(false);
@@ -33,11 +34,11 @@ function MyAccountButton() {
   return (
     <>
       <button
-        className="w-full cursor-pointer flex flex-row items-center sm:text-nav-yellow text-nav-blue opacity-100"
+        className="w-auto cursor-pointer flex flex-row items-center sm:text-nav-yellow text-nav-blue opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
         
-        {isLogged ? <p className="w-full text-right font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour Melissandre !</p>
+        {isLogged ? <p className="w-auto text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {infoclient.firstName} !</p>
         
         : <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +62,7 @@ function MyAccountButton() {
 
       <>
         <div
-          className={`transition-all duration-500 bg-nav-blueClar absolute  top-16 left-0 w-screen ${
+          className={`transition-all duration-500 bg-nav-blueClar absolute top-16 left-0 w-screen ${
             showModal ? "h-screen overflow-hidden z-40" : "h-0 overflow-hidden"
           }
             ${

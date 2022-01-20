@@ -9,7 +9,7 @@ export const URL_RESET_PASSWORD = '/resetpassword/:token'
 export const URL_PRODUCT_DETAIL = '/detail/'
 export const URL_SEARCH_PAGE = '/search'
 export const URL_ORDER_ADDRESS = '/order/address_delivery'
-export const URL_PAYMENT = '/checkout'
+
 
 /** MANAGER **/
 export const URL_DASHBOARD = '/dashboard'
@@ -21,3 +21,7 @@ export const URL_BACK_TO_STORE = '/returnofcontrol'
 export const URL_MANAGER_MESSAGE = '/managermessage'
 export const URL_MANAGER_STATISTIQUES = '/statistiques'
 export const URL_MANAGER_SETTINGS = '/settings'
+
+/** PAIEMENT **/
+export const URL_PAYMENT_CHECKOUT = '/checkout'
+export const URL_VALIDATE_PAYMENT = '/payment'

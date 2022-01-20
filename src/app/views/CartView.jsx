@@ -5,7 +5,7 @@ import { removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
-import { URL_PAYMENT } from "../shared/constants/urls/urlConstants";
+import { URL_PAYMENT_CHECKOUT } from './../shared/constants/urls/urlConstants';
 
 /**
  * ReloadComponent is used to update the component when a product is removed from cart
@@ -48,7 +48,7 @@ const CartView = () => {
             </span>
           </p>
         </div>
-        {inCart !== undefined ? (
+        {inCart !== undefined && inCart.length !== 0 ? (
           <ul className="space-y-5 w-full">
             {inCart.map((onCart, index) => (
                 <li key={index}>
@@ -68,7 +68,7 @@ const CartView = () => {
             md:mx-auto
             lg:mx-auto
             ">
-              <Link to={URL_PAYMENT} className="btn btn-yellow rounded-full transition duration-300">
+              <Link to={URL_PAYMENT_CHECKOUT} className="btn btn-yellow rounded-full transition duration-300">
                 Passer la commande
               </Link>
             </div>
