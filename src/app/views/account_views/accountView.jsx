@@ -164,7 +164,7 @@ export default function AccountView() {
   };
 
   return (
-    <div className="flex  sm:flex-col sm:justify-between sm:space-y-6 sm:items-center w-full md:flex-col md:justify-between md:space-y-6 md:items-center lg:flex-column lg:flex-wrap ">
+    <div className="flex  sm:flex-col sm:justify-between sm:space-y-6 sm:items-center w-full md:flex-col md:justify-between md:space-y-6 md:items-center lg:flex-row lg:flex-wrap xl:flex-row xl:flex-wrap 2xl:flex-wrap">
       {/* <h2 className="sm:text-2xl sm:ml-12 sm:mt-4 sm:place-self-start md:text-2xl md:mt-4 md:place-self-start md:ml-12 lg:flex-row">
         Mon Compte{" "}
       </h2> */}
