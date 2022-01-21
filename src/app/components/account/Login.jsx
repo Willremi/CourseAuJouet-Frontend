@@ -12,7 +12,6 @@ import ErrorMessSmall from "./../../shared/components/form-and-error-components/
 import { EyeIcon } from "@heroicons/react/solid";
 import ReactFacebookLogin from "react-facebook-login";
 import GoogleLogin from 'react-google-login';
-import { connectWithGoogle } from "../../api/backend/account";
 
 const LoginForm = ({
   submit,
@@ -87,7 +86,7 @@ const LoginForm = ({
             />
 
         <GoogleLogin
-          clientId="286030895718-ntorq5iqa5isuht2ic96dk25fduk280k.apps.googleusercontent.com"
+          clientId="270509351999-4mof0jdh9v6shl96kf61d48mp1lg3d20.apps.googleusercontent.com"
           onSuccess={googleSuccess}
           onFailure={googleFailure}
           cookiePolicy={"single_host_origin"}
