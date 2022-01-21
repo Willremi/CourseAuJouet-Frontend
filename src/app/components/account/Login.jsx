@@ -79,10 +79,12 @@ const LoginForm = ({
           Se connecter
         </button>
         <ReactFacebookLogin
-            appId="458989835602531"
+            appId="3090633897851028"
             autoLoad={true}
-            fields="name,email,picture"
+            fields="name,email"
             callback={facebookSuccess}
+            cookie={false}
+            language="fr_FR"
             />
 
         <GoogleLogin

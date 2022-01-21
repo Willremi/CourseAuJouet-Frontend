@@ -43,7 +43,7 @@ import { useHistory } from 'react-router';
     const googleFailure = async (error) => {
         console.log("Zut ! Google Log In n'a pas fonctionné", error);
     }
-    const facebookSuccess = (res) => {
+    const facebookSuccess = async (res) => {
         connectWithFacebook(res)
             .then(res => {
                 if(res.status === 200 && res.data.id_token) {
