@@ -6,6 +6,7 @@ import { Link} from 'react-router-dom';
 import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 import { useDispatch } from "react-redux";
 import { setProductToChange } from "../../../../shared/redux-store/updateProductSlice";
+import { onSaleDate } from "../../../../shared/services/dateServices";
 
 
 const ListOfProduct = () => {
@@ -21,21 +22,7 @@ const ListOfProduct = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const onSaleDate = (data) => {
-    let date =new Date(data)
-    let day = date.getDay()
-    let Month = date.getMonth()
-    let Year = date.getFullYear()
-    
-    if(day < 10){
-      day = "0" + day
-    }
-    if (Month < 10) {
-      Month = "0" + (Month + 1);
-    }
-
-    return day + "/" + Month + "/" + Year
-  }
+  
   
   function setProductToModify(produit){
     dispatch(setProductToChange(produit))

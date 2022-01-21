@@ -7,12 +7,6 @@ import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
 import { URL_PAYMENT_CHECKOUT } from './../shared/constants/urls/urlConstants';
 
-/**
- * ReloadComponent is used to update the component when a product is removed from cart
- * without refresh the page
- * @author Mathieu
- */
-
 const CartView = () => {
   
   const inCart = useSelector(selectInCart)

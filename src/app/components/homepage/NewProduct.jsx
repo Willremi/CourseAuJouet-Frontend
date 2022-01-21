@@ -2,13 +2,6 @@ import React, { useEffect, useState } from "react";
 import { GetNewProduct } from "./../../api/backend/product";
 import Card from './../../shared/components/pdt-components/Card';
 
-/**
- * SortProductDate()
- * @param 1er parametre données a envoyer 
- * @param 2eme parametre nombre de jours d'apparition
- * @author Mathieu
- */
-
 const NewProduct = () => {
   const [showNewProduct, setShowNewProduct] = useState([]);
 

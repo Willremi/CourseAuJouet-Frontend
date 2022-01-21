@@ -4,6 +4,8 @@ import cartReducer from './cartSlice';
 import searchReducer from './searchSlice';
 import updateReducer from './updateProductSlice'
 import deliveryReducer from './deliverySlice'
+import paymentReducer from './PaymentVerification'
+import reloadComponentReducer from './ReloadComponentSlice';
 /**
  * To configure the store redux. 
  * 
@@ -15,6 +17,8 @@ import deliveryReducer from './deliverySlice'
 		search: searchReducer, 
 		cart: cartReducer,
 		productToUpdate: updateReducer,
-		delivery: deliveryReducer
+		delivery: deliveryReducer,
+		payment: paymentReducer,
+		reload: reloadComponentReducer,
 	},
 });

@@ -85,6 +85,9 @@ export const cartSlice = createSlice({
             handleSessionStorageSuccess(message)
         },
 
+        emptyCart:(state, action) => {
+            state.inCart = getUserCart()
+        }
     }
 })
 
@@ -97,6 +100,7 @@ export const {
     setInCart,
     removeInCart,
     AddToCart,
+    emptyCart
 } = cartSlice.actions;
 
 export const selectInCart = (state) => state.cart.inCart

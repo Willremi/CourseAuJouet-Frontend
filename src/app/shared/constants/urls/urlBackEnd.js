@@ -29,3 +29,6 @@ export const URL_BACK_DELETE_ONE_SLIDE_IN_CAROUSEL = '/deletecarousel'
 
 /*PAYMENT*/
 export const URL_BACK_END_PAYMENT = '/create-checkout-session'
+
+/** ORDERS **/
+export const URL_BACK_END_REGISTER_ORDER = '/register-order'
