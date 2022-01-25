@@ -61,7 +61,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="w-full ml-3">
+    <div className="w-11/12">
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values) => {

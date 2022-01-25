@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLogged,
@@ -24,12 +25,24 @@ register and the link for the forgotten password.
 function MyAccountButton() {
   const isLogged = useSelector(selectIsLogged);
   const [showModal, setShowModal] = useState(false);
+  const [User, setUser] = useState();
   const dispatch = useDispatch();
-  const infoclient = getPayloadToken()
   const handleSignOut = () => {
     dispatch(signOut());
     setShowModal(false);
   };
+
+  
+  useEffect(() => {
+    if(isLogged){
+      setUser(getPayloadToken())
+    }
+    else {
+      setUser(undefined)
+    }
+  }, [isLogged]);
+  
+  console.log(User);
 
   return (
     <>
@@ -38,7 +51,7 @@ function MyAccountButton() {
         onClick={() => setShowModal(!showModal)}
       >
         
-        {isLogged ? <p className="w-auto text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {infoclient.firstName} !</p>
+        {User ? <p className="w-auto text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {User.firstName} !</p>
         
         : <svg
           xmlns="http://www.w3.org/2000/svg"

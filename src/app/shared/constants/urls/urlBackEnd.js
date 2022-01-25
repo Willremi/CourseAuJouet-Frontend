@@ -32,3 +32,4 @@ export const URL_BACK_END_PAYMENT = '/create-checkout-session'
 
 /** ORDERS **/
 export const URL_BACK_END_REGISTER_ORDER = '/register-order'
+export const URL_BACK_END_GET_ONE_ORDER = '/get-one-order/'

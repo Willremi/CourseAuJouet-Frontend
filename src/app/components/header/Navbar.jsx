@@ -60,11 +60,11 @@ const Navbar = () => {
 
             {/* Recherche */}
             {window.innerWidth >= 504 ? (
-              <div className="flex flex-col w-full ">
+              <div className="flex flex-col w-full items-center">
                 <SearchBar />
 
                 {/* Navigation */}
-                <div>
+                <div className="w-11/12">
                   <nav className="hidden lg:grid xl:grid 2xl:grid md:text-nav-blue font-semibold">
                     <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue mt-3 justify-around">
                       {navigation.map((item) => (

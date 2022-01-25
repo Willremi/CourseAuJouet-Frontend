@@ -23,7 +23,8 @@ const PaymentView = () => {
             const user = res.data.user
             const values = {cart, user}
             CheckoutPayment(values)
-            .then((res) => window.location.assign(res.data.url))
+            .then((res) => {
+                window.location.assign(res.data.url)})
             .catch((error) => console.log(error))
         })
         .catch((error) => console.log(error)) 
