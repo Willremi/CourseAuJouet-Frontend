@@ -83,7 +83,7 @@ const LoginForm = ({
         </button>
 
           <ReactFacebookLogin
-              appId="3090633897851028"
+              appId="458989835602531"
               autoLoad={true}
               fields="name,email"
               callback={facebookSuccess}
