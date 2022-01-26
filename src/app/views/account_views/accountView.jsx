@@ -113,7 +113,7 @@ export default function AccountView() {
             icon:"mdi:cash",
           },
         {
-            title: "Supprimer me compte",
+            title: "Supprimer le compte",
             description: "Supprimez votre compte.",
             url: "/",
             icon:"mdi:alert-octagon",
