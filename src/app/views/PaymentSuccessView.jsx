@@ -43,7 +43,7 @@ const PaymentSuccessView = () => {
   return (
     <>
       {order && session && (
-        <div className="w-1/3 mx-auto my-5 font-semibold text-nav-blue">
+        <div className="sm:w-11/12 md:w-11/12 lg:w-1/2 w-1/3 mx-auto my-5 font-semibold text-nav-blue">
           <h2 className="text-center text-2xl uppercase mb-6">
             Confirmation de la commande.
           </h2>
@@ -85,7 +85,7 @@ const PaymentSuccessView = () => {
             </div>
             
           </div>
-          <div className="grid grid-cols-2 text-center my-5">
+          <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 text-center my-5">
             <Link className="btn-secondary btn w-2/3 mx-auto" to={URL_HOME}>Continuer mes achats</Link>
             <Link className="btn-secondary btn w-2/3 mx-auto" to={URL_HOME}>Voir ma commande</Link>
           </div>

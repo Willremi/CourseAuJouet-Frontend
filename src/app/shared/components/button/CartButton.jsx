@@ -14,7 +14,7 @@ const CartButton = () => {
         md:mr-10
         lg:mr-12
         xl:mr-16
-        2xl:ml-2 2xl:-mt-2"
+        2xl:ml-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

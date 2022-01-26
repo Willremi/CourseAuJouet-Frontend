@@ -32,13 +32,13 @@ const PaymentView = () => {
         
     return (
         <div className='my-5'>
-            <Link to={URL_CART} className='flex flex-row w-1/2 mx-auto font-semibold text-xl text-secondary-700 duration-300 my-2 hover:text-secondary-500'><Icon icon="akar-icons:arrow-back-thick" className='w-6 h-6 mr-2' />Retour</Link>
-            <div className='mx-auto w-1/3 flex flex-col bg-white rounded-xl shadow-xl'>
+            <Link to={URL_CART} className='sm:ml-5 md:ml-28 flex flex-row w-1/2 mx-auto font-semibold text-xl text-secondary-700 duration-300 my-2 hover:text-secondary-500'><Icon icon="akar-icons:arrow-back-thick" className='w-6 h-6 mr-2' />Retour</Link>
+            <div className='sm:w-11/12 md:w-2/3 mx-auto w-1/3 flex flex-col bg-white rounded-xl shadow-xl'>
                 <h2 className='font-semibold text-2xl text-center text-white rounded-t-xl py-2 bg-nav-blue'>Contenu de votre commande</h2>
                 {getCartProduct.map((product, index) =>
                 <div key={index} className='flex flex-row border-2 rounded-xl m-1 p-1'>
                     <div key={index} className='flex w-full'>
-                    <img className='w-3/12 rounded-xl object-cover' src={product.images[0]} alt={product.product_name}/>
+                    <img className='w-3/12 rounded-xl object-contain' src={product.images[0]} alt={product.product_name}/>
                     <div className='flex flex-col m-2'>
                         <h3 className='font-semibold'>{product.product_name}</h3>
                         <p className='text-gray-500'>{product.price / 100} €</p>

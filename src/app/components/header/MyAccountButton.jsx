@@ -51,7 +51,7 @@ function MyAccountButton() {
         onClick={() => setShowModal(!showModal)}
       >
         
-        {User ? <p className="w-auto text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {User.firstName} !</p>
+        {User ? <p className="w-full truncate text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {User.firstName} !</p>
         
         : <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@ function MyAccountButton() {
              }
              ${
                showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-2.5 "
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-1.5 "
                  : "2xl:h-0 overflow-hidden"
              }
             `}

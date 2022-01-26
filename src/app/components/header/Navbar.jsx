@@ -29,7 +29,7 @@ const Navbar = () => {
             {/* Burger menu pour mobile */}
             {window.innerWidth <= 1024 ? (
               <button
-                className="w-12 h-12 mx-6 "
+                className="w-12 h-12"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {!isOpen ? (
@@ -119,7 +119,7 @@ const Navbar = () => {
             ) : null}
           </div>
 
-          <div className="sm:w-full sm:justify-between w-auto flex flex-row items-center 2xl:items-start 2xl:mt-4 2xl:mr-10">
+          <div className="sm:w-full sm:justify-auround w-auto flex flex-row items-center 2xl:mt-4 2xl:mr-10">
             {/* Bouton Mon compte */}
             <MyAccountButton />
 
