@@ -30,8 +30,10 @@ import { useHistory } from 'react-router';
     }
     const googleSuccess = async (res) => {
         const result = res?.profileObj; // ?. => ne donne pas d'erreur si profileObj est undefined
+        console.log(result);
         connectWithGoogle(result)
             .then(res => {
+                console.log(res);
                 if(res.status === 200 && res.data.id_token) {
                     dispatch(signIn(res.data.id_token))
                     if(isAuthenticated)history.push(URL_HOME);
