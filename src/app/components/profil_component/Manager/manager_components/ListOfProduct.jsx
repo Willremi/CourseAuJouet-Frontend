@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../../../api/backend/product";
+import { deleteManyProducts, deleteProduct, getAllProducts } from "../../../../api/backend/product";
 import { Icon } from "@iconify/react";
 import { PlusIcon } from "@heroicons/react/solid";
 import { Link} from 'react-router-dom';
@@ -19,7 +19,7 @@ const ListOfProduct = () => {
     getAllProducts()
       .then((res) => setProduct(res.data.products))
       .catch((error) => console.log(error));
-  }, []);
+  }, [product.length, selectedProduct.length == 0]);
 
   const onSaleDate = (data) => {
     let date =new Date(data)
@@ -39,6 +39,11 @@ const ListOfProduct = () => {
   
   function setProductToModify(produit){
     dispatch(setProductToChange(produit))
+  }
+
+  function deletList(){
+    deleteManyProducts(selectedProduct)
+    setSelectedProduct([])
   }
   return (
     <>
@@ -107,7 +112,7 @@ const ListOfProduct = () => {
       <button
           type="button"
           className="flex flex-row font-semibold text-lg text-darkblue-100 items-center"
-          onClick={() => setSelectedProduct([])}
+          onClick={() => deletList()}
         >
           <Icon icon="ci:trash-full" className="w-6 h-6 mr-2 text-nav-blue"/>
           Supprimer les produits
@@ -196,7 +201,7 @@ const ListOfProduct = () => {
                       />
                     </button>
                   </Link>
-                <button onClick={()=> console.log(product)}>
+                <button onClick={()=> deleteProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
