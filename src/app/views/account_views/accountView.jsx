@@ -103,7 +103,7 @@ export default function AccountView() {
            {
             title: "Gestion des produits",
             description: "Ajoutez, modifiez et supprimez vos produits.",
-            url: "/",
+            url: "/listproduct",
             icon:"mdi:gift-outline",
           },
          {
@@ -146,7 +146,7 @@ export default function AccountView() {
            {
             title: "Gestion des produits",
             description: "Gérer les produits disponible sur le site",
-            url: "/",
+            url: "/listproduct",
             icon:"mdi:gift-outline",
           },
            {
