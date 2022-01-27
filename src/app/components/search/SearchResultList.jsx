@@ -8,8 +8,6 @@ const SearchResultList = ({searchResult, filterValue}) => {
 const Product = FilteringSearchProduct(searchResult, filterValue)
 
   return (
-
-      
         <ul className={`grid grid-cols-4 gap-x-3 mt-5
         sm:gap-x-3 sm:grid-cols-2
         md:overflow-scroll md:grid-cols-3  ${window.innerWidth < 700 && window.innerWidth > 504 ? 'md:gap-x-10' : 'md:gap-x-10'}`}

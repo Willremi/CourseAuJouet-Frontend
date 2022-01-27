@@ -45,7 +45,7 @@ export function SortProductDate(response, days) {
  * @returns 
  */
 
-export function expirationProductDate(products, days) { 
+export function expirationProductDate(products, days) {
     const expirationDate = new Date(products)
     expirationDate.setDate(expirationDate.getDate() + days)
     const today = Date.now()
@@ -55,4 +55,27 @@ export function expirationProductDate(products, days) {
     } else {
         return false
     }
+}
+
+const PRODUCT_STATE = "product"
+/**
+ * @param {object} state
+ * To save the state of product in localstorage
+ */
+export function setProductState(state){
+    localStorage.setItem(PRODUCT_STATE,  JSON.stringify(state))
+}
+
+/**
+ * To get the state of product in localstorage
+ */
+export function getProductState(){
+    return JSON.parse(localStorage.getItem(PRODUCT_STATE))
+}
+
+/**
+ * To delete the state of product in localstorage
+ */
+export function deleteProductState(){
+    localStorage.removeItem(PRODUCT_STATE)
 }

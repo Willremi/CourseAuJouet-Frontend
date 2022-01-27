@@ -53,7 +53,7 @@ export function FilteringSearchProduct (product, filter) {
     filterProduct = filterProduct.filter(item => item.trademark.toLowerCase() === filter.trademark.toLowerCase())
   }
   if(filter.requiredAge !== "undefined"){
-   filterProduct = filterProduct.filter(item => item.required_age.toString() === filter.requiredAge)
+   filterProduct = filterProduct.filter(item => item.required_age.toString() <= filter.requiredAge)
   }
   if(filter.category !== "undefined"){
     filterProduct = filterProduct.filter(item => item.category.toLowerCase() === filter.category.toLowerCase())

@@ -36,8 +36,8 @@ const SearchView = () => {
       </div>
 
       {/* Filtre de recherche */}
-
-      <SearchFilter searchResult={searchResult} handleChange={handleChange} filterValue={filterValue}/>
+      {searchResult.length !== 0 ? <SearchFilter searchResult={searchResult} handleChange={handleChange} filterValue={filterValue}/> : null} 
+      
       
 
       {/* Liste des résultats de la recherche */}

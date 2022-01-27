@@ -40,10 +40,11 @@ export default function AccountView() {
     },
   ]);
 
-  console.log('clg 1', userState)
+
 
   useEffect(() => {
     getPropsByRole();
+    //eslint-disabled-next-line
   }, []);
 
   const getPropsByRole = () => {

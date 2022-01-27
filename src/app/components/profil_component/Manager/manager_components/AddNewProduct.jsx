@@ -9,15 +9,53 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { URL_LIST_OF_PRODUCT } from "./../../../../shared/constants/urls/urlConstants";
 
+
 const AddNewProduct = () => {
-  const [ImagesArray, setImagesArray] = useState([]);
+  
   const [ImagesValues, setImagesValues] = useState([]);
   const [errorImage, setErrorImage] = useState(false);
   const [reload, setReload] = useState(false);
-  const [success, SetSuccess] = useState();
+  const [selectedImages, setSelectedImages] = useState([])
+ 
+  const imagesHandleChange = (e) => {
+    
+    if(e.target.files){
+      setImagesValues([...ImagesValues, ...e.target.files])
+      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
+      setSelectedImages((prevImages) => prevImages.concat(fileArray))
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file))
+      setErrorImage(false);
+    }
+  }
 
+  const PreviewImages = (source) => {
+    return source.map((photo, index) => {
+      return <div
+      key={index}
+      className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
+      sm:w-1/3 
+      md:w-1/5"
+    >
+      <img
+        src={photo}
+        alt="uploadimage"
+        className="w-full p-1 h-full rounded-lg m-auto object-cover"
+      />
+      <button type="button" onClick={() => removeImages(index)}>
+        <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
+      </button>
+    </div>
+    })
+  }
+
+  const removeImages = (index) => {
+    selectedImages.splice(index, 1);
+    ImagesValues.splice(index, 1);
+    setReload(!reload);
+  };
+  
   function submitProduct(values, images, resetForm) {
-    console.log("images values : ", images);
+   
     if (images.length === 0) {
       setErrorImage(true);
     } else {
@@ -37,28 +75,24 @@ const AddNewProduct = () => {
       formData.append("description", values.description);
       formData.append("status", values.status);
 
-      for (var value of formData.values()) {
-        console.log(value);
-      }
+      // for (var value of formData.values()) {
+      //   console.log(value);
+      // }
 
       PostNewProduct(formData)
-        .then((res) => {
-          console.log(res.data.message);
-          SetSuccess(<div className="sm:w-full md:w-full animate-FadeIn text-center  bg-green-700 text-white font-bold w-1/2 p-2 mx-auto rounded-lg"> {res.data.message} </div>)
+        .then(() => {
+                   
           resetForm()
-          setImagesArray([])
+          setSelectedImages([])
           setImagesValues([])
+          
         })
         .catch((error) => {console.log(error)});
       setErrorImage(false);
-    }
+      }
   }
-  console.log(ImagesArray, ImagesValues)
-  const removeImages = (index) => {
-    ImagesArray.splice(index, 1);
-    ImagesValues.splice(index, 1);
-    setReload(!reload);
-  };
+  
+  
 
   return (
     <>
@@ -269,12 +303,18 @@ const AddNewProduct = () => {
                 </label>
                 <div className="flex flex-col w-full mr-3 ">
                   <Field
-                    type="number"
-                    name="required_age"
-                    className="rounded-xl w-full"
-                    component={CustomInput}
-                    errorRight
-                  />
+                as="select"
+                name="required_age"
+                className="rounded-xl w-full"
+                >
+                    <option >Selection</option>
+                    <option value="0 - 12 mois">0 - 12 mois</option>
+                    <option value="12 - 36 mois">12 - 36 mois</option>
+                    <option value="3 - 5 ans">3 - 5 ans</option>
+                    <option value="6 - 8 ans">6 - 8 ans</option>
+                    <option value="9 - 11 ans">9 - 11 ans</option>
+                    <option value="12 ans et +">12 ans et +</option>
+                </Field>
                 </div>
               </div>
             </div>
@@ -349,8 +389,8 @@ const AddNewProduct = () => {
               htmlFor="images"
               className="font-semibold mx-auto flex flex-row"
             >
-              <span className="btn btn-yellow font-bold mx-auto">
-                <UploadIcon className="w-10 h-10 mr-3" /> Ajouter une image
+              <span className="btn btn-yellow font-bold mx-auto cursor-pointer">
+                <UploadIcon className="w-10 h-10 mr-3" /> Ajouter des images
               </span>
             </label>
             <input
@@ -358,27 +398,10 @@ const AddNewProduct = () => {
               name="images"
               className="hidden"
               id="images"
+              accept="image/*"
               multiple
-              onChange={(e) => {
-                if (ImagesValues.length !== 0) {
-                  setErrorImage(false);
-                  setImagesValues([...ImagesValues, e.currentTarget.files[0]]);
-                } else {
-                  setErrorImage(false);
-                  setImagesValues([e.currentTarget.files[0]]);
-                }
-                const fileReader = new FileReader();
-                fileReader.onload = () => {
-                  if (fileReader.readyState === 2) {
-                    if (ImagesArray.length !== 0) {
-                      setImagesArray([...ImagesArray, fileReader.result]);
-                    } else {
-                      setImagesArray([fileReader.result]);
-                    }
-                  }
-                };
-                fileReader.readAsDataURL(e.target.files[0]);
-              }}
+              onClick={(e) => {e.target.value = null}}
+              onChange={(e) => {imagesHandleChange(e)}}
             />
 
             {errorImage ? (
@@ -387,31 +410,15 @@ const AddNewProduct = () => {
               </span>
             ) : null}
 
-            {ImagesArray ? (
+           
               <div className="flex flex-wrap mx-auto w-full  
               sm:justify-around
               md:justify-around
               xl:w-8/12
               2xl:w-8/12">
-                {ImagesArray.map((viewImage, index) => (
-                  <div
-                    key={index}
-                    className="relative w-1/6 h-32 flex flex-row m-3 bg-white border border-gray-400 shadow-md rounded-lg
-                    sm:w-1/3 
-                    md:w-1/5"
-                  >
-                    <img
-                      src={viewImage}
-                      alt="uploadimage"
-                      className="w-full p-1 h-full rounded-lg m-auto object-cover"
-                    />
-                    <button type="button" onClick={() => removeImages(index)}>
-                      <XIcon className="h-6 w-4 absolute m-1 top-0 right-0 text-gray-500 duration-200 hover:text-gray-700" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            ) : null}
+               {PreviewImages(selectedImages)}
+               </div> 
+         
           </div>
 
           <div
@@ -470,7 +477,7 @@ const AddNewProduct = () => {
               le produit
             </button>
           </div>
-          <div>{success}</div>
+          
         </Form>
         )}
         
