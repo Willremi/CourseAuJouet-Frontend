@@ -41,7 +41,7 @@ const ListOfProduct = () => {
     dispatch(setProductToChange(produit))
   }
 
-  function deletList(){
+  function deleteList(){
     deleteManyProducts(selectedProduct)
     setSelectedProduct([])
   }
@@ -112,7 +112,7 @@ const ListOfProduct = () => {
       <button
           type="button"
           className="flex flex-row font-semibold text-lg text-darkblue-100 items-center"
-          onClick={() => deletList()}
+          onClick={() => deleteList()}
         >
           <Icon icon="ci:trash-full" className="w-6 h-6 mr-2 text-nav-blue"/>
           Supprimer les produits
