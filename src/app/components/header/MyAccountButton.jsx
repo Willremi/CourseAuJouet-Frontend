@@ -9,6 +9,7 @@ import { hasRole } from "../../shared/services/accountServices";
 import { getPayloadToken } from "../../shared/services/tokenServices";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
+import Account from "../modal_component/Account";
 import Manager from "../modal_component/Manager";
 import {
   ROLE_CUSTOMER,
@@ -148,6 +149,8 @@ function MyAccountButton() {
                   ) : null}
                   {hasRole(ROLE_CUSTOMER) ? (
                     <div className="flex flex-col">
+                      <Account
+                      setShowModal={setShowModal} />
                       <button
                         className="w-1/3 mx-auto btn btn-yellow my-3"
                         onClick={() => handleSignOut()}

@@ -9,6 +9,7 @@ export const URL_RESET_PASSWORD = '/resetpassword/:token'
 export const URL_PRODUCT_DETAIL = '/detail/'
 export const URL_SEARCH_PAGE = '/search'
 export const URL_ORDER_ADDRESS = '/order/address_delivery'
+export const URL_ACCOUNT = '/account'
 
 
 /** MANAGER **/
