@@ -196,7 +196,7 @@ const ListOfProduct = () => {
                       />
                     </button>
                   </Link>
-                <button>
+                <button onClick={()=> console.log(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
