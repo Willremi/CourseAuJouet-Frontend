@@ -22,8 +22,8 @@ const ListOfProduct = () => {
   }, []);
 
   const onSaleDate = (data) => {
-    let date =new Date(data)
-    let day = date.getDay()
+    let date = new Date(data)
+    let day = date.getDate()
     let Month = date.getMonth()
     let Year = date.getFullYear()
     
