@@ -22,10 +22,10 @@ export function PostModifyProduct(values){
 }
 
 export function deleteProduct(values){
-    console.log(values);
     return apiBackEnd.post(URL_BACK_DELETE_PRODUCT, values)
 }
 
 export function deleteManyProducts(values){
+    console.log(values);
     return apiBackEnd.post(URL_BACK_DELETE_MANY_PRODUCTS, values)
 }

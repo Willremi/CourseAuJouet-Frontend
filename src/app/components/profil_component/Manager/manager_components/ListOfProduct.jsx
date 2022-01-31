@@ -19,7 +19,7 @@ const ListOfProduct = () => {
     getAllProducts()
       .then((res) => setProduct(res.data.products))
       .catch((error) => console.log(error));
-  }, [product.length, selectedProduct.length == 0]);
+  }, [product.length, selectedProduct.length ]);
 
   const onSaleDate = (data) => {
     let date =new Date(data)
@@ -39,6 +39,16 @@ const ListOfProduct = () => {
   
   function setProductToModify(produit){
     dispatch(setProductToChange(produit))
+  }
+
+  function deleteOneProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setProduct([])
+  }
+
+  function deleteOneSelectedProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setSelectedProduct([])
   }
 
   function deleteList(){
@@ -98,7 +108,7 @@ const ListOfProduct = () => {
                     className="scale-150 text-nav-blue"
                   />
                 </button>
-                <button>
+                <button onClick={() => deleteOneSelectedProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
@@ -201,7 +211,7 @@ const ListOfProduct = () => {
                       />
                     </button>
                   </Link>
-                <button onClick={()=> deleteProduct(product)}>
+                <button onClick={()=> deleteOneProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
