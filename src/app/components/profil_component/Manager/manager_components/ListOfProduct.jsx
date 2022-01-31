@@ -19,7 +19,7 @@ const ListOfProduct = () => {
     getAllProducts()
       .then((res) => setProduct(res.data.products))
       .catch((error) => console.log(error));
-  }, [product.length, selectedProduct.length ]);
+  }, []);
 
   const onSaleDate = (data) => {
     let date =new Date(data)
@@ -43,17 +43,13 @@ const ListOfProduct = () => {
 
   function deleteOneProduct(productToDelete){
     deleteProduct(productToDelete)
-    setProduct([])
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
   }
 
   function deleteOneSelectedProduct(productToDelete){
     deleteProduct(productToDelete)
-    if(selectedProduct.length === 1){ // supprime la liste de produits selectionnés si il n'y en a qu'un
-      setSelectedProduct([])
-      setProduct([])
-    } else {
-      setProduct([])
-    }
+    setSelectedProduct(selectedProduct.filter(item =>  item._id !== productToDelete._id))
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
   }
 
   function deleteList(){
