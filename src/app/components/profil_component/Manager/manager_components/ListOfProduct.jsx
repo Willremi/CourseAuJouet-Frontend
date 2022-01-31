@@ -48,8 +48,12 @@ const ListOfProduct = () => {
 
   function deleteOneSelectedProduct(productToDelete){
     deleteProduct(productToDelete)
-    setSelectedProduct([])
-    setProduct([])
+    if(selectedProduct.length === 1){ // supprime la liste de produits selectionnés si il n'y en a qu'un
+      setSelectedProduct([])
+      setProduct([])
+    } else {
+      setProduct([])
+    }
   }
 
   function deleteList(){
