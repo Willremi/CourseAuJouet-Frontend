@@ -49,6 +49,7 @@ const ListOfProduct = () => {
   function deleteOneSelectedProduct(productToDelete){
     deleteProduct(productToDelete)
     setSelectedProduct([])
+    setProduct([])
   }
 
   function deleteList(){
