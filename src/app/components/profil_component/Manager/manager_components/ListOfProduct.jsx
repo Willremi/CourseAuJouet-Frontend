@@ -9,7 +9,7 @@ import { setProductToChange } from "../../../../shared/redux-store/updateProduct
 
 
 const ListOfProduct = () => {
-  //
+  
   const dispatch = useDispatch()
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([])
