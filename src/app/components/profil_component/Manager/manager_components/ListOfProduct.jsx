@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../../../api/backend/product";
+import { deleteManyProducts, deleteProduct, getAllProducts } from "../../../../api/backend/product";
 import { Icon } from "@iconify/react";
 import { PlusIcon } from "@heroicons/react/solid";
 import { Link} from 'react-router-dom';
@@ -26,6 +26,22 @@ const ListOfProduct = () => {
   
   function setProductToModify(produit){
     dispatch(setProductToChange(produit))
+  }
+
+  function deleteOneProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
+  }
+
+  function deleteOneSelectedProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setSelectedProduct(selectedProduct.filter(item =>  item._id !== productToDelete._id))
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
+  }
+
+  function deleteList(){
+    deleteManyProducts(selectedProduct)
+    setSelectedProduct([])
   }
   return (
     <>
@@ -80,7 +96,7 @@ const ListOfProduct = () => {
                     className="scale-150 text-nav-blue"
                   />
                 </button>
-                <button>
+                <button onClick={() => deleteOneSelectedProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
@@ -94,7 +110,7 @@ const ListOfProduct = () => {
       <button
           type="button"
           className="flex flex-row font-semibold text-lg text-darkblue-100 items-center"
-          onClick={() => setSelectedProduct([])}
+          onClick={() => deleteList()}
         >
           <Icon icon="ci:trash-full" className="w-6 h-6 mr-2 text-nav-blue"/>
           Supprimer les produits
@@ -183,7 +199,7 @@ const ListOfProduct = () => {
                       />
                     </button>
                   </Link>
-                <button>
+                <button onClick={()=> deleteOneProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
