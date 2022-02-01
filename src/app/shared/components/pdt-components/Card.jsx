@@ -17,8 +17,7 @@ const Card = ({ products }) => {
     products.on_sale_date,
     30
   );
-
- 
+  let driveFilesId = products.driveFilesId[0]
 
   return (
     <>
@@ -30,11 +29,17 @@ const Card = ({ products }) => {
         ) : null}
 
         <Link to={URL_PRODUCT_DETAIL + products._id}>
-          <img
+          {/* <img
             src={products.images[0]}
             alt={products.product_name}
             className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
+          /> */}
+          <img
+            src={"https://drive.google.com/uc?export=view&id="+driveFilesId}
+            alt={products.product_name}
+            className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           />
+          
         </Link>
         <div className="px-3 pt-3 pb-1 flex flex-col space-y-1 font-medium justify-between h-full">
           <div className="overflow-hidden flex flex-col">
