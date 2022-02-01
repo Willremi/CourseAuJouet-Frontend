@@ -17,7 +17,7 @@ const Card = ({ products }) => {
     products.on_sale_date,
     30
   );
-  let driveFilesId = products.driveFilesId[0]
+  let driveFilesId = products.driveFilesId ? "https://drive.google.com/uc?export=view&id="+products.driveFilesId[0] : products.images[0]
 
   return (
     <>
@@ -35,7 +35,7 @@ const Card = ({ products }) => {
             className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           /> */}
           <img
-            src={"https://drive.google.com/uc?export=view&id="+driveFilesId}
+            src={driveFilesId}
             alt={products.product_name}
             className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           />
