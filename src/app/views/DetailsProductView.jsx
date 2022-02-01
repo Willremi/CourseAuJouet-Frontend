@@ -35,7 +35,7 @@ const DetailsProductView = () => {
   const prevImage = () => {
     setImage(image === 0 ? data.product.images.length -1 : image - 1)
   }
-
+  /** small términé, ai débuté medium */
   return (
     <>
       {data && (
@@ -49,8 +49,10 @@ const DetailsProductView = () => {
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <div className="w-full flex mx-auto max-h-96 sm:flex-col">
-                 <div className="w-2/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar sm:hidden">
+              <div className="w-full flex mx-auto max-h-96">
+                 <div className="w-2/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar
+                  sm:hidden"
+                >
                   {data.product.images.map( (image, i) => (                    
                     <img className=""
                       key={i}
@@ -60,9 +62,15 @@ const DetailsProductView = () => {
                       />
                   ))}
               </div>
-              <div className="w-10/12 sm:w-full relative">
-                <FaChevronLeft className="hidden sm:block absolute inset-y-1/2 left-6 sm:left-1 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={prevImage} />
-                <FaChevronRight className="hidden sm:block absolute inset-y-1/2 right-6 sm:right-1 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={nextImage}/>
+              <div className="w-10/12 relative sm:w-full">
+                <FaChevronLeft className="hidden absolute inset-y-1/2 left-6 font text-5xl text-black z-10 cursor-pointer select-none opacity-40
+                 sm:block  sm:left-1"
+                 onClick={prevImage}
+                />
+                <FaChevronRight className="hidden absolute inset-y-1/2 right-6 font text-5xl text-black z-10 cursor-pointer select-none opacity-40
+                  sm:block sm:right-1"
+                  onClick={nextImage}
+                />
                 <img className="border-4 border-yellow-500 rounded-xl max-h-full"
                   src={data.product.images[image]}
                   alt={data.product.product_name}
@@ -72,7 +80,8 @@ const DetailsProductView = () => {
             </div>
           </div>
             <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 
-            sm:mt-20 
+            sm:mt-2
+            md:mt-5 
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
