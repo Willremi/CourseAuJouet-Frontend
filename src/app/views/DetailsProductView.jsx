@@ -19,14 +19,15 @@ const DetailsProductView = () => {
   const productInCart = useSelector(selectInCart);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [image, setImage] = useState(0)
 
   useEffect(() => {
     getOneProduct(id.id)
       .then((res) => setData(res.data))
       .catch((error) => console.log(error));
   }, [id.id]);
-
-  console.log(quantity);
+  console.log(data);
+  console.log(id);
 
   return (
     <>
@@ -41,14 +42,26 @@ const DetailsProductView = () => {
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <img
-                className="w-full mx-auto border-4 border-yellow-500 rounded-xl
+              <div className="w-full flex mx-auto max-h-96
                 lg:w-1/2
                 xl:w-1/2
-                2xl:w-1/2"
-                src={data.product.images[0]}
-                alt={data.product.product_name}
-              />
+                2xl:w-1/2">
+                 <div className="w-3/12  overflow-hidden overflow-y-scroll">
+                  {data.product.images.map( (image, i) => (                    
+                    <img className=""
+                      key={i}
+                      src={image}
+                      alt={data.product.product_name}
+                      onClick={() => setImage(i)}
+                      />
+                  ))}
+                </div>
+                <img className="border-4 border-yellow-500 rounded-xl w-9/12"
+                  src={data.product.images[image]}
+                  alt={data.product.product_name}
+                />
+
+              </div>
             </div>
             <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5
             lg:w-1/2
