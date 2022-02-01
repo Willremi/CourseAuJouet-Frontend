@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getOneProduct } from "../api/backend/product";
 import { useParams } from "react-router-dom";
-import {
-  StarIcon,
-  ChevronDownIcon
-} from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
+import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddToCart,
@@ -30,6 +28,14 @@ const DetailsProductView = () => {
   console.log(data);
   console.log(id);
 
+  const nextImage = () => {
+    setImage(image === data.product.images.length -1 ? 0 : image + 1)
+  }
+  
+  const prevImage = () => {
+    setImage(image === 0 ? data.product.images.length -1 : image - 1)
+  }
+
   return (
     <>
       {data && (
@@ -43,11 +49,8 @@ const DetailsProductView = () => {
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <div className="w-full flex mx-auto max-h-96
-                lg:w-1/2
-                xl:w-1/2
-                2xl:w-1/2">
-                 <div className="w-3/12  overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar">
+              <div className="w-full flex mx-auto max-h-96 sm:flex-col">
+                 <div className="w-2/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar sm:hidden">
                   {data.product.images.map( (image, i) => (                    
                     <img className=""
                       key={i}
@@ -56,16 +59,20 @@ const DetailsProductView = () => {
                       onClick={() => setImage(i)}
                       />
                   ))}
-                   {/* <ChevronDownIcon className="" /> */}
-                </div>
-                <img className="border-4 border-yellow-500 rounded-xl w-9/12"
+              </div>
+              <div className="w-10/12 sm:w-full relative">
+                <FaChevronLeft className="hidden sm:block absolute inset-y-1/2 left-6 sm:left-1 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={prevImage} />
+                <FaChevronRight className="hidden sm:block absolute inset-y-1/2 right-6 sm:right-1 font text-5xl text-black z-10 cursor-pointer select-none opacity-40" onClick={nextImage}/>
+                <img className="border-4 border-yellow-500 rounded-xl max-h-full"
                   src={data.product.images[image]}
                   alt={data.product.product_name}
                 />
-
               </div>
+
             </div>
-            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5
+          </div>
+            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 
+            sm:mt-20 
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
