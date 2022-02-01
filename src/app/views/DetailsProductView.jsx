@@ -3,6 +3,7 @@ import { getOneProduct } from "../api/backend/product";
 import { useParams } from "react-router-dom";
 import {
   StarIcon,
+  ChevronDownIcon
 } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -46,7 +47,7 @@ const DetailsProductView = () => {
                 lg:w-1/2
                 xl:w-1/2
                 2xl:w-1/2">
-                 <div className="w-3/12  overflow-hidden overflow-y-scroll">
+                 <div className="w-3/12  overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar">
                   {data.product.images.map( (image, i) => (                    
                     <img className=""
                       key={i}
@@ -55,6 +56,7 @@ const DetailsProductView = () => {
                       onClick={() => setImage(i)}
                       />
                   ))}
+                   {/* <ChevronDownIcon className="" /> */}
                 </div>
                 <img className="border-4 border-yellow-500 rounded-xl w-9/12"
                   src={data.product.images[image]}
