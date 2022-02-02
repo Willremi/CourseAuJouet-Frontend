@@ -44,17 +44,25 @@ const DetailsProductView = () => {
             lg:flex-row
             xl:flex-row
             2xl:flex-row">
-            <div className="w-full 
+            <div className="w-full
+            
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <div className="w-full flex mx-auto max-h-96">
-                 <div className="w-2/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar
-                  sm:hidden"
-                >
+              <div className="w-full flex mx-auto
+                md:h-2/3
+                 lg:p-5  lg:object-center
+                 xl:p-5
+                2xl:">
+                 <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar
+                    sm:hidden
+                    md:h-96
+                    lg:h-96
+                    xl:h-96
+                    2xl:h-96">
                   {data.product.images.map( (image, i) => (                    
-                    <img className=""
+                    <img
                       key={i}
                       src={image}
                       alt={data.product.product_name}
@@ -62,16 +70,21 @@ const DetailsProductView = () => {
                       />
                   ))}
               </div>
-              <div className="w-10/12 relative sm:w-full">
-                <FaChevronLeft className="hidden absolute inset-y-1/2 left-6 font text-5xl text-black z-10 cursor-pointer select-none opacity-40
-                 sm:block  sm:left-1"
-                 onClick={prevImage}
+              <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12
+                  sm:overflow-y-hidden sm:w-full sm:relative
+                  md:overflow-y-hidden md:object-contain
+                  lg:overflow-y-hidden lg:object-contain
+                  xl:overflow-y-hidden xl:object-contain
+                  2xl:overflow-y-hidden 2xl:object-contain">
+                <FaChevronLeft className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70  left-1
+                  sm:absolute sm:block inset-y-1/2 "
+                  onClick={prevImage}
                 />
-                <FaChevronRight className="hidden absolute inset-y-1/2 right-6 font text-5xl text-black z-10 cursor-pointer select-none opacity-40
-                  sm:block sm:right-1"
+                <FaChevronRight className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70 right-1
+                  sm:absolute sm:block inset-y-1/2"
                   onClick={nextImage}
                 />
-                <img className="border-4 border-yellow-500 rounded-xl max-h-full"
+                <img className="mx-auto w-full h-auto"
                   src={data.product.images[image]}
                   alt={data.product.product_name}
                 />
