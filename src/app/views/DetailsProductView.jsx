@@ -26,8 +26,10 @@ const DetailsProductView = () => {
       .catch((error) => console.log(error));
   }, [id.id]);
 
-  console.log(quantity);
+  let driveFilesId
 
+  console.log(quantity);
+  
   return (
     <>
       {data && (
@@ -46,7 +48,7 @@ const DetailsProductView = () => {
                 lg:w-1/2
                 xl:w-1/2
                 2xl:w-1/2"
-                src={data.product.images[0]}
+                src={data.product.driveFilesId ? "https://drive.google.com/uc?export=view&id="+data.product.driveFilesId[0] : data.product.images[0]}
                 alt={data.product.product_name}
               />
             </div>
