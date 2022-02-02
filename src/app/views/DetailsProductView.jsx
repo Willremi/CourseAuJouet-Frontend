@@ -26,31 +26,32 @@ const DetailsProductView = () => {
       .catch((error) => console.log(error));
   }, [id.id]);
 
-  let driveFilesId
-
   console.log(quantity);
   
   return (
     <>
       {data && (
         <div className="flex flex-col w-11/12 mx-auto">
-          <div className="flex-col flex my-5
-            lg:flex-row
-            xl:flex-row
-            2xl:flex-row">
-            <div className="w-full 
-            lg:w-1/2
-            xl:w-1/2
-            2xl:w-1/2">
+          <div className="flex-col flex my-5 lg:flex-row xl:flex-row 2xl:flex-row">
+            <div className="w-full flex lg:w-1/2 xl:w-1/2 2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
+              <div className="w-3/12">
+              {data.product.driveFilesId.map((image, i) => (                    
+                    <img
+                      key={i}
+                      src={"https://drive.google.com/uc?export=view&id="+image}
+                      alt={data.product.product_name}
+                      className="w-full my-4 border-4 border-yellow-500 rounded-xl"
+                      />
+                ))}
+              </div>
               <img
-                className="w-full mx-auto border-4 border-yellow-500 rounded-xl
-                lg:w-1/2
-                xl:w-1/2
-                2xl:w-1/2"
+                className="border-4 mx-2 border-yellow-500 rounded-xl w-9/12"
                 src={data.product.driveFilesId ? "https://drive.google.com/uc?export=view&id="+data.product.driveFilesId[0] : data.product.images[0]}
                 alt={data.product.product_name}
               />
+              
+
             </div>
             <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5
             lg:w-1/2
@@ -76,7 +77,7 @@ const DetailsProductView = () => {
                     <StarIcon className="w-5 h-5 text-yellow-400" />
                     <StarIcon className="w-5 h-5 text-yellow-400" />
 
-                    <button>(nbr_commentaires) commentaires</button>
+                    <button>(nb_commentaires) commentaires</button>
                   </div>
                 </div>
               </div>
@@ -181,14 +182,14 @@ const DetailsProductView = () => {
           </div>
 
           {/* DESCRIPTION */}
-          <div className="flex-col flex bg-white text-nav-blue
+          <div className="flex-col flex bg-white text-nav-blue 
           lg:flex-row
           xl:flex-row
           2xl:flex-row">
-            <div className="w-full border-0 flex flex-col border-yellow-500
-            lg:w-1/2 lg:border-r-4
+            <div className="w-full border-0 flex flex-col border-yellow-500 
+            lg:w-1/2 lg:border-r-4 
             xl:w-1/2 xl:border-r-4 
-            2xl:w-1/2 2xl:border-r-4 ">
+            2xl:w-1/2 2xl:border-r-4">
               <p className="bg-yellow-500 font-bold text-center rounded-l-lg py-1">
                 Description
               </p>
