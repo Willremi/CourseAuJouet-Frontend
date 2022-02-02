@@ -50,11 +50,11 @@ const DetailsProductView = () => {
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <div className="w-full flex mx-auto
-                md:h-2/3
-                 lg:p-5  lg:object-center
+              <div className="w-full flex mx-auto object-center
+                md:p-5
+                 lg:p-5
                  xl:p-5
-                2xl:">
+                2xl:p-5">
                  <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar
                     sm:hidden
                     md:h-96
@@ -72,10 +72,10 @@ const DetailsProductView = () => {
               </div>
               <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12
                   sm:overflow-y-hidden sm:w-full sm:relative
-                  md:overflow-y-hidden md:object-contain
-                  lg:overflow-y-hidden lg:object-contain
-                  xl:overflow-y-hidden xl:object-contain
-                  2xl:overflow-y-hidden 2xl:object-contain">
+                  md:overflow-y-hidden md:object-center
+                  lg:overflow-y-hidden lg:object-center lg:inline
+                  xl:overflow-y-hidden xl:object-center
+                  2xl:overflow-y-hidden 2xl:object-center">
                 <FaChevronLeft className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70  left-1
                   sm:absolute sm:block inset-y-1/2 "
                   onClick={prevImage}
