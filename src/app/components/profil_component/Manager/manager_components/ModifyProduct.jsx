@@ -143,7 +143,7 @@ const ModifyProduct = () => {
         trademark: product.trademark,
         reference: product.reference,
         stock: product.stock,
-        price: product.price,
+        price: product.price / 100,
         required_age: product.required_age,
         category: product.category,
         subcategory: product.subcategory,
