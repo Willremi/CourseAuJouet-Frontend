@@ -193,7 +193,7 @@ const DetailsProductView = () => {
               <p className="bg-yellow-500 font-semibold text-center rounded-l-lg rounded-r-lg lg:rounded-r-none xl:rounded-r-none py-1 text-2xl">
                 Description
               </p>
-              <p className="p-5">{data.product.description}</p>
+              <p className="p-5 text-xl">{data.product.description}</p>
             </div>
             <div className="flex flex-col
             lg:w-1/2
@@ -202,11 +202,16 @@ const DetailsProductView = () => {
               <p className="bg-yellow-500 font-semibold text-center rounded-r-lg rounded-l-lg lg:rounded-l-none xl:rounded-l-none py-1 text-2xl">
                 Informations
               </p>
-              <p className="px-5 pt-5">Catégorie : {data.product.category}</p>
-              <p className="px-5">
-                Sous-catégorie : {data.product.subcategory}
-              </p>
-              <p className="px-5 pb-5">Age : {data.product.required_age}</p>
+              <p className="px-5 pt-5 text-xl">Catégorie : {data.product.category}</p>
+
+              {/* Condition sur l'existence d'une valeur à sous-catégorie*/}
+              {data.product.subcategory && 
+                <p className="px-5 text-xl">
+                  Sous-catégorie : {data.product.subcategory}
+                </p>
+              }
+
+              <p className="px-5 pb-5 text-xl">Age : {data.product.required_age}</p>
             </div>
           </div>
         </div>
