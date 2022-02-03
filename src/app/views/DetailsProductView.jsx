@@ -89,7 +89,7 @@ const DetailsProductView = () => {
                   {/* Quantité */}
                   <div className="w-full justify-center flex flex-row my-3
                   lg:w-2/3 lg:justify-end
-                  xl:w-2/3 
+                  xl:w-2/3 xl:justify-start
                   2xl:w-2/3 2xl:justify-end">
                     <p className="py-2 text-2xl mr-3 text-nav-blue">Quantité :</p>
                     <button
@@ -120,7 +120,8 @@ const DetailsProductView = () => {
                       </svg>
                     </button>
 
-                    <span className="w-1/6 border-t-2 border-b-2 border-nav-blueClar shadow-xl text-center py-2
+                    <span className="w-1/6 border-t-2 border-b-2 border-nav-blueClar shadow-xl text-center py-2 text-lg md:text-lg xl:text-xl
+                    md:w-1/12
                     lg:w-1/12
                     xl:w-1/12                    
                     2xl:w-1/12">
@@ -146,7 +147,7 @@ const DetailsProductView = () => {
                   lg:w-1/3 lg:justify-end
                   xl:w-1/3 xl:justify-start
                   2xl:w-1/3 2xl:justify-end">
-                    <p className="text-xl">
+                    <p className="text-2xl">
                       <span className="text-nav-blue">Prix : </span>{data.product.price / 100}€
                     </p>
                   </div>
@@ -156,7 +157,7 @@ const DetailsProductView = () => {
                 {/* Bouton Ajout Panier*/}
                 <div className="flex justify-center">
                   <button
-                    className="py-2 px-6 rounded-full bg-yellow-500 font-semibold text-nav-blue cursor-pointer"
+                    className="py-2 px-6 rounded-full bg-yellow-500 font-semibold text-white cursor-pointer"
                     onClick={() => {
                       if (productInCart === undefined) {
                         dispatch(AddToCart(data.product));
@@ -173,7 +174,7 @@ const DetailsProductView = () => {
                       }
                     }}
                   >
-                    Ajouter au panier
+                    <span className="text-lg">Ajouter au panier</span>
                   </button>
                 </div>
               </div>
