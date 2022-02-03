@@ -45,22 +45,13 @@ const DetailsProductView = () => {
             xl:flex-row
             2xl:flex-row">
             <div className="w-full
-            
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <div className="w-full flex mx-auto object-center
-                md:p-5
-                 lg:p-5
-                 xl:p-5
-                2xl:p-5">
-                 <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar
-                    sm:hidden
-                    md:h-96
-                    lg:h-96
-                    xl:h-96
-                    2xl:h-96">
+              <div className="w-full flex mx-auto object-center overflow-hidden relative">
+                 <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar absolute h-full ml-0 p-3 rounded-md
+                    sm:hidden">
                   {data.product.images.map( (image, i) => (                    
                     <img
                       key={i}
@@ -68,11 +59,11 @@ const DetailsProductView = () => {
                       alt={data.product.product_name}
                       onClick={() => setImage(i)}
                       />
-                  ))}
-              </div>
-              <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12
-                  sm:overflow-y-hidden sm:w-full sm:relative
-                  md:overflow-y-hidden md:object-center
+                      ))}
+                  </div>
+              <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12 mr-3
+                  sm:overflow-y-hidden sm:w-full sm:relative sm:mr-0
+                  md:overflow-y-hidden md:object-center md:mr-0
                   lg:overflow-y-hidden lg:object-center lg:inline
                   xl:overflow-y-hidden xl:object-center
                   2xl:overflow-y-hidden 2xl:object-center">
@@ -84,7 +75,7 @@ const DetailsProductView = () => {
                   sm:absolute sm:block inset-y-1/2"
                   onClick={nextImage}
                 />
-                <img className="mx-auto w-full h-auto"
+                <img className="w-full h-auto"
                   src={data.product.images[image]}
                   alt={data.product.product_name}
                 />
@@ -92,9 +83,9 @@ const DetailsProductView = () => {
 
             </div>
           </div>
-            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 
-            sm:mt-2
-            md:mt-5 
+            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 ml-3
+            sm:mt-2 sm:ml-0
+            md:mt-5 md:ml-0
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
