@@ -53,48 +53,47 @@ const DetailsProductView = () => {
               
 
             </div>
-            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5
-            lg:w-1/2
-            xl:w-1/2
+            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 lg:w-1/2 
+            xl:w-1/2 
             2xl:w-1/2">
               <div>
-                <h3 className="uppercase text-xl">
+                <h3 className="uppercase text-2xl text-nav-blue font-annie md:text-3xl lg:text-3xl xl:text-3xl">
                   {data.product.product_name}
                 </h3>
-                <p className="font-light uppercase text-gray-400">
+                <p className="font-light uppercase text-gray-400 text-xl md:text-2xl lg:text-2xl xl:text-2xl">
                   {data.product.trademark}
                 </p>
                 <div className="flex-col items-start flex justify-between text-gray-400 
                 lg:items-center lg:flex-row
                 xl:items-center xl:flex-row
                 2xl:items-center 2xl:flex-row">
-                  <p className="font-light ">De {data.product.required_age}</p>
+                  <p className="font-light text-lg">De {data.product.required_age}</p>
                   {/* Commentaires en brut pour le moment*/}
                   <div className="flex items-center">
-                    <StarIcon className="w-5 h-5 text-yellow-400" />
-                    <StarIcon className="w-5 h-5 text-yellow-400" />
-                    <StarIcon className="w-5 h-5 text-yellow-400" />
-                    <StarIcon className="w-5 h-5 text-yellow-400" />
-                    <StarIcon className="w-5 h-5 text-yellow-400" />
+                    <StarIcon className="w-10 h-10 text-yellow-400" />
+                    <StarIcon className="w-10 h-10 text-yellow-400" />
+                    <StarIcon className="w-10 h-10 text-yellow-400" />
+                    <StarIcon className="w-10 h-10 text-yellow-400" />
+                    <StarIcon className="w-10 h-10 text-yellow-400" />
 
-                    <button>(nb_commentaires) commentaires</button>
+                    <button>(nb_com)<span className="text-lg"> commentaires</span></button>
                   </div>
                 </div>
               </div>
 
               <div>
-                <div className="flex  items-center flex-col border-0
+                <div className="flex items-center flex-col border-0
                 lg:flex-row
                 xl:flex-row
                 2xl:flex-row">
                   {/* Quantité */}
                   <div className="w-full justify-center flex flex-row my-3
                   lg:w-2/3 lg:justify-end
-                  xl:w-2/3 xl:justify-end
+                  xl:w-2/3 
                   2xl:w-2/3 2xl:justify-end">
-                    <p className="py-2 text-xl mr-3">Quantité :</p>
+                    <p className="py-2 text-2xl mr-3 text-nav-blue">Quantité :</p>
                     <button
-                      className="border-2 border-gray-300 p-2 shadow-xl"
+                      className="border-2 border-nav-blueClar p-2 shadow-xl rounded-l-xl"
                       onClick={() => {
                         if (quantity > 1) {
                           setQuantity(quantity - 1);
@@ -107,7 +106,7 @@ const DetailsProductView = () => {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
+                        className="h-6 w-6 text-yellow-500"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -121,7 +120,7 @@ const DetailsProductView = () => {
                       </svg>
                     </button>
 
-                    <span className="w-1/6 border-t-2 border-b-2 border-gray-300 shadow-xl text-center py-2
+                    <span className="w-1/6 border-t-2 border-b-2 border-nav-blueClar shadow-xl text-center py-2
                     lg:w-1/12
                     xl:w-1/12                    
                     2xl:w-1/12">
@@ -129,7 +128,7 @@ const DetailsProductView = () => {
                     </span>
 
                     <button
-                      className="border-2 border-gray-300 p-2 shadow-xl"
+                      className="border-2 border-nav-blueClar p-2 shadow-xl rounded-r-xl"
                       onClick={() => {
                         if (quantity < 5) {
                           setQuantity(quantity + 1);
@@ -140,16 +139,16 @@ const DetailsProductView = () => {
                         }
                       }}
                     >
-                      <Icon icon="carbon:add-filled" className="w-6 h-6" />
+                      <Icon icon="carbon:add-filled" className="w-6 h-6 text-yellow-500" />
                     </button>
                   </div>
                   <div className="w-full justify-center my-3 flex flex-row
                   lg:w-1/3 lg:justify-end
-                  xl:w-1/3 xl:justify-end
+                  xl:w-1/3 xl:justify-start
                   2xl:w-1/3 2xl:justify-end">
                     <p className="text-xl">
-                    Prix : {data.product.price / 100}€
-                  </p>
+                      <span className="text-nav-blue">Prix : </span>{data.product.price / 100}€
+                    </p>
                   </div>
                   
                 </div>
