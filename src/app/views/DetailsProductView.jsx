@@ -186,20 +186,20 @@ const DetailsProductView = () => {
           lg:flex-row
           xl:flex-row
           2xl:flex-row">
-            <div className="w-full border-0 flex flex-col border-yellow-500 
+            <div className="border-0 flex flex-col border-yellow-500 
             lg:w-1/2 lg:border-r-4 
             xl:w-1/2 xl:border-r-4 
             2xl:w-1/2 2xl:border-r-4">
-              <p className="bg-yellow-500 font-bold text-center rounded-l-lg py-1">
+              <p className="bg-yellow-500 font-semibold text-center rounded-l-lg rounded-r-lg lg:rounded-r-none xl:rounded-r-none py-1 text-2xl">
                 Description
               </p>
               <p className="p-5">{data.product.description}</p>
             </div>
-            <div className="w-full flex flex-col
+            <div className="flex flex-col
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
-              <p className="bg-yellow-500 font-bold text-center rounded-r-lg py-1">
+              <p className="bg-yellow-500 font-semibold text-center rounded-r-lg rounded-l-lg lg:rounded-l-none xl:rounded-l-none py-1 text-2xl">
                 Informations
               </p>
               <p className="px-5 pt-5">Catégorie : {data.product.category}</p>
