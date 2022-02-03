@@ -23,7 +23,7 @@ const ProductInCart = ({ component, remove, index }) => {
       md:w-2/6 md:border-0 
       w-2/12 border-secondary-100 border-4 rounded-xl flex justify-center bg-white "
       >
-        <img src={component.images[0]} alt={component.product_name} 
+        <img src={component.driveFilesId ? "https://drive.google.com/uc?export=view&id="+ component.driveFilesId[0] : component.images[0]} alt={component.product_name} 
         className="2xl:object-contain md:object-contain p-1"/>
       </Link>
 
