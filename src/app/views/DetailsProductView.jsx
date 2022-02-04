@@ -30,12 +30,12 @@ const DetailsProductView = () => {
 
   const nextImage = () => {
     // setImage(image === data.product.images.length -1 ? 0 : image + 1)
-    setImage(image === data.product.driveFilesId.length -1 ? 0 : image + 1)
+    setImage(image === data.product.driveFilesId ? data.product.driveFilesId.length -1 : data.product.images.length -1 ? 0 : image + 1)
   }
   
   const prevImage = () => {
     // setImage(image === 0 ? data.product.images.length -1 : image - 1)
-    setImage(image === 0 ? data.product.driveFilesId.length -1 : image - 1)
+    setImage(image === 0 ? data.product.driveFilesId ? data.product.driveFilesId.length -1 : data.product.images.length -1 : image - 1)
   }
 
   return (
@@ -56,15 +56,28 @@ const DetailsProductView = () => {
                         onClick={() => setImage(i)}
                         />
                     
-                      ))} */}
-                    {data.product.driveFilesId && data.product.driveFilesId.map((image, i) => (
+                      ))} */
+                    }
+                    {
+                    data.product.driveFilesId ? data.product.driveFilesId.map((image, i) => (
                         <img
                         key={i}
                         src={"https://drive.google.com/uc?export=view&id="+image}
                         alt={data.product.product_name}
                         onClick={() => setImage(i)}
                       />
-                    ))}
+                    ))
+                    :
+                    data.product.images.map((image, i) => (                    
+                        <img
+                        key={i}
+                        src={image}
+                        alt={data.product.product_name}
+                        onClick={() => setImage(i)}
+                        />
+                    
+                      ))
+                    }
                   </div>
               <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12 mr-3
                   sm:overflow-y-hidden sm:w-full sm:relative sm:mr-0
