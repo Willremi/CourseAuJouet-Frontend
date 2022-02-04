@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getOneProduct } from "../api/backend/product";
 import { useParams } from "react-router-dom";
-import {
-  StarIcon,
-} from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
+import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddToCart,
@@ -19,6 +18,7 @@ const DetailsProductView = () => {
   const productInCart = useSelector(selectInCart);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [image, setImage] = useState(0)
 
   useEffect(() => {
     getOneProduct(id.id)
@@ -27,30 +27,67 @@ const DetailsProductView = () => {
   }, [id.id]);
 
   console.log(quantity);
+
+  const nextImage = () => {
+    // setImage(image === data.product.images.length -1 ? 0 : image + 1)
+    setImage(image === data.product.driveFilesId.length -1 ? 0 : image + 1)
+  }
   
+  const prevImage = () => {
+    // setImage(image === 0 ? data.product.images.length -1 : image - 1)
+    setImage(image === 0 ? data.product.driveFilesId.length -1 : image - 1)
+  }
+
   return (
     <>
       {data && (
         <div className="flex flex-col w-11/12 mx-auto">
           <div className="flex-col flex my-5 lg:flex-row xl:flex-row 2xl:flex-row">
             <div className="w-full flex lg:w-1/2 xl:w-1/2 2xl:w-1/2">
-              {/* image a remplacer par le caroussel ici */}
-              <div className="w-3/12">
-              {data.product.driveFilesId.map((image, i) => (                    
-                    <img
-                      key={i}
-                      src={"https://drive.google.com/uc?export=view&id="+image}
-                      alt={data.product.product_name}
-                      className="w-full my-4 border-4 border-yellow-500 rounded-xl"
+              {/* caroussel d'images */}
+              <div className="w-full flex mx-auto object-center overflow-hidden relative">
+                 <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar absolute h-full ml-0 p-3 rounded-md
+                    sm:hidden">
+                    {/* {data.product.images && data.product.images.map((image, i) => (                    
+                        <img
+                        key={i}
+                        src={image}
+                        alt={data.product.product_name}
+                        onClick={() => setImage(i)}
+                        />
+                    
+                      ))} */}
+                    {data.product.driveFilesId && data.product.driveFilesId.map((image, i) => (
+                        <img
+                        key={i}
+                        src={"https://drive.google.com/uc?export=view&id="+image}
+                        alt={data.product.product_name}
+                        onClick={() => setImage(i)}
                       />
-                ))}
+                    ))}
+                  </div>
+              <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12 mr-3
+                  sm:overflow-y-hidden sm:w-full sm:relative sm:mr-0
+                  md:overflow-y-hidden md:object-center md:mr-0
+                  lg:overflow-y-hidden lg:object-center lg:inline
+                  xl:overflow-y-hidden xl:object-center
+                  2xl:overflow-y-hidden 2xl:object-center">
+                <FaChevronLeft className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70  left-1
+                  sm:absolute sm:block inset-y-1/2 "
+                  onClick={prevImage}
+                />
+                <FaChevronRight className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70 right-1
+                  sm:absolute sm:block inset-y-1/2"
+                  onClick={nextImage}
+                />
+                
+                <img className="w-full h-auto"
+                  src={data.product.driveFilesId ? "https://drive.google.com/uc?export=view&id="+data.product.driveFilesId[image] : data.product.images[image]}
+                  alt={data.product.product_name}
+                />
               </div>
-              <img
-                className="border-4 mx-2 border-yellow-500 rounded-xl w-9/12"
-                src={data.product.driveFilesId ? "https://drive.google.com/uc?export=view&id="+data.product.driveFilesId[0] : data.product.images[0]}
-                alt={data.product.product_name}
-              />
-              
+
+            </div>
 
             </div>
             <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 lg:w-1/2 
@@ -89,7 +126,7 @@ const DetailsProductView = () => {
                   {/* Quantité */}
                   <div className="w-full justify-center flex flex-row my-3
                   lg:w-2/3 lg:justify-end
-                  xl:w-2/3 xl:justify-start
+                  xl:w-2/3 
                   2xl:w-2/3 2xl:justify-end">
                     <p className="py-2 text-2xl mr-3 text-nav-blue">Quantité :</p>
                     <button
