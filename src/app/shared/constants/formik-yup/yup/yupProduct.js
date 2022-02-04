@@ -48,8 +48,3 @@ export const ModifyProductSchema = Yup.object().shape({
     status: Yup.boolean()
       .required("Le statut est nécessaire")
   });
-  
-  
-export const StockFormSchema = Yup.object().shape({
-  stock: Yup.string().required("required")
-})

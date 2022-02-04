@@ -75,7 +75,7 @@ const Routes = () => {
       <Route path={URL_RESET_PASSWORD} component={ResetPasswordView} />
       <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
       <Route path={URL_SEARCH_PAGE} component={SearchView} />
-      <Route component={NotFoundView}/>
+      {/* <Route component={NotFoundView}/> */}
     </Switch>
   );
 };
