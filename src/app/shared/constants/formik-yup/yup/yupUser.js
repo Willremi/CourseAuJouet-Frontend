@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const schemaFormLogin = Yup.object().shape({
   email: Yup.string().required("L'adresse email est requise")
-    .email("L'adresse mail n'est pas valide"),
+  .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "veuillez entrez un email valide"),
   password: Yup.string().required("Le mot de passe est requis"),
 });
 
@@ -15,7 +15,7 @@ export const schemaFormRegister = Yup.object().shape({
     .matches(/^[\p{L}\s]{2,}$/u, "Le nom n'est pas au bon format"),
   email: Yup.string()
     .required("L'adresse E-mail est obligatoire")
-    .email("veuillez entrez un email valide "),
+    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "veuillez entrez un email valide"),
   password: Yup.string()
     .required("Le mot de passe est obligatoire")
     .matches(
@@ -29,7 +29,7 @@ export const schemaFormRegister = Yup.object().shape({
     )
     .required("La confirmation du mot de passe est obligatoire"),
   phone: Yup.string().matches(
-    /^[+]?[0-9]{8,}$/,
+    /^(?:(?:0))\s*[1-9](?:[\s.-]*\d{2}){4}$/,
     "Le numéro de  telephone n'est pas au bon format"
   ),
   birthday_date: Yup.string().required(
@@ -40,7 +40,7 @@ export const schemaFormRegister = Yup.object().shape({
 export const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string()
     .required("L'adresse E-mail est obligatoire")
-    .email("veuillez entrez un email valide "),
+    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "veuillez entrez un email valide"),
 });
 
 export const ResetPasswordSchema = Yup.object().shape({
@@ -67,9 +67,9 @@ export const EditUserSchema = Yup.object().shape({
     .matches(/^[\p{L}\s]{2,}$/u, "Le nom n'est pas au bon format"),
   email: Yup.string()
     .required("L'adresse E-mail est obligatoire")
-    .email("veuillez entrez un email valide "),
+    .matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "veuillez entrez un email valide"),
   phone: Yup.string().matches(
-    /^[+]?[0-9]{8,}$/,
+    /^(?:(?:0))\s*[1-9](?:[\s.-]*\d{2}){4}$/,
     "Le numéro de  telephone n'est pas au bon format"
   ).nullable(true),
   birthday_date: Yup.string().required(

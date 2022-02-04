@@ -25,12 +25,12 @@ export const CustomInput = ({label, textarea, searchBar, noError, errorRight, cl
                 {...field}
                 {...rest}
             />
-            {!noError && (
+            {/* {!noError && (
                 <ErrorMessage
                     name={field.name}
-                    className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`}
+                    className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`} 
                 />
-            )}
+            )} */}
         </>
     )
 }

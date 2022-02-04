@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
 import { editProfil } from '../../api/backend/account';
 import { CustomInput } from '../../shared/components/form-and-error-components/InputCustom';
@@ -71,28 +71,42 @@ const ProfilUser = () => {
 
                     {/* Nom et Prénom */}
                     <div className='md:flex lg:flex xl:flex'>
-                        <label className='text-nav-blue font-semibold text-lg w-2/4'>Nom
+                        <div className='w-full xl:w-2/4 md:mr-2 lg:mr-2 xl:mr-2'>
+                        <label className='text-nav-blue font-semibold text-lg'>Nom
+                        </label>
                             <Field type="text" name="lastName" component={CustomInput} placeholder="Nom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
-                        </label>
-                        <label className='text-nav-blue font-semibold text-lg sm:my-4 xl:ml-2 w-2/4'>Prénom
-                            <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
-                        </label>
+                            <ErrorMessage name="lastName" className="text-red-500" component="span" />
+                        </div>
+                        <div className='w-full xl:w-2/4'>
+                            <label className='text-nav-blue font-semibold text-lg sm:my-4 xl:ml-2'>Prénom
+                            </label>
+                                <Field type="text" name="firstName" component={CustomInput} placeholder="Prénom" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
+                                <ErrorMessage name="firstName" className="text-red-500" component="span" />
+                        </div>
                     </div>
 
                     {/* Email */}
+                    <div>
                     <label className='text-nav-blue font-semibold text-lg'>E-mail
-                        <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
+                        <Field type="text" name="email" component={CustomInput} placeholder="E-mail" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
+                        <ErrorMessage name="email" className="text-red-500" component="span" />
+                    </div>
 
                     {/* Date de naissance */}
+                    <div>
                     <label className='text-nav-blue font-semibold text-lg'>Date de naissance
+                    </label>
                         <Field type="date" name="birthday_date" component={CustomInput} placeholder="Date de naissance" className="border-b-4 border-r-4  border-gray-300 mb-3 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
-                    </label>
-
+                        <ErrorMessage name="birthday_date" className="text-red-500" component="span" />
+                    </div>
                     {/* Téléphone */}
+                    <div>
                     <label className='text-nav-blue font-semibold text-lg'>Téléphone
-                        <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
                     </label>
+                        <Field type="text" name="phone" component={CustomInput} placeholder="Téléphone (optionnel)" className="border-b-4 border-r-4  border-gray-300 hover:border-nav-blue focus:border-b-4 focus:border-r-4 focus:border-nav-blue" />
+                        <ErrorMessage name="phone" className="text-red-500" component="span" />
+                    </div>
 
                     <button type="submit" className="btn btn-yellow mt-3 text-yellow-50 font-semibold">
                         Modifier
