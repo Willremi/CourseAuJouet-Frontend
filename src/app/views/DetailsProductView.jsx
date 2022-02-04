@@ -55,7 +55,6 @@ const DetailsProductView = () => {
                         alt={data.product.product_name}
                         onClick={() => setImage(i)}
                         />
-                    
                       ))} */
                     }
                     {
@@ -75,7 +74,6 @@ const DetailsProductView = () => {
                         alt={data.product.product_name}
                         onClick={() => setImage(i)}
                         />
-                    
                       ))
                     }
                   </div>
