@@ -15,6 +15,35 @@ const ListOfProduct = () => {
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([])
 
+  const [actualPage, setActualPage] = useState(1)
+
+  let numberOfItems = 10
+  // let actualPage = 1
+  let maxPages = Math.ceil(product.length / numberOfItems)
+
+  function firstPage () {
+    setActualPage(1)
+  }
+  
+  function previousPage() {
+    if(numberOfItems >= 0) {
+      setActualPage(actualPage > 1 ? actualPage - 1 : 1)
+    }
+  }
+
+  function nextPage() {
+    if(numberOfItems<=product.length) {
+      // if(actualPage < maxPages) {
+      //   setActualPage(actualPage + 1)
+      // }
+      setActualPage(actualPage < maxPages ? actualPage + 1 : maxPages) 
+    }
+  }
+
+  function lastPage() {
+    setActualPage(maxPages)
+  }
+
 
   useEffect(() => {
     getAllProducts()
@@ -207,9 +236,15 @@ const ListOfProduct = () => {
                 </button>
               </td>
             </tr>
-          ))}
+          )).slice((actualPage - 1) * numberOfItems, actualPage * numberOfItems)}
         </tbody>
       </table>
+
+      <button onClick={firstPage}>Première page</button>
+      <button onClick={previousPage}>précédent</button>
+      <span>/ {actualPage} - {maxPages} /</span>
+      <button onClick={nextPage}>suivant</button>
+      <button onClick={lastPage}>Dernière page</button>
     </>
   );
 };
