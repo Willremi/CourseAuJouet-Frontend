@@ -22,3 +22,9 @@ export const defaulValuesResetPassword = {
   password: "",
   confirmPassword: "",
 }
+
+export const defaultValuesChangePassword = {
+  oldPassword: "",
+  password: "",
+  confirmPassword: ""
+}
