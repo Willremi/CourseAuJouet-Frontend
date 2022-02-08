@@ -3,7 +3,6 @@ import { Field, Formik, Form } from "formik";
 import { noDoubleDataFilter } from "../../shared/services/searchServices";
 
 const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
-  
 
   const Filter = noDoubleDataFilter(searchResult);// cette fonction evite les données qui pourrait etre des doublons (ca evite d'avoir jeux vidéo 3 fois dans le select des filtres) 
 
