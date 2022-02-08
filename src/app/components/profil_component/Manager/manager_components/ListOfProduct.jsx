@@ -247,7 +247,7 @@ const ListOfProduct = () => {
           <Icon icon="grommet-icons:previous" className={actualPage === 1 ? "text-gray-400" : "text-nav-blueClar"} />
         </button>
         
-        <span className="border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl text-lg md:text-lg xl:text-xl">{actualPage} / {maxPages}</span>
+        <span className="border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl text-lg md:text-lg xl:text-xl bg-nav-blueClar text-white">{actualPage} / {maxPages}</span>
 
         <button className={`border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl ${actualPage === maxPages ? "disabled cursor-auto" : ''}`} onClick={nextPage}>
           <Icon icon="grommet-icons:next" className={actualPage === maxPages ? "text-gray-400" : "text-nav-blueClar"} />
