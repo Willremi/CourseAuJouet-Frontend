@@ -19,11 +19,6 @@ const Product = FilteringSearchProduct(searchResult, filterValue)
           
         ))}
         </ul>
-      
-
-        
-     
-
   );
 };
 
