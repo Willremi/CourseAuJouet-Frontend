@@ -237,22 +237,24 @@ const ListOfProduct = () => {
       </table>
 
       {/* pagination */}
-      <div className="mt-4 flex justify-around mx-96">
-        <button className="border-2 border-nav-blueClar p-2 shadow-xl rounded-l-xl" onClick={firstPage}>
-          <Icon icon="fluent:arrow-previous-24-filled" />
+      <div className="mt-4 flex justify-center mx-12 md:mx-44 lg:mx-56 xl:mx-96">
+
+        <button className={actualPage == 1 ? "invisible" : "border-2 border-nav-blueClar m-1 p-2 shadow-xl rounded-xl bg-nav-blueClar"} onClick={firstPage}>
+          <Icon icon="fluent:arrow-previous-24-filled" className="text-gray-100" />
         </button>
 
-        <button className="border-t-2 border-b-2 border-nav-blueClar shadow-xl text-center p-2 text-lg md:text-lg xl:text-xl" onClick={previousPage}>
-          <Icon icon="grommet-icons:previous" />
+        <button className={`border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl ${actualPage === 1 ? "disabled cursor-auto" : ''}`} onClick={previousPage}>
+          <Icon icon="grommet-icons:previous" className={actualPage === 1 ? "text-gray-400" : "text-nav-blueClar"} />
         </button>
         
-        <span className="border-2 border-nav-blueClar shadow-xl text-center p-2 text-lg md:text-lg xl:text-xl">{actualPage} / {maxPages}</span>
+        <span className="border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl text-lg md:text-lg xl:text-xl">{actualPage} / {maxPages}</span>
 
-        <button className="border-t-2 border-b-2 border-nav-blueClar shadow-xl text-center p-2 text-lg md:text-lg xl:text-xl" onClick={nextPage}>
-          <Icon icon="grommet-icons:next" />
+        <button className={`border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl ${actualPage === maxPages ? "disabled cursor-auto" : ''}`} onClick={nextPage}>
+          <Icon icon="grommet-icons:next" className={actualPage === maxPages ? "text-gray-400" : "text-nav-blueClar"} />
         </button>
-        <button className="border-2 border-nav-blueClar p-2 shadow-xl rounded-r-xl" onClick={lastPage}>
-          <Icon icon="fluent:arrow-next-24-filled" />
+
+        <button className={actualPage === maxPages ? "invisible" : "border-2 border-nav-blueClar m-1 p-2 shadow-xl rounded-xl bg-nav-blueClar"} onClick={lastPage}>
+          <Icon icon="fluent:arrow-next-24-filled" className="text-gray-100" />
         </button>
       </div>
     </>
