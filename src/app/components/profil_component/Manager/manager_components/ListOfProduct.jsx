@@ -239,22 +239,26 @@ const ListOfProduct = () => {
       {/* pagination */}
       <div className="mt-4 flex justify-center mx-12 md:mx-44 lg:mx-56 xl:mx-96">
 
-        <button className={actualPage == 1 ? "invisible" : "border-2 border-nav-blueClar m-1 p-2 shadow-xl rounded-xl bg-nav-blueClar"} onClick={firstPage}>
-          <Icon icon="fluent:arrow-previous-24-filled" className="text-gray-100" />
+        <button className={`m-1 p-2 border-2 ${actualPage == 1 ? "invisible" : "border-yellow-500 shadow-xl rounded-xl bg-yellow-500 text-gray-100 hover:text-yellow-500 hover:bg-nav-blueClar hover:border-nav-blueClar"}`} onClick={firstPage}>
+          <Icon icon="fluent:arrow-previous-24-filled" />
         </button>
 
-        <button className={`border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl ${actualPage === 1 ? "disabled cursor-auto" : ''}`} onClick={previousPage}>
-          <Icon icon="grommet-icons:previous" className={actualPage === 1 ? "text-gray-400" : "text-nav-blueClar"} />
+        <button className={`border-2 border-yellow-500 shadow-xl m-1 p-2 rounded-xl ${actualPage === 1 ? "disabled cursor-auto text-gray-400" : 'text-yellow-500 hover:text-gray-100 hover:bg-nav-blueClar hover:border-nav-blueClar'}`} onClick={previousPage}>
+          <Icon icon="grommet-icons:previous"  />
         </button>
         
-        <span className="border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl text-lg md:text-lg xl:text-xl bg-nav-blueClar text-white">{actualPage} / {maxPages}</span>
+        <div className="border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl text-lg md:text-lg xl:text-xl  text-nav-blueClar">
+          <span className="text-lg md:text-lg xl:text-xl  text-yellow-500">{actualPage}</span>
+          /
+          <span className="text-lg md:text-lg xl:text-xl  text-yellow-500">{maxPages}</span>
+        </div>
 
-        <button className={`border-2 border-nav-blueClar shadow-xl m-1 p-2 rounded-xl ${actualPage === maxPages ? "disabled cursor-auto" : ''}`} onClick={nextPage}>
-          <Icon icon="grommet-icons:next" className={actualPage === maxPages ? "text-gray-400" : "text-nav-blueClar"} />
+        <button className={`border-2 border-yellow-500 shadow-xl m-1 p-2 rounded-xl ${actualPage === maxPages ? "disabled cursor-auto text-gray-400" : 'text-yellow-500 hover:text-gray-100 hover:bg-nav-blueClar hover:border-nav-blueClar'}`} onClick={nextPage}>
+          <Icon icon="grommet-icons:next" />
         </button>
 
-        <button className={actualPage === maxPages ? "invisible" : "border-2 border-nav-blueClar m-1 p-2 shadow-xl rounded-xl bg-nav-blueClar"} onClick={lastPage}>
-          <Icon icon="fluent:arrow-next-24-filled" className="text-gray-100" />
+        <button className={`border-2 m-1 p-2 ${actualPage === maxPages ? "invisible" : "border-yellow-500 shadow-xl rounded-xl bg-yellow-500 text-gray-100 hover:text-yellow-500 hover:bg-nav-blueClar hover:border-nav-blueClar"}`} onClick={lastPage}>
+          <Icon icon="fluent:arrow-next-24-filled" />
         </button>
       </div>
     </>
