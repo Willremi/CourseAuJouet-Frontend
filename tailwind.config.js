@@ -26,11 +26,11 @@ module.exports = {
       },
     inset:{
       '37' : '9.4rem',
+      '2/5': '40%'
     }
     },
     
     extend: {
-      
       scale: {
         '200': '2.00',
       },

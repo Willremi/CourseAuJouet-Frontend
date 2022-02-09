@@ -12,6 +12,8 @@ import {
 } from "../shared/redux-store/cartSlice";
 import HandleQuantityProductInCart from "../shared/components/form-and-success-components/HandleQuantityProductInCart";
 import { Icon } from "@iconify/react";
+import HeartOutline from "../shared/components/button/HeartOutlineButton";
+import HeartSolid from "../shared/components/button/HeartSolidButton";
 
 const DetailsProductView = () => {
   const id = useParams();
@@ -36,11 +38,14 @@ const DetailsProductView = () => {
             lg:flex-row
             xl:flex-row
             2xl:flex-row">
-            <div className="w-full 
+            <div className="w-full relative
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
-              {/* image a remplacer par le caroussel ici */}
+              {/* image a remplacer par le caroussel ici */}              
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 absolute right-2/5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
               <img
                 className="w-full mx-auto border-4 border-yellow-500 rounded-xl
                 lg:w-1/2

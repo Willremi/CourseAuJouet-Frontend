@@ -12,19 +12,15 @@ export const wishlistSlice = createSlice({
         setWishlist:() => {
             console.log('set');
         },
-        addProductWhishlist: () => {
-            console.log('add');
+        manageWishlist: () => {
+            console.log('manage');
         },
-        deleteProductWishlist: () => {
-            console.log('delete');
-        }
     }
 })
 
 export const {
     setWishlist,
-    addProductWhishlist,
-    deleteProductWishlist
+    manageWishlist,
 } = wishlistSlice.actions;
 
 export const selectWishlist = (state) => state.wish.wishlist
