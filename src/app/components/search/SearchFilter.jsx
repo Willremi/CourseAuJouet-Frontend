@@ -8,7 +8,7 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
 
   return (
     <Formik>
-      <Form className="w-11/12 mx-auto flex flex-wrap ">
+      <Form className="w-11/12 mx-auto flex flex-wrap">
         <Field
           as="select"
           name="trademarkFilter"
@@ -73,6 +73,23 @@ const SearchFilter = ({ filterValue, handleChange, searchResult }) => {
               {categoryFilter}
             </option>
           ))}
+        </Field>
+        <Field
+          as="select"
+          name="sortFilter"
+          className="border-0 rounded-lg shadow-md m-1 text-nav-blue font-semibold uppercase"
+          onChange={(e) => handleChange(
+            filterValue.trademark,
+            filterValue.requiredAge,
+            filterValue.category,
+            e.target.value,
+          )}
+        >
+          <option value="undefined">TRIER PAR</option>
+          <option value="news">Nouveautés</option>
+          <option value="sales">Meilleures ventes</option>
+          <option value="priceAsc">Prix : par ordre croissant</option>
+          <option value="priceDesc">Prix : par ordre décroissant</option>
         </Field>
       </Form>
     </Formik>

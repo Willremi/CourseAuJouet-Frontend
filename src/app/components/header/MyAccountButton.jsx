@@ -43,7 +43,7 @@ function MyAccountButton() {
     }
   }, [isLogged]);
   
-  console.log(User);
+  // console.log(User);
 
   return (
     <>
