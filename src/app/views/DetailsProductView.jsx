@@ -12,8 +12,7 @@ import {
 } from "../shared/redux-store/cartSlice";
 import HandleQuantityProductInCart from "../shared/components/form-and-success-components/HandleQuantityProductInCart";
 import { Icon } from "@iconify/react";
-import HeartOutline from "../shared/components/button/HeartOutlineButton";
-import HeartSolid from "../shared/components/button/HeartSolidButton";
+
 
 const DetailsProductView = () => {
   const id = useParams();
