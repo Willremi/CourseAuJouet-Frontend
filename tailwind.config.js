@@ -25,9 +25,8 @@ module.exports = {
         'min': '1536px'
       },
     inset:{
-      '37' : '9.4rem',
-      '2/5': '40%'
-    }
+      '37' : '9.4rem'
+      }
     },
     
     extend: {

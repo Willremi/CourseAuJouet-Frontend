@@ -12,14 +12,20 @@ import {
 } from "../shared/redux-store/cartSlice";
 import HandleQuantityProductInCart from "../shared/components/form-and-success-components/HandleQuantityProductInCart";
 import { Icon } from "@iconify/react";
+import {
+  addToWishlist,
+  selectWishlist,
+  deleteFromWishlist
+} from "../shared/redux-store/wishlistSlice"
 
 
 const DetailsProductView = () => {
   const id = useParams();
   const [data, setData] = useState();
   const productInCart = useSelector(selectInCart);
-  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const wishlist = useSelector(selectWishlist)
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getOneProduct(id.id)
@@ -175,6 +181,19 @@ const DetailsProductView = () => {
                     Ajouter au panier
                   </button>
                 </div>
+                  {wishlist && wishlist.find(element => element._id === id.id) !== undefined ? 
+                   <button onClick={() => {
+                    dispatch(deleteFromWishlist(data.product))
+                  }}>
+                    Retirer de ma liste d'envie
+                  </button>
+                  :
+                   <button onClick={() => {
+                    dispatch(addToWishlist(data.product))
+                  }}>
+                    Ajouter à ma liste d'envie
+                  </button>
+                  }
               </div>
             </div>
           </div>

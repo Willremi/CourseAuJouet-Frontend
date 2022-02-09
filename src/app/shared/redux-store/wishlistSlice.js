@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
+import handleSessionStorageSuccess from "../components/form-and-success-components/HandleStorageSuccess";
+import { setLocalWishlist, getLocalWishlist, removeOneInLocalWishlist } from "../services/wishlistService";
 
 
 const initialState={
-    wishlist: []
+    wishlist: getLocalWishlist()
 }
 
 export const wishlistSlice = createSlice({
@@ -12,15 +14,31 @@ export const wishlistSlice = createSlice({
         setWishlist:() => {
             console.log('set');
         },
-        manageWishlist: () => {
-            console.log('manage');
+        addToWishlist: (state, action) => {
+            console.log('add');
+            let pushToWish = { ...action.payload }
+            if (state.wishlist === undefined) {
+                state.wishlist = [pushToWish]
+            } else {
+                state.wishlist.push(pushToWish)
+            }
+            setLocalWishlist(pushToWish)
+            let message = "Vous avez ajouté " + action.payload.product_name + " dans votre liste de souhaits"
+            handleSessionStorageSuccess(message)
         },
+        deleteFromWishlist: (state, action) => {
+            state.wishlist = state.wishlist.filter(element => element._id !== action.payload._id);
+            removeOneInLocalWishlist(action.payload)
+            let message = "Vous avez retiré " + action.payload.product_name + " dans votre liste de souhaits"
+            handleSessionStorageSuccess(message)
+        }
     }
 })
 
 export const {
     setWishlist,
-    manageWishlist,
+    addToWishlist,
+    deleteFromWishlist
 } = wishlistSlice.actions;
 
 export const selectWishlist = (state) => state.wish.wishlist
