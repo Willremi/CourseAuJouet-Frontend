@@ -15,6 +15,7 @@ import ErrorMessSmall from "./../../shared/components/form-and-error-components/
 import { EyeIcon } from "@heroicons/react/solid";
 import ReactFacebookLogin from "react-facebook-login";
 import GoogleLogin from 'react-google-login';
+import { URL_FORGOT_PASSWORD, URL_REGISTER } from "../../shared/constants/urls/urlConstants";
 
 const LoginForm = ({
   submit,
@@ -70,7 +71,7 @@ const LoginForm = ({
         />
 
         <Link
-          to="/forgot-password"
+          to={URL_FORGOT_PASSWORD}
           className="text-sm font-medium text-primary-600 hover:text-primary-500 cursor-pointer"
         >
           Mot de passe oublié ?
@@ -116,7 +117,7 @@ const LoginForm = ({
         <p className="self-center mt-4 mb-1">vous êtes nouveau ici ?</p>
 
        
-          <Link to="/register" 
+          <Link to={URL_REGISTER} 
           className="btn btn-yellow-border"
           onClick={() => hideModal(false)}>S'inscrire</Link>
         

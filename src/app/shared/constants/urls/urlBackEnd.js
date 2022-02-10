@@ -18,6 +18,7 @@ export const URL_BACK_GET_POPULAR_PRODUCT = '/getpopularproduct'
 export const URL_BACK_GET_ONE_PRODUCT = '/getoneproduct/'
 export const URL_BACK_DELETE_PRODUCT = '/deleteproduct'
 export const URL_BACK_DELETE_MANY_PRODUCTS = '/deletemanyproducts'
+export const URL_BACK_MODIFY_STOCK = '/modifystock'
 
 /* CART URL */
 export const URL_BACK_ADD_TO_CART = '/addtocart'

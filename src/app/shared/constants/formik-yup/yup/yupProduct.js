@@ -33,9 +33,8 @@ export const ModifyProductSchema = Yup.object().shape({
     stock: Yup.string()
       .required("Le stock est obligatoire")
       .matches(/^[0-9]*$/, "Le stock doit être exprimé en chiffres"),// REGEX pour uniquement des chiffres
-    price: Yup.string()
-      .required("Le prix est nécessaire")
-      .matches(/^[0-9]*$/, "Le prix doit être exprimé en chiffres"),
+    price: Yup.number()
+      .required("Le prix est nécessaire"),
     required_age: Yup.string()
       .required("La tranche d'âge est requis"),
     category: Yup.string()
@@ -48,4 +47,3 @@ export const ModifyProductSchema = Yup.object().shape({
     status: Yup.boolean()
       .required("Le statut est nécessaire")
   });
-  
