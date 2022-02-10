@@ -4,6 +4,7 @@ import {
   URL_ACCOUNT,
   URL_DASHBOARD,
   URL_LIST_OF_PRODUCT,
+  URL_WISHLIST,
 } from "../../shared/constants/urls/urlConstants";
 
 
@@ -38,6 +39,15 @@ const Manager = ({ handleSignOut, setShowModal }) => {
         className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10"
       >
         Gestion des produits
+      </Link>
+      <Link
+        to={URL_WISHLIST}
+        onClick={() => {
+          setShowModal(false);
+        }}
+        className="uppercase border-b-2 border-gray-300 pl-4 py-2 my-2 duration-200 font-semibold hover:bg-nav-blue hover:text-white hover:pl-10 w-full"
+        >
+        Ma liste de souhaits
       </Link>
       <button
         className="w-1/3 mx-auto btn btn-yellow my-3"

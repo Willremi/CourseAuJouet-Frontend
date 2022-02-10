@@ -7,6 +7,7 @@ import {
 } from "../../shared/redux-store/authenticationSlice";
 import { hasRole } from "../../shared/services/accountServices";
 import { getPayloadToken } from "../../shared/services/tokenServices";
+import { getLocalWishlist } from "../../shared/services/wishlistService";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
 import Account from "../modal_component/Account";
@@ -27,6 +28,7 @@ function MyAccountButton() {
   const isLogged = useSelector(selectIsLogged);
   const [showModal, setShowModal] = useState(false);
   const [User, setUser] = useState();
+  const wishlist = getLocalWishlist()
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch(signOut());
@@ -158,7 +160,7 @@ function MyAccountButton() {
                         Se déconnecter
                       </button>
                     </div>
-                  ) : null}
+                  ) : null}                  
                 </>
               ) : (
                 <LoginView hideModal={setShowModal} />
