@@ -9,7 +9,6 @@ import { hasRole } from "../../shared/services/accountServices";
 import { getPayloadToken } from "../../shared/services/tokenServices";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
-import Customer from "../modal_component/Customer";
 import Account from "../modal_component/Account";
 import Manager from "../modal_component/Manager";
 import {

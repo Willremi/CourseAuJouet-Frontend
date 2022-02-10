@@ -17,7 +17,6 @@ const Card = ({ products }) => {
     products.on_sale_date,
     30
   );
-  let driveFilesId = products.driveFilesId ? "https://drive.google.com/uc?export=view&id="+products.driveFilesId[0] : products.images[0]
 
   return (
     <>

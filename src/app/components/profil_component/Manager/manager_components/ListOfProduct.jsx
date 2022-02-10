@@ -242,7 +242,7 @@ const ListOfProduct = () => {
       {/* pagination */}
       <div className="mt-4 flex justify-center mx-12 md:mx-44 lg:mx-56 xl:mx-96">
 
-        <button className={`m-1 p-2 border-2 ${actualPage == 1 ? "invisible" : "border-yellow-500 shadow-xl rounded-xl bg-yellow-500 text-gray-100 hover:text-yellow-500 hover:bg-nav-blueClar hover:border-nav-blueClar"}`} onClick={firstPage}>
+        <button className={`m-1 p-2 border-2 ${actualPage === 1 ? "invisible" : "border-yellow-500 shadow-xl rounded-xl bg-yellow-500 text-gray-100 hover:text-yellow-500 hover:bg-nav-blueClar hover:border-nav-blueClar"}`} onClick={firstPage}>
           <Icon icon="fluent:arrow-previous-24-filled" />
         </button>
 
