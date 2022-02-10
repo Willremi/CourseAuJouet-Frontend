@@ -18,7 +18,7 @@ const AddNewProduct = () => {
   const [selectedImages, setSelectedImages] = useState([])
  
   const imagesHandleChange = (e) => {
-    
+    //
     if(e.target.files){
       setImagesValues([...ImagesValues, ...e.target.files])
       const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
