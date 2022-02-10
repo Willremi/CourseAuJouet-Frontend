@@ -76,3 +76,19 @@ export const EditUserSchema = Yup.object().shape({
     "Veuillez entrer votre date de naissance"
   ),
 })
+export const ChangePasswordSchema = Yup.object().shape({
+  oldPassword: Yup.string()
+    .required("L'ancien mot de passe est obligatoire"),
+  password: Yup.string()
+      .required("Le mot de passe est obligatoire")
+      .matches(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        "Doit contenir au minimum 8 caratères dont une MAJUSCULE, une minuscule, un chiffre et un caractère spécial"
+      ),
+    confirmPassword: Yup.string()
+      .oneOf(
+        [Yup.ref("password"), null],
+        "les mots de passe ne sont pas identique "
+      )
+      .required("La confirmation du mot de passe est obligatoire"),
+});
