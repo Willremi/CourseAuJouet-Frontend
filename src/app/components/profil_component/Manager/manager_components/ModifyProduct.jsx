@@ -23,6 +23,7 @@ const ModifyProduct = () => {
 
   useEffect(() => {
     setStockedImagesArray([...stockedImagesArray, ...product.images]);
+    // eslint-disable-next-line
   },[] );
 
   function submitProduct(values, images) {

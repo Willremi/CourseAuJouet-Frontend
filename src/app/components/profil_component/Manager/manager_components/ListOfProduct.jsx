@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../../../api/backend/product";
+import { deleteManyProducts, deleteProduct, getAllProducts,modifyStockForOneProduct } from "../../../../api/backend/product";
 import { Icon } from "@iconify/react";
 import { PlusIcon } from "@heroicons/react/solid";
 import { Link} from 'react-router-dom';
 import { URL_ADD_PRODUCT, URL_MODIFY_PRODUCT } from "../../../../shared/constants/urls/urlConstants";
 import { useDispatch } from "react-redux";
 import { setProductToChange } from "../../../../shared/redux-store/updateProductSlice";
+import { onSaleDate } from "../../../../shared/services/dateServices";
 
 
 const ListOfProduct = () => {
@@ -13,13 +14,13 @@ const ListOfProduct = () => {
   const dispatch = useDispatch()
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([])
-
+  const [stock, setStock] = useState({id:"",stockValue: ""})
 
   useEffect(() => {
     getAllProducts()
       .then((res) => setProduct(res.data.products))
       .catch((error) => console.log(error));
-  }, []);
+  }, [product.length, selectedProduct.length]);
 
   const onSaleDate = (data) => {
     let date = new Date(data)
@@ -36,9 +37,28 @@ const ListOfProduct = () => {
 
     return day + "/" + Month + "/" + Year
   }
+  const modifyStock = stock => {
+     modifyStockForOneProduct(stock)
+  }
   
   function setProductToModify(produit){
     dispatch(setProductToChange(produit))
+  }
+
+  function deleteOneProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
+  }
+
+  function deleteOneSelectedProduct(productToDelete){
+    deleteProduct(productToDelete)
+    setSelectedProduct(selectedProduct.filter(item =>  item._id !== productToDelete._id))
+    setProduct(product.filter(item =>  item._id !== productToDelete._id))
+  }
+
+  function deleteList(){
+    deleteManyProducts(selectedProduct)
+    setSelectedProduct([])
   }
   return (
     <>
@@ -93,7 +113,7 @@ const ListOfProduct = () => {
                     className="scale-150 text-nav-blue"
                   />
                 </button>
-                <button>
+                <button onClick={() => deleteOneSelectedProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"
@@ -107,7 +127,7 @@ const ListOfProduct = () => {
       <button
           type="button"
           className="flex flex-row font-semibold text-lg text-darkblue-100 items-center"
-          onClick={() => setSelectedProduct([])}
+          onClick={() => deleteList()}
         >
           <Icon icon="ci:trash-full" className="w-6 h-6 mr-2 text-nav-blue"/>
           Supprimer les produits
@@ -176,27 +196,27 @@ const ListOfProduct = () => {
               <td className="flex w-1/12 ">{product.price / 100}€</td>
               <td className="flex w-2/12 ">
                 <input
-                  type="text"
-                  placeholder={product.stock}
-                  className="w-2/3 h-8"
-                />
-                <button>
-                  <Icon
-                    icon="dashicons:update-alt"
-                    className="scale-200 text-nav-blue mx-3"
-                  />
+                 type="text"
+                 placeholder={product.stock}
+                 onChange={e => setStock({id:product._id,stock:e.target.value})}
+                 className="w-2/3 h-8"/>
+                <button onClick={() => modifyStock(stock)}>
+                    <Icon
+                      icon="dashicons:update-alt"
+                      className="scale-200 text-nav-blue mx-3"
+                      />
                 </button>
               </td>
               <td className="flex flex-row justify-around pr-3 w-1/12">
                   <Link to={URL_MODIFY_PRODUCT}>            
-                    <button onClick={() =>setProductToModify(product) }>
+                    <button onClick={() =>setProductToModify(product)}>
                       <Icon
                         icon="carbon:change-catalog"
                         className="scale-150 text-nav-blue"
                       />
                     </button>
                   </Link>
-                <button>
+                <button onClick={()=> deleteOneProduct(product)}>
                   <Icon
                     icon="bx:bxs-trash"
                     className="scale-150 text-nav-blue"

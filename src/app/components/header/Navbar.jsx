@@ -23,12 +23,13 @@ const Navbar = () => {
         lg:px-8"
         
       >
-        <div className="flex flex-row justify-between mb-3 md:mb-0 2xl:w-11/12 2xl:mx-auto">
-          {/* Burger menu pour mobile */}
-          <div className="flex flex-row w-full items-center">
+        <div className="sm:w-full flex flex-row mb-2 md:mb-0 justify-between 2xl:w-full 2xl:ml-2">
+          
+          <div className="flex flex-row w-10/12 ml-4 sm:w-1/2 items-center">
+            {/* Burger menu pour mobile */}
             {window.innerWidth <= 1024 ? (
               <button
-                className="w-12 h-12 mx-6 "
+                className="w-12 h-12"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {!isOpen ? (
@@ -59,13 +60,13 @@ const Navbar = () => {
 
             {/* Recherche */}
             {window.innerWidth >= 504 ? (
-              <div className="flex flex-col w-full">
+              <div className="flex flex-col w-full items-center">
                 <SearchBar />
 
                 {/* Navigation */}
-                <div>
+                <div className="w-11/12">
                   <nav className="hidden lg:grid xl:grid 2xl:grid md:text-nav-blue font-semibold">
-                    <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue pt-6 justify-around">
+                    <ul className="hidden lg:flex xl:flex 2xl:flex text-nav-blue mt-3 justify-around">
                       {navigation.map((item) => (
                         <li key={item.name} className="px-4 z-10">
                           <Menu as="div">
@@ -118,7 +119,7 @@ const Navbar = () => {
             ) : null}
           </div>
 
-          <div className="flex flex-row items-center 2xl:items-start 2xl:pt-3">
+          <div className="sm:w-full sm:justify-auround w-auto flex flex-row items-center 2xl:mt-4 2xl:mr-10">
             {/* Bouton Mon compte */}
             <MyAccountButton />
 

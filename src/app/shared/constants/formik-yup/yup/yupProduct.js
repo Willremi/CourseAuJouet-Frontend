@@ -47,4 +47,3 @@ export const ModifyProductSchema = Yup.object().shape({
     status: Yup.boolean()
       .required("Le statut est nécessaire")
   });
-  
