@@ -10,7 +10,7 @@ import { onSaleDate } from "../../../../shared/services/dateServices";
 
 
 const ListOfProduct = () => {
-
+  
   const dispatch = useDispatch()
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState([])
