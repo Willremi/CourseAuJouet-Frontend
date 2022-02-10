@@ -1,48 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { GetallProductInCart, RemoveOneProductInCart } from "../api/backend/cart";
 import ProductInCart from "../components/cart/ProductInCart";
-import { setInCart, removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
-import { accountId } from "../shared/services/accountServices";
+import { removeInCart, selectInCart } from "../shared/redux-store/cartSlice";
 import { CreditCardIcon, ReplyIcon, TruckIcon } from "@heroicons/react/solid";
-
 import SummaryOfOrders from "../components/cart/SummaryOfOrders";
 import { Link } from 'react-router-dom';
-import { URL_ORDER_ADDRESS } from "../shared/constants/urls/urlConstants";
-
-/**
- * ReloadComponent is used to update the component when a product is removed from cart
- * without refresh the page
- * @author Mathieu
- */
+import { URL_PAYMENT_CHECKOUT } from './../shared/constants/urls/urlConstants';
 
 const CartView = () => {
-  const userId = accountId();
-  const [ReloadComponent, setReloadComponent] = useState(false);
+  
   const inCart = useSelector(selectInCart)
-  const quantityProduct = useSelector(selectInCart)
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    //Récupère tous les produits de l'utilisateur logué via axios pour les dispatch au store Redux 
-    GetallProductInCart(userId)
-      .then((res) => {
-        dispatch(setInCart(res.data.cart))
-      })
-      .catch((error) => console.log(error));
-  }, [userId, ReloadComponent, dispatch]);
-
-
-
   //Supprime le produit à la fois dans la BDD et également dans le State redux
-  const handleRemoveProduct = (productId) => {
-    const values = { userId: userId, productId: productId };
-    RemoveOneProductInCart(values)
-      .then(() => {
-        setReloadComponent(!ReloadComponent)
-        dispatch(removeInCart(values))
-      })
-      .catch((err) => console.log(err));
+  const handleRemoveProduct = (index) => {
+        dispatch(removeInCart(index))
   };
 
   return (
@@ -70,12 +42,12 @@ const CartView = () => {
             </span>
           </p>
         </div>
-        {inCart !== undefined ? (
+        {inCart !== undefined && inCart.length !== 0 ? (
           <ul className="space-y-5 w-full">
             {inCart.map((onCart, index) => (
                 <li key={index}>
                   <ProductInCart
-                  inCart={inCart}
+                    inCart={inCart}
                     component={onCart}
                     remove={handleRemoveProduct}
                     index={index}
@@ -84,13 +56,13 @@ const CartView = () => {
 
             ))}
 
-            <SummaryOfOrders product={quantityProduct} />
+            <SummaryOfOrders product={inCart} />
             <div className="w-9/12 ml-auto text-center mr-5 py-6
             sm:mx-auto
             md:mx-auto
             lg:mx-auto
             ">
-              <Link to={URL_ORDER_ADDRESS} className="btn btn-yellow rounded-full transition duration-300">
+              <Link to={URL_PAYMENT_CHECKOUT} className="btn btn-yellow rounded-full transition duration-300">
                 Passer la commande
               </Link>
             </div>

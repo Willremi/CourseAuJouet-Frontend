@@ -5,7 +5,7 @@ import { MinusIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
 import { URL_PRODUCT_DETAIL } from "./../../shared/constants/urls/urlConstants";
 import { decrement, increment } from "../../shared/redux-store/cartSlice";
 
-const ProductInCart = ({ component, remove, index, inCart }) => {
+const ProductInCart = ({ component, remove, index }) => {
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const ProductInCart = ({ component, remove, index, inCart }) => {
       md:w-2/6 md:border-0 
       w-2/12 border-secondary-100 border-4 rounded-xl flex justify-center bg-white "
       >
-        <img src={component.images[0]} alt={component.product_name} 
+        <img src={component.driveFilesId ? "https://drive.google.com/uc?export=view&id="+ component.driveFilesId[0] : component.images[0]} alt={component.product_name} 
         className="2xl:object-contain md:object-contain p-1"/>
       </Link>
 
@@ -40,7 +40,7 @@ const ProductInCart = ({ component, remove, index, inCart }) => {
             <Link to={URL_PRODUCT_DETAIL + component._id} className="flex sm:truncate md:truncate">
               {component.product_name}
             </Link>
-            <button onClick={() => remove(component._id)}>
+            <button onClick={() => remove(index)}>
               <XIcon className="w-6 h-6 text-gray-400 duration-300 hover:text-gray-700 
               sm:ml-1 
               md:ml-3"/>
@@ -54,7 +54,7 @@ const ProductInCart = ({ component, remove, index, inCart }) => {
 
         <div className="flex flex-row justify-between">
           <p className="font-semibold text-3xl sm:text-base md:text-lg">
-            {inCart ? (inCart[index].quantity * component.price) / 100 : null}€
+            {component ? (component.quantity * component.price) / 100 : null}€
           </p>
           <p className="font-semibold text-yellow-600 text-2xl sm:hidden md:text-lg">
             Disponible
@@ -66,7 +66,7 @@ const ProductInCart = ({ component, remove, index, inCart }) => {
 
             <div className="flex border-2 border-yellow-500 rounded-full px-1 xl:px-2">
               <MinusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(decrement(index))} />
-              <span className="text-base md:text-lg lg:text-xl xl:text-xl px-3 xl:px-4">{inCart ? inCart[index].quantity : null}</span>
+              <span className="text-base md:text-lg lg:text-xl xl:text-xl px-3 xl:px-4">{component ? component.quantity : null}</span>
               <PlusIcon className="w-5 text-yellow-500 cursor-pointer hover:text-yellow-200" onClick={() => dispatch(increment(index))} />
             </div>
 

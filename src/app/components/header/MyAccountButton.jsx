@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLogged,
   signOut,
 } from "../../shared/redux-store/authenticationSlice";
 import { hasRole } from "../../shared/services/accountServices";
+import { getPayloadToken } from "../../shared/services/tokenServices";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
 import Customer from "../modal_component/Customer";
+import Account from "../modal_component/Account";
 import Manager from "../modal_component/Manager";
 import {
   ROLE_CUSTOMER,
@@ -24,20 +27,35 @@ register and the link for the forgotten password.
 function MyAccountButton() {
   const isLogged = useSelector(selectIsLogged);
   const [showModal, setShowModal] = useState(false);
+  const [User, setUser] = useState();
   const dispatch = useDispatch();
-
   const handleSignOut = () => {
     dispatch(signOut());
     setShowModal(false);
   };
 
+  
+  useEffect(() => {
+    if(isLogged){
+      setUser(getPayloadToken())
+    }
+    else {
+      setUser(undefined)
+    }
+  }, [isLogged]);
+  
+  // console.log(User);
+
   return (
     <>
       <button
-        className="cursor-pointer flex flex-row items-center mr-4 sm:text-nav-yellow text-nav-blue opacity-100"
+        className="w-auto cursor-pointer flex flex-row items-center sm:text-nav-yellow text-nav-blue opacity-100"
         onClick={() => setShowModal(!showModal)}
       >
-        <svg
+        
+        {User ? <p className="w-full truncate text-left font-semibold font-Annie text-2xl text-secondary-400 duration-300 hover:text-secondary-600">Bonjour {User.firstName} !</p>
+        
+        : <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-12 w-12 md:w-8 md:h-8"
           fill="none"
@@ -50,7 +68,7 @@ function MyAccountButton() {
             strokeWidth={2}
             d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
-        </svg>
+        </svg> }
       </button>
 
       {/* condition pour qui verifie la constante showmodal avec sa valeur boléenne,
@@ -59,7 +77,13 @@ function MyAccountButton() {
 
       <>
         <div
-          className={`transition-all duration-500 bg-nav-blueClar absolute  top-16 left-0 w-screen ${showModal ? "h-screen overflow-hidden z-40" : "h-0 overflow-hidden"
+          className={`transition-all duration-500 bg-nav-blueClar absolute top-16 left-0 w-screen ${
+            showModal ? "h-screen overflow-hidden z-40" : "h-0 overflow-hidden"
+          }
+            ${
+              showModal
+                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-40 md:top-14"
+                : "md:h-0 overflow-hidden"
             }
             ${showModal
               ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-40 md:top-14"
@@ -77,6 +101,16 @@ function MyAccountButton() {
               ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-5 "
               : "2xl:h-0 overflow-hidden"
             }
+             ${
+               showModal
+                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-40 xl:top-28 xl:mt-3"
+                 : "xl:h-0 overflow-hidden"
+             }
+             ${
+               showModal
+                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-1.5 "
+                 : "2xl:h-0 overflow-hidden"
+             }
             `}
         >
           <div
@@ -94,7 +128,7 @@ function MyAccountButton() {
             {/* Bouton croix pour fermer le modal */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-2 right-2 transition-all opacity-50 overflow-hidden hover:opacity-100"
+              className="absolute top-8 right-3 transition-all opacity-50 overflow-hidden hover:opacity-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,31 +149,29 @@ function MyAccountButton() {
             <div>
               {isLogged ? (
                 <>
-                  {/* Manager */}
-                  {hasRole(ROLE_MANAGER) ? <Manager handleSignOut={handleSignOut} setShowModal={setShowModal} /> : null}
-                  
-                  {/* Customer */}
-                  {hasRole(ROLE_CUSTOMER) ? <Customer  setShowModal={setShowModal} /> : null}
-
-                  {hasRole(ROLE_CUSTOMER) ? <button
-                    className="ml-8 btn btn-yellow"
-                    onClick={() => handleSignOut()}
-                  >
-                    Se déconnecter
-                  </button> : null}
-                  
-                  
+                  {hasRole(ROLE_MANAGER) ? (
+                    <Manager
+                      handleSignOut={handleSignOut}
+                      setShowModal={setShowModal}
+                    />
+                  ) : null}
+                  {hasRole(ROLE_CUSTOMER) ? (
+                    <div className="flex flex-col">
+                      <Account
+                      setShowModal={setShowModal} />
+                      <button
+                        className="w-1/3 mx-auto btn btn-yellow my-3"
+                        onClick={() => handleSignOut()}
+                      >
+                        Se déconnecter
+                      </button>
+                    </div>
+                  ) : null}
                 </>
               ) : (
                 <LoginView hideModal={setShowModal} />
               )}
             </div>
-
-            {/*
-            
-             Mettre les futurs composants ici ! 
-            
-            */}
           </div>
         </div>
       </>

@@ -2,7 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import authenticationReducer from './authenticationSlice'
 import cartReducer from './cartSlice';
 import searchReducer from './searchSlice';
-import dashboardReducer from './ProfilSlice'
+import updateReducer from './updateProductSlice'
+import deliveryReducer from './deliverySlice'
+import paymentReducer from './PaymentVerification'
+import reloadComponentReducer from './ReloadComponentSlice';
 /**
  * To configure the store redux. 
  * 
@@ -13,6 +16,9 @@ import dashboardReducer from './ProfilSlice'
 		auth: authenticationReducer,
 		search: searchReducer, 
 		cart: cartReducer,
-		DashBoardValue: dashboardReducer
+		productToUpdate: updateReducer,
+		delivery: deliveryReducer,
+		payment: paymentReducer,
+		reload: reloadComponentReducer,
 	},
 });

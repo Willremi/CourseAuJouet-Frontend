@@ -61,7 +61,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className="w-11/12 sm:mx-auto">
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values) => {
@@ -70,7 +70,7 @@ const SearchBar = () => {
         validationSchema={schemaFormSearch}
       >
         {({ resetForm, values }) => (
-          <Form className="w-full px-4 flex mt-2 items-center md:pb-2 relative">
+          <Form className="sm:mx-auto w-full flex mt-2 items-center md:pb-2 relative">
             <div className="bg-white p-2 rounded-l-full sm:p-1.65 border border-r-0 border-gray-300">
               <SearchIcon className="h-6 w-6 text-yellow-500" />
             </div>
@@ -82,7 +82,7 @@ const SearchBar = () => {
               autoComplete="off"
               component={CustomInput}
               // onClick={() => {
-              //   if (Autocompletion.lenght > 0) {
+              //   if (Autocompletion.length > 0) {
               //     setShowElement(true);
               //   }
               // }}

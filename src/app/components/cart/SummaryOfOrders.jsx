@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Pricing } from "../../shared/services/cart";
 import DeliveryMode from "./DeliveryMode";
+import { useDispatch } from 'react-redux';
+import { deliveryMode } from "../../shared/redux-store/deliverySlice";
 
 const SummaryOfOrders = ({ product }) => {
   const [ModeValue, setModeValue] = useState("Magasin");
-
+  const dispatch = useDispatch()
   const handleChange = (values) => {
     setModeValue(values.target.value);
+    dispatch(deliveryMode(values.target.value))
     return ModeValue;
   };
 

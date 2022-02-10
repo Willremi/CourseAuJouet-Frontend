@@ -33,9 +33,9 @@ const RoutesWithNavigation = () => {
                 { isLogged && <IdleTimerCustom />}
                 <Navbar />
                 <main>
-                    <Routes/>
-                    <ManagerAdministrationView />
-                    
+                <ManagerAdministrationView /> 
+                <Routes/>
+                  
                 </main>
                 <ToastContainer 
                     toastClassName={({ type }) => contextClass[type || "default"] + 
@@ -43,7 +43,7 @@ const RoutesWithNavigation = () => {
                     }
                     bodyClassName={() => "text-sm font-white font-med block p-3"}
                     position="bottom-left"
-                    autoClose={3000}
+                    autoClose={5000}
                 />
             </div>
         </BrowserRouter>

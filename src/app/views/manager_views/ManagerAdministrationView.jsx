@@ -12,6 +12,7 @@ import {
   URL_LIST_OF_PRODUCT,
   URL_MANAGER_SETTINGS,
   URL_PROFIL,
+  URL_MODIFY_PRODUCT,
 } from "./../../shared/constants/urls/urlConstants";
 
 const ManagerAdministrationView = () => {
@@ -27,6 +28,7 @@ const ManagerAdministrationView = () => {
       URL_DASHBOARD,
       URL_PROFIL,
       URL_ADD_PRODUCT,
+      URL_MODIFY_PRODUCT,
       URL_LIST_OF_PRODUCT,
       URL_MANAGER_SETTINGS,
     ];
@@ -44,7 +46,7 @@ const ManagerAdministrationView = () => {
         <div className="flex flex-row">
           {/*********************  MANAGERS ***********************/}
           <ManagerLeftAside />
-          <div className="w-11/12 mx-10 my-5">
+          <div className="w-11/12 mx-10 my-5 sm:mx-auto">
             <ManagerRoute />
           </div>
         </div>

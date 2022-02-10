@@ -1,7 +1,7 @@
 import axios from "axios";
-import handleHttpSuccess from "./../../shared/components/form-and-error-components/HandleHttpSuccess";
 import { getToken } from "../../shared/services/tokenServices";
 import handleHttpError from './../../shared/components/form-and-error-components/HandleHttpError';
+import handleHttpSuccess from './../../shared/components/form-and-error-components/handleHttpSuccess';
 
 
 /**
