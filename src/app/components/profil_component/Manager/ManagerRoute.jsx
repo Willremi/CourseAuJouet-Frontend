@@ -16,11 +16,18 @@ import {
   URL_ADD_PRODUCT,
   URL_MODIFY_PRODUCT,
   URL_PROFIL,
+  URL_DASHBOARD,
 } from "./../../../shared/constants/urls/urlConstants";
+import AccountView from "../../../views/account_views/accountView";
 
 const ManagerRoute = () => {
   return (
     <Switch history={customHistory}>
+      <PrivateRoute 
+        path={URL_DASHBOARD}
+        component={AccountView}
+        roles={[ROLE_MANAGER, ROLE_CUSTOMER, ROLE_ADMIN]}
+      />
       <PrivateRoute 
         path={URL_PROFIL}
         component={ProfilUser}
