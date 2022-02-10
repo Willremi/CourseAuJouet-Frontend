@@ -6,6 +6,7 @@ import updateReducer from './updateProductSlice'
 import deliveryReducer from './deliverySlice'
 import paymentReducer from './PaymentVerification'
 import reloadComponentReducer from './ReloadComponentSlice';
+import wishlistReducer from './wishlistSlice';
 /**
  * To configure the store redux. 
  * 
@@ -20,5 +21,6 @@ import reloadComponentReducer from './ReloadComponentSlice';
 		delivery: deliveryReducer,
 		payment: paymentReducer,
 		reload: reloadComponentReducer,
+		wish: wishlistReducer,
 	},
 });

@@ -4,6 +4,7 @@ export const URL_BACK_REGISTER = '/register'
 export const URL_BACK_VERIFY_EMAIL_USER = '/confirm_register/'
 export const URL_BACK_RESET_PASSWORD = '/reset-password'
 export const URL_BACK_VALID_RESET_PASSWORD = '/valid-reset-password/'
+export const URL_BACK_CHANGE_PASSWORD = '/changepassword'
 export const URL_BACK_GET_ONE_USER = "/getoneuser/"
 export const URL_EDIT_PROFIL = '/editprofil/'
 
@@ -20,6 +21,7 @@ export const URL_BACK_GET_ONE_PRODUCT = '/getoneproduct/'
 export const URL_BACK_DELETE_PRODUCT = '/deleteproduct'
 export const URL_BACK_DELETE_MANY_PRODUCTS = '/deletemanyproducts'
 export const URL_BACK_MODIFY_STOCK = '/modifystock'
+export const URL_BACK_GET_BY_CATEGORY = '/getbycategory'
 
 /* CART URL */
 export const URL_BACK_ADD_TO_CART = '/addtocart'
