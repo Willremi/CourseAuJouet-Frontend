@@ -29,13 +29,8 @@ const Card = ({ products }) => {
         ) : null}
 
         <Link to={URL_PRODUCT_DETAIL + products._id}>
-          {/* <img
-            src={products.images[0]}
-            alt={products.product_name}
-            className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
-          /> */}
           <img
-            src={driveFilesId}
+            src={products.driveFilesId ? "https://drive.google.com/uc?export=view&id="+products.driveFilesId[0] : products.images[0]}
             alt={products.product_name}
             className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           />
