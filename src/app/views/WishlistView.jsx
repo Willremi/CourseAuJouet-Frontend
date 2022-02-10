@@ -1,20 +1,16 @@
 import React ,{ useState } from "react"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { getOneProduct } from "../api/backend/product"
+import { selectWishlist } from "../shared/redux-store/wishlistSlice"
 
 const WishlistView = () => {
     const [wishlist, setWishlist ] = useState()
-    const selectWishlist = useSelector()
+    const useWishlist = useSelector(selectWishlist)
     
-    useEffect(() => {
-        getOneProduct(selectWishlist._id)
-            .then( (res) => setWishlist(res.data))
-    },[])
     
     return (
         <div>
-            
+            {wishlist[0].product_name}
         </div>
     )
 }
