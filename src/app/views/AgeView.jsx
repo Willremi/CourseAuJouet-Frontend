@@ -1,25 +1,26 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { getProductByCategory } from "../api/backend/product"
+import { getProductByAge } from "../api/backend/product"
+
 import Card from "../shared/components/pdt-components/Card"
 
-const CategoryView = () => {
-    const {category} = useParams()
+const AgeView = () => {
+    const {age} = useParams()
     const [products, setProducts] = useState()
 
     useEffect(() => {
-        console.log("categorie =>",category);
-        getProductByCategory({category})
+        console.log("categorie =>",age);
+        getProductByAge({age})
             .then((res) => setProducts(res.data))
             .catch((error) => console.log(error))
-    },[category])
+    },[age])
 
 
 
     return (
         <>
-        <h2 className="font-Annie font-semibold text-4xl ml-10 text-secondary-600 my-3 uppercase">Catégorie : "{category}"</h2>
+        <h2 className="font-Annie font-semibold text-4xl ml-10 text-secondary-600 my-3 uppercase">Catégorie : "{age}"</h2>
           {products !== undefined ? (
             <ul className={`grid grid-cols-4 gap-x-3
             sm:overflow-scroll
@@ -39,4 +40,4 @@ const CategoryView = () => {
       );
 }
 
-export default CategoryView
+export default AgeView

@@ -21,6 +21,7 @@ export const URL_BACK_DELETE_PRODUCT = '/deleteproduct'
 export const URL_BACK_DELETE_MANY_PRODUCTS = '/deletemanyproducts'
 export const URL_BACK_MODIFY_STOCK = '/modifystock'
 export const URL_BACK_GET_BY_CATEGORY = '/getbycategory'
+export const URL_BACK_GET_BY_AGE = '/getbyage'
 
 /* CART URL */
 export const URL_BACK_ADD_TO_CART = '/addtocart'
