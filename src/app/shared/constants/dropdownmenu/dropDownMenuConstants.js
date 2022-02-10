@@ -1,4 +1,5 @@
 import {
+  URL_CATEGORY,
   URL_HOME
 } from './../urls/urlConstants';
 export const navigation = [
@@ -28,42 +29,42 @@ export const navigation = [
     href: URL_HOME,
     submenu: [{
         name: "Roues",
-        href: URL_HOME,
+        href: "/category/Roue",
         current: false
       },
       {
         name: "Peluches",
-        href: URL_HOME,
+        href: "/category/Peluche",
         current: false
       },
       {
         name: "Figurines",
-        href: URL_HOME,
+        href: "/category/Figurine",
         current: false
       },
       {
         name: "Jeux & Puzzles",
-        href: URL_HOME,
+        href: "category/jeux",
         current: false
       },
       {
         name: "Construction",
-        href: URL_HOME,
+        href: "/category/construction",
         current: false
       },
       {
         name: "Véhicules",
-        href: URL_HOME,
+        href: "/category/vehicule",
         current: false
       },
       {
         name: "Educatifs",
-        href: URL_HOME,
+        href: "/category/educatifs",
         current: false
       },
       {
         name: "Baby",
-        href: URL_HOME,
+        href: "/category/baby",
         current: false
       },
     ],
