@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getOneProduct } from "../api/backend/product";
 import { useParams } from "react-router-dom";
-import {
-  StarIcon,
-} from "@heroicons/react/solid";
+import { StarIcon } from "@heroicons/react/solid";
+import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddToCart,
@@ -19,15 +18,24 @@ const DetailsProductView = () => {
   const productInCart = useSelector(selectInCart);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const [image, setImage] = useState(0)
 
   useEffect(() => {
     getOneProduct(id.id)
       .then((res) => setData(res.data))
       .catch((error) => console.log(error));
   }, [id.id]);
+  console.log(data);
+  console.log(id);
 
-  console.log(quantity);
-
+  const nextImage = () => {
+    setImage(image === data.product.images.length -1 ? 0 : image + 1)
+  }
+  
+  const prevImage = () => {
+    setImage(image === 0 ? data.product.images.length -1 : image - 1)
+  }
+  /** small términé, ai débuté medium */
   return (
     <>
       {data && (
@@ -36,21 +44,48 @@ const DetailsProductView = () => {
             lg:flex-row
             xl:flex-row
             2xl:flex-row">
-            <div className="w-full 
+            <div className="w-full
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
               {/* image a remplacer par le caroussel ici */}
-              <img
-                className="w-full mx-auto border-4 border-yellow-500 rounded-xl
-                lg:w-1/2
-                xl:w-1/2
-                2xl:w-1/2"
-                src={data.product.images[0]}
-                alt={data.product.product_name}
-              />
+              <div className="w-full flex mx-auto object-center overflow-hidden relative">
+                 <div className="w-3/12 overflow-hidden overflow-y-scroll overscroll-contain no-scrollbar absolute h-full ml-0 p-3 rounded-md
+                    sm:hidden">
+                  {data.product.images.map( (image, i) => (                    
+                    <img
+                      key={i}
+                      src={image}
+                      alt={data.product.product_name}
+                      onClick={() => setImage(i)}
+                      />
+                      ))}
+                  </div>
+              <div className="border-4 border-yellow-500 bg-white rounded-xl p-1 mx-auto w-9/12 mr-3
+                  sm:overflow-y-hidden sm:w-full sm:relative sm:mr-0
+                  md:overflow-y-hidden md:object-center md:mr-0
+                  lg:overflow-y-hidden lg:object-center lg:inline
+                  xl:overflow-y-hidden xl:object-center
+                  2xl:overflow-y-hidden 2xl:object-center">
+                <FaChevronLeft className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70  left-1
+                  sm:absolute sm:block inset-y-1/2 "
+                  onClick={prevImage}
+                />
+                <FaChevronRight className="hidden text-4xl text-black z-10 cursor-pointer select-none opacity-70 right-1
+                  sm:absolute sm:block inset-y-1/2"
+                  onClick={nextImage}
+                />
+                <img className="w-full h-auto"
+                  src={data.product.images[image]}
+                  alt={data.product.product_name}
+                />
+              </div>
+
             </div>
-            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5
+          </div>
+            <div className="w-full flex flex-col justify-between font-semibold bg-white rounded-xl shadow-lg p-5 ml-3
+            sm:mt-2 sm:ml-0
+            md:mt-5 md:ml-0
             lg:w-1/2
             xl:w-1/2
             2xl:w-1/2">
