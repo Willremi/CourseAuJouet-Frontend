@@ -83,6 +83,7 @@ const Routes = () => {
       <Route path={URL_CHANGE_PASSWORD} component={ChangePasswordView} />
       <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
       <Route path={URL_SEARCH_PAGE} component={SearchView} />
+      {/* <Route component={NotFoundView}/> */}
       <Route path={URL_WISHLIST} component={WishlistView} />
       <Route path={URL_CATEGORY + ":category"} component={CategoryView} />
       <Route path={URL_AGE + ":age"} component={AgeView} />

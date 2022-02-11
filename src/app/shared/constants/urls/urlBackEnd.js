@@ -6,6 +6,7 @@ export const URL_BACK_RESET_PASSWORD = '/reset-password'
 export const URL_BACK_VALID_RESET_PASSWORD = '/valid-reset-password/'
 export const URL_BACK_CHANGE_PASSWORD = '/changepassword'
 export const URL_BACK_GET_ONE_USER = "/getoneuser/"
+export const URL_EDIT_PROFIL = '/editprofil/'
 
 export const URL_BACK_LOGIN_GOOGLE = '/auth/google'
 export const URL_BACK_LOGIN_FACEBOOK = '/auth/facebook'

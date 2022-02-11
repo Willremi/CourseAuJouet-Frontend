@@ -3,7 +3,7 @@ export const onSaleDate = (data) => {
     let day = date.getDate()
     let Month = date.getMonth()
     let Year = date.getFullYear()
-    console.log(day);
+    // console.log(day);
     if(day < 10){
       day = "0" + day
     }
