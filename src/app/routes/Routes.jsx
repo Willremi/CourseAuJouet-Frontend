@@ -13,6 +13,9 @@ import {
   URL_SEARCH_PAGE,
   URL_VALIDATE_PAYMENT,
   URL_ACCOUNT,
+  URL_CHANGE_PASSWORD,
+  URL_WISHLIST,
+  URL_CATEGORY,
 } from "../shared/constants/urls/urlConstants";
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
@@ -31,10 +34,12 @@ import DetailsProductView from "./../views/DetailsProductView";
 import SearchView from "./../views/SearchView";
 import OrderAddressView from "./../views/OrderAddressView";
 import PaymentView from './../views/PaymentView';
-import NotFoundView from './../views/NotFoundView';
 import PaymentSuccessView from "../views/PaymentSuccessView";
 import { URL_PAYMENT_CHECKOUT } from './../shared/constants/urls/urlConstants';
 import AccountView from "../views/account_views/accountView";
+import ChangePasswordView from "../views/ChangePasswordView";
+import WishlistView from "../views/WishlistView";
+import CategoryWiev from "../views/CategoryView";
 
 /**
  * Routes of the application
@@ -73,9 +78,12 @@ const Routes = () => {
       <Route path={URL_VERIFY_USER_EMAIL} component={RegisteredUser} />
       <Route path={URL_FORGOT_PASSWORD} component={ForgotPasswordView} />
       <Route path={URL_RESET_PASSWORD} component={ResetPasswordView} />
+      <Route path={URL_CHANGE_PASSWORD} component={ChangePasswordView} />
       <Route path={URL_PRODUCT_DETAIL + ":id"} component={DetailsProductView} />
       <Route path={URL_SEARCH_PAGE} component={SearchView} />
-      <Route component={NotFoundView}/>
+      {/* <Route component={NotFoundView}/> */}
+      <Route path={URL_WISHLIST} component={WishlistView} />
+      <Route path={URL_CATEGORY + ":category"} component={CategoryWiev} />
     </Switch>
   );
 };

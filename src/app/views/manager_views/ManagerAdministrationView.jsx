@@ -11,6 +11,7 @@ import {
   URL_ADD_PRODUCT,
   URL_LIST_OF_PRODUCT,
   URL_MANAGER_SETTINGS,
+  URL_PROFIL,
   URL_MODIFY_PRODUCT,
 } from "./../../shared/constants/urls/urlConstants";
 
@@ -25,6 +26,7 @@ const ManagerAdministrationView = () => {
       URL_MANAGER_STATISTIQUES,
       URL_MANAGER_ORDER,
       URL_DASHBOARD,
+      URL_PROFIL,
       URL_ADD_PRODUCT,
       URL_MODIFY_PRODUCT,
       URL_LIST_OF_PRODUCT,

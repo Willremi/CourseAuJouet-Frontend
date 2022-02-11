@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorMessage } from 'formik'
+// import { ErrorMessage } from 'formik'
 
 
 /**
@@ -11,7 +11,7 @@ import { ErrorMessage } from 'formik'
  * @example <Field type="email" name="email" placeholder="Email" component={ InsyInput } className='my-0'/>
  * @author Peter Mollet
  */
-export const CustomInput = ({label, textarea, searchBar, noError, errorRight, className, type, field: {name}, field, form:{ errors, touched }, ...rest }) => {
+export const CustomInput = ({label, textarea, searchBar, noError, errorRight, className, type, field: {name, value, onChange}, field, form:{ errors, touched }, ...rest }) => {
     return (
         <>
             <input
@@ -19,16 +19,18 @@ export const CustomInput = ({label, textarea, searchBar, noError, errorRight, cl
                 name={name}
                 type={type}
                 component={textarea}
+                onChange={onChange}
+                value={value}
                 className={`input ${ searchBar ? null : errors[name] && touched[name] && 'input-error'} ${className} `}
                 {...field}
                 {...rest}
             />
-            {!noError && (
+            {/* {!noError && (
                 <ErrorMessage
                     name={field.name}
-                    className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`}
+                    className={`text-xs text-red-500 absolute bottom-0 ${errorRight ? 'right-0' : 'left-0'}`} 
                 />
-            )}
+            )} */}
         </>
     )
 }
