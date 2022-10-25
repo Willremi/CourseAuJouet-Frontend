@@ -53,3 +53,12 @@ function decodeToken() {
     const token = getToken()
     return jwt.decode(token, {complete: true});
 }
+/**
+ * Encode the jwt token to get all the visible part (header and payload)
+ * 
+ * @returns {object} the decoded token
+ * @author Rémi
+ */
+export function encodeToken(token) {
+    return jwt.sign(token, 'RANDOM_TOKEN_SECRET')
+}

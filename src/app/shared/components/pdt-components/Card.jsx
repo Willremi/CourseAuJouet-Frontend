@@ -18,8 +18,6 @@ const Card = ({ products }) => {
     30
   );
 
- 
-
   return (
     <>
       <div className="relative w-full h-full border-gray border-2 rounded-b-xl bg-white flex flex-col justify-between">
@@ -31,10 +29,11 @@ const Card = ({ products }) => {
 
         <Link to={URL_PRODUCT_DETAIL + products._id}>
           <img
-            src={products.images[0]}
+            src={products.driveFilesId ? "https://drive.google.com/uc?export=view&id="+products.driveFilesId[0] : products.images[0]}
             alt={products.product_name}
             className="w-full flex self-center p-2 rounded-b-xl border-b-4 border-gray-300 mx-auto shadow-md"
           />
+          
         </Link>
         <div className="px-3 pt-3 pb-1 flex flex-col space-y-1 font-medium justify-between h-full">
           <div className="overflow-hidden flex flex-col">

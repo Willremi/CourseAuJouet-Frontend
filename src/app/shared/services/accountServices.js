@@ -1,5 +1,10 @@
 import { getToken, getPayloadToken } from './tokenServices';
 
+export function accountUser() {
+    const payload = getPayloadToken()
+    return payload
+}
+
 /**
  * To get all the roles of the current user
  * 

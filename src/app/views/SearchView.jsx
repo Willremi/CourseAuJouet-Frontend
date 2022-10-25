@@ -13,13 +13,15 @@ const SearchView = () => {
     trademark: "undefined",
     requiredAge: "undefined",
     category: "undefined",
+    sortProduct: "undefined"
   });
 
-  const handleChange = (trademark, age, category) => {
+  const handleChange = (trademark, requiredAge, category, sortProduct) => {
     setFilterValue({
-      trademark: trademark,
-      requiredAge: age,
-      category: category,
+      trademark,
+      requiredAge,
+      category,
+      sortProduct
     });
     return filterValue;
   };
@@ -31,17 +33,15 @@ const SearchView = () => {
           {searchResult.length === 0 ? "Aucun résultat" : "Résultat"} pour "{valueInput.search}"
         </h2>
         {/* <span>{`${searchResult.length} article(s) trouvé(s)`}</span> */}
-        <span className="text-nav-blue font-semibold text-xl">{`${searchResult.length} article${searchResult.length > 1 ? 's' : ''} trouvé${searchResult.length > 1 ? 's' : ''}`}</span>      
-      
+        <span className="text-nav-blue font-semibold text-xl">{`${searchResult.length} article${searchResult.length > 1 ? 's' : ''} trouvé${searchResult.length > 1 ? 's' : ''}`}</span>
+
       </div>
 
-      {/* Filtre de recherche */}
-      {searchResult.length !== 0 ? <SearchFilter searchResult={searchResult} handleChange={handleChange} filterValue={filterValue}/> : null} 
-      
-      
+        {/* Filtre de recherche */}
+        {searchResult.length !== 0 ? <SearchFilter searchResult={searchResult} handleChange={handleChange} filterValue={filterValue} /> : null}
 
       {/* Liste des résultats de la recherche */}
-        <SearchResultList searchResult={searchResult} filterValue={filterValue}/>
+      <SearchResultList searchResult={searchResult} filterValue={filterValue}  />
     </div>
   );
 };

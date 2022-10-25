@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getToken } from "../../shared/services/tokenServices";
 import handleHttpError from './../../shared/components/form-and-error-components/HandleHttpError';
-import handleHttpSuccess from './../../shared/components/form-and-success-components/HandleHttpSuccess';
+import handleHttpSuccess from './../../shared/components/form-and-error-components/handleHttpSuccess';
+
 
 /**
  * Instance axios to the BACKEND 

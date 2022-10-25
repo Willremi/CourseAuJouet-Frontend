@@ -7,6 +7,7 @@ import {
 } from "../../shared/redux-store/authenticationSlice";
 import { hasRole } from "../../shared/services/accountServices";
 import { getPayloadToken } from "../../shared/services/tokenServices";
+import { getLocalWishlist } from "../../shared/services/wishlistService";
 //imports pour le formLogin
 import LoginView from "../../views/LoginView";
 import Account from "../modal_component/Account";
@@ -27,6 +28,7 @@ function MyAccountButton() {
   const isLogged = useSelector(selectIsLogged);
   const [showModal, setShowModal] = useState(false);
   const [User, setUser] = useState();
+  const wishlist = getLocalWishlist()
   const dispatch = useDispatch();
   const handleSignOut = () => {
     dispatch(signOut());
@@ -74,51 +76,31 @@ function MyAccountButton() {
 
       <>
         <div
-          className={`transition-all duration-500 bg-nav-blueClar absolute top-16 left-0 w-screen ${
-            showModal ? "h-screen overflow-hidden z-40" : "h-0 overflow-hidden"
-          }
-            ${
-              showModal
-                ? "md:h-screen md:bg-gray-800 md:bg-opacity-50 md:z-40 md:top-14"
-                : "md:h-0 overflow-hidden"
+          className={`transition-all duration-500 bg-nav-blueClar absolute top-16 left-0 w-screen 
+
+             ${showModal
+              ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-40 xl:top-28 xl:mt-3"
+              : "xl:h-0 overflow-hidden"
             }
-            ${
-              showModal
-                ? "lg:h-screen lg:bg-gray-800 lg:bg-opacity-50 lg:z-40 lg:top-36 lg:mt-2"
-                : "lg:h-0 overflow-hidden"
-            }
-             ${
-               showModal
-                 ? "xl:h-screen xl:bg-gray-800 xl:bg-opacity-50 xl:pr-36 xl:z-40 xl:top-28 xl:mt-3"
-                 : "xl:h-0 overflow-hidden"
-             }
-             ${
-               showModal
-                 ? "2xl:h-screen 2xl:bg-gray-800 2xl:bg-opacity-50 2xl:pr-36 2xl:z-40 2xl:top-24 2xl:mt-1.5 "
-                 : "2xl:h-0 overflow-hidden"
-             }
+             
             `}
         >
           <div
             className={`w-full relative bg-white h-6/12 z-40
 
-            md:w-5/6 md:h-auto md:mx-auto md:mt-10 md:transition-all md:duration-500 ${
-              showModal ? null : "md:h-0"
-            }
-            lg:w-2/6 lg:h-screen lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${
-              showModal ? null : "lg:h-0"
-            }
-            xl:w-2/6 xl:h-screen xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${
-              showModal ? null : "xl:h-0"
-            }
-            2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${
-              showModal ? null : "2xl:h-0"
-            }`}
+            md:w-5/6 md:h-auto md:mx-auto md:mt-10 md:transition-all md:duration-500 ${showModal ? null : "md:h-0"
+              }
+            lg:w-2/6 lg:h-screen lg:float-right lg:mr-12 lg:transition-all lg:duration-500 ${showModal ? null : "lg:h-0"
+              }
+            xl:w-2/6 xl:h-screen xl:float-right xl:mr-12 xl:transition-all xl:duration-500 ${showModal ? null : "xl:h-0"
+              }
+            2xl:w-2/6 2xl:h-screen 2xl:float-right 2xl:mr-12 2xl:transition-all 2xl:duration-500 ${showModal ? null : "2xl:h-0"
+              }`}
           >
             {/* Bouton croix pour fermer le modal */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute top-8 right-3 transition-all opacity-50 overflow-hidden hover:opacity-100"
+              className="absolute top-4 right-3 transition-all opacity-50 overflow-hidden hover:opacity-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +138,7 @@ function MyAccountButton() {
                         Se déconnecter
                       </button>
                     </div>
-                  ) : null}
+                  ) : null}                  
                 </>
               ) : (
                 <LoginView hideModal={setShowModal} />
