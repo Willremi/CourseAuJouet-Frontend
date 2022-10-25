@@ -13,6 +13,7 @@ export const URL_ORDER_ADDRESS = '/order/address_delivery'
 export const URL_ACCOUNT = '/account'
 export const URL_WISHLIST = '/wishlist'
 export const URL_CATEGORY = "/category/"
+export const URL_AGE = "/age/"
 
 
 /** MANAGER **/

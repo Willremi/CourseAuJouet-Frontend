@@ -1,4 +1,5 @@
 import {
+  URL_CATEGORY,
   URL_HOME
 } from './../urls/urlConstants';
 export const navigation = [
@@ -28,42 +29,42 @@ export const navigation = [
     href: URL_HOME,
     submenu: [{
         name: "Roues",
-        href: URL_HOME,
+        href: "/category/Roue",
         current: false
       },
       {
         name: "Peluches",
-        href: URL_HOME,
+        href: "/category/Peluche",
         current: false
       },
       {
         name: "Figurines",
-        href: URL_HOME,
+        href: "/category/Figurine",
         current: false
       },
       {
         name: "Jeux & Puzzles",
-        href: URL_HOME,
+        href: "category/jeux",
         current: false
       },
       {
         name: "Construction",
-        href: URL_HOME,
+        href: "/category/construction",
         current: false
       },
       {
         name: "Véhicules",
-        href: URL_HOME,
+        href: "/category/vehicule",
         current: false
       },
       {
         name: "Educatifs",
-        href: URL_HOME,
+        href: "/category/educatifs",
         current: false
       },
       {
         name: "Baby",
-        href: URL_HOME,
+        href: "/category/baby",
         current: false
       },
     ],
@@ -77,23 +78,23 @@ export const navigation = [
         current: false
       },
       {
-        name: "3 à 4 ans",
-        href: URL_HOME,
+        name: "3 à 5 ans",
+        href: "/age/3%20-%205%20ans",
         current: false
       },
       {
-        name: "5 à 7 ans",
-        href: URL_HOME,
+        name: "6 à 8 ans",
+        href: "/age/6%20-%208%20ans",
         current: false
       },
       {
-        name: "8 à 10 ans",
-        href: URL_HOME,
+        name: "9 à 11 ans",
+        href: "/age/9%20-%2011%20ans",
         current: false
       },
       {
-        name: "11 ans ou +",
-        href: URL_HOME,
+        name: "12 ans ou +",
+        href: "/age/12%20ans%20et%20+",
         current: false
       },
     ],

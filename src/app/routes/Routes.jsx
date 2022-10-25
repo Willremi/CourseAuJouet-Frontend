@@ -16,6 +16,7 @@ import {
   URL_CHANGE_PASSWORD,
   URL_WISHLIST,
   URL_CATEGORY,
+  URL_AGE,
 } from "../shared/constants/urls/urlConstants";
 import HomeView from "../views/HomeView";
 import RegisterView from "../views/RegisterView";
@@ -39,7 +40,8 @@ import { URL_PAYMENT_CHECKOUT } from './../shared/constants/urls/urlConstants';
 import AccountView from "../views/account_views/accountView";
 import ChangePasswordView from "../views/ChangePasswordView";
 import WishlistView from "../views/WishlistView";
-import CategoryWiev from "../views/CategoryView";
+import CategoryView from "../views/CategoryView";
+import AgeView from "../views/AgeView";
 
 /**
  * Routes of the application
@@ -83,7 +85,8 @@ const Routes = () => {
       <Route path={URL_SEARCH_PAGE} component={SearchView} />
       {/* <Route component={NotFoundView}/> */}
       <Route path={URL_WISHLIST} component={WishlistView} />
-      <Route path={URL_CATEGORY + ":category"} component={CategoryWiev} />
+      <Route path={URL_CATEGORY + ":category"} component={CategoryView} />
+      <Route path={URL_AGE + ":age"} component={AgeView} />
     </Switch>
   );
 };
