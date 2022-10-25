@@ -44,8 +44,6 @@ function MyAccountButton() {
       setUser(undefined)
     }
   }, [isLogged]);
-  
-  // console.log(User);
 
   return (
     <>

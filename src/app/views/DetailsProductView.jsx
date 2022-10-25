@@ -6,16 +6,19 @@ import {FaChevronLeft,FaChevronRight} from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddToCart,
-  increment,
+  detailIncrement,
   selectInCart,
 } from "../shared/redux-store/cartSlice";
-import HandleQuantityProductInCart from "../shared/components/form-and-success-components/HandleQuantityProductInCart";
 import { Icon } from "@iconify/react";
+
+import handleQuantityProductWarning from './../shared/components/form-and-success-components/handleQuantityProductWarning';
+
 import {
   addToWishlist,
   selectWishlist,
   deleteFromWishlist
 } from "../shared/redux-store/wishlistSlice"
+
 
 
 const DetailsProductView = () => {
@@ -31,11 +34,25 @@ const DetailsProductView = () => {
     getOneProduct(id.id)
       .then((res) => setData(res.data))
       .catch((error) => console.log(error));
+      if(productInCart){
+        let inCart = productInCart.findIndex(
+          (element) =>
+            element._id === id.id
+        );
+        if (inCart === -1) {
+          setQuantity(1)
+        } else {
+          setQuantity(productInCart[inCart].quantity)
+        }
+      }else {
+        setQuantity(1)
+      }
+      
   }, [id.id]);
   console.log(data);
   console.log(id);
 
-  console.log(quantity);
+
 
   const nextImage = () => {
     // setImage(image === data.product.images.length -1 ? 0 : image + 1)
@@ -157,7 +174,7 @@ const DetailsProductView = () => {
                         } else {
                           const message =
                             "la quantité de l'article ne peut pas être inférieur à 1";
-                          HandleQuantityProductInCart(message);
+                            handleQuantityProductWarning(message);
                         }
                       }}
                     >
@@ -193,7 +210,7 @@ const DetailsProductView = () => {
                         } else {
                           const message =
                             "la quantité de l'article ne peut pas être supérieur à 5";
-                          HandleQuantityProductInCart(message);
+                            handleQuantityProductWarning(message);
                         }
                       }}
                     >
@@ -216,17 +233,22 @@ const DetailsProductView = () => {
                   <button
                     className="py-2 px-6 rounded-full bg-yellow-500 font-semibold text-white cursor-pointer"
                     onClick={() => {
+                      let item = data.product
+                      item.quantity = quantity
                       if (productInCart === undefined) {
-                        dispatch(AddToCart(data.product));
-                      } else {
+                        dispatch(AddToCart(item));
+                      }
+                       else {
                         let inCart = productInCart.findIndex(
                           (element) =>
                             element.product_name === data.product.product_name
                         );
                         if (inCart === -1) {
-                          dispatch(AddToCart(data.product));
+                          dispatch(AddToCart(item));
                         } else {
-                          dispatch(increment(inCart));
+                          let indexWithQuantity = { index : inCart,
+                                       quantity : quantity }
+                          dispatch(detailIncrement(indexWithQuantity));
                         }
                       }
                     }}

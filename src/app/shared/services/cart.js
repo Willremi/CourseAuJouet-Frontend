@@ -71,12 +71,41 @@ export function AddeOneProductQuantity(productindex) {
             serializedState.map((product, index) => {
                 if (index === productindex){
                     product.quantity = product.quantity + 1
-                      console.log('modifier', product.quantity)
+                     
                 return TemporaryArray.push(product)
                 }
                   
                 else {
-                    console.log('pas modifier')
+                   
+                   return TemporaryArray.push(product)
+                }
+            })
+            serializedState = JSON.stringify(TemporaryArray)
+            sessionStorage.setItem('userCart', serializedState)
+        }
+    } catch (err) {
+        return undefined
+    }
+}
+
+export function AddManyProductQuantity(productIndexWithQuantity) {
+        console.log("SESSIONSTORAGE : ", productIndexWithQuantity);
+    try {
+        let serializedState = sessionStorage.getItem('userCart')
+        if (serializedState === null) {
+            return undefined
+        } else {
+            let TemporaryArray = []
+            serializedState = JSON.parse(serializedState)
+            serializedState.map((product, index) => {
+                if (index === productIndexWithQuantity.index){
+                    product.quantity = productIndexWithQuantity.quantity
+                     
+                return TemporaryArray.push(product)
+                }
+                  
+                else {
+                   
                    return TemporaryArray.push(product)
                 }
             })
